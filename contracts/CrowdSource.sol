@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.5.1;
 
-contract Sih {
+contract CrowdSource {
+   
     event SubmitQuestion(
         string subject,
         string question,
@@ -10,7 +11,7 @@ contract Sih {
         bool approve
     );
 
-    struct Problems {
+    struct Problem {
         string subject;
         string question;
         string[] options;
@@ -18,7 +19,7 @@ contract Sih {
         bool approve;
     }
 
-    Problems[] problems;
+    Problem[] problems;
 
     function addToBlockchain(
         string memory _subject,
@@ -27,7 +28,7 @@ contract Sih {
         uint256 _ans,
         bool _approve
     ) public {
-        problems.push(Problems(_subject, _question, _options, _ans, _approve));
+        problems.push(Problem(_subject, _question, _options, _ans, _approve));
 
         emit SubmitQuestion(_subject, _question, _options, _ans, _approve);
     }
