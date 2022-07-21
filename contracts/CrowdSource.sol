@@ -7,6 +7,7 @@ contract CrowdSource {
         string subject,
         string question,
         string[] options,
+        string imgHash,
         uint256 ans,
         bool approve
     );
@@ -15,6 +16,7 @@ contract CrowdSource {
         string subject;
         string question;
         string[] options;
+        string imgHash;
         uint256 ans;
         bool approve;
     }
@@ -25,12 +27,13 @@ contract CrowdSource {
         string memory _subject,
         string memory _question,
         string[] memory _options,
+        string _imgHash,
         uint256 _ans,
         bool _approve
     ) public {
-        problems.push(Problem(_subject, _question, _options, _ans, _approve));
+        problems.push(Problem(_subject, _question, _options,_imgHash, _ans, _approve));
 
-        emit SubmitQuestion(_subject, _question, _options, _ans, _approve);
+        emit SubmitQuestion(_subject, _question, _options,_imgHash, _ans, _approve);
     }
 
     function getAllQuestions() public view returns (Problems[] memory) {
