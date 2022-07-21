@@ -1,0 +1,35 @@
+.input-group{
+    height: 35px;
+}
+.search-qns{
+    height: 34px;
+}
+.search-qns-button{
+    position: relative;
+    top: -13px;
+}
+.fixed-button{
+    display:none;
+}
+.main-menu-background{
+    background-image: url(/public/assets/img/User_Back.jpg);
+}
+.text-Dashboard{
+    color: #000;
+}
+.approve-btn{
+    justify-content: right;
+}
+.approve-btn button{
+    margin-left: 1rem;
+}
+.subject-btn{
+    text-align: center;
+    z-index: 100;
+}
+.subject-btn button{
+    margin-left: 1rem;
+    color:rgb(36, 85, 125);
+    border-color: rgb(36, 85, 125);
+    ;
+}

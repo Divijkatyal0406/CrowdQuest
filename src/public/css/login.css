@@ -1,0 +1,109 @@
+@import url("public/css/bootstrap-social.css");
+
+*{
+    margin: 50em;
+    padding: 50em;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    overflow: auto;
+}
+.navbar .navbar-brand {
+    color: #fff;
+}
+.container {overflow-x: hidden; overflow-y: auto;}
+body{
+    padding: 100em;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y:hidden;
+}
+.div::-webkit-scrollbar {
+    display: none;
+}
+.header
+{
+    height: 100vh;
+}
+.navbar-style
+{
+    background: #ffffff;
+    box-shadow: 0px 12px 8px rgba(0, 0, 0, 0.12);
+}
+
+.logo{
+    height: 48px;
+    padding: 2px 10px;
+}
+.icon-bar
+{
+    background: black;
+}
+li a{
+    color: black;
+}
+.text{  
+     font-family: Roboto;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 64px;
+     line-height: 75px;
+     color: #000000;
+}
+.text2{
+    font-family: Roboto;
+    font-style: normal;
+    color: #000000;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+a.btn{
+     margin: 2%;
+     width: 150px;
+     padding: 10px;
+     border-radius: 20px;
+}
+a.btn-first{
+    background-color: green;
+    color:#fff;
+}
+a.btn-second{
+    background-color: green;
+    color:#fff;
+}
+a.btn:hover{
+    background: green;
+    border: none;
+    color: antiquewhite;
+    box-shadow: 5px 5px 10px #999;
+}
+.loginMain{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+.login{
+    padding-top: 500em;
+}
+
+.google{
+    display: flex;
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}

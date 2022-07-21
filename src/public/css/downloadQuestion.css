@@ -1,0 +1,147 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+body {
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar start here  */
+.Sidebar {
+	position: fixed;
+	background: #5279f8;
+	width: 300px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.Sidebar h2 {
+	text-align: center;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #ffffff;
+	background: #769ef5;
+	padding: 20px;
+	font-weight: bold;
+}
+
+.Sidebar ul li {
+	margin: 25px 0;
+}
+
+.Sidebar ul li a {
+	color: #ffffff;
+	padding: 0 0;
+
+}
+
+.Nav {
+	list-style: none;
+}
+
+ul.ba {
+	list-style-type: none;
+}
+
+.Sidebar ul li a:hover {
+	color: #ffffff;
+	margin-left: 20px;
+	transition: 0.4s;
+}
+
+.main {
+	margin-left: 320px;
+	padding: 5px;
+}
+
+.main h2 {
+	margin-top: 20px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+.btn-primary {
+	margin-left: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+	.Sidebar {
+		width: 0;
+		display: none;
+	}
+
+	.main {
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
+}
+
+#cbse-logo {
+	width: 120px;
+	margin: 12px;
+}
+
+.ques {
+	font-size: larger;
+}
+
+table{
+	font-size: larger;
+	width: 100%;
+}
+li{
+	color: #f7f7f8;
+}
+th, td {
+	padding: 17px;
+	text-align: left;
+}
+.right-opt{
+	margin-left: 20%;
+}
+
+.mainselection {
+	margin-top: 5px;
+    overflow:hidden;
+    width:200px;
+	font-size:large;
+	border-radius: 5px;
+	height: 30px;
+	background-color: #ffffff;
+}
+select {
+    border:0;
+    background:transparent;
+    height:32px;
+    border:1px solid #929292;
+    width:200px;
+}
+.Nav{
+	font-size: large;
+}
+.dropdownbad {
+    border:2px solid #c13339;
+}
+#note{
+	font-size: 17px;
+}
+#date{
+	position: absolute;
+	right: 8%;
+	top: 5%;
+}
+hr{
+	width: 220px;
+}
