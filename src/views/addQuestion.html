@@ -17,7 +17,8 @@
         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
         <h3>Submission Portal</h3>
         <p>Please Enter the Question</p>  
-        <form action="/addQuestion" method="post">
+        <!-- Form submit -->
+        <form action="/addQuestion" method="post" id="formMain">
         <button form="myform" type="submit" name="submit_btn" value="submitQuestion" class="btn btn-outline-light submit">Submit for Review</button>
         </form>
       </div>
@@ -27,42 +28,45 @@
             <form id="myform" action="/addQuestion" method="post" class="questionForm" autocomplete="off">
               <div class="form-group purple-border">
                 <label class="form-group" for="cars">Select Subject:</label>
-                <select name="subjects" required>
+                <!-- Choose Subject -->
+                <select name="subjects" id="subjects" required>
                   <option value="math">Mathematics</option>
                   <option value="phy">Physics</option>
                   <option value="chem">Chemistry</option>
                   <option value="bio">Biology</option>
                 </select>
                 <br><br>
+                <!-- Question -->
                 <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Type the Question</label>
-                <textarea name="questions" class="form-control" id="exampleFormControlTextarea4" rows="3" required></textarea>
+                <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" required></textarea>
               </div>
               <fieldset class="form-group">
                 <div class="row">
+                  <!-- Options available for the question -->
                   <legend class="col-form-label col-sm-4 pt-0 font-weight-light" id="text2">Enter Options</legend>
                   <div class="col-sm-10">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" value="0" id="flexRadioDefault1">
+                      <input class="form-check-input correctOption1" type="radio" name="flexRadioDefault" value="0" id="flexRadioDefault1">
                       <label class="form-check-label" for="gridRadios1">
-                        <input name="option1" type="text" required>
+                        <input name="option1" id="option1" type="text" required>
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" value="1" id="flexRadioDefault1">
+                      <input class="form-check-input correctOption2" type="radio" name="flexRadioDefault" value="1" id="flexRadioDefault1">
                       <label class="form-check-label" for="gridRadios1">
-                        <input name="option2" type="text" required>
+                        <input name="option2" id="option2" type="text" required>
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" value="2" id="flexRadioDefault1">
+                      <input class="form-check-input correctOption3" type="radio" name="flexRadioDefault" value="2" id="flexRadioDefault1">
                       <label class="form-check-label" for="gridRadios1">
-                        <input name="option3" type="text" required>
+                        <input name="option3" id="option3" type="text" required>
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" value="3" id="flexRadioDefault1">
+                      <input class="form-check-input correctOption4" type="radio" name="flexRadioDefault" value="3" id="flexRadioDefault1">
                       <label class="form-check-label" for="gridRadios1">
-                        <input name="option4" type="text" required>
+                        <input name="option4" id="option4" type="text" required>
                       </label>
                     </div>
                   </div>
@@ -80,6 +84,7 @@
         alert("Question sent for review.")
       })
     </script>
+    <script src="../getFormData.js"></script>
 </body>
 
 </html>
