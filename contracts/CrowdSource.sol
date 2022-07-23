@@ -37,7 +37,11 @@ contract CrowdSource {
         emit SubmitQuestion(_subject, _question, _options,_imgHash, _ans, _approve);
     }
 
-    function getAllQuestions() public view returns (Problem[] memory) {
-        return problems;
+    function getAllQuestions() public view returns (Problem[] memory){
+        Problem[] memory ret = new address[](problems.length);
+        for (uint i = 0; i < problems.length; i++) {
+            ret[i] = problems[i];
+        }
+        return ret;
     }
 }
