@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+pragma experimental ABIEncoderV2;
 pragma solidity ^0.5.1;
 
 contract CrowdSource {
@@ -27,7 +28,7 @@ contract CrowdSource {
         string memory _subject,
         string memory _question,
         string[] memory _options,
-        string _imgHash,
+        string memory _imgHash,
         uint256 _ans,
         bool _approve
     ) public {
@@ -36,7 +37,7 @@ contract CrowdSource {
         emit SubmitQuestion(_subject, _question, _options,_imgHash, _ans, _approve);
     }
 
-    function getAllQuestions() public view returns (Problems[] memory) {
+    function getAllQuestions() public view returns (Problem[] memory) {
         return problems;
     }
 }
