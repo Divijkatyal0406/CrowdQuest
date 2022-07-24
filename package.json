@@ -1,0 +1,17 @@
+{
+  "name": "CrowdQuest",
+  "version": "1.0.0",
+  "description": "Crowdsourcing platform for teachers and students to add questions",
+  "main": "Web3.js",
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lite-server": "^2.6.1",
+    "solc": "^0.4.24",
+    "web3": "^0.20.0"
+  },
+  "author": "Divij Katyal",
+  "license": "ISC"
+}

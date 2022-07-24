@@ -38,7 +38,7 @@ contract CrowdSource {
     }
 
     function getAllQuestions() public view returns (Problem[] memory){
-        Problem[] memory ret = new address[](problems.length);
+        Problem[] memory ret = new Problem[](problems.length);
         for (uint i = 0; i < problems.length; i++) {
             ret[i] = problems[i];
         }
