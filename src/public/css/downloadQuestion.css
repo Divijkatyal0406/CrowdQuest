@@ -12,7 +12,7 @@ body {
 /* Sidebar start here  */
 .Sidebar {
 	position: fixed;
-	background: #5279f8;
+	background: #2c5dff;
 	width: 300px;
 	height: 100%;
 	top: 0;
@@ -24,8 +24,8 @@ body {
 	text-align: center;
 	font-size: 20px;
 	text-transform: uppercase;
-	color: #ffffff;
-	background: #769ef5;
+	background: #6a89fac4;
+	color: #d9f1ff;
 	padding: 20px;
 	font-weight: bold;
 }
