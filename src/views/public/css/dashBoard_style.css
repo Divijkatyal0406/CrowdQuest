@@ -13008,10 +13008,7 @@ body.menu-bottom #collapse-menu {
   outline: 1px dotted #fff;
   outline-offset: -5px;
 }
-.option_text:hover {
-  background-color: #dcebfc;
 
-}
 
 .btn-group,
 .btn-group-vertical {

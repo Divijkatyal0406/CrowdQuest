@@ -64,6 +64,8 @@ App = {
       ans: 0,
     };
 
+
+
     // console.log(Problem);
     submitDOM.addEventListener("click", function (event) {
       event.preventDefault();
@@ -144,8 +146,6 @@ App = {
       Problem.options.push(option3.value);
       Problem.options.push(option4.value);
     };
-
-
     // console.log(result);
     // window.alert("Question added successfully");
   },

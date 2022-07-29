@@ -12,7 +12,7 @@ body {
 /* Sidebar start here  */
 .Sidebar {
 	position: fixed;
-	background: #2c5dff;
+	background: #4f8cf7;
 	width: 300px;
 	height: 100%;
 	top: 0;
@@ -20,14 +20,12 @@ body {
 	z-index: 1;
 }
 
-.Sidebar h2 {
+.Sidebar h4 {
 	text-align: center;
-	font-size: 20px;
-	text-transform: uppercase;
-	background: #6a89fac4;
-	color: #d9f1ff;
+	font-size: 25px;
+	background: rgb(37, 116, 252);
+	color: #ffffff;
 	padding: 20px;
-	font-weight: bold;
 }
 
 .Sidebar ul li {
@@ -48,7 +46,7 @@ ul.ba {
 	list-style-type: none;
 }
 
-.Sidebar ul li a:hover {
+.Sidebar ul li a {
 	color: #ffffff;
 	margin-left: 20px;
 	transition: 0.4s;
@@ -59,7 +57,7 @@ ul.ba {
 	padding: 5px;
 }
 
-.main h2 {
+h4 {
 	margin-top: 20px;
 }
 
@@ -71,9 +69,6 @@ a:visited {
 	text-decoration: none;
 }
 
-.btn-primary {
-	margin-left: 20px;
-}
 
 @media only screen and (max-width: 600px) {
 	.Sidebar {
