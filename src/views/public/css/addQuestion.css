@@ -53,8 +53,7 @@ body{
     100% { transform: translateY(-20px); }
 }
 .register-left p{
-    font-weight: lighter;
-    padding: 5%;
+    padding: 4%;
     text-align: left;
     margin-right: 15px;
 }
@@ -150,8 +149,12 @@ h3{
     }
   }
 
-
-
-
+#myFile{
+    margin-left: 20px;
+}
+.btn-outline-light{
+    position: relative;
+    right: 65px;
+}
 
 

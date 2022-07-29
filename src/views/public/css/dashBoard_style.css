@@ -13778,8 +13778,6 @@ body.menu-bottom #collapse-menu {
   font-size: 10px;
 }
 
-/**====== Button-Size css end ======**/
-/**====== Badges-button css start ======**/
 .btn-primary .badge,
 .sweet-alert button.confirm .badge,
 .wizard > .actions a .badge {
@@ -13934,11 +13932,6 @@ body.menu-bottom #collapse-menu {
   color: #fff;
 }
 
-/**====== Drop-down-Buttons css end ======**/
-/**====== Theme-Buttons css end ======**/
-/**  =====================
-      Basic form elements css start
-==========================  **/
 .col-form-label {
   font-size: 14px;
 }
