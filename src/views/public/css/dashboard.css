@@ -33,3 +33,24 @@
     border-color: rgb(36, 85, 125);
     ;
 }
+.subject{
+    position: absolute;
+    right: 3%;
+    font-size: larger;
+    
+}
+.question{
+    width: 80%;
+}
+@media only screen and (max-width: 600px) {
+    .subject{
+        position: absolute;
+        right: 2%;
+        position: relative;
+        bottom: 10px;
+    }
+    .question{
+        width: 100%;
+    }
+  }
+

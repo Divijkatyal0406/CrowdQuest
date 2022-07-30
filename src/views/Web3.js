@@ -156,8 +156,7 @@ App = {
 
   getAllQuestionsFromChain: function () {
     let problemCard = document.querySelector(".pcoded-inner-content");
-
-    // console.log(App.contracts.CrowdSource.instance.problemCount());
+    
     console.log("here");
     console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
@@ -166,68 +165,70 @@ App = {
         console.log("here1");
         return crowdsourceInstance.problemCount();
       })
-      
+
       .then(function (problemCount) {
-        
         let quesData = "";
+        var count = 0;
         for (var i = 1; i <= problemCount; i++) {
-
-          
           crowdsourceInstance.problems(i).then(function (p) {
-            // var subject = p[0];
-            // var question = p[1];
-            // console.log(subject);
-            // console.log(question);
-            console.log(p);
-            console.log(p[7].toNumber());
+    
+            var ans = p[7].toNumber();
+            count++;
 
-            let ques = `<div class="container">
+            if (p[8] == false) {
+              let ques = `<div class="container">
           <div class="unitQuestion">
               <div class="stud_question">
+                <div class="subject">
+                   Subject : ${p[0]}
+                </div>
                   <div class="question">
-                      ${p[1]}
+                    Ques ${count}.  ${p[1]}
                   </div>
                   <div class="options">
                       <button class="option">
-                          <div class="option_text">A</div>
+                          <div class="option_text">A.</div>
                           &nbsp;
                           <div class="option_text">
-                              They jump on the nucleus
+                            ${p[2]}
                           </div>
                       </button>
                       <button class="option">
-                          <div class="option_text">B</div>
+                          <div class="option_text">B.</div>
                           &nbsp;
                           <div class="option_text">
-                              They move randomly
+                          ${p[3]}
                           </div>
                       </button>
                       <button class="option">
-                          <div class="option_text">C</div>
+                          <div class="option_text">C.</div>
                           &nbsp;
                           <div class="option_text">
-                              Radiate electromagnetic waves
+                          ${p[4]}
                           </div>
                       </button>
                       <button class="option">
-                          <div class="option_text">D</div>
+                          <div class="option_text">D.</div>
                           &nbsp;
                           <div class="option_text">
-                              Escape from the atom
+                          ${p[5]}
                           </div>
                       </button>
                   </div>
               </div>
           </div>
           <div class="question-info">
-              <div class="question-standard">Correct Answer : B</div>
+              <div class="question-standard">Correct Answer : ${
+                p[ans + 1]
+              }</div>
               <button type="button" class="btn btn-outline-success approve-btn">Accept</button>
               <button type="button" class="btn btn-outline-danger approve-btn">Reject</button>
           </div>
           <hr>
       </div>`;
-            quesData += ques;
-            problemCard.innerHTML = quesData;
+              quesData += ques;
+              problemCard.innerHTML = quesData;
+            }
           });
         }
       })
