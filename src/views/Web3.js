@@ -153,7 +153,7 @@ App = {
 
 $(function () {
   $(window).load(function () {
-    App.addQuestion();
     App.init();
+    App.addQuestion();
   });
 });
