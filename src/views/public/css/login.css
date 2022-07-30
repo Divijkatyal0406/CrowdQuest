@@ -1,8 +1,8 @@
-@import url("public/css/bootstrap-social.css");
+/* @import url("public/css/bootstrap-social.css"); */
 
 *{
-    margin: 50em;
-    padding: 50em;
+    /* margin: 50em;
+    padding: 50em; */
     overflow-x: hidden;
     overflow-y: hidden;
     overflow: auto;
@@ -10,12 +10,22 @@
 .navbar .navbar-brand {
     color: #fff;
 }
-.container {overflow-x: hidden; overflow-y: auto;}
+.container {
+    overflow-x: hidden; 
+    overflow-y: auto;
+background-color: rgb(249, 249, 249);
+padding:2rem 0 2rem 0;
+border-radius: 50px;
+margin: auto;
+
+}
+
 body{
-    padding: 100em;
+    /* padding: 0em; */
     max-width: 100%;
     overflow-x: hidden;
     overflow-y:hidden;
+    background-color: #99bffb;
 }
 .div::-webkit-scrollbar {
     display: none;
@@ -80,6 +90,8 @@ a.btn:hover{
 .loginMain{
     margin-top: 10%;
     display: flex;
+    flex-direction: column-reverse;
+    flex-flow: row-reverse;
     justify-content: center;
     text-align: center;
 }
@@ -94,12 +106,33 @@ a.btn:hover{
 .h-custom {
   height: calc(100% - 73px);
 }
-.login{
-    padding-top: 500em;
+
+
+.title-text{
+    margin-top: 0.1em;
+color: slategray;
+font-size:smaller;
+}
+
+.left-item{
+    background-color: #ffffff;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.google-button:hover{
+    background-color: #ddd;
+    border-color: #ddd;
 }
 
 .google{
     display: flex;
+}
+
+.footnote{
+    font-size: smaller;
+    color: rgba(255, 255, 255, 0.592);
+    margin-top: 1.5em;
 }
 
 @media (max-width: 450px) {
@@ -107,3 +140,7 @@ a.btn:hover{
     height: 100%;
   }
 }
+
+::-webkit-input-placeholder {
+    font-size: 0.65em;
+ }
