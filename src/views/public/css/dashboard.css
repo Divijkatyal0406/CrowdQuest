@@ -18,11 +18,11 @@
     color: #000;
 }
 .approve-btn{
-    justify-content: right;
+    margin-right: 20px;
+    position: relative;
+    left: 25%;
 }
-.approve-btn button{
-    margin-left: 1rem;
-}
+
 .subject-btn{
     text-align: center;
     z-index: 100;

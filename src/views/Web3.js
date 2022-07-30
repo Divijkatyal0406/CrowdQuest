@@ -22,7 +22,6 @@ App = {
         App.account = account;
       }
     });
-
     return App.initContract();
   },
   initContract: function () {
@@ -64,8 +63,6 @@ App = {
       ans: 0,
     };
 
-
-
     // console.log(Problem);
     submitDOM.addEventListener("click", function (event) {
       event.preventDefault();
@@ -75,29 +72,29 @@ App = {
       options();
       console.log(Problem);
       App.contracts.CrowdSource.deployed()
-      .then(function (instance) {
-        console.log("test");
-        const result = instance.addToBlockchain(
-          Problem.subject,
-          Problem.question,
-          Problem.options,
-          "IPFS Image hash",
-          Problem.ans,
-          false,
-          { from: App.account }
-        );
-        console.log(result);
-        return result;
-      })
-      .then(function (result) {
-        window.alert("Question added successfully");
-        // Wait for votes to update
-        // $("#content").hide();
-        // $("#loader").show();
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+        .then(function (instance) {
+          console.log("test");
+          const result = instance.addToBlockchain(
+            Problem.subject,
+            Problem.question,
+            Problem.options,
+            "IPFS Image hash",
+            Problem.ans,
+            false,
+            { from: App.account }
+          );
+          console.log(result);
+          return result;
+        })
+        .then(function (result) {
+          window.alert("Question added successfully");
+          // Wait for votes to update
+          // $("#content").hide();
+          // $("#loader").show();
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
     });
 
     // //For subject
@@ -151,28 +148,83 @@ App = {
   },
 
   getAllQuestionsFromChain: function () {
+    let problemCard = document.querySelector(".pcoded-inner-content");
+
     // console.log(App.contracts.CrowdSource.instance.problemCount());
-    console.log("here")
+    console.log("here");
     console.log(App.contracts.CrowdSource);
-    App.contracts.CrowdSource.deployed().then(function(instance) {
-      crowdsourceInstance = instance;
-      console.log("here1")
-      return crowdsourceInstance.problemCount();
-      }).then(function(problemCount) {
-        console.log("hereee")
-        for (var i = 1; i <= problemCount; i++) {
-          crowdsourceInstance.problems(i).then(function(p) {
-          console.log(p);
-          var subject = p[0];
-          var question = p[1];
-          console.log(subject);
-          console.log(question);
-        });
-      }
-      }).catch((e)=>{
-        console.log(e);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        console.log("here1");
+        return crowdsourceInstance.problemCount();
       })
-  }
+      
+      .then(function (problemCount) {
+        
+        let quesData = "";
+        for (var i = 1; i <= problemCount; i++) {
+
+          
+          crowdsourceInstance.problems(i).then(function (p) {
+            // var subject = p[0];
+            // var question = p[1];
+            // console.log(subject);
+            // console.log(question);
+            let ques = `<div class="container">
+          <div class="unitQuestion">
+              <div class="stud_question">
+                  <div class="question">
+                      ${p[1]}
+                  </div>
+                  <div class="options">
+                      <button class="option">
+                          <div class="option_text">A</div>
+                          &nbsp;
+                          <div class="option_text">
+                              They jump on the nucleus
+                          </div>
+                      </button>
+                      <button class="option">
+                          <div class="option_text">B</div>
+                          &nbsp;
+                          <div class="option_text">
+                              They move randomly
+                          </div>
+                      </button>
+                      <button class="option">
+                          <div class="option_text">C</div>
+                          &nbsp;
+                          <div class="option_text">
+                              Radiate electromagnetic waves
+                          </div>
+                      </button>
+                      <button class="option">
+                          <div class="option_text">D</div>
+                          &nbsp;
+                          <div class="option_text">
+                              Escape from the atom
+                          </div>
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="question-info">
+              <div class="question-standard">Correct Answer : B</div>
+              <button type="button" class="btn btn-outline-success approve-btn">Accept</button>
+              <button type="button" class="btn btn-outline-danger approve-btn">Reject</button>
+          </div>
+          <hr>
+      </div>`;
+            quesData += ques;
+            problemCard.innerHTML = quesData;
+          });
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 };
 
 $(function () {

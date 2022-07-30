@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bn.js": "^5.2.1",
     "ganache-cli": "^6.12.2",
     "lite-server": "^2.6.1",
     "solc": "^0.4.24",

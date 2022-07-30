@@ -8,7 +8,6 @@ contract CrowdSource {
     uint public problemCount;
     mapping(uint=>Problem) public problems;
 
-   
     event SubmitQuestion(
         string subject,
         string question,
