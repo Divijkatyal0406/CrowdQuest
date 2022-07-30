@@ -60,11 +60,12 @@ App = {
     const Problem = {
       subject: "",
       question: "",
-      options: [],
+      option1: "",
+      option2: "",
+      option3: "",
+      option4: "",
       ans: 0,
     };
-
-
 
     // console.log(Problem);
     submitDOM.addEventListener("click", function (event) {
@@ -75,29 +76,33 @@ App = {
       options();
       console.log(Problem);
       App.contracts.CrowdSource.deployed()
-      .then(function (instance) {
-        console.log("test");
-        const result = instance.addToBlockchain(
-          Problem.subject,
-          Problem.question,
-          Problem.options,
-          "IPFS Image hash",
-          Problem.ans,
-          false,
-          { from: App.account }
-        );
-        console.log(result);
-        return result;
-      })
-      .then(function (result) {
-        window.alert("Question added successfully");
-        // Wait for votes to update
-        // $("#content").hide();
-        // $("#loader").show();
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+        .then(function (instance) {
+          console.log("test");
+          const result = instance.addToBlockchain(
+            Problem.subject,
+            Problem.question,
+            Problem.option1,
+            Problem.option2,
+            Problem.option3,
+            Problem.option4,
+            "IPFS Image hash",
+            Problem.ans,
+            false,
+            { from: App.account }
+          );
+          console.log("result", result);
+          return result;
+        })
+        .then(function (result) {
+          window.alert("Question added successfully");
+          console.log("result after alert", result);
+          // Wait for votes to update
+          // $("#content").hide();
+          // $("#loader").show();
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
     });
 
     // //For subject
@@ -121,16 +126,16 @@ App = {
       let correctOption3 = document.querySelector(".correctOption3");
       let correctOption4 = document.querySelector(".correctOption4");
       if (correctOption1.checked == true) {
-        Problem.ans = 0;
-        return;
-      } else if (correctOption2.checked == true) {
         Problem.ans = 1;
         return;
-      } else if (correctOption3.checked == true) {
+      } else if (correctOption2.checked == true) {
         Problem.ans = 2;
         return;
-      } else if (correctOption4.checked == true) {
+      } else if (correctOption3.checked == true) {
         Problem.ans = 3;
+        return;
+      } else if (correctOption4.checked == true) {
+        Problem.ans = 4;
         return;
       }
     };
@@ -141,10 +146,10 @@ App = {
       let option2 = document.querySelector("#option2");
       let option3 = document.querySelector("#option3");
       let option4 = document.querySelector("#option4");
-      Problem.options.push(option1.value);
-      Problem.options.push(option2.value);
-      Problem.options.push(option3.value);
-      Problem.options.push(option4.value);
+      Problem.option1 = option1.value;
+      Problem.option2 = option2.value;
+      Problem.option3 = option3.value;
+      Problem.option4 = option4.value;
     };
     // console.log(result);
     // window.alert("Question added successfully");
@@ -152,27 +157,34 @@ App = {
 
   getAllQuestionsFromChain: function () {
     // console.log(App.contracts.CrowdSource.instance.problemCount());
-    console.log("here")
+    console.log("here");
     console.log(App.contracts.CrowdSource);
-    App.contracts.CrowdSource.deployed().then(function(instance) {
-      crowdsourceInstance = instance;
-      console.log("here1")
-      return crowdsourceInstance.problemCount();
-      }).then(function(problemCount) {
-        console.log("hereee")
-        for (var i = 1; i <= problemCount; i++) {
-          crowdsourceInstance.problems(i).then(function(p) {
-          console.log(p);
-          var subject = p[0];
-          var question = p[1];
-          console.log(subject);
-          console.log(question);
-        });
-      }
-      }).catch((e)=>{
-        console.log(e);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        console.log("here1");
+        return crowdsourceInstance.problemCount();
       })
-  }
+      .then(function (problemCount) {
+        console.log("hereee problem count is", problemCount.toNumber());
+        for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance.problems(i).then(function (p) {
+            console.log(p);
+            // var subject = p[0];
+            // var question = p[1];
+            // var imgHash = p[2];
+            // var ans = p[3];
+            // console.log(subject);
+            // console.log(question);
+            // console.log(imgHash);
+            // console.log(ans.toNumber());
+          });
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 };
 
 $(function () {
