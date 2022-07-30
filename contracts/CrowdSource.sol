@@ -3,6 +3,11 @@ pragma experimental ABIEncoderV2;
 pragma solidity ^0.5.1;
 
 contract CrowdSource {
+
+    // Problem[] problems;
+    uint public problemCount;
+    mapping(uint=>Problem) public problems;
+
    
     event SubmitQuestion(
         string subject,
@@ -22,7 +27,6 @@ contract CrowdSource {
         bool approve;
     }
 
-    Problem[] problems;
 
     function addToBlockchain(
         string memory _subject,
@@ -31,17 +35,18 @@ contract CrowdSource {
         string memory _imgHash,
         uint256 _ans,
         bool _approve
-    ) public {
-        problems.push(Problem(_subject, _question, _options,_imgHash, _ans, _approve));
-
+    ) public {  
+        problemCount++;
+        problems[problemCount]=Problem(_subject, _question, _options,_imgHash, _ans, _approve);
         emit SubmitQuestion(_subject, _question, _options,_imgHash, _ans, _approve);
     }
 
-    function getAllQuestions() public view returns (Problem[] memory){
-        Problem[] memory ret = new Problem[](problems.length);
-        for (uint i = 0; i < problems.length; i++) {
-            ret[i] = problems[i];
-        }
-        return ret;
-    }
+    // function getAllQuestions() public view returns (Problem[] memory){
+    //     // Problem[] memory ret = new Problem[](problems.length);
+    //     // for (uint i = 0; i < problems.length; i++) {
+    //     //     ret[i] = problems[i];
+    //     // }
+    //     // return ret;
+    //     return problems;
+    // }
 }

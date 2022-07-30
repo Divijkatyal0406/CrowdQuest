@@ -149,11 +149,36 @@ App = {
     // console.log(result);
     // window.alert("Question added successfully");
   },
+
+  getAllQuestionsFromChain: function () {
+    // console.log(App.contracts.CrowdSource.instance.problemCount());
+    console.log("here")
+    console.log(App.contracts.CrowdSource);
+    App.contracts.CrowdSource.deployed().then(function(instance) {
+      crowdsourceInstance = instance;
+      console.log("here1")
+      return crowdsourceInstance.problemCount();
+      }).then(function(problemCount) {
+        console.log("hereee")
+        for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance.problems(i).then(function(p) {
+          console.log(p);
+          var subject = p[0];
+          var question = p[1];
+          console.log(subject);
+          console.log(question);
+        });
+      }
+      }).catch((e)=>{
+        console.log(e);
+      })
+  }
 };
 
 $(function () {
   $(window).load(function () {
     App.init();
     App.addQuestion();
+    App.getAllQuestionsFromChain();
   });
 });
