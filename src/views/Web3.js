@@ -59,7 +59,10 @@ App = {
     const Problem = {
       subject: "",
       question: "",
-      options: [],
+      option1: "",
+      option2: "",
+      option3: "",
+      option4: "",
       ans: 0,
     };
 
@@ -77,17 +80,21 @@ App = {
           const result = instance.addToBlockchain(
             Problem.subject,
             Problem.question,
-            Problem.options,
+            Problem.option1,
+            Problem.option2,
+            Problem.option3,
+            Problem.option4,
             "IPFS Image hash",
             Problem.ans,
             false,
             { from: App.account }
           );
-          console.log(result);
+          console.log("result", result);
           return result;
         })
         .then(function (result) {
           window.alert("Question added successfully");
+          console.log("result after alert", result);
           // Wait for votes to update
           // $("#content").hide();
           // $("#loader").show();
@@ -118,16 +125,16 @@ App = {
       let correctOption3 = document.querySelector(".correctOption3");
       let correctOption4 = document.querySelector(".correctOption4");
       if (correctOption1.checked == true) {
-        Problem.ans = 0;
-        return;
-      } else if (correctOption2.checked == true) {
         Problem.ans = 1;
         return;
-      } else if (correctOption3.checked == true) {
+      } else if (correctOption2.checked == true) {
         Problem.ans = 2;
         return;
-      } else if (correctOption4.checked == true) {
+      } else if (correctOption3.checked == true) {
         Problem.ans = 3;
+        return;
+      } else if (correctOption4.checked == true) {
+        Problem.ans = 4;
         return;
       }
     };
@@ -138,10 +145,10 @@ App = {
       let option2 = document.querySelector("#option2");
       let option3 = document.querySelector("#option3");
       let option4 = document.querySelector("#option4");
-      Problem.options.push(option1.value);
-      Problem.options.push(option2.value);
-      Problem.options.push(option3.value);
-      Problem.options.push(option4.value);
+      Problem.option1 = option1.value;
+      Problem.option2 = option2.value;
+      Problem.option3 = option3.value;
+      Problem.option4 = option4.value;
     };
     // console.log(result);
     // window.alert("Question added successfully");
@@ -171,6 +178,9 @@ App = {
             // var question = p[1];
             // console.log(subject);
             // console.log(question);
+            console.log(p);
+            console.log(p[7].toNumber());
+
             let ques = `<div class="container">
           <div class="unitQuestion">
               <div class="stud_question">
