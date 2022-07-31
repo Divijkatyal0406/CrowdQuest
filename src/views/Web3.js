@@ -28,7 +28,6 @@ App = {
     $.getJSON("CrowdSource.json", function (cq) {
       App.contracts.CrowdSource = TruffleContract(cq);
       App.contracts.CrowdSource.setProvider(App.web3Provider);
-
       // App.listenForEvents();
 
       // return App.render();
@@ -64,6 +63,8 @@ App = {
       option3: "",
       option4: "",
       ans: 0,
+      approve: false,
+      isApproved: false,
     };
 
     // console.log(Problem);
@@ -86,6 +87,7 @@ App = {
             Problem.option4,
             "IPFS Image hash",
             Problem.ans,
+            false,
             false,
             { from: App.account }
           );
@@ -156,9 +158,9 @@ App = {
 
   getAllQuestionsFromChain: function () {
     let problemCard = document.querySelector(".pcoded-inner-content");
-    
+
     console.log("here");
-    console.log(App.contracts.CrowdSource);
+    // console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
         crowdsourceInstance = instance;
@@ -169,13 +171,15 @@ App = {
       .then(function (problemCount) {
         let quesData = "";
         var count = 0;
+        var displayProblemCount = 0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
-    
+            console.log(p);
             var ans = p[7].toNumber();
             count++;
-
-            if (p[8] == false) {
+            //p[8]->approve, p[9]->isApproved
+            if (p[8] == false && p[9] == false) {
+              displayProblemCount++;
               let ques = `<div class="container">
           <div class="unitQuestion">
               <div class="stud_question">
@@ -183,7 +187,7 @@ App = {
                    Subject : ${p[0]}
                 </div>
                   <div class="question">
-                    Ques ${count}.  ${p[1]}
+                    Ques ${displayProblemCount}.  ${p[1]}
                   </div>
                   <div class="options">
                       <button class="option">
@@ -221,8 +225,8 @@ App = {
               <div class="question-standard">Correct Answer : ${
                 p[ans + 1]
               }</div>
-              <button type="button" class="btn btn-outline-success approve-btn">Accept</button>
-              <button type="button" class="btn btn-outline-danger approve-btn">Reject</button>
+              <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
+              <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
           </div>
           <hr>
       </div>`;
@@ -231,6 +235,78 @@ App = {
             }
           });
         }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+  questionAccept: function (index) {
+    console.log("Accept");
+    console.log("index", index);
+    App.init();
+    console.log(App.contracts.CrowdSource);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        crowdsourceInstance
+          .problems(index)
+          .then(function (p) {
+            const accept = crowdsourceInstance.questionAcceptReject(
+              index,
+              p[0],
+              p[1],
+              p[2],
+              p[3],
+              p[4],
+              p[5],
+              p[6],
+              p[7],
+              true,
+              true,
+              { from: App.account }
+            );
+            return accept;
+          })
+          .then(function (accept) {
+            window.alert("Question accepted successfully");
+            console.log("Rejected promise ", accept);
+          });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+  questionReject: function (index) {
+    console.log("Rejected");
+    console.log("index", index);
+    App.init();
+    console.log(App.contracts.CrowdSource);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        crowdsourceInstance
+          .problems(index)
+          .then(function (p) {
+            const rejected = crowdsourceInstance.questionAcceptReject(
+              index,
+              p[0],
+              p[1],
+              p[2],
+              p[3],
+              p[4],
+              p[5],
+              p[6],
+              p[7],
+              false,
+              true,
+              { from: App.account }
+            );
+            return rejected;
+          })
+          .then(function (rejected) {
+            window.alert("Question rejected successfully");
+            console.log("Rejected promise ", rejected);
+          });
       })
       .catch((e) => {
         console.log(e);
