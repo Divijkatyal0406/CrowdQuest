@@ -96,14 +96,8 @@ App = {
           return result;
         })
         .then(function (result) {
-          let toast = {
-            title: "Voila!",
-            message: "How easy was that?",
-            status: TOAST_STATUS.SUCCESS,
-            timeout: 5000
-          }
-          Toast.create(toast);
-          // window.alert("Question added successfully");
+          window.alert("Question added successfully");
+          window.location="http://localhost:3000/teacherDashboard.html";
           console.log("result after alert", result);
           // Wait for votes to update
           // $("#content").hide();
@@ -410,6 +404,7 @@ App = {
           .then(function (accept) {
             window.alert("Question accepted successfully");
             console.log("Rejected promise ", accept);
+            window.location="http://localhost:3000/teacherDashboard.html";
           });
       })
       .catch((e) => {
