@@ -157,7 +157,8 @@ App = {
   },
 
   getAllQuestionsFromChain: function () {
-    let problemCard = document.querySelector(".pcoded-inner-content");
+    let problemCard1 = document.querySelector(".teacherDashboard");
+    let problemCard2 = document.querySelector(".studentDashboard");
 
     console.log("here");
     // console.log(App.contracts.CrowdSource);
@@ -169,18 +170,21 @@ App = {
       })
 
       .then(function (problemCount) {
-        let quesData = "";
+        let quesData1 = "";
+        let quesData2 = "";
         var count = 0;
         var displayProblemCount = 0;
+        var displayProblemCount1 = 0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
             console.log(p);
             var ans = p[7].toNumber();
+            var correctAnswer = p[ans + 1];
             count++;
             //p[8]->approve, p[9]->isApproved
             if (p[8] == false && p[9] == false) {
               displayProblemCount++;
-              let ques = `<div class="container">
+              let ques = `<div class="container questionCard">
           <div class="unitQuestion">
               <div class="stud_question">
                 <div class="subject">
@@ -228,8 +232,136 @@ App = {
               <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
               <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
           </div>
-          <hr>
       </div>`;
+              quesData1 += ques;
+              problemCard1.innerHTML = quesData1;
+            } else if (p[8] == true && p[9] == true) {
+              displayProblemCount1++;
+              let ques = `<div class="container questionCard">
+              <div class="unitQuestion">
+                  <div class="stud_question">
+                      <div class="subject">
+                          Subject : ${p[0]}
+                      </div>
+                      <div class="question">
+                      Ques ${displayProblemCount1}.  ${p[1]}
+                      </div>
+                      <div class="options">
+                          <button class="option">
+                              <div class="option_text">A</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[2]}
+                              </div>
+                          </button>
+                          <button class="option">
+                              <div class="option_text">B</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[3]}
+                              </div>
+                          </button>
+                          <button class="option">
+                              <div class="option_text">C</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[4]}
+                              </div>
+                          </button>
+                          <button class="option">
+                              <div class="option_text">D</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[5]}
+                              </div>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="question-info">
+                      <div class="question-standard">Correct Answer : ${
+                        p[ans + 1]
+                      }
+                      </div>
+                  </div>
+              </div>
+          </div>`;
+              quesData2 += ques;
+              problemCard2.innerHTML = quesData2;
+            }
+          });
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+  getAllSub: function (subject) {
+    let problemCard = document.querySelector(".studentDashboard");
+
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        return crowdsourceInstance.problemCount();
+      })
+
+      .then(function (problemCount) {
+        let quesData = "";
+
+        var displayProblemCount1 = 0;
+        for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance.problems(i).then(function (p) {
+            console.log(p);
+            var ans = p[7].toNumber();
+            if (p[8] == true && p[9] == true && p[0] == subject) {
+              displayProblemCount1++;
+              let ques = `<div class="container questionCard">
+              <div class="unitQuestion">
+                  <div class="stud_question">
+                      <div class="subject">
+                          Subject : ${p[0]}
+                      </div>
+                      <div class="question">
+                      Ques ${displayProblemCount1}.  ${p[1]}
+                      </div>
+                      <div class="options">
+                          <button class="option">
+                              <div class="option_text">A</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[2]}
+                              </div>
+                          </button>
+                          <button class="option">
+                              <div class="option_text">B</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[3]}
+                              </div>
+                          </button>
+                          <button class="option">
+                              <div class="option_text">C</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[4]}
+                              </div>
+                          </button>
+                          <button class="option">
+                              <div class="option_text">D</div>
+                              &nbsp;
+                              <div class="option_text">
+                              ${p[5]}
+                              </div>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="question-info">
+                      <div class="question-standard">Correct Answer : ${
+                        p[ans + 1]
+                      } 
+                      </div>
+                  </div>
+              </div>
+          </div>`;
               quesData += ques;
               problemCard.innerHTML = quesData;
             }
@@ -319,5 +451,6 @@ $(function () {
     App.init();
     App.addQuestion();
     App.getAllQuestionsFromChain();
+    App.getAllSub();
   });
 });

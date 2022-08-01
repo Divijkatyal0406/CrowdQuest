@@ -22,7 +22,18 @@
     position: relative;
     left: 25%;
 }
-
+.like{
+    position: absolute;
+    right: 11%;
+}
+.dislike{
+    position: absolute;
+    right: 8%;
+}
+.chart{
+    position: absolute;
+    right: 4%;
+}
 .subject-btn{
     text-align: center;
     z-index: 100;
@@ -41,6 +52,13 @@
 }
 .question{
     width: 80%;
+}
+
+.questionCard{
+    margin-right: 30px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 4px #dddddd;
 }
 @media only screen and (max-width: 600px) {
     .subject{
