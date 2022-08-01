@@ -28,6 +28,7 @@ App = {
     $.getJSON("CrowdSource.json", function (cq) {
       App.contracts.CrowdSource = TruffleContract(cq);
       App.contracts.CrowdSource.setProvider(App.web3Provider);
+      App.getAllQuestionsFromChain();
       // App.listenForEvents();
 
       // return App.render();
@@ -95,7 +96,14 @@ App = {
           return result;
         })
         .then(function (result) {
-          window.alert("Question added successfully");
+          let toast = {
+            title: "Voila!",
+            message: "How easy was that?",
+            status: TOAST_STATUS.SUCCESS,
+            timeout: 5000
+          }
+          Toast.create(toast);
+          // window.alert("Question added successfully");
           console.log("result after alert", result);
           // Wait for votes to update
           // $("#content").hide();
