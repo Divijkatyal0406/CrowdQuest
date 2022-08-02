@@ -374,6 +374,84 @@ App = {
         console.log(e);
       });
   },
+  generateQuestions: function () {
+
+    let problemCard = document.querySelector("#Main");
+    var date = document.querySelector(".date").value;
+    var sub = document.querySelector(".subject").value;
+    var numOfQues =parseInt(document.querySelector(".questionCount").value);
+
+    console.log(date);
+    console.log(sub);
+    console.log(numOfQues);
+
+    document.querySelector(".date").value = "";
+    document.querySelector(".subject").value = "";
+    document.querySelector(".questionCount").value = "";
+
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        return crowdsourceInstance.problemCount();
+      })
+
+      .then(function (problemCount) {
+        let quesData = `<center>
+        <p contenteditable="true" id="date">Date: ${date}</p>
+        <img
+        id="cbse-logo"
+        src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
+        alt=""
+        />
+        <h4>Central Board of Secondary Education</h4>
+        </center>
+        <div class="container h-50 my-5" data-aos="fade-right">
+        <p id="note" contenteditable="true">
+          Note: Each question consists of 3 marks. All questions are compulsory.
+          Lorem Ipsum has been the industry's standard dummy text ever since the
+          1500s, when an unknown printer took a galley of type and scrambled it
+          to make a type specimen book.
+        </p></div>`;
+        
+        var displayProblemCount = 0;
+        for (var i = 1; i <= problemCount; i++) {
+
+          crowdsourceInstance.problems(i).then(function (p) {
+            console.log(p);
+
+            if (p[8] == true && p[9] == true && p[0]==sub) {
+              displayProblemCount++;
+              let ques = `
+              <div class="card">
+                <div style="background-color: rgb(221, 221, 221)" class="card-header">
+                  <p class="ques">
+                    Ques${displayProblemCount}. ${p[1]} :
+                  </p>
+                </div>
+                <div class="card-body">
+                  <table>
+                    <tr>
+                      <td>A. ${p[2]}</td>
+                      <td>B. ${p[3]}</td>
+                    </tr>
+                    <tr>
+                      <td class="right-opt">C. ${p[4]}</td>
+                      <td class="right-opt">D. ${p[5]}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            <br>`;
+              quesData += ques;
+              problemCard.innerHTML = quesData + `	<button type="button" class="btn btn-primary">Download</button>`;
+            }
+          });
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
   questionAccept: function (index) {
     console.log("Accept");
     console.log("index", index);
@@ -455,5 +533,6 @@ $(function () {
     App.addQuestion();
     App.getAllQuestionsFromChain();
     App.getAllSub();
+    App.generateQuestions();
   });
 });

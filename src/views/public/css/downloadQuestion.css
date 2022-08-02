@@ -12,7 +12,7 @@ body {
 /* Sidebar start here  */
 .Sidebar {
 	position: fixed;
-	background: #4f8cf7;
+	background: #629afa;
 	width: 300px;
 	height: 100%;
 	top: 0;
@@ -21,6 +21,7 @@ body {
 }
 
 .Sidebar h4 {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	text-align: center;
 	font-size: 25px;
 	background: rgb(37, 116, 252);
@@ -139,4 +140,12 @@ select {
 }
 hr{
 	width: 220px;
+}
+.pre-content{
+	font-size: large;
+	font-weight: 500;
+}
+.fa-bars{
+	margin-top: 10px;
+  position: fixed;
 }
