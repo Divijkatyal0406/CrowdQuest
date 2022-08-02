@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animatable" id="title">Woodwoerk</h1>
+        <div class="animatable" id="message"></div>
+        <div class="animatable" id="sun"></div>
+      
+        <div class="form animatable">
+          <div class="content signup--content">
+            <div class="sign--type">
+              <span>Already have an account?<br></span>
+              <span class="link signin"><a href="#signin">Sign in</a></span>
+            </div>
+      
+            <form id="signed-up" enctype="multipart/form-data">
+              <div class="spacer"></div>
+              <input type="email" name="email" id="email" class="text-box" required="required" placeholder="Enter your email" value="example@email.com">
+              <input type="password" name="password" id="password" class="text-box" required="required" placeholder="Enter your password" value="password">
+              <input type="password" name="password" id="password" class="text-box" required="required" placeholder="Confirm your password" value="password">
+              <input type="submit" value="Sign up" class="submit">
+            </form>
+          </div>
+      
+          <div class="content signin--content">
+            <div class="sign--type">
+              <span>Don't have an account?<br></span>
+              <span class="link signup"><a href="#signup">Sign Up</a></span>
+            </div>
+      
+            <form id="signed-in" enctype="multipart/form-data">
+              <div class="spacer"></div>
+              <input type="email" name="email" id="email" class="text-box" required="required" placeholder="Email" value="example@email.com">
+              <input type="password" name="password" id="password" class="text-box" required="required" placeholder="Password" value="password">
+              <input type="submit" value="Sign in" class="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+      <script>
+        var content = $('.content'),
+  form = $('.form'),
+  message = $('#message'),
+  animatable = $('.animatable'),
+  signedIn = 'signed-in',
+  signedUp = 'signed-up';
+
+//Toggle between forms
+$('.sign--type .link').click(function() {
+  content.hide();
+  if ($(this).hasClass('signin')) {
+    $('.signin--content').show();
+  } 
+  else if ($(this).hasClass('signup')) {
+    $('.signup--content').show();
+  }
+});
+
+//On form submit
+$('form').submit(function () {
+  sendForm($(this).attr('id'));
+  return false;
+});
+
+//Animate form and wait for reset
+function sendForm(form) {
+  setTimeout(function() {
+    animateForm(form);
+  }, 200);
+  setTimeout(reset, 5000);
+}
+
+function animateForm(frm) {
+  animatable.addClass(frm);
+  content.hide(300);
+
+  //check which form to call appropriate animation
+  if (frm == signedIn) {
+    message.text("welcome back");
+  } else if (frm == signedUp) {
+    message.text("welcome to")
+    $('.container').addClass(signedUp);
+  }
+}
+
+//reset form
+function reset() {  
+  content.hide();
+  if (form.hasClass(signedIn)) {
+    $('.signin--content').show();
+    animatable.removeClass(signedIn);
+  }
+  if (form.hasClass(signedUp)) {
+    $('.signup--content').show();
+    animatable.removeClass(signedUp);
+    $('.container').removeClass(signedUp);
+  }
+  message.text(null);
+}
+      </script>      
+</body>
+</html>
