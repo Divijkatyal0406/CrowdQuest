@@ -96,14 +96,37 @@ App = {
           return result;
         })
         .then(function (result) {
-          window.alert("Question added successfully");
-          window.location="http://localhost:3000/teacherDashboard.html";
+          bootoast({
+            message: 'Question added successfully',
+            type: 'success',
+            position: 'bottom-center',
+            icon: null,
+            timeout: null,
+            animationDuration: 300,
+            dismissible: true
+          });
+          // window.alert("Question added successfully");
+          if(window.history.state.prevUrl=="http://localhost:3000/teacherDashboard.html"){
+              window.location="http://localhost:3000/teacherDashboard.html";
+          }
+          else{
+            window.location="http://localhost:3000/studentDashboard.html";
+          }
           console.log("result after alert", result);
           // Wait for votes to update
           // $("#content").hide();
           // $("#loader").show();
         })
         .catch(function (err) {
+          bootoast({
+            message: 'Unexpected error occured!!',
+            type: 'danger',
+            position: 'bottom-center',
+            icon: null,
+            timeout: null,
+            animationDuration: 300,
+            dismissible: true
+          });
           console.error(err);
         });
     });
@@ -480,7 +503,16 @@ App = {
             return accept;
           })
           .then(function (accept) {
-            window.alert("Question accepted successfully");
+            bootoast({
+              message: 'Question accepted successfully',
+              type: 'success',
+              position: 'bottom-center',
+              icon: null,
+              timeout: null,
+              animationDuration: 300,
+              dismissible: true
+            });
+            // window.alert("Question accepted successfully");
             console.log("Rejected promise ", accept);
             window.location="http://localhost:3000/teacherDashboard.html";
           });
@@ -517,8 +549,18 @@ App = {
             return rejected;
           })
           .then(function (rejected) {
-            window.alert("Question rejected successfully");
+            bootoast({
+              message: 'Question rejected successfully',
+              type: 'danger',
+              position: 'bottom-center',
+              icon: null,
+              timeout: null,
+              animationDuration: 300,
+              dismissible: true
+            });
+            // window.alert("Question rejected successfully");
             console.log("Rejected promise ", rejected);
+            window.location="http://localhost:3000/teacherDashboard.html";
           });
       })
       .catch((e) => {
