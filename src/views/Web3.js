@@ -33,6 +33,13 @@ App = {
 
       // return App.render();
     });
+
+    //Loading authentication contract
+    $.getJSON("Authentication.json", function (cq) {
+      App.contracts.Authentication = TruffleContract(cq);
+      App.contracts.Authentication.setProvider(App.web3Provider);
+    });
+
   },
 
   listenForEvents: function () {
