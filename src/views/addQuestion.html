@@ -26,14 +26,16 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <form id="myform" class="questionForm" autocomplete="off">
             <div class="form-group purple-border">
-              <label class="form-group" for="cars">Select Subject:</label>
+              <label class="form-group" for="cars">Select Subject - Chapter:</label><br>
               <!-- Choose Subject -->
-              <select name="subjects" id="subjects" required>
+              <select name="subjects" id="subjects" onchange="populate(this.id, 'topic')" required>
+                <option value=""> -- Choose Subject -- </option>
                 <option value="math">Mathematics</option>
                 <option value="phy">Physics</option>
                 <option value="chem">Chemistry</option>
                 <option value="bio">Biology</option>
               </select>
+              <select name="topic" id="topic"></select>
               <br><br>
               <!-- Question -->
               <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Type the Question / Upload image
@@ -98,6 +100,7 @@
     integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
 
   <script src="Web3.js"></script>
+  <script src="public/javascript/addQuest.js"></script>
 </body>
 
 </html>

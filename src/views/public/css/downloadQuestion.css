@@ -12,7 +12,7 @@ body {
 /* Sidebar start here  */
 .Sidebar {
 	position: fixed;
-	background: #629afa;
+	background: rgb(37, 116, 252);
 	width: 300px;
 	height: 100%;
 	top: 0;
@@ -83,6 +83,7 @@ a:visited {
 		width: 100%;
 	}
 }
+
 
 #cbse-logo {
 	width: 120px;

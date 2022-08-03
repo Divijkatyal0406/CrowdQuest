@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="public/css/downloadQuestion.css" />
     <link
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -38,9 +42,9 @@
           <i class="fas fa-calendar-alt"></i>
           <span>Date of Examination</span>
           <input
-            style="border: 0px solid white"
             class="mainselection date"
-            type="text"
+            type="date"
+            value=""
             required
           />
         </li>
@@ -61,26 +65,29 @@
           <i class="fas fa-question-circle"></i>
           <span>Number of Questions</span>
           <div class="mainselection">
-            <select name="State" id="input7" class="questionCount" required>
-              <option></option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="40">40</option>
-              <option value="50">50</option>
-            </select>
+            <input type="number" class="questionCount" required />
+          </div>
+        </li>
+        <li>
+          <i class="fa fa-pie-chart" aria-hidden="true"></i>
+          <span>Chapter Weightage</span>
+          <div class="mainselection">
+            <input type="number" class="weightage" required />
           </div>
         </li>
         <button
           type="submit"
-          onclick="App.generateQuestions(); return false;"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
           class="btn btn-outline-light"
+          style="font-weight: 500"
+          onclick="viewModal();"
         >
           Generate Paper
         </button>
 
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <hr style="color: rgb(224, 224, 224)" />
+        <br /><br /><br /><br /><br /><br /><br />
+        <hr style="color: rgb(255, 255, 255)" />
         <li>
           <a href="teacherDashboard.html">
             <i class="fas fa-address-card"></i>
@@ -89,17 +96,11 @@
         </li>
       </ul>
     </div>
-
     <div id="Main" class="main">
       <!-- Modal -->
       <!-- Button trigger modal -->
-
       <i
-        type="button"
-        data-toggle="modal"
-        data-target="#exampleModalCenter"
-        class="fa fa-bars"
-        style="color: rgb(120, 168, 240); font-size: x-large;"
+        style="color: rgb(79, 145, 245); font-size: x-large"
         aria-hidden="true"
       ></i>
       <div
@@ -114,7 +115,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">
-                Modal title
+                <!-- Select topics to be excluded : (Biology) -->
               </h5>
               <button
                 type="button"
@@ -125,16 +126,25 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">...</div>
+            <div class="modal-body">
+              <!-- -------------- checkboxes-------------------------------- -->
+              
+              <!-- <div class="pretty p-icon p-smooth">
+                <input class="excluded-topics" value="0" type="checkbox" />
+                <div class="state p-danger-o">
+                  <i class="icon mdi fa fa-times" aria-hidden="true"></i>
+                  <label>Reproduction</label>
+                </div>
+              </div> -->
+              
+              <!-- -------------- checkboxes-------------------------------- -->
+            </div>
             <div class="modal-footer">
               <button
+                onclick="selectExcludedTopics();"
                 type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
+                class="btn btn-primary"
               >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
                 Save changes
               </button>
             </div>
@@ -201,10 +211,22 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script src="public/javascript/getQuest.js"></script>
+
+    <!-- Web3.js code -->
     <script>
-      $("#myModal").on("shown.bs.modal", function () {
-        $("#myInput").trigger("focus");
-      });
+      function selectExcludedTopics() {
+        var excludedTopics = [];
+         var checkboxes = document.querySelectorAll(".excluded-topics");
+         for(var checkbox of checkboxes){
+            if(checkbox.checked == true){
+              excludedTopics.push(checkbox.value);
+            }else{
+              excludedTopics.push(-1);
+            }
+         }
+         console.log(excludedTopics);
+      }
     </script>
   </body>
 </html>
