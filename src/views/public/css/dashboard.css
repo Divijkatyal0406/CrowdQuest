@@ -60,6 +60,9 @@
     border-radius: 10px;
     box-shadow: 4px 4px 4px 4px #dddddd;
 }
+
+
+
 @media only screen and (max-width: 600px) {
     .subject{
         position: absolute;

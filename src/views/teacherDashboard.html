@@ -225,6 +225,13 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                                <li class=" " >
+                                    <a class="waves-effect waves-dark">
+                                        
+                                        <button type="button" class="btn btn-primary" style="width:12em; border-radius:500px; height: 3em;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Analytics</button> 
+                                        
+                                    </a>
+                                </li>
                             </ul>
                             <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
                             <ul class="pcoded-item pcoded-left-item">
@@ -257,7 +264,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-8">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10 text-Dashboard">Dashboard</h5>
+                                            <h5 class="m-b-10 text-Dashboard">Dashboard
+                                                </h5>
                                             <p class="m-b-0 text-Dashboard">Welcome to Crowd Quest</p>
                                         </div>
                                     </div>
@@ -324,7 +332,55 @@
     </div>
     </div>
 
+<!-- Button trigger modal -->
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Question Insights</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <!-- Subject selector in the Pop up -->
+
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Maths</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Physics</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Chemistry</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                 <!-- Graph ID -->
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <canvas id="graph"></canvas> </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <canvas id="graph2"></canvas> </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><canvas id="graph3"></canvas></div>
+                 <!-- Graph ID end -->
+            </div>
+
+            <!-- Subject selector in the Pop up end-->
+
+
+           
+      
+
+          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -342,7 +398,141 @@
     <script src="../public/javascript/vertical-layout.min.js"></script>
     <script type="text/javascript" src="../public/javascript/dashBoardscript.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.0/dist/chart.min.js"></script>
 
+<script>
+    var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+</script>
+
+<script>
+
+let a = 12, b = 13, c = 14, d = 15, e = 16, f = 17, g = 18, h = 19, i = 20, j = 21;
+
+const ctx = document.getElementById('graph').getContext('2d');
+const ctx2 = document.getElementById('graph2').getContext('2d');
+const ctx3 = document.getElementById('graph3').getContext('2d');
+
+
+const myChart = new Chart(ctx, {
+type: 'bar',
+data: {
+    labels: ['chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10'],
+    datasets: [{
+        label: 'Total verified questions',
+        data: [a, b, c, d, e, f, g, h, i, j],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+         
+        ],
+        borderColor: [
+
+        
+         
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 4
+    }]
+},
+options: {
+
+    Elements: {
+
+        point: {
+            radius: 0
+        }
+    },
+
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+});
+
+const myChart2 = new Chart(ctx2, {
+type: 'line',
+data: {
+    labels: ['chapter1', 'chapter2', 'chapter3', 'chapter4', 'chapter5', 'chapter6', 'chapter7', 'chapter8', 'chapter9', 'chapter10'],
+    datasets: [{
+        label: 'Total verified questions',
+        data: [a, b-8, c+2, d-6, e+4, f-2, g+5, h, i-10, j+1],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+
+        
+         
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 4
+    }]
+},
+options: {
+
+    Elements: {
+
+        point: {
+            radius: 0
+        }
+    },
+
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+});
+
+const myChart3 = new Chart(ctx3, {
+type: 'pie',
+data: {
+    labels: ['subject1', 'subject2', 'subject3', 'subject4', 'subject5', 'subject6'],
+    datasets: [{
+        label: 'Total verified questions',
+        data: [a, b+2, c-4, d, e-8, f+10],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            
+        ],
+        borderColor: [
+
+        
+         
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 4
+    }]
+},
+options: {
+
+    Elements: {
+
+        point: {
+            radius: 0
+        }
+    },
+
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+});
+</script>
 
 </body>
 
