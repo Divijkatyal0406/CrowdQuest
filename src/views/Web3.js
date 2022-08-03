@@ -2,6 +2,8 @@ App = {
   web3Provider: null,
   contracts: {},
   account: "0x0",
+  //Added this 3 Aug 2022
+  web3:null,
 
   init: function () {
     return App.initWeb3();
@@ -16,6 +18,8 @@ App = {
         "http://localhost:7545"
       );
       web3 = new Web3(App.web3Provider);
+      //Added this 3 Aug 2022
+      App.web3=web3;
     }
     web3.eth.getCoinbase(function (err, account) {
       if (err === null) {
@@ -602,6 +606,59 @@ App = {
     optArr.push(currOpt);
     return optArr;
   },
+
+
+  //LOGIN-SIGNUP-STARTS
+
+  loginDashboard: function() {
+      let username_dom = document.querySelector("#username");
+      let userText = username_dom.value;
+
+      let password_dom = document.querySelector("#password");
+      let passwordText = password_dom.value;
+
+      let passcode_dom = document.querySelector("#passcode");
+      let passcodeText = passcode_dom.value;
+
+      
+        App.contracts.Authentication.deployed()
+        .then(function (instance) {
+
+          let validated = await
+          AuthValidation(
+              userText,
+              App.account,
+              passwordText, passcodeText,
+              App.web3,
+              instance
+          );    
+          if(validated){
+            //login hogaya
+          }
+          else{
+            // invalid login
+          }
+        })
+        .then(function (result) {
+          
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
+
+
+      
+  }
+
+
+
+
+
+
+
+
+
+
 };
 
 $(function () {

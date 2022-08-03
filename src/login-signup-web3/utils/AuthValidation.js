@@ -2,7 +2,7 @@ import SignData from './SignData';
 
 const AuthValidation = async (username, accountAddress, password, digiCode, web3, contract) => {
 
-    let userAddress = await contract.methods.getUserAddress().call({ from: accountAddress });
+    let userAddress = await contract.getUserAddress({ from: accountAddress });
 
     if (userAddress.toLowerCase() !== accountAddress.toLowerCase()) {
         return false;
@@ -12,7 +12,7 @@ const AuthValidation = async (username, accountAddress, password, digiCode, web3
 
         let hash = await web3.eth.accounts.hashMessage(signedData + passwordDigiCodeHash);
 
-        let hashFromContract = await contract.methods.getSignatureHash().call({ from: accountAddress });
+        let hashFromContract = await contract.getSignatureHash({ from: accountAddress });
 
         if (hash === hashFromContract) {
             return true;
