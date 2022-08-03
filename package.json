@@ -11,6 +11,7 @@
     "bn.js": "^5.2.1",
     "bootoast": "^1.0.1",
     "ganache-cli": "^6.12.2",
+    "ipfs-mini": "^1.1.5",
     "lite-server": "^2.6.1",
     "solc": "^0.4.24",
     "web3": "^0.20.0"
