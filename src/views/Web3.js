@@ -58,11 +58,9 @@ App = {
     // console.log(submitDOM);
     const Problem = {
       subject: "",
+      topic: "testTopic",
       question: "",
-      option1: "",
-      option2: "",
-      option3: "",
-      option4: "",
+      options: "",
       ans: 0,
       approve: false,
       isApproved: false,
@@ -81,11 +79,9 @@ App = {
           console.log("test");
           const result = instance.addToBlockchain(
             Problem.subject,
+            Problem.topic,
             Problem.question,
-            Problem.option1,
-            Problem.option2,
-            Problem.option3,
-            Problem.option4,
+            Problem.options,
             "IPFS Image hash",
             Problem.ans,
             false,
@@ -97,20 +93,22 @@ App = {
         })
         .then(function (result) {
           bootoast({
-            message: 'Question added successfully',
-            type: 'success',
-            position: 'bottom-center',
+            message: "Question added successfully",
+            type: "success",
+            position: "bottom-center",
             icon: null,
             timeout: null,
             animationDuration: 300,
-            dismissible: true
+            dismissible: true,
           });
           // window.alert("Question added successfully");
-          if(window.history.state.prevUrl=="http://localhost:3000/teacherDashboard.html"){
-              window.location="http://localhost:3000/teacherDashboard.html";
-          }
-          else{
-            window.location="http://localhost:3000/studentDashboard.html";
+          if (
+            window.history.state.prevUrl ==
+            "http://localhost:3000/teacherDashboard.html"
+          ) {
+            window.location = "http://localhost:3000/teacherDashboard.html";
+          } else {
+            window.location = "http://localhost:3000/studentDashboard.html";
           }
           console.log("result after alert", result);
           // Wait for votes to update
@@ -119,13 +117,13 @@ App = {
         })
         .catch(function (err) {
           bootoast({
-            message: 'Unexpected error occured!!',
-            type: 'danger',
-            position: 'bottom-center',
+            message: "Unexpected error occured!!",
+            type: "danger",
+            position: "bottom-center",
             icon: null,
             timeout: null,
             animationDuration: 300,
-            dismissible: true
+            dismissible: true,
           });
           console.error(err);
         });
@@ -172,10 +170,10 @@ App = {
       let option2 = document.querySelector("#option2");
       let option3 = document.querySelector("#option3");
       let option4 = document.querySelector("#option4");
-      Problem.option1 = option1.value;
-      Problem.option2 = option2.value;
-      Problem.option3 = option3.value;
-      Problem.option4 = option4.value;
+      Problem.options = option1.value;
+      Problem.options += "$" + option2.value;
+      Problem.options += "$" + option3.value;
+      Problem.options += "$" + option4.value;
     };
     // console.log(result);
     // window.alert("Question added successfully");
@@ -203,48 +201,57 @@ App = {
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
             console.log(p);
-            var ans = p[7].toNumber();
-            var correctAnswer = p[ans + 1];
+            let subject = p[0];
+            let topic = p[1];
+            let question = p[2];
+            let options = App.getOptions(p[3]);
+            let imgHash = p[4];
+            let ans = p[5].toNumber();
+            let approve = p[6];
+            let isApprove = p[7];
+            let correctAnswer = p[ans + 1];
             count++;
-            //p[8]->approve, p[9]->isApproved
-            if (p[8] == false && p[9] == false) {
+            crowdsourceInstance.getCountOfTopic(topic).then(function (tc) {
+              console.log("Number of question of topic " + topic +  " " +tc.toNumber());
+            });
+            if (approve == false && isApprove == false) {
               displayProblemCount++;
               let ques = `<div class="container questionCard">
           <div class="unitQuestion">
               <div class="stud_question">
                 <div class="subject">
-                   Subject : ${p[0]}
+                   Subject : ${subject}
                 </div>
                   <div class="question">
-                    Ques ${displayProblemCount}.  ${p[1]}
+                    Ques ${displayProblemCount}.  ${question}
                   </div>
                   <div class="options">
                       <button class="option">
                           <div class="option_text">A.</div>
                           &nbsp;
                           <div class="option_text">
-                            ${p[2]}
+                            ${options[0]}
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">B.</div>
                           &nbsp;
                           <div class="option_text">
-                          ${p[3]}
+                          ${options[1]}
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">C.</div>
                           &nbsp;
                           <div class="option_text">
-                          ${p[4]}
+                          ${options[2]}
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">D.</div>
                           &nbsp;
                           <div class="option_text">
-                          ${p[5]}
+                          ${options[3]}
                           </div>
                       </button>
                   </div>
@@ -252,7 +259,7 @@ App = {
           </div>
           <div class="question-info">
               <div class="question-standard">Correct Answer : ${
-                p[ans + 1]
+                options[ans - 1]
               }</div>
               <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
               <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
@@ -260,51 +267,51 @@ App = {
       </div>`;
               quesData1 += ques;
               problemCard1.innerHTML = quesData1;
-            } else if (p[8] == true && p[9] == true) {
+            } else if (approve == true && isApprove == true) {
               displayProblemCount1++;
               let ques = `<div class="container questionCard">
               <div class="unitQuestion">
                   <div class="stud_question">
                       <div class="subject">
-                          Subject : ${p[0]}
+                          Subject : ${subject}
                       </div>
                       <div class="question">
-                      Ques ${displayProblemCount1}.  ${p[1]}
+                      Ques ${displayProblemCount1}.  ${question}
                       </div>
                       <div class="options">
                           <button class="option">
                               <div class="option_text">A</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[2]}
+                              ${options[0]}
                               </div>
                           </button>
                           <button class="option">
                               <div class="option_text">B</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[3]}
+                              ${options[1]}
                               </div>
                           </button>
                           <button class="option">
                               <div class="option_text">C</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[4]}
+                              ${options[2]}
                               </div>
                           </button>
                           <button class="option">
                               <div class="option_text">D</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[5]}
+                              ${options[3]}
                               </div>
                           </button>
                       </div>
                   </div>
                   <div class="question-info">
                       <div class="question-standard">Correct Answer : ${
-                        p[ans + 1]
+                        options[ans - 1]
                       }
                       </div>
                   </div>
@@ -336,52 +343,63 @@ App = {
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
             console.log(p);
-            var ans = p[7].toNumber();
-            if (p[8] == true && p[9] == true && p[0] == subject) {
+            let currSubject = p[0];
+            let topic = p[1];
+            let question = p[2];
+            let options = App.getOptions(p[3]);
+            let imgHash = p[4];
+            let ans = p[5].toNumber();
+            let approve = p[6];
+            let isApprove = p[7];
+            if (
+              approve == true &&
+              isApprove == true &&
+              currSubject == subject
+            ) {
               displayProblemCount1++;
               let ques = `<div class="container questionCard">
               <div class="unitQuestion">
                   <div class="stud_question">
                       <div class="subject">
-                          Subject : ${p[0]}
+                          Subject : ${subject}
                       </div>
                       <div class="question">
-                      Ques ${displayProblemCount1}.  ${p[1]}
+                      Ques ${displayProblemCount1}.  ${question}
                       </div>
                       <div class="options">
                           <button class="option">
                               <div class="option_text">A</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[2]}
+                              ${options[0]}
                               </div>
                           </button>
                           <button class="option">
                               <div class="option_text">B</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[3]}
+                              ${options[1]}
                               </div>
                           </button>
                           <button class="option">
                               <div class="option_text">C</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[4]}
+                              ${options[2]}
                               </div>
                           </button>
                           <button class="option">
                               <div class="option_text">D</div>
                               &nbsp;
                               <div class="option_text">
-                              ${p[5]}
+                              ${options[3]}
                               </div>
                           </button>
                       </div>
                   </div>
                   <div class="question-info">
                       <div class="question-standard">Correct Answer : ${
-                        p[ans + 1]
+                        options[ans - 1]
                       } 
                       </div>
                   </div>
@@ -398,82 +416,82 @@ App = {
       });
   },
   generateQuestions: function () {
-
-    let problemCard = document.querySelector("#Main");
-    var date = document.querySelector(".date").value;
-    var sub = document.querySelector(".subject").value;
-    var numOfQues =parseInt(document.querySelector(".questionCount").value);
-
-    console.log(date);
-    console.log(sub);
-    console.log(numOfQues);
-
-    document.querySelector(".date").value = "";
-    document.querySelector(".subject").value = "";
-    document.querySelector(".questionCount").value = "";
-
-    App.contracts.CrowdSource.deployed()
-      .then(function (instance) {
-        crowdsourceInstance = instance;
-        return crowdsourceInstance.problemCount();
-      })
-
-      .then(function (problemCount) {
-        let quesData = `<center>
-        <p contenteditable="true" id="date">Date: ${date}</p>
-        <img
-        id="cbse-logo"
-        src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
-        alt=""
-        />
-        <h4>Central Board of Secondary Education</h4>
-        </center>
-        <div class="container h-50 my-5" data-aos="fade-right">
-        <p id="note" contenteditable="true">
-          Note: Each question consists of 3 marks. All questions are compulsory.
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
-        </p></div>`;
-        
-        var displayProblemCount = 0;
-        for (var i = 1; i <= problemCount; i++) {
-
-          crowdsourceInstance.problems(i).then(function (p) {
-            console.log(p);
-
-            if (p[8] == true && p[9] == true && p[0]==sub) {
-              displayProblemCount++;
-              let ques = `
-              <div class="card">
-                <div style="background-color: rgb(221, 221, 221)" class="card-header">
-                  <p class="ques">
-                    Ques${displayProblemCount}. ${p[1]} :
-                  </p>
-                </div>
-                <div class="card-body">
-                  <table>
-                    <tr>
-                      <td>A. ${p[2]}</td>
-                      <td>B. ${p[3]}</td>
-                    </tr>
-                    <tr>
-                      <td class="right-opt">C. ${p[4]}</td>
-                      <td class="right-opt">D. ${p[5]}</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            <br>`;
-              quesData += ques;
-              problemCard.innerHTML = quesData + `	<button type="button" class="btn btn-primary">Download</button>`;
-            }
-          });
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    // let problemCard = document.querySelector("#Main");
+    // var date = document.querySelector(".date").value;
+    // var sub = document.querySelector(".subject").value;
+    // var numOfQues =parseInt(document.querySelector(".questionCount").value);
+    // console.log(date);
+    // console.log(sub);
+    // console.log(numOfQues);
+    // document.querySelector(".date").value = "";
+    // document.querySelector(".subject").value = "";
+    // document.querySelector(".questionCount").value = "";
+    // App.contracts.CrowdSource.deployed()
+    //   .then(function (instance) {
+    //     crowdsourceInstance = instance;
+    //     return crowdsourceInstance.problemCount();
+    //   })
+    //   .then(function (problemCount) {
+    //     let quesData = `<center>
+    //     <p contenteditable="true" id="date">Date: ${date}</p>
+    //     <img
+    //     id="cbse-logo"
+    //     src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
+    //     alt=""
+    //     />
+    //     <h4>Central Board of Secondary Education</h4>
+    //     </center>
+    //     <div class="container h-50 my-5" data-aos="fade-right">
+    //     <p id="note" contenteditable="true">
+    //       Note: Each question consists of 3 marks. All questions are compulsory.
+    //       Lorem Ipsum has been the industry's standard dummy text ever since the
+    //       1500s, when an unknown printer took a galley of type and scrambled it
+    //       to make a type specimen book.
+    //     </p></div>`;
+    //     var displayProblemCount = 0;
+    //     for (var i = 1; i <= problemCount; i++) {
+    //       crowdsourceInstance.problems(i).then(function (p) {
+    //         console.log(p);
+    //         let subject = p[0];
+    //         let topic = p[1];
+    //         let question = p[2];
+    //         let options = App.getOptions(p[3]);
+    //         let imgHash = p[4];
+    //         let ans = p[5].toNumber();
+    //         let approve = p[6];
+    //         let isApprove = p[7];
+    //         if (approve == true && isApprove == true && subject==sub) {
+    //           displayProblemCount++;
+    //           let ques = `
+    //           <div class="card">
+    //             <div style="background-color: rgb(221, 221, 221)" class="card-header">
+    //               <p class="ques">
+    //                 Ques${displayProblemCount}. ${question} :
+    //               </p>
+    //             </div>
+    //             <div class="card-body">
+    //               <table>
+    //                 <tr>
+    //                   <td>A. ${options[0]}</td>
+    //                   <td>B. ${options[1]}</td>
+    //                 </tr>
+    //                 <tr>
+    //                   <td class="right-opt">C. ${options[2]}</td>
+    //                   <td class="right-opt">D. ${options[3]}</td>
+    //                 </tr>
+    //               </table>
+    //             </div>
+    //           </div>
+    //         <br>`;
+    //           quesData += ques;
+    //           problemCard.innerHTML = quesData + `	<button type="button" class="btn btn-primary">Download</button>`;
+    //         }
+    //       });
+    //     }
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   },
   questionAccept: function (index) {
     console.log("Accept");
@@ -487,15 +505,13 @@ App = {
           .problems(index)
           .then(function (p) {
             const accept = crowdsourceInstance.questionAcceptReject(
-              index,
-              p[0],
-              p[1],
-              p[2],
-              p[3],
-              p[4],
-              p[5],
-              p[6],
-              p[7],
+              index, //_problemCount
+              p[0], //_subject
+              p[1], //_topic
+              p[2], //_question
+              p[3], //_options
+              p[4], //_imgHash
+              p[5], //_ans
               true,
               true,
               { from: App.account }
@@ -504,17 +520,17 @@ App = {
           })
           .then(function (accept) {
             bootoast({
-              message: 'Question accepted successfully',
-              type: 'success',
-              position: 'bottom-center',
+              message: "Question accepted successfully",
+              type: "success",
+              position: "bottom-center",
               icon: null,
               timeout: null,
               animationDuration: 300,
-              dismissible: true
+              dismissible: true,
             });
             // window.alert("Question accepted successfully");
             console.log("Rejected promise ", accept);
-            window.location="http://localhost:3000/teacherDashboard.html";
+            window.location = "http://localhost:3000/teacherDashboard.html";
           });
       })
       .catch((e) => {
@@ -540,8 +556,6 @@ App = {
               p[3],
               p[4],
               p[5],
-              p[6],
-              p[7],
               false,
               true,
               { from: App.account }
@@ -550,22 +564,36 @@ App = {
           })
           .then(function (rejected) {
             bootoast({
-              message: 'Question rejected successfully',
-              type: 'danger',
-              position: 'bottom-center',
+              message: "Question rejected successfully",
+              type: "danger",
+              position: "bottom-center",
               icon: null,
               timeout: null,
               animationDuration: 300,
-              dismissible: true
+              dismissible: true,
             });
             // window.alert("Question rejected successfully");
             console.log("Rejected promise ", rejected);
-            window.location="http://localhost:3000/teacherDashboard.html";
+            window.location = "http://localhost:3000/teacherDashboard.html";
           });
       })
       .catch((e) => {
         console.log(e);
       });
+  },
+  getOptions: function (options) {
+    let optArr = [];
+    let currOpt = "";
+    for (let i = 0; i < options.length; ++i) {
+      if (options[i] == "$") {
+        optArr.push(currOpt);
+        currOpt = "";
+        continue;
+      }
+      currOpt += options[i];
+    }
+    optArr.push(currOpt);
+    return optArr;
   },
 };
 

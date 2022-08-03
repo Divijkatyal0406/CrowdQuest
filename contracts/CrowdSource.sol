@@ -7,13 +7,14 @@ contract CrowdSource {
     uint256 public problemCount;
     mapping(uint256 => Problem) public problems;
 
+    // CQT - Count of Questions per Topic
+    mapping(string => uint256) cqt;
+
     event SubmitQuestion(
         string subject,
+        string topic,
         string question,
-        string option1,
-        string option2,
-        string option3,
-        string option4,
+        string options,
         string imgHash,
         uint256 ans,
         bool approve,
@@ -22,11 +23,9 @@ contract CrowdSource {
 
     struct Problem {
         string subject;
+        string topic;
         string question;
-        string option1;
-        string option2;
-        string option3;
-        string option4;
+        string options;
         string imgHash;
         uint256 ans;
         bool approve;
@@ -35,11 +34,9 @@ contract CrowdSource {
 
     function addToBlockchain(
         string memory _subject,
+        string memory _topic,
         string memory _question,
-        string memory _option1,
-        string memory _option2,
-        string memory _option3,
-        string memory _option4,
+        string memory _options,
         string memory _imgHash,
         uint256 _ans,
         bool _approve,
@@ -48,11 +45,9 @@ contract CrowdSource {
         problemCount++;
         problems[problemCount] = Problem(
             _subject,
+            _topic,
             _question,
-            _option1,
-            _option2,
-            _option3,
-            _option4,
+            _options,
             _imgHash,
             _ans,
             _approve,
@@ -60,11 +55,9 @@ contract CrowdSource {
         );
         emit SubmitQuestion(
             _subject,
+            _topic,
             _question,
-            _option1,
-            _option2,
-            _option3,
-            _option4,
+            _options,
             _imgHash,
             _ans,
             _approve,
@@ -75,23 +68,20 @@ contract CrowdSource {
     function questionAcceptReject(
         uint256 _problemCount,
         string memory _subject,
+        string memory _topic,
         string memory _question,
-        string memory _option1,
-        string memory _option2,
-        string memory _option3,
-        string memory _option4,
+        string memory _options,
         string memory _imgHash,
         uint256 _ans,
         bool _approve,
         bool _isApproved
     ) public {
+        cqt[_topic]++;
         problems[_problemCount] = Problem(
             _subject,
+            _topic,
             _question,
-            _option1,
-            _option2,
-            _option3,
-            _option4,
+            _options,
             _imgHash,
             _ans,
             _approve,
@@ -99,17 +89,24 @@ contract CrowdSource {
         );
         emit SubmitQuestion(
             _subject,
+            _topic,
             _question,
-            _option1,
-            _option2,
-            _option3,
-            _option4,
+            _options,
             _imgHash,
             _ans,
             _approve,
             _isApproved
         );
     }
+
+    function getCountOfTopic(string memory _topic) public view returns (uint256) {
+        uint256 count = cqt[_topic];
+        return count;
+    }
+
+    //   function increaseCountOfTopic(string memory _topic) public {
+    //     cqt[_topic]++;
+    // }
 
     // function getAllQuestions() public view returns (Problem[] memory){
     //     // Problem[] memory ret = new Problem[](problems.length);
