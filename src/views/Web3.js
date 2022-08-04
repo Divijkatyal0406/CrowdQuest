@@ -3,7 +3,7 @@ App = {
   contracts: {},
   account: "0x0",
   //Added this 3 Aug 2022
-  web3:null,
+  web3: null,
 
   init: function () {
     return App.initWeb3();
@@ -19,7 +19,7 @@ App = {
       );
       web3 = new Web3(App.web3Provider);
       //Added this 3 Aug 2022
-      App.web3=web3;
+      App.web3 = web3;
     }
     web3.eth.getCoinbase(function (err, account) {
       if (err === null) {
@@ -43,7 +43,6 @@ App = {
       App.contracts.Authentication = TruffleContract(cq);
       App.contracts.Authentication.setProvider(App.web3Provider);
     });
-
   },
 
   listenForEvents: function () {
@@ -69,7 +68,7 @@ App = {
     // console.log(submitDOM);
     const Problem = {
       subject: "",
-      topic: "testTopic",
+      topic: "",
       question: "",
       options: "",
       ans: 0,
@@ -81,6 +80,7 @@ App = {
     submitDOM.addEventListener("click", function (event) {
       event.preventDefault();
       subject();
+      chapter();
       question();
       correctOption();
       options();
@@ -140,11 +140,17 @@ App = {
         });
     });
 
-    // //For subject
+    //For subject
     const subject = () => {
       let subjectsDOM = document.querySelector("#subjects");
       let selectedSubject = subjectsDOM.options[subjectsDOM.selectedIndex].text;
       Problem.subject = selectedSubject;
+    };
+
+    const chapter = () => {
+      let topicDOM = document.querySelector("#topic");
+      let selectedTopic = topicDOM.options[topicDOM.selectedIndex].text;
+      Problem.topic = selectedTopic;
     };
 
     //For question
@@ -222,9 +228,11 @@ App = {
             let isApprove = p[7];
             let correctAnswer = p[ans + 1];
             count++;
-            crowdsourceInstance.getCountOfTopic(topic).then(function (tc) {
-              console.log("Number of question of topic " + topic +  " " +tc.toNumber());
-            });
+            // crowdsourceInstance.getCountOfTopic(topic).then(function (tc) {
+            //   console.log(
+            //     "Number of question of topic " + topic + " " + tc.toNumber()
+            //   );
+            // });
             if (approve == false && isApprove == false) {
               displayProblemCount++;
               let ques = `<div class="container questionCard">
@@ -337,6 +345,74 @@ App = {
       .catch((e) => {
         console.log(e);
       });
+  },
+  showGraph: function (subject) {
+    // let graphBtn = document.querySelector("#graphBtn");
+    App.contracts.CrowdSource.deployed().then(function (instance) {
+      console.log(subject);
+      crowdsourceInstance = instance;
+      import("./public/javascript/subjectTopics.js")
+        .then((_topics) => {
+          var topics = _topics.default;
+          var subjects = topics;
+          return subjects[`${subject}`];
+        })
+        .then(function (topics) {
+          var size = topics.length;
+          // console.log(topics);
+          // console.log(size);
+          let xCord = topics,
+            yCord = new Array(size);
+          for (let idx = 0; idx < size; ++idx) {
+            crowdsourceInstance
+              .getCountOfTopic(xCord[idx])
+              .then(function (count) {
+                // console.log(count.toNumber());
+                yCord[idx] = count.toNumber();
+              });
+          }
+          myChart = null;
+          if (myChart != null) {
+            myChart.destroy();
+          }
+          return { xCord, yCord, subject, myChart };
+        })
+        .then(function ({ xCord, yCord, subject, myChart }) {
+          console.log("xCord", xCord);
+          console.log("yCord", yCord);
+          const ctx = document.getElementById(`${subject}`).getContext("2d");
+          myChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: xCord,
+              datasets: [
+                {
+                  label: "Total verified questions",
+                  data: yCord,
+                  backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+                  borderColor: ["rgba(255, 159, 64, 1)"],
+                  borderWidth: 4,
+                },
+              ],
+            },
+            options: {
+              Elements: {
+                point: {
+                  radius: 0,
+                },
+              },
+
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+        }).catch((error)=>{
+          console.log(error);
+        });
+    });
   },
   getAllSub: function (subject) {
     let problemCard = document.querySelector(".studentDashboard");
@@ -529,58 +605,40 @@ App = {
     return optArr;
   },
 
-
   //LOGIN-SIGNUP-STARTS
 
-  loginDashboard: function() {
-      let username_dom = document.querySelector("#username");
-      let userText = username_dom.value;
+  loginDashboard: function () {
+    let username_dom = document.querySelector("#username");
+    let userText = username_dom.value;
 
-      let password_dom = document.querySelector("#password");
-      let passwordText = password_dom.value;
+    let password_dom = document.querySelector("#password");
+    let passwordText = password_dom.value;
 
-      let passcode_dom = document.querySelector("#passcode");
-      let passcodeText = passcode_dom.value;
+    let passcode_dom = document.querySelector("#passcode");
+    let passcodeText = passcode_dom.value;
 
-      
-        App.contracts.Authentication.deployed()
-        .then(function (instance) {
-
-          let validated = await
-          AuthValidation(
-              userText,
-              App.account,
-              passwordText, passcodeText,
-              App.web3,
-              instance
-          );    
-          if(validated){
-            //login hogaya
-          }
-          else{
-            // invalid login
-          }
-        })
-        .then(function (result) {
-          
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-
-
-      
-  }
-
-
-
-
-
-
-
-
-
-
+    App.contracts.Authentication.deployed()
+      .then(function (instance) {
+        let validated = await;
+        AuthValidation(
+          userText,
+          App.account,
+          passwordText,
+          passcodeText,
+          App.web3,
+          instance
+        );
+        if (validated) {
+          //login hogaya
+        } else {
+          // invalid login
+        }
+      })
+      .then(function (result) {})
+      .catch(function (err) {
+        console.error(err);
+      });
+  },
 };
 
 $(function () {
