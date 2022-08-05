@@ -1,3 +1,5 @@
+import {AuthValidation} from '../../src/login-signup-web3/utils/AuthValidation';
+
 App = {
   web3Provider: null,
   contracts: {},
