@@ -21,67 +21,90 @@
         industry's standard dummy text ever since.</p>
         <!-- <button class="btn btn-outline-light">Back to Dashboard</button> -->
       </div>
-    <div class="col-md-9 register-right">
+    <div class="col-md-9 register-right" style="border-radius:25px ;"> 
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <form id="myform" class="questionForm" autocomplete="off">
             <div class="form-group purple-border">
-              <label class="form-group" for="cars">Select Subject - Chapter:</label><br>
-              <!-- Choose Subject -->
-              <select name="subjects" id="subjects" onchange="populate(this.id, 'topic')" required>
-                <option value=""> -- Choose Subject -- </option>
+             <div> <label class="form-group" for="cars" style="margin:0.5em;">Please select the Subject and the chapter</label> </div>
+             
+             <!-- Choose Subject -->
+             
+             <select name="subjects" id="subjects" class="subjectDropdown" onchange="populate(this.id, 'topic')" required>
+                <option value=""> Choose Subject </option>
                 <option value="math">Mathematics</option>
                 <option value="phy">Physics</option>
                 <option value="chem">Chemistry</option>
                 <option value="bio">Biology</option>
               </select>
-              <select name="topic" id="topic"></select>
+              <select name="topic" id="topic" class="topicDropdown">
+                 
+              </select>
               <br><br>
+
               <!-- Question -->
-              <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Type the Question / Upload image
-                (if any):</label>
+              
+              <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type the question</label>
               <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3"
                 required></textarea>
-              <input type="file" id="myFile" name="filename">
+            
+                <input type="file" accept="image/jpeg, image/jpg, image/png" id="myFile" class="fileInput" name="filename">
+            
             </div>
+            <legend class="col-form-label col-sm-8 pt-0 font-weight-light" id="text2">Enter the options and check on the correct option</legend>
             <fieldset class="form-group">
               <div class="row">
+                
                 <!-- Options available for the question -->
-                <legend class="col-form-label col-sm-4 pt-0 font-weight-light" id="text2">Enter Options</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input class="form-check-input correctOption1" type="radio" name="flexRadioDefault" value="0"
-                      id="flexRadioDefault1">
-                    <label class="form-check-label" for="gridRadios1">
-                      <input name="option1" id="option1" type="text" required>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input correctOption2" type="radio" name="flexRadioDefault" value="1"
-                      id="flexRadioDefault1">
-                    <label class="form-check-label" for="gridRadios1">
-                      <input name="option2" id="option2" type="text" required>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input correctOption3" type="radio" name="flexRadioDefault" value="2"
-                      id="flexRadioDefault1">
-                    <label class="form-check-label" for="gridRadios1">
-                      <input name="option3" id="option3" type="text" required>
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input correctOption4" type="radio" name="flexRadioDefault" value="3"
-                      id="flexRadioDefault1">
-                    <label class="form-check-label" for="gridRadios1">
-                      <input name="option4" id="option4" type="text" required>
-                    </label>
-                  </div>
+                
+                <div class="col-sm-10" >
+
+            
+                  
+                        <div class="form-check" style="padding: 0.2em; outline:none;">
+                          <input class="form-check-input correctOption1" type="radio" name="flexRadioDefault" value="0"
+                            id="flexRadioDefault1">
+                          <label class="form-check-label" for="gridRadios1">
+                          
+                            <input name="option1" id="option1" type="text" class="CheckOptions" required>
+                          
+                          </label>
+                        </div>
+                        
+                        <div class="form-check" style="padding: 0.2em; outline:none;">
+                          <input class="form-check-input correctOption2" type="radio" name="flexRadioDefault" value="1"
+                            id="flexRadioDefault1">
+                          <label class="form-check-label" for="gridRadios1">
+                          
+                            <input name="option2" id="option2" type="text" class="CheckOptions" required>
+                          
+                          </label>
+                        </div>
+                  
+                        <div class="form-check" style="padding: 0.2em; outline:none;">
+                          <input class="form-check-input correctOption3" type="radio" name="flexRadioDefault" value="2"
+                            id="flexRadioDefault1">
+                          <label class="form-check-label" for="gridRadios1">
+                          
+                            <input name="option3" id="option3" type="text"  class="CheckOptions" required>
+                          
+                          </label>
+                        </div>
+                        
+                        <div class="form-check" style="padding: 0.2em; outline: none;">
+                          <input class="form-check-input correctOption4" type="radio" name="flexRadioDefault" value="3"
+                            id="flexRadioDefault1" style="padding: 0.2em; outline:none;" >
+                          <label class="form-check-label" for="gridRadios1">
+                          
+                            <input name="option4" id="option4" type="text" class="CheckOptions" required>
+                          
+                          </label>
+                        </div>
+
+          
                 </div>
               </div>
             </fieldset>
-            <footer class="blockquote-footer last-text">Please select the correct option before submitting</cite>
-            </footer>
             <button type="submit" onclick="App.addQuestion(); return false;" class="submit btn btn-primary">Submit for
               Review</button>
              
