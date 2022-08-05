@@ -1,4 +1,5 @@
-import {AuthValidation} from '../../src/login-signup-web3/utils/AuthValidation';
+// import {AuthValidation} from '../../src/login-signup-web3/utils/AuthValidation';
+// const Moralis = require("moralis/node");
 
 App = {
   web3Provider: null,
@@ -73,6 +74,7 @@ App = {
       topic: "",
       question: "",
       options: "",
+      imgUrl:"",
       ans: 0,
       approve: false,
       isApproved: false,
@@ -95,7 +97,7 @@ App = {
             Problem.topic,
             Problem.question,
             Problem.options,
-            "IPFS Image hash",
+            "$",
             Problem.ans,
             false,
             false,

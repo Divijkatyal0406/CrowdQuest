@@ -13,6 +13,7 @@
     "ganache-cli": "^6.12.2",
     "ipfs-mini": "^1.1.5",
     "lite-server": "^2.6.1",
+    "moralis": "^1.11.0",
     "solc": "^0.4.24",
     "web3": "^0.20.0"
   },
