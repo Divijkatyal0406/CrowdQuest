@@ -66,7 +66,7 @@ App = {
   },
 
   addQuestion: function () {
-    console.log("here");
+    console.log("here1");
     let submitDOM = document.querySelector(".submit");
     // console.log(submitDOM);
     const Problem = {
@@ -116,15 +116,16 @@ App = {
             animationDuration: 300,
             dismissible: true,
           });
+          window.location="http://localhost:3000/addQuestion.html";
           // window.alert("Question added successfully");
-          if (
-            window.history.state.prevUrl ==
-            "http://localhost:3000/teacherDashboard.html"
-          ) {
-            window.location = "http://localhost:3000/teacherDashboard.html";
-          } else {
-            window.location = "http://localhost:3000/studentDashboard.html";
-          }
+          // if (
+          //   window.history.state.prevUrl ==
+          //   "http://localhost:3000/teacherDashboard.html"
+          // ) {
+          //   window.location = "http://localhost:3000/teacherDashboard.html";
+          // } else {
+          //   window.location = "http://localhost:3000/studentDashboard.html";
+          // }
           console.log("result after alert", result);
           // Wait for votes to update
           // $("#content").hide();
@@ -204,12 +205,12 @@ App = {
     let problemCard1 = document.querySelector(".teacherDashboard");
     let problemCard2 = document.querySelector(".studentDashboard");
 
-    console.log("here");
+    console.log("here2");
     // console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
         crowdsourceInstance = instance;
-        console.log("here1");
+        console.log("here12");
         return crowdsourceInstance.problemCount();
       })
 

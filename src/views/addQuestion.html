@@ -50,8 +50,14 @@
               <!-- Question -->
               
               <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type the question</label>
-              <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3"
+              <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50"
                 required></textarea>
+
+              <!-- Mathematical equation -->
+              <label for="myInput" class="text1 font-weight-light">Mathematical equation(Optinal)</label>
+              <input name="equation" class="form-control use-keyboard-input" id="myInput"></input>
+              <button type='button' class=""  onclick="copyTextFxn()">Copy text</button>
+              <br>
             
 
 
@@ -60,7 +66,7 @@
                   <input type="file" accept="image/jpeg, image/jpg, image/png" id="inputImagefile" class="fileInput" name="filename">
                   <p id="imageUrlText" style="display: none;">IPFS url</p>
                   <br>
-                  <button id="saveImageToIPFS" class="submit btn btn-primary" style="margin-top: 0.1em;">Upload</button>
+                  <button type="button" id="saveImageToIPFS" class="btn btn-primary" style="margin-top: 0.1em;">Upload</button>
 
 
 
@@ -139,7 +145,8 @@
 
   <script src="Web3.js"></script>
   <script src="public/javascript/addQuest.js"></script>
-
+  <script src="./public/javascript/copyText.js"></script>
+  <script src="./public/javascript/virtualKeyboard.js"></script>
 
   <!-- Uploading image -->
   <script>
