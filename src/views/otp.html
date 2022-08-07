@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/css/otp.css">
+</head>
+<body>
+
+   <div class="formContainer">
+    <div class="widgetHeading">
+        <h1>2 Factor Authentication</h1>
+    </div>
+    <div class="z1">
+        <form class="OTP" action="#"> 
+            <div class="form1">
+            <input class="email" type="email" placeholder="Email"/>
+            <button class="button-31" type="submit">Get OTP</button>
+            </div>
+        </form>
+    </div>
+   
+    <div class="z2">
+        <form class="Verify" action="#"> 
+            <div class="form2">
+            <input class="One-time"  type="text" placeholder="OTP"/>
+            <button class="button-30" type="submit">Verify OTP</button>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+
+    <script>
+        const generateotp =()=>{
+            let num='1234567890'
+            let otp='';
+            for(let i=0;i<6;i++)
+            {
+                otp+=num[Math.floor(Math.random()*10)];
+
+            }
+            return otp;
+        }
+        var gotp=generateotp();
+        const form=document.querySelector('.OTP');
+        function sendMsg(e){
+            e.preventDefault();
+            
+           const email=document.querySelector('.email');
+
+    //-email send function
+       //15D80AC35ABF785E9E58EA33D73237A313D0
+
+    Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "gagan.srivastava2020@vitbhopal.ac.in",
+    Password : "15D80AC35ABF785E9E58EA33D73237A313D0",
+    To :email.value, 
+    From : 'gagan.srivastava2020@vitbhopal.ac.in',
+    Subject : "This is the subject",
+    Body : gotp
+    }).then(
+  message => alert(message)
+   );
+
+    }
+    form.addEventListener('submit',sendMsg);
+    </script>   
+</body>
+</html>

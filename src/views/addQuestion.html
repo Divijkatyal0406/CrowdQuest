@@ -20,8 +20,7 @@
   <div class="row">
     <div class="col-md-3 register-left">
       <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Cartoon_space_rocket.png" alt="" />
-      <h3>Submission Portal</h3>
-      <p>Please Enter the Question</p>
+      <h3 style="margin-left:-1.4em ;">Submission Portal</h3>
       <p class="desc"> Lorem Ipsum has been the industry's standard dummy text ever since.Lorem Ipsum has been the
         industry's standard dummy text ever since.</p>
         <!-- <button class="btn btn-outline-light">Back to Dashboard</button> -->
@@ -31,7 +30,9 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <form id="myform" class="questionForm" autocomplete="off">
             <div class="form-group purple-border">
-             <div> <label class="form-group" for="cars" style="margin:0.5em;">Please select the Subject and the chapter</label> </div>
+             <div>
+              <div style="margin-left:0.5em ;"> 
+                <label class="form-group" for="cars" style="margin:0.5em;">Please select the Subject and the chapter</label> </div>
              
              <!-- Choose Subject -->
              
@@ -45,6 +46,7 @@
               <select name="topic" id="topic" class="topicDropdown">
                  
               </select>
+              </div>
               <br><br>
 
               <!-- Question -->
@@ -55,30 +57,47 @@
 
               <!-- Mathematical equation -->
               <label for="myInput" class="text1 font-weight-light">Mathematical equation(Optinal)</label>
-              <input name="equation" class="form-control use-keyboard-input" id="myInput"></input>
-              <button type='button' class=""  onclick="copyTextFxn()">Copy text</button>
+              <span>
+                <div class="flex-container">
+                  <div class="flex-item">
+                    <input name="equation" class="form-control use-keyboard-input" id="myInput" style="width:36em"></input>
+                  </div>
+                  <div class="flex-item">
+                    <button type='button' class="CopyButton"  onclick="copyTextFxn()">Copy Equation</button>
+                  </div>
+                </div>             
+              </span>
               <br>
             
 
-
+          
 
                 <!-- Removed from here -->
-                  <input type="file" accept="image/jpeg, image/jpg, image/png" id="inputImagefile" class="fileInput" name="filename">
-                  <p id="imageUrlText" style="display: none;">IPFS url</p>
-                  <br>
-                  <button type="button" id="saveImageToIPFS" class="btn btn-primary" style="margin-top: 0.1em;">Upload</button>
+                 
+             
+                 
 
 
 
+                  <div class="flex-container">
+                    <div class="flex-item">
+                      <input type="file" accept="image/jpeg, image/jpg, image/png" id="inputImagefile" style="margin-left:0.95em" class="fileInput" name="filename">
+                      <p id="imageUrlText" style="display: none;">IPFS url</p>
+                    </div>
+                    <div class="flex-item">
+                      <button id="saveImageToIPFS" class="submit btn btn-primary" style="margin-top: 0.1em;">Upload</button>
+                    </div>
+                  </div>
 
             </div>
-            <legend class="col-form-label col-sm-8 pt-0 font-weight-light" id="text2">Enter the options and check on the correct option</legend>
+
+            <legend class="col-form-label col-sm-8 pt-0 font-weight-light" id="text2"  style="margin-left:-0.8em; margin-top: 0.5em;">Enter the options and check on the correct option</legend>
             <fieldset class="form-group">
               <div class="row">
                 
                 <!-- Options available for the question -->
                 
-                <div class="col-sm-10" >
+                <div class="col-sm-10" style="margin-left:2.18em">
 
             
                   
@@ -121,12 +140,10 @@
                           
                           </label>
                         </div>
-
-          
                 </div>
               </div>
             </fieldset>
-            <button type="submit" onclick="App.addQuestion(); return false;" class="submit btn btn-primary">Submit for
+            <button type="submit" onclick="App.addQuestion(); return false;" style="margin-left: -1em; width:12em" class="submit btn btn-primary">Submit for
               Review</button>
              
               <!-- Testing button -->

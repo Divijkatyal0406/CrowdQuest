@@ -1,0 +1,208 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f2f3;
+    margin-top: 3%;
+    background: #d5d5d5;
+    padding: 4%;
+}
+
+.button-30 {
+
+    margin:0.3em 1em 0.3em 1em ;
+    margin-bottom: 00.5em;
+
+    width: 17em;
+
+  align-items: center;
+  appearance: none;
+  background-color: #00a2ff;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: #c4000048 0 2px 8px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#148bd4 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+ 
+  
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 1em;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(201, 201, 201, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #82baff 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-31 {
+
+    margin:0.3em 1em 0.3em 1em ;
+    margin-bottom: 00.5em;
+
+    width: 17em;
+
+  align-items: center;
+  appearance: none;
+  background-color: #efefef;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: #7a55001b 6px 6px 8px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#148bd4 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #383838;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+ 
+  
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 1em;
+}
+
+.button-31:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-31:hover {
+  box-shadow: rgba(201, 201, 201, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-31:active {
+  box-shadow: #8a8a8a 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.email{
+    width: 20em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    outline-color:orange ;
+}
+
+.One-time{
+    /* 6 block input code */
+    width: 20em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    /* divide to 6 character input */
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+
+    outline-color:orange ;
+}
+
+/* flex column for form 1 */
+.form1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContainer{
+    width: 22em;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    border-radius: 1em;
+
+    background-color: #ffffff;
+    box-shadow: 8px 8px 12px #00000050;
+    
+}
+
+.z1{
+    width: 20em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+
+}
+
+.z2{
+    width: 20em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+
+}
+
+.widgetHeading{
+    margin-top: -2em;
+    height: 5em;
+    background-color: #00a2ff;
+    width: 118%;
+    border-radius: 1em 1em 0 0;
+    overflow-x: hidden;
+    text-align: center;
+
+}
+
+.widgetHeading h1{
+    color: #ffffff;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 1em;
+    font-family: "JetBrains Mono",monospace;
+}
