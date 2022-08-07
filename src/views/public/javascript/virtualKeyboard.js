@@ -51,7 +51,7 @@ const Keyboard = {
         "∁", "∂", "∃", "∄","∅", "∆", "∇", "∈", "∉", "∊", "∋", "∌", "∍", "∎", "∏",
         "∐", "∑", "−", "∓", "∔", "∕", "∖", "∗", "∘", "∙", "√", "∛", "∜", "∝",
         "∞", "∟", "∠", "∡", "∢", "∣", "∤", "∥", "∦", "∧", "∨", "∩", "∪", "∫",
-        "∬", "∭", "∮", "∯", "∰", "∱", "∲", "∳",
+        "∬", "∭", "∮", "∯", "∰", "∱", "∲", "∳","done","backspace"
       ];
   
       // Creates HTML for an icon
@@ -127,7 +127,7 @@ const Keyboard = {
               "keyboard__key--wide",
               "keyboard__key--dark"
             );
-            keyElement.innerHTML = createIconHTML("check_circle");
+            keyElement.innerHTML = createIconHTML("❌");
   
             keyElement.addEventListener("click", () => {
               this.close();
