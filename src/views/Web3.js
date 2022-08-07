@@ -222,6 +222,178 @@ App = {
     // console.log(result);
     // window.alert("Question added successfully");
   },
+  downloadQuestions: function () {
+
+    var optionArrayMaths = [
+      "Relations and Functions",
+      "Inverse Trigonometric Functions",
+      "Matrices",
+      "Determinants",
+      "Continuity and Differentiability",
+      "Application of Derivatives",
+      "Integrals",
+      "Application of Integrals",
+      "Differential Equations",
+      "Vector Algebra",
+      "Three Dimensional Geometry",
+      "Linear Programming",
+      "Probability",
+    ];
+    var mathsVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var optionArrayPhy = [
+      "Electric Charges and Fields",
+      "Electrostatic Potential and Capacitance",
+      "Current Electricity",
+      "Moving Charges and Magnetism",
+      "Magnetism and Matter",
+      "Electromagnetic Induction",
+      "Alternating Current",
+      "Electromagnetic Waves",
+      "Ray Optics and Optical Instruments",
+      "Wave Optics",
+      "Dual Nature of Radiation and Matter",
+      "Atoms",
+      "Nuclei",
+      "Semiconductor Electronics",
+    ];
+    var phyVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var optionArrayChem = [
+      "The Solid State",
+      "Solutions",
+      "Electrochemistry",
+      "Chemical Kinetics",
+      "Surface Chemistry",
+      "General Principles and Processes of Isolation of Elements",
+      "The p-Block Elements",
+      "The d- and f- Block Elements",
+      "Coordination Compounds",
+      "Haloalkanes and Haloarenes",
+      "Alcohols, Phenols and Ethers",
+      "Aldehydes, Ketones and Carboxylic Acids",
+      "Amines",
+      "Biomolecules",
+      "Polymers",
+      "Chemistry in Everyday Life",
+    ];
+    var chemVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var optionArrayBio = [
+      "Reproduction in Organisms",
+      "Sexual Reproduction in Flowering Plants",
+      "Human Reproduction",
+      "Reproductive Health",
+      "Principle of Inheritance and Variation",
+      "Molecular Basis of Inheritance",
+      "Evolution",
+      "Human Health and Diseases",
+      "Strategies for Enhancement in Food Production",
+      "Microbes in Human Welfare",
+      "Biotechnology: Principles and Processes",
+      "Biotechnology and its Applications",
+      "Organisms and Populations",
+      "Ecosystem",
+      "Biodiversity and Conservation",
+      "Environmental Issues",
+    ];
+    var bioVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    //Get checkbox inputs
+    var excludedTopics = [];
+    var checkboxes = document.querySelectorAll(".excluded-topics");
+    for (var checkbox of checkboxes) {
+      if (checkbox.checked == true) {
+        excludedTopics.push(checkbox.value);
+      } else {
+        excludedTopics.push(-1);
+      }
+    }
+
+    var date = document.querySelector(".date").value;
+    var subject = document.querySelector(".subject").value;
+    var totalQues = document.querySelector(".questionCount").value;
+    var weightage = document.querySelector(".weightage").value;
+
+    console.log(date);
+    console.log(subject);
+    console.log(totalQues);
+    console.log(weightage);
+    console.log(excludedTopics);
+    // console.log(App.contracts.CrowdSource);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        return crowdsourceInstance.problemCount();
+      })
+      .then(function (problemCount) {
+        let quesData = "";
+        for (var j = 0; j < totalQues; j++) {
+          for (var i = 1; i <= problemCount; i++) {
+            // console.log("e");
+            crowdsourceInstance.problems(i).then(function (p) {
+              console.log(p);
+              if (p[6] == true && p[7] == true) {
+                console.log(p);
+
+          //       let ques = `<div class="container questionCard">
+          //     <div class="unitQuestion">
+          //         <div class="stud_question">
+          //             <div class="subject">
+          //                 Subject : ${p[subject]} | ${p[topic]}
+          //             </div>
+          //             <div class="question">
+          //             Ques ${displayProblemCount1}.  ${question}
+          //             <br>
+          //             <img class="ques-img" src="${imgHash}" alt="">
+          //             </div>
+          //             <div class="options">
+          //                 <button class="option">
+          //                     <div class="option_text">A</div>
+          //                     &nbsp;
+          //                     <div class="option_text">
+          //                     ${options[0]}
+          //                     </div>
+          //                 </button>
+          //                 <button class="option">
+          //                     <div class="option_text">B</div>
+          //                     &nbsp;
+          //                     <div class="option_text">
+          //                     ${options[1]}
+          //                     </div>
+          //                 </button>
+          //                 <button class="option">
+          //                     <div class="option_text">C</div>
+          //                     &nbsp;
+          //                     <div class="option_text">
+          //                     ${options[2]}
+          //                     </div>
+          //                 </button>
+          //                 <button class="option">
+          //                     <div class="option_text">D</div>
+          //                     &nbsp;
+          //                     <div class="option_text">
+          //                     ${options[3]}
+          //                     </div>
+          //                 </button>
+          //             </div>
+          //         </div>
+          //         <div class="question-info">
+          //             <div class="question-standard">Correct Answer : ${
+          //               options[ans - 1]
+          //             }
+          //             </div>
+          //         </div>
+          //     </div>
+          // </div>`;
+          //       quesData += ques;
+          //       problemCard.innerHTML = <h1>Naagin Dance</h1>;
+              }
+            });
+          }
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 
   getAllQuestionsFromChain: function () {
     let problemCard1 = document.querySelector(".teacherDashboard");
@@ -677,6 +849,7 @@ App = {
 $(function () {
   $(window).load(function () {
     App.init();
+    App.downloadQuestions();
     App.addQuestion();
     App.getAllQuestionsFromChain();
     App.getAllSub();
