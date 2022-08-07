@@ -68,13 +68,16 @@ App = {
   addQuestion: function () {
     console.log("here1");
     let submitDOM = document.querySelector(".submit");
+    let url = document.querySelector("#imageUrlText").innerHTML.toString();
+    console.log(url);
+
     // console.log(submitDOM);
     const Problem = {
       subject: "",
       topic: "",
       question: "",
       options: "",
-      imgUrl:"",
+      imgUrl:url,
       ans: 0,
       approve: false,
       isApproved: false,
@@ -88,16 +91,21 @@ App = {
       question();
       correctOption();
       options();
+      // imgUrl();
+
+
       console.log(Problem);
       App.contracts.CrowdSource.deployed()
         .then(function (instance) {
           console.log("test");
+          console.log("hh");
+          console.log(url);
           const result = instance.addToBlockchain(
             Problem.subject,
             Problem.topic,
             Problem.question,
             Problem.options,
-            "$",
+            Problem.imgUrl,
             Problem.ans,
             false,
             false,
@@ -107,17 +115,17 @@ App = {
           return result;
         })
         .then(function (result) {
-          bootoast({
-            message: "Question added successfully",
-            type: "success",
-            position: "bottom-center",
-            icon: null,
-            timeout: null,
-            animationDuration: 300,
-            dismissible: true,
-          });
+          // bootoast({
+          //   message: "Question added successfully",
+          //   type: "success",
+          //   position: "bottom-center",
+          //   icon: null,
+          //   timeout: null,
+          //   animationDuration: 300,
+          //   dismissible: true,
+          // });
+          window.alert("Question added successfully");
           window.location="http://localhost:3000/addQuestion.html";
-          // window.alert("Question added successfully");
           // if (
           //   window.history.state.prevUrl ==
           //   "http://localhost:3000/teacherDashboard.html"
@@ -132,21 +140,22 @@ App = {
           // $("#loader").show();
         })
         .catch(function (err) {
-          bootoast({
-            message: "Unexpected error occured!!",
-            type: "danger",
-            position: "bottom-center",
-            icon: null,
-            timeout: null,
-            animationDuration: 300,
-            dismissible: true,
-          });
+          // bootoast({
+          //   message: "Unexpected error occured!!",
+          //   type: "danger",
+          //   position: "bottom-center",
+          //   icon: null,
+          //   timeout: null,
+          //   animationDuration: 300,
+          //   dismissible: true,
+          // });
           console.error(err);
         });
     });
 
     //For subject
     const subject = () => {
+      Problem.imgUrl=document.querySelector("#imageUrlText").innerHTML.toString();
       let subjectsDOM = document.querySelector("#subjects");
       let selectedSubject = subjectsDOM.options[subjectsDOM.selectedIndex].text;
       Problem.subject = selectedSubject;
@@ -197,6 +206,19 @@ App = {
       Problem.options += "$" + option3.value;
       Problem.options += "$" + option4.value;
     };
+
+    const imgUrl = () => {
+      let url = document.querySelector("#imageUrlText");
+      let imgurl = url.value;
+      if(imgurl=="IPFS url"){
+        console.log("i am here");
+        Problem.imgUrl = "$";  
+      }
+      else{
+        Problem.imgUrl = imgurl;
+      }
+    };
+
     // console.log(result);
     // window.alert("Question added successfully");
   },
