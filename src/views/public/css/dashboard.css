@@ -75,3 +75,20 @@
     }
   }
 
+.ques-img{
+    margin: 1%;
+    width: 380px;
+    border-radius: 1%;
+    animation-name: pop-img;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+@keyframes pop-img {
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 380px;
+    }
+    
+}

@@ -266,10 +266,12 @@ App = {
           <div class="unitQuestion">
               <div class="stud_question">
                 <div class="subject">
-                   Subject : ${subject}
+                   Subject : ${subject} | ${topic}
                 </div>
                   <div class="question">
                     Ques ${displayProblemCount}.  ${question}
+                    <br>
+                    <img class="ques-img" src="${imgHash}" alt="">
                   </div>
                   <div class="options">
                       <button class="option">
@@ -319,10 +321,12 @@ App = {
               <div class="unitQuestion">
                   <div class="stud_question">
                       <div class="subject">
-                          Subject : ${subject}
+                          Subject : ${subject} | ${topic}
                       </div>
                       <div class="question">
                       Ques ${displayProblemCount1}.  ${question}
+                      <br>
+                      <img class="ques-img" src="${imgHash}" alt="">
                       </div>
                       <div class="options">
                           <button class="option">
@@ -475,10 +479,12 @@ App = {
               <div class="unitQuestion">
                   <div class="stud_question">
                       <div class="subject">
-                          Subject : ${subject}
+                          Subject : ${subject} | ${topic}
                       </div>
                       <div class="question">
                       Ques ${displayProblemCount1}.  ${question}
+                      <br>
+                      <img class="ques-img" src="${imgHash}" alt="">
                       </div>
                       <div class="options">
                           <button class="option">
