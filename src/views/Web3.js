@@ -224,6 +224,8 @@ App = {
   },
   downloadQuestions: function () {
 
+    let problemCard = document.querySelector(".question-area");
+
     var optionArrayMaths = [
       "Relations and Functions",
       "Inverse Trigonometric Functions",
@@ -333,59 +335,30 @@ App = {
               if (p[6] == true && p[7] == true) {
                 console.log(p);
 
-          //       let ques = `<div class="container questionCard">
-          //     <div class="unitQuestion">
-          //         <div class="stud_question">
-          //             <div class="subject">
-          //                 Subject : ${p[subject]} | ${p[topic]}
-          //             </div>
-          //             <div class="question">
-          //             Ques ${displayProblemCount1}.  ${question}
-          //             <br>
-          //             <img class="ques-img" src="${imgHash}" alt="">
-          //             </div>
-          //             <div class="options">
-          //                 <button class="option">
-          //                     <div class="option_text">A</div>
-          //                     &nbsp;
-          //                     <div class="option_text">
-          //                     ${options[0]}
-          //                     </div>
-          //                 </button>
-          //                 <button class="option">
-          //                     <div class="option_text">B</div>
-          //                     &nbsp;
-          //                     <div class="option_text">
-          //                     ${options[1]}
-          //                     </div>
-          //                 </button>
-          //                 <button class="option">
-          //                     <div class="option_text">C</div>
-          //                     &nbsp;
-          //                     <div class="option_text">
-          //                     ${options[2]}
-          //                     </div>
-          //                 </button>
-          //                 <button class="option">
-          //                     <div class="option_text">D</div>
-          //                     &nbsp;
-          //                     <div class="option_text">
-          //                     ${options[3]}
-          //                     </div>
-          //                 </button>
-          //             </div>
-          //         </div>
-          //         <div class="question-info">
-          //             <div class="question-standard">Correct Answer : ${
-          //               options[ans - 1]
-          //             }
-          //             </div>
-          //         </div>
-          //     </div>
-          // </div>`;
-          //       quesData += ques;
-          //       problemCard.innerHTML = <h1>Naagin Dance</h1>;
+                let ques = `<br />
+                <div class="card">
+                  <div style="background-color: rgb(221, 221, 221)" class="card-header">
+                    <p class="ques">
+                      Ques1. This will be the format of each question (question here) :
+                    </p>
+                  </div>
+                  <div class="card-body">
+                    <table>
+                      <tr>
+                        <td>A. Option one here</td>
+                        <td>B. Option two here</td>
+                      </tr>
+                      <tr>
+                        <td class="right-opt">C. Option three here</td>
+                        <td class="right-opt">D. Option four here</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>`;
+                quesData += ques;
+                problemCard.innerHTML = quesData;
               }
+              document.querySelector("#download").style.visibility = "visible";
             });
           }
         }

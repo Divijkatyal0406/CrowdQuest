@@ -36,3 +36,6 @@ function createModal(subject){
       modalCard.innerHTML = optionData;
     }
 }
+
+
+document.querySelector("#download").style.visibility = "hidden";

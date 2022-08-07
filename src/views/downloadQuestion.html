@@ -167,51 +167,79 @@
           </div>
         </div>
       </div>
-      <center>
-        <p contenteditable="true" id="date">Date: 24/07/2022</p>
-        <img
-          id="cbse-logo"
-          src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
-          alt=""
-        />
-        <h4>Central Board of Secondary Education</h4>
-      </center>
-      <div class="container h-50 my-5" data-aos="fade-right">
-        <p id="note" contenteditable="true">
-          Note: Each question consists of 3 marks. All questions are compulsory.
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
-        </p>
-      </div>
-      <div class="pre-content">
-        The purpose of lorem ipsum is to create a natural looking block of text
-        (sentence, paragraph, page, etc.) that doesn't distract from the layout.
-        A practice not without controversy, laying out pages with meaningless
-        filler text can be very useful when the focus is meant to be on design,
-        not content.
-      </div>
-      <br />
-      <div class="card">
-        <div style="background-color: rgb(221, 221, 221)" class="card-header">
-          <p class="ques">
-            Ques1. This will be the format of each question (question here) :
+      <div class="question-paper">
+        <center>
+          <p contenteditable="true" id="date">Date: 24/07/2022</p>
+          <img
+            id="cbse-logo"
+            style="justify-content: center; margin: 12px;"
+            width="120px"
+            src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
+            alt=""
+          />
+          <h4>Central Board of Secondary Education</h4>
+        </center>
+        <div class="container h-50 my-5" data-aos="fade-right">
+          <p id="note" contenteditable="true">
+            Note: Each question consists of 3 marks. All questions are compulsory.
+            Lorem Ipsum has been the industry's standard dummy text ever since the
+            1500s, when an unknown printer took a galley of type and scrambled it
+            to make a type specimen book.
           </p>
         </div>
-        <div class="card-body">
-          <table>
-            <tr>
-              <td>A. Option one here</td>
-              <td>B. Option two here</td>
-            </tr>
-            <tr>
-              <td class="right-opt">C. Option three here</td>
-              <td class="right-opt">D. Option four here</td>
-            </tr>
-          </table>
+        <div class="question-area">
+          <div class="pre-content">
+            The purpose of lorem ipsum is to create a natural looking block of text
+            (sentence, paragraph, page, etc.) that doesn't distract from the layout.
+            A practice not without controversy, laying out pages with meaningless
+            filler text can be very useful when the focus is meant to be on design,
+            not content.
+          </div>
+          <br />
+          <div class="card">
+            <div style="background-color: rgb(221, 221, 221)" class="card-header">
+              <p class="ques">
+                Ques1. This will be the format of each question (question here) :
+              </p>
+            </div>
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>A. Option one here</td>
+                  <td>B. Option two here</td>
+                </tr>
+                <tr>
+                  <td class="right-opt">C. Option three here</td>
+                  <td class="right-opt">D. Option four here</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
+      <br />
+      <button id="download" class="btn btn-primary">Download</button>
+    </div>
+    <div>
+      
     </div>
     <script src="public/javascript/getQuest.js"></script>
+
+
+    <!-- Download question paper -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript" src="public/javascript/printThis.js"></script>
+    <script>
+        $('#download').on("click", function () {
+            $('.question-paper').printThis({
+                importCSS: true            });
+        });
+    </script>
+
+    
   </body>
 </html>
