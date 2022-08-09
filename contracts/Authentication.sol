@@ -16,11 +16,11 @@ contract Authentication {
     }
 
     function register(string memory _signature) public {
-        require(
-            user[msg.sender].userAddress ==
-                address(0x0000000000000000000000000000000000000000),
-            "already registered"
-        );
+        // require(
+        //     user[msg.sender].userAddress ==
+        //         address(0x0000000000000000000000000000000000000000),
+        //     "already registered"
+        // );
 
         user[msg.sender].signatureHash = _signature;
         user[msg.sender].userAddress = msg.sender;
@@ -28,7 +28,7 @@ contract Authentication {
     }
 
     function getSignatureHash() public view returns (string memory) {
-        require(msg.sender == user[msg.sender].userAddress, "Not allowed");
+        // require(msg.sender == user[msg.sender].userAddress, "Not allowed");
 
         return user[msg.sender].signatureHash;
     }
