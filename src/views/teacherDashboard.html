@@ -22,6 +22,12 @@
       integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
   
     <script src="Web3.js"></script>
+    <script>
+        window.addEventListener('load',()=>{
+            const username=localStorage.getItem('USERNAME');
+            document.getElementById('username_teacher').innerHTML=username;
+        })
+    </script>
 
 
 </head>
@@ -136,7 +142,7 @@
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <span>Username</span>
+                                    <span id="username_teacher">Username</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
