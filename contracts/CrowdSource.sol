@@ -11,7 +11,7 @@ contract CrowdSource {
     mapping(string => uint256) cqt;
 
     //uint is id
-    mapping(uint256=>address) public owner;
+    mapping(uint256=>address payable) public owner;
     // id => amount
     mapping(uint256=>uint256) public pool;
 
@@ -128,9 +128,11 @@ contract CrowdSource {
 
 
     function contribute(uint256 uid,address _from,address _to) public payable{
-        pool[uid]+=0.5;
-
+        
+        pool[uid]+=1;
         address payable _owner=owner[uid];
-        address(_owner).transfer(0.5 ether);
+
+        // payable(address(_owner))=owner[uid];
+        _owner.transfer(1 ether);
     }
 }
