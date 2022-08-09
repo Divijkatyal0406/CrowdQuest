@@ -10,6 +10,12 @@ contract CrowdSource {
     // CQT - Count of Questions per Topic
     mapping(string => uint256) cqt;
 
+    //uint is id
+    mapping(uint256=>address) public owner;
+    // id => amount
+    mapping(uint256=>uint256) public pool;
+
+
     event SubmitQuestion(
         string subject,
         string topic,
@@ -51,8 +57,10 @@ contract CrowdSource {
             _imgHash,
             _ans,
             _approve,
-            _isApproved
+            _isApproved   
         );
+        //Added this
+        // owner[uid]=msg.sender;
         emit SubmitQuestion(
             _subject,
             _topic,
@@ -77,7 +85,7 @@ contract CrowdSource {
         bool _isApproved
     ) public {
         cqt[_topic]++;
-        problems[_problemCount] = Problem(
+        problems[problemCount] = Problem(
             _subject,
             _topic,
             _question,
@@ -87,6 +95,7 @@ contract CrowdSource {
             _approve,
             _isApproved
         );
+        // owner[uid]=msg.sender;
         emit SubmitQuestion(
             _subject,
             _topic,
@@ -116,4 +125,12 @@ contract CrowdSource {
     //     // return ret;
     //     return problems;
     // }
+
+
+    function contribute(uint256 uid,address _from,address _to) public payable{
+        pool[uid]+=0.5;
+
+        address payable _owner=owner[uid];
+        address(_owner).transfer(0.5 ether);
+    }
 }
