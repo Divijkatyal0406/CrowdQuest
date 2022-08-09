@@ -85,7 +85,7 @@ contract CrowdSource {
         bool _isApproved
     ) public {
         cqt[_topic]++;
-        problems[problemCount] = Problem(
+        problems[_problemCount] = Problem(
             _subject,
             _topic,
             _question,
@@ -127,7 +127,7 @@ contract CrowdSource {
     // }
 
 
-    function contribute(uint256 uid,address _from,address _to) public payable{
+    function contribute(uint256 uid) public payable{
         
         pool[uid]+=1;
         address payable _owner=owner[uid];
