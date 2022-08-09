@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step Progress</title>
+    <link rel="stylesheet" href="public/css/iterative.css" />
+
+    <!-- UniIcon CDN Link  -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <ul>
+        <li>
+          <img class="icon2" src="public/assets/SVGs/ITRprocess/read.svg" alt="">
+          <div class="progress one">
+            <p>1</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Reading File</p>
+        </li>
+        <li>
+            <img class="icon2" src="public/assets/SVGs/ITRprocess/encrypt.svg" alt="">
+          <div class="progress two">
+            <p>2</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Encrypting</p>
+        </li>
+        <li>
+            <img class="icon2" src="public/assets/SVGs/ITRprocess/keys.svg" alt="">
+          <div class="progress three">
+            <p>3</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Passing keys</p>
+        </li>
+        <li>
+            <img class="icon2" src="public/assets/SVGs/ITRprocess/upload.svg" alt="">
+          <div class="progress four">
+            <p>4</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Uploading to IPFS</p>
+        </li>
+        <li>
+            <img class="icon2" src="public/assets/SVGs/ITRprocess/complete.svg" alt="">
+          <div class="progress five">
+            <p>5</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Process Complete</p>
+        </li>
+      </ul>
+
+      <div class="row">
+        <button id="prev">previous</button>
+        <button id="next">next</button>
+      </div>
+    </div>
+
+    <script>
+      const one = document.querySelector(".one");
+      const two = document.querySelector(".two");
+      const three = document.querySelector(".three");
+      const four = document.querySelector(".four");
+      const five = document.querySelector(".five");
+
+      let active_state = 0;
+
+      one.onclick = function () {
+        one.classList.add("active");
+        two.classList.remove("active");
+        three.classList.remove("active");
+        four.classList.remove("active");
+        five.classList.remove("active");
+        active_state = 1;
+      };
+
+      two.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.remove("active");
+        four.classList.remove("active");
+        five.classList.remove("active");
+        active_state = 2;
+      };
+
+      three.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.remove("active");
+        five.classList.remove("active");
+        active_state = 3;
+      };
+
+      four.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        five.classList.remove("active");
+        active_state = 4;
+      };
+
+      five.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        five.classList.add("active");
+        active_state = 5;
+      };
+
+      const prev = document.querySelector("#prev");
+      prev.onclick = function () {
+        switch (active_state) {
+          case 5:
+            five.classList.remove("active");
+            active_state = 4;
+            break;
+          case 4:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            active_state = 3;
+            break;
+          case 3:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            three.classList.remove("active");
+            active_state = 2;
+            break;
+          case 2:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            three.classList.remove("active");
+            two.classList.remove("active");
+            active_state = 1;
+            break;
+          case 1:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            three.classList.remove("active");
+            two.classList.remove("active");
+            one.classList.remove("active");
+            active_state = 0;
+            break;
+        }
+      };
+
+      //   next button to increment active class
+      const next = document.querySelector("#next");
+      next.onclick = function () {
+        switch (active_state) {
+          case 0:
+            one.classList.add("active");
+            two.classList.remove("active");
+            three.classList.remove("active");
+            four.classList.remove("active");
+            five.classList.remove("active");
+            active_state = 1;
+            break;
+          case 1:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.remove("active");
+            four.classList.remove("active");
+            five.classList.remove("active");
+            active_state = 2;
+            break;
+          case 2:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.remove("active");
+            five.classList.remove("active");
+            active_state = 3;
+            break;
+          case 3:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.add("active");
+            five.classList.remove("active");
+            active_state = 4;
+            break;
+          case 4:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.add("active");
+            five.classList.add("active");
+            active_state = 5;
+            break;
+          case 5:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.add("active");
+            five.classList.add("active");
+            active_state = 0;
+            break;
+        }
+      };
+
+      // 5 seconds timer for each step
+      setTimeout(function () {
+        one.classList.add("active");
+        active_state = 1;
+      }, 1500);
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        active_state = 2;
+      }, 3000);
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        active_state = 3;
+      }, 4500);
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        active_state = 4;
+      }, 6000);
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        five.classList.add("active");
+        active_state = 5;
+      }, 7500);
+    </script>
+  </body>
+</html>
