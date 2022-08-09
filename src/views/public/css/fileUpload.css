@@ -153,4 +153,9 @@ section .details span{
 .time-pickable{
   position: relative;
   bottom: 15px;
+  outline: #6990F2;
+  border-radius: 15px;
+  border: 2px solid #6990F2;
+  padding: 0.2em 0.7em;
+  width: 12em;
 }

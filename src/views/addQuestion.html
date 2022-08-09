@@ -21,7 +21,6 @@
     <div class="col-md-3 register-left">
       <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Cartoon_space_rocket.png" alt="" />
       <h3>Submission Portal</h3>
-      <p>Please Enter the Question</p>
       <p class="desc"> Lorem Ipsum has been the industry's standard dummy text ever since.Lorem Ipsum has been the
         industry's standard dummy text ever since.</p>
         <!-- <button class="btn btn-outline-light">Back to Dashboard</button> -->
@@ -31,44 +30,66 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <form id="myform" class="questionForm" autocomplete="off">
             <div class="form-group purple-border">
-             <div> <label class="form-group" for="cars" style="margin:0.5em;">Please select the Subject and the chapter</label> </div>
-             
-             <!-- Choose Subject -->
-             
-             <select name="subjects" id="subjects" class="subjectDropdown" onchange="populate(this.id, 'topic')" required>
-                <option value=""> Choose Subject </option>
-                <option value="math">Mathematics</option>
-                <option value="phy">Physics</option>
-                <option value="chem">Chemistry</option>
-                <option value="bio">Biology</option>
-              </select>
-              <select name="topic" id="topic" class="topicDropdown">
-                 
-              </select>
-              <br><br>
+            <div style="margin:1em auto; margin-left: 0.5em; ">
+              <div> <label class="form-group" for="cars" style="margin:0.5em;">Please select the Subject and the chapter</label> </div>
+              
+              <!-- Choose Subject -->
+              
+              <select name="subjects" id="subjects" class="subjectDropdown" onchange="populate(this.id, 'topic')" required>
+                  <option value=""> Choose Subject </option>
+                  <option value="math">Mathematics</option>
+                  <option value="phy">Physics</option>
+                  <option value="chem">Chemistry</option>
+                  <option value="bio">Biology</option>
+                </select>
+                <select name="topic" id="topic" class="topicDropdown">
+                  
+                </select>
+            </div>
 
               <!-- Question -->
               
               <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type the question</label>
-              <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50"
-                required></textarea>
+              <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50" minlength="5" maxlength="1000" required></textarea>
+
+              
 
               <!-- Mathematical equation -->
               <label for="myInput" class="text1 font-weight-light">Mathematical equation(Optinal)</label>
-              <input name="equation" class="form-control use-keyboard-input" id="myInput"></input>
-              <button type='button' class=""  onclick="copyTextFxn()">Copy text</button>
+              
+              <div class="row">
+                <div class="col-md-9 left">
+                  <input name="equation" class="form-control use-keyboard-input" id="myInput" minlength="5" style="margin-top:00.7em"></input>    
+                </div>
+
+                <div class="col-md-3 right">
+                  <button type='button' class="CopyButton"  onclick="copyTextFxn()">Copy text</button>
+                </div>
+              
+              </div>
               <br>
             
 
 
 
-                <!-- Removed from here -->
-                  <input type="file" accept="image/jpeg, image/jpg, image/png" id="inputImagefile" class="fileInput" name="filename">
-                  <p id="imageUrlText" style="display: none;">IPFS url</p>
-                  <br>
-                  <button type="button" id="saveImageToIPFS" class="btn btn-primary" style="margin-top: 0.1em;">Upload</button>
+            <!-- upload section -->
+                  
+                  
+                  
 
+                  <div class="row" style="margin-left:0.50em ;">
 
+                    <div class="col-md-3 left">     
+                      <input style="margin-top:0.7em ;" type="file" accept="image/jpeg, image/jpg, image/png" id="inputImagefile" class="fileInput" name="filename">
+                      <p id="imageUrlText" style="display: none;">IPFS url</p>             
+                    </div>
+
+                    <div class="col-md-2 right">		
+                      <button type="button" id="saveImageToIPFS" class="button-31" style="margin-top: 0.1em;">Upload</button>
+                    </div>
+                  </div>
+
+            <!-- upload section ends -->
 
 
             </div>
@@ -78,55 +99,64 @@
                 
                 <!-- Options available for the question -->
                 
-                <div class="col-sm-10" >
+                <!-- <div class="col-sm-10" > -->
 
-            
-                  
+                  <div class="row" style="margin-left:1.4em ;">
+
+                    <div class="col-md-6 left">     
+                            <!-- option 1 -->
                         <div class="form-check" style="padding: 0.2em; outline:none;">
                           <input class="form-check-input correctOption1" type="radio" name="flexRadioDefault" value="0"
                             id="flexRadioDefault1">
                           <label class="form-check-label" for="gridRadios1">
                           
-                            <input name="option1" id="option1" type="text" class="CheckOptions" required>
+                            <input name="option1" id="option1" type="text" class="CheckOptions" minlength="5" maxlength="500" required placeholder="A">
                           
                           </label>
                         </div>
                         
+                        <!-- option 2 -->
                         <div class="form-check" style="padding: 0.2em; outline:none;">
                           <input class="form-check-input correctOption2" type="radio" name="flexRadioDefault" value="1"
                             id="flexRadioDefault1">
                           <label class="form-check-label" for="gridRadios1">
                           
-                            <input name="option2" id="option2" type="text" class="CheckOptions" required>
+                            <input name="option2" id="option2" type="text" class="CheckOptions" minlength="5" maxlength="500" required placeholder="B">
                           
                           </label>
-                        </div>
-                  
-                        <div class="form-check" style="padding: 0.2em; outline:none;">
-                          <input class="form-check-input correctOption3" type="radio" name="flexRadioDefault" value="2"
-                            id="flexRadioDefault1">
-                          <label class="form-check-label" for="gridRadios1">
-                          
-                            <input name="option3" id="option3" type="text"  class="CheckOptions" required>
-                          
-                          </label>
-                        </div>
+                        </div>     
+                    </div>
+                    
+                    <div class="col-md-6 right">		
+                      <!-- option 3 -->
+                      <div class="form-check" style="padding: 0.2em; outline:none;">
+                        <input class="form-check-input correctOption3" type="radio" name="flexRadioDefault" value="2"
+                          id="flexRadioDefault1">
+                        <label class="form-check-label" for="gridRadios1">
                         
-                        <div class="form-check" style="padding: 0.2em; outline: none;">
-                          <input class="form-check-input correctOption4" type="radio" name="flexRadioDefault" value="3"
-                            id="flexRadioDefault1" style="padding: 0.2em; outline:none;" >
-                          <label class="form-check-label" for="gridRadios1">
-                          
-                            <input name="option4" id="option4" type="text" class="CheckOptions" required>
-                          
-                          </label>
-                        </div>
-
+                          <input name="option3" id="option3" type="text"  class="CheckOptions" minlength="5" maxlength="500" placeholder="C" required>
+                        
+                        </label>
+                      </div>
+                      
+                      <!-- option 4 -->
+                      <div class="form-check" style="padding: 0.2em; outline: none;">
+                        <input class="form-check-input correctOption4" type="radio" name="flexRadioDefault" value="3"
+                          id="flexRadioDefault1" style="padding: 0.2em; outline:none;" >
+                        <label class="form-check-label" for="gridRadios1">
+                        
+                          <input name="option4" id="option4" type="text" class="CheckOptions" minlength="5" maxlength="500" placeholder="D" required>
+                        
+                        </label>
+                      </div>
+                    </div>
+    
+                  </div>
           
-                </div>
+                <!-- </div> -->
               </div>
             </fieldset>
-            <button type="submit" onclick="App.addQuestion(); return false;" class="submit btn btn-primary">Submit for
+            <button type="submit" onclick="App.addQuestion(); return false;" style = " width: 20em ;border-radius: 50px; padding: 0.3em 1em ; font-weight:500 ; margin: auto; margin-left:1em" class=" CopyButton">Submit for
               Review</button>
              
               <!-- Testing button -->
