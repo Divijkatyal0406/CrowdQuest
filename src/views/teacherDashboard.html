@@ -127,7 +127,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon search-close"><i class="ti-close"></i></span>
                                         <input type="text" class="form-control  search-qns"
-                                            placeholder="Search Question">
+                                            placeholder="Search Question" id="search-input">
                                         <span class="input-group-addon search-btn search-qns-button"><img
                                                 src="../public/assets/SVGs/search.svg"></img></span>
                                     </div>
@@ -281,7 +281,7 @@
                         <!-- Page-header end -->
                         <!-- <h2>No questions yet</h2> -->
                         <div class="pcoded-inner-content teacherDashboard">
-                            <div class="container questionCard">
+                            <div id="card" class="container questionCard">
                                 <br>
                                 No question left for review. Refresh or Create a new question
                                 <br>
@@ -399,6 +399,29 @@
       </div>
     </div>
   </div>
+
+  <script >
+    document.querySelector('#search-input').
+    addEventListener('input',filterList);
+
+    function filterList(){
+        const searchInput=document.querySelector('#search-input');
+        const filter=searchInput.value.toLowerCase();
+        const question=document.querySelectorAll('#card');
+        question.forEach((item) => {
+            let text=item.textContent;
+            if(text.toLowerCase().includes(filter.toLowerCase()))
+            {
+                item.style.display='';
+            }
+            else{
+                item.style.display='none';
+            }
+            
+        });
+
+    }
+</script>
 
 
 
