@@ -8,7 +8,7 @@
 
 .main{
     width: 100%;
-    height: 100vh;
+    height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,4 +188,59 @@ ul li .active .uil{
 
 .progress-bar__text {
   display: none;
+}
+
+.content{
+margin-top: 15em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card{
+    margin: auto;
+    /* margin-left: 25%;
+    margin-right: 25%; */
+    
+    width: 70em;
+    height: 32em;
+
+    background-color: #e8e8e8;
+    box-shadow: 0.4em 0.4em 1.4em #969696a9;
+    position: absolute;
+
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.card:hover{
+    background-color: #ffc2c2;
+    color: white;
+    box-shadow: 0 0 5px #e76f51;
+}
+
+.a1{
+
+    z-index: 5;
+
+}
+.a2{
+    /* background-color: #931d00; */
+    /* width: 22em; */
+    z-index: 4;
+}
+.a3{
+    /* background-color: #0088fe; */
+    /* width: 24em; */
+    z-index: 3;
+}
+.a4{
+    /* background-color: #003f64; */
+    /* width: 26em; */
+    z-index: 2;
+}
+.a5{
+    /* width: 28em;     */
+    z-index: 1;
 }

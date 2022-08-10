@@ -63,7 +63,25 @@
         <button id="next">next</button>
       </div>
     </div>
-
+<center>
+  <div class="content">
+    <div class="card a1">
+      card 1
+    </div>
+    <div class="card a2">
+      card 2
+    </div>
+    <div class="card a3">
+      card 3
+    </div>
+    <div class="card a4">
+      card 4
+    </div>
+    <div class="card a5">
+      card 5
+    </div>
+  </div>
+  </center>
     <script>
       const one = document.querySelector(".one");
       const two = document.querySelector(".two");
@@ -73,6 +91,61 @@
 
       let active_state = 0;
 
+      const card_1 = document.querySelector(".a1");
+      const card_2 = document.querySelector(".a2");
+      const card_3 = document.querySelector(".a3");
+      const card_4 = document.querySelector(".a4");
+      const card_5 = document.querySelector(".a5");
+
+        card_1.style.display = 'block';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+
+// display card1 function
+function display_card1() {
+  card_1.style.display = 'block';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+}
+// display card2 function
+function display_card2() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'block';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+}
+// display card3 function
+function display_card3() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'none';
+        card_3.style.display = 'block';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+}
+// display card4 function
+function display_card4() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'block';
+        card_5.style.display = 'none';
+}
+// display card5 function
+function display_card5() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'block';
+}
+
+
+
       one.onclick = function () {
         one.classList.add("active");
         two.classList.remove("active");
@@ -80,6 +153,8 @@
         four.classList.remove("active");
         five.classList.remove("active");
         active_state = 1;
+        display_card1();
+
       };
 
       two.onclick = function () {
@@ -89,6 +164,8 @@
         four.classList.remove("active");
         five.classList.remove("active");
         active_state = 2;
+        display_card2();
+
       };
 
       three.onclick = function () {
@@ -98,6 +175,7 @@
         four.classList.remove("active");
         five.classList.remove("active");
         active_state = 3;
+        display_card3();
       };
 
       four.onclick = function () {
@@ -107,6 +185,7 @@
         four.classList.add("active");
         five.classList.remove("active");
         active_state = 4;
+        display_card4();
       };
 
       five.onclick = function () {
@@ -116,6 +195,7 @@
         four.classList.add("active");
         five.classList.add("active");
         active_state = 5;
+        display_card5();
       };
 
       const prev = document.querySelector("#prev");
@@ -124,23 +204,27 @@
           case 5:
             five.classList.remove("active");
             active_state = 4;
+            display_card4();
             break;
           case 4:
             five.classList.remove("active");
             four.classList.remove("active");
             active_state = 3;
+            display_card3();
             break;
           case 3:
             five.classList.remove("active");
             four.classList.remove("active");
             three.classList.remove("active");
             active_state = 2;
+            display_card2();
             break;
           case 2:
             five.classList.remove("active");
             four.classList.remove("active");
             three.classList.remove("active");
             two.classList.remove("active");
+            display_card1();
             active_state = 1;
             break;
           case 1:
@@ -149,6 +233,7 @@
             three.classList.remove("active");
             two.classList.remove("active");
             one.classList.remove("active");
+            display_card1();
             active_state = 0;
             break;
         }
@@ -165,6 +250,7 @@
             four.classList.remove("active");
             five.classList.remove("active");
             active_state = 1;
+            display_card1();
             break;
           case 1:
             one.classList.add("active");
@@ -173,6 +259,7 @@
             four.classList.remove("active");
             five.classList.remove("active");
             active_state = 2;
+            display_card2();
             break;
           case 2:
             one.classList.add("active");
@@ -181,6 +268,7 @@
             four.classList.remove("active");
             five.classList.remove("active");
             active_state = 3;
+            display_card3();
             break;
           case 3:
             one.classList.add("active");
@@ -189,6 +277,7 @@
             four.classList.add("active");
             five.classList.remove("active");
             active_state = 4;
+            display_card4();
             break;
           case 4:
             one.classList.add("active");
@@ -197,6 +286,7 @@
             four.classList.add("active");
             five.classList.add("active");
             active_state = 5;
+            display_card5();
             break;
           case 5:
             one.classList.add("active");
@@ -205,6 +295,7 @@
             four.classList.add("active");
             five.classList.add("active");
             active_state = 0;
+            display_card1();
             break;
         }
       };
@@ -213,25 +304,33 @@
       setTimeout(function () {
         one.classList.add("active");
         active_state = 1;
+        display_card1();
       }, 1500);
+
       setTimeout(function () {
         one.classList.add("active");
         two.classList.add("active");
         active_state = 2;
+       display_card2();
       }, 3000);
+
       setTimeout(function () {
         one.classList.add("active");
         two.classList.add("active");
         three.classList.add("active");
         active_state = 3;
+        display_card3();
       }, 4500);
+
       setTimeout(function () {
         one.classList.add("active");
         two.classList.add("active");
         three.classList.add("active");
         four.classList.add("active");
         active_state = 4;
+        display_card4();
       }, 6000);
+
       setTimeout(function () {
         one.classList.add("active");
         two.classList.add("active");
@@ -239,6 +338,7 @@
         four.classList.add("active");
         five.classList.add("active");
         active_state = 5;
+        display_card5();
       }, 7500);
     </script>
   </body>
