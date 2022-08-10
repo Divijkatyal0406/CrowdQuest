@@ -224,6 +224,50 @@ App = {
     // console.log(result);
     // window.alert("Question added successfully");
   },
+
+  validateQuestion: function(){
+
+    var inputQues = document.querySelector(".addQuestionText").value;
+    document.querySelector(".addQuestionText").style.borderColor = "grey";
+    inputQues = inputQues.toLowerCase();
+
+    const arr1 = (remove_stopwords(inputQues)).split(" ");
+
+    var similarityLimit = Math.floor((arr1.length) * 0.8);
+    
+    App.contracts.CrowdSource.deployed()
+    .then(function (instance) {
+      crowdsourceInstance = instance;
+      return crowdsourceInstance.problemCount();
+    })
+    .then(function (problemCount) {
+      loop1:
+      for (var i = 1; i <= problemCount; i++) {
+        crowdsourceInstance.problems(i).then(function (p) {
+          console.log(p);
+          var ques = p[2];
+          ques = ques.toLowerCase();
+          const arr2 = (remove_stopwords(ques)).split(" ");
+        
+          var count = 0;
+              loop2:
+              for(var j=0; j<Math.min(arr1.length, arr2.length); j++){
+                  if(arr1[j] == arr2[j]){
+                    count++;
+                    console.log("Count", count);
+                    console.log("Similarity", similarityLimit);
+                  }
+                  if(count >= similarityLimit && count!=0){
+                    document.querySelector(".addQuestionText").style.borderColor = "red";
+                    alert("Similar type of question Already exists!!");
+                    break loop2;
+                  }
+                }
+            });
+          }
+      })
+  },
+
   downloadQuestions: function () {
     let problemCard = document.querySelector(".question-area");
 
@@ -869,5 +913,6 @@ $(function () {
     App.addQuestion();
     App.getAllQuestionsFromChain();
     App.getAllSub();
+    App.validateQuestion();
   });
 });

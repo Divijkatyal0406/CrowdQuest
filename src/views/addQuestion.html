@@ -16,7 +16,7 @@
   <title>Crowd Quest</title>
 </head>
 
-<body>
+<body onload="App.init()">
   <div class="row">
     <div class="col-md-3 register-left">
       <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Cartoon_space_rocket.png" alt="" />
@@ -50,7 +50,7 @@
               <!-- Question -->
               
               <label for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type the question</label>
-              <textarea name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50" minlength="5" maxlength="1000" required></textarea>
+              <textarea onchange="App.validateQuestion(); return false;" name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50" minlength="5" maxlength="1000" required></textarea>
 
               
 
@@ -68,14 +68,8 @@
               
               </div>
               <br>
-            
 
-
-
-            <!-- upload section -->
-                  
-                  
-                  
+            <!-- upload section -->         
 
                   <div class="row" style="margin-left:0.50em ;">
 

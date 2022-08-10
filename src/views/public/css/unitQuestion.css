@@ -56,7 +56,7 @@
   font-size: 1.1rem;
   padding: 10px;
   position: relative;
-  right: 24.4vw;
+  left: -20%;
 }
 .question-difficulty_easy {
   background-color: #bce1be;
@@ -105,7 +105,8 @@
   }
   .question-standard {
     font-size: 1.0rem;
-    right: 21vw;
+    position: relative;
+    left: 10%;
   }
   .question_diff_posn {
     font-size: 1.0rem;
@@ -124,7 +125,7 @@
     left: 50vw;
   }
   .question-standard {
-    right: 14vw;
+   
   }
   .question_diff_posn {
     left: 17vw;
@@ -153,8 +154,7 @@
     margin-bottom: 20px;
   }
   .question-standard {
-    margin: 0px 0px 0px 5vw;
-    right: 20vw;
+
     font-size: 1rem;
   }
   .question_diff_posn {
@@ -177,8 +177,6 @@
     font-size: 0.8rem;
   }
   .question-standard {
-    margin: 0px 0px 0px 5vw;
-    right: 6vw;
     font-size: 1rem;
   }
   .question_diff_posn {

@@ -323,37 +323,30 @@ h3 {
 }
 
 .CopyButton {
-
-  margin:0.3em 1em 0.3em 1em ;
   margin-bottom: -00.5em;
-
-  width: 12em;
+  width: 8em;
 
 align-items: center;
 appearance: none;
 background-color: #00a2ff;
 border-radius: 4px;
 border-width: 0;
-box-shadow: #c4000048 0 2px 8px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#148bd4 0 -3px 0 inset;
 box-sizing: border-box;
 color: #ffffff;
 cursor: pointer;
 display: inline-flex;
-font-family: "JetBrains Mono",monospace;
-height: 48px;
+height: 40px;
 justify-content: center;
-line-height: 1;
 
 list-style: none;
 overflow: hidden;
 padding-left: 16px;
 padding-right: 16px;
 position: relative;
-
+top: 11px;
 text-align: left;
 text-decoration: none;
 transition: box-shadow .15s,transform .15s;
-
 
 white-space: nowrap;
 will-change: box-shadow,transform;
@@ -362,11 +355,6 @@ font-size: 1em;
 
 .CopyButton:focus {
 box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
-
-.CopyButton:hover {
-box-shadow: rgba(201, 201, 201, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-transform: translateY(-2px);
 }
 
 .CopyButton:active {
@@ -392,10 +380,8 @@ box-sizing: border-box;
 color: #383838;
 cursor: pointer;
 display: inline-flex;
-font-family: "JetBrains Mono",monospace;
-height: 48px;
+height: 38px;
 justify-content: center;
-line-height: 1;
 
 list-style: none;
 overflow: hidden;
