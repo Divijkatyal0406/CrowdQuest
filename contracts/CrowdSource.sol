@@ -11,10 +11,9 @@ contract CrowdSource {
     mapping(string => uint256) cqt;
 
     //uint is id
-    mapping(uint256=>address payable) public owner;
+    mapping(uint256 => address payable) public owner;
     // id => amount
-    mapping(uint256=>uint256) public pool;
-
+    mapping(uint256 => uint256) public pool;
 
     event SubmitQuestion(
         string subject,
@@ -57,10 +56,10 @@ contract CrowdSource {
             _imgHash,
             _ans,
             _approve,
-            _isApproved   
+            _isApproved
         );
         //Added this
-        // owner[uid]=msg.sender;
+        owner[problemCount]=msg.sender;
         emit SubmitQuestion(
             _subject,
             _topic,
@@ -108,7 +107,11 @@ contract CrowdSource {
         );
     }
 
-    function getCountOfTopic(string memory _topic) public view returns (uint256) {
+    function getCountOfTopic(string memory _topic)
+        public
+        view
+        returns (uint256)
+    {
         uint256 count = cqt[_topic];
         return count;
     }
@@ -126,13 +129,10 @@ contract CrowdSource {
     //     return problems;
     // }
 
-
-    function contribute(uint256 uid) public payable{
-        
-        pool[uid]+=1;
-        address payable _owner=owner[uid];
-
-        // payable(address(_owner))=owner[uid];
-        _owner.transfer(1 ether);
-    }
+    function contribute(uint256 _problemCount) public payable {
+        pool[_problemCount] += 1;
+        //Next two line is error
+        address payable _owner = owner[_problemCount];
+        _owner.transfer(0.0001 ether);
+    }
 }

@@ -93,7 +93,6 @@ App = {
       options();
       // imgUrl();
 
-
       console.log(Problem);
       App.contracts.CrowdSource.deployed()
         .then(function (instance) {
@@ -125,7 +124,7 @@ App = {
           //   dismissible: true,
           // });
           window.alert("Question added successfully");
-          window.location="http://localhost:3000/addQuestion.html";
+          window.location = "http://localhost:3000/addQuestion.html";
           // if (
           //   window.history.state.prevUrl ==
           //   "http://localhost:3000/teacherDashboard.html"
@@ -155,7 +154,9 @@ App = {
 
     //For subject
     const subject = () => {
-      Problem.imgUrl=document.querySelector("#imageUrlText").innerHTML.toString();
+      Problem.imgUrl = document
+        .querySelector("#imageUrlText")
+        .innerHTML.toString();
       let subjectsDOM = document.querySelector("#subjects");
       let selectedSubject = subjectsDOM.options[subjectsDOM.selectedIndex].text;
       Problem.subject = selectedSubject;
@@ -210,11 +211,10 @@ App = {
     const imgUrl = () => {
       let url = document.querySelector("#imageUrlText");
       let imgurl = url.value;
-      if(imgurl=="IPFS url"){
+      if (imgurl == "IPFS url") {
         console.log("i am here");
-        Problem.imgUrl = "$";  
-      }
-      else{
+        Problem.imgUrl = "$";
+      } else {
         Problem.imgUrl = imgurl;
       }
     };
@@ -223,7 +223,6 @@ App = {
     // window.alert("Question added successfully");
   },
   downloadQuestions: function () {
-
     let problemCard = document.querySelector(".question-area");
 
     var optionArrayMaths = [
@@ -319,7 +318,6 @@ App = {
     console.log(totalQues);
     console.log(weightage);
     console.log(excludedTopics);
-    // console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
         crowdsourceInstance = instance;
@@ -329,7 +327,6 @@ App = {
         let quesData = "";
         for (var j = 0; j < totalQues; j++) {
           for (var i = 1; i <= problemCount; i++) {
-            // console.log("e");
             crowdsourceInstance.problems(i).then(function (p) {
               console.log(p);
               if (p[6] == true && p[7] == true) {
@@ -365,15 +362,13 @@ App = {
       })
       .catch((e) => {
         console.log(e);
-      });
-  },
+      });
+  },
 
   getAllQuestionsFromChain: function () {
     let problemCard1 = document.querySelector(".teacherDashboard");
     let problemCard2 = document.querySelector(".studentDashboard");
-
     console.log("here2");
-    // console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
         crowdsourceInstance = instance;
@@ -386,8 +381,18 @@ App = {
         let quesData2 = "";
         var count = 0;
         var displayProblemCount = 0;
+        var poolCount = 0;
         var displayProblemCount1 = 0;
         for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance
+            .pool(i)
+            .then(function (pc) {
+              poolCount = pc.toNumber();
+              // console.log("poolCount", pc.toNumber());
+            })
+            .catch((error) => {
+              console.log(error);
+            });
           crowdsourceInstance.problems(i).then(function (p) {
             console.log(p);
             let subject = p[0];
@@ -399,6 +404,7 @@ App = {
             let approve = p[6];
             let isApprove = p[7];
             let correctAnswer = p[ans + 1];
+            let currentProblemID = i;
             count++;
             // crowdsourceInstance.getCountOfTopic(topic).then(function (tc) {
             //   console.log(
@@ -509,6 +515,17 @@ App = {
                         options[ans - 1]
                       }
                       </div>
+                      <div class="reward">
+                        <div class="upperReward">
+                          <img style="height: 2vw;" src="./public/assets/SVGs/ethereum.svg" alt="ETH">
+                          <button onClick="App.sendReward(${count})">
+                          Send 1 ETH
+                          </button>
+                        </div>
+                      <div>
+                      </div class="lowerReward">
+                      <p>Pool ${poolCount}:</p>
+                      </div>
                   </div>
               </div>
           </div>`;
@@ -517,6 +534,26 @@ App = {
             }
           });
         }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+  sendReward: function (index) {
+    App.init();
+    // console.log(index);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        // console.log(crowdsourceInstance);
+        crowdsourceInstance
+          .contribute(index, { from: App.account })
+          .then(function () {
+            console.log("Contribute done");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((e) => {
         console.log(e);
@@ -585,7 +622,8 @@ App = {
               },
             },
           });
-        }).catch((error)=>{
+        })
+        .catch((error) => {
           console.log(error);
         });
     });
