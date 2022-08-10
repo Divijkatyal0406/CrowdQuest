@@ -133,6 +133,6 @@ contract CrowdSource {
         pool[_problemCount] += 1;
         //Next two line is error
         address payable _owner = owner[_problemCount];
-        _owner.transfer(0.0001 ether);
-    }
+        address(_owner).transfer(msg.value);
+    }
 }

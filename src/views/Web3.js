@@ -84,75 +84,6 @@ App = {
     };
 
     // console.log(Problem);
-    submitDOM.addEventListener("click", function (event) {
-      event.preventDefault();
-      subject();
-      chapter();
-      question();
-      correctOption();
-      options();
-      // imgUrl();
-
-      console.log(Problem);
-      App.contracts.CrowdSource.deployed()
-        .then(function (instance) {
-          console.log("test");
-          console.log("hh");
-          console.log(url);
-          const result = instance.addToBlockchain(
-            Problem.subject,
-            Problem.topic,
-            Problem.question,
-            Problem.options,
-            Problem.imgUrl,
-            Problem.ans,
-            false,
-            false,
-            { from: App.account }
-          );
-          console.log("result", result);
-          return result;
-        })
-        .then(function (result) {
-          // bootoast({
-          //   message: "Question added successfully",
-          //   type: "success",
-          //   position: "bottom-center",
-          //   icon: null,
-          //   timeout: null,
-          //   animationDuration: 300,
-          //   dismissible: true,
-          // });
-          window.alert("Question added successfully");
-          window.location = "http://localhost:3000/addQuestion.html";
-          // if (
-          //   window.history.state.prevUrl ==
-          //   "http://localhost:3000/teacherDashboard.html"
-          // ) {
-          //   window.location = "http://localhost:3000/teacherDashboard.html";
-          // } else {
-          //   window.location = "http://localhost:3000/studentDashboard.html";
-          // }
-          console.log("result after alert", result);
-          // Wait for votes to update
-          // $("#content").hide();
-          // $("#loader").show();
-        })
-        .catch(function (err) {
-          // bootoast({
-          //   message: "Unexpected error occured!!",
-          //   type: "danger",
-          //   position: "bottom-center",
-          //   icon: null,
-          //   timeout: null,
-          //   animationDuration: 300,
-          //   dismissible: true,
-          // });
-          console.error(err);
-        });
-    });
-
-    //For subject
     const subject = () => {
       Problem.imgUrl = document
         .querySelector("#imageUrlText")
@@ -218,6 +149,77 @@ App = {
         Problem.imgUrl = imgurl;
       }
     };
+    subject();
+    chapter();
+    question();
+    correctOption();
+    options();
+    // submitDOM.addEventListener("click", function (event) {
+      console.log("bye");
+      // event.preventDefault();
+      // imgUrl();
+
+      console.log(Problem);
+      App.contracts.CrowdSource.deployed()
+        .then(function (instance) {
+          console.log("test");
+          console.log("hh");
+          console.log(url);
+          const result = instance.addToBlockchain(
+            Problem.subject,
+            Problem.topic,
+            Problem.question,
+            Problem.options,
+            Problem.imgUrl,
+            Problem.ans,
+            false,
+            false,
+            { from: App.account }
+          );
+          console.log("result", result);
+          return result;
+        })
+        .then(function (result) {
+          // bootoast({
+          //   message: "Question added successfully",
+          //   type: "success",
+          //   position: "bottom-center",
+          //   icon: null,
+          //   timeout: null,
+          //   animationDuration: 300,
+          //   dismissible: true,
+          // });
+          window.alert("Question added successfully");
+          window.location = "http://localhost:3000/addQuestion.html";
+          // if (
+          //   window.history.state.prevUrl ==
+          //   "http://localhost:3000/teacherDashboard.html"
+          // ) {
+          //   window.location = "http://localhost:3000/teacherDashboard.html";
+          // } else {
+          //   window.location = "http://localhost:3000/studentDashboard.html";
+          // }
+          console.log("result after alert", result);
+          // Wait for votes to update
+          // $("#content").hide();
+          // $("#loader").show();
+        })
+        .catch(function (err) {
+          // bootoast({
+          //   message: "Unexpected error occured!!",
+          //   type: "danger",
+          //   position: "bottom-center",
+          //   icon: null,
+          //   timeout: null,
+          //   animationDuration: 300,
+          //   dismissible: true,
+          // });
+          console.error(err);
+        });
+    
+
+    //For subject
+    
 
     // console.log(result);
     // window.alert("Question added successfully");
@@ -544,10 +546,13 @@ App = {
     // console.log(index);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
+
+        let contribution_amount=web3.utils.toWei('1','Ether');
+        console.log(index, contribution_amount);
         crowdsourceInstance = instance;
         // console.log(crowdsourceInstance);
         crowdsourceInstance
-          .contribute(index, { from: App.account })
+          .contribute(index,{from:App.account,value:contribution_amount})
           .then(function () {
             console.log("Contribute done");
           })
