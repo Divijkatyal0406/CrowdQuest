@@ -4,13 +4,16 @@
   "description": "Crowdsourcing platform for teachers and students to add questions",
   "main": "Web3.js",
   "scripts": {
-    "build":"webpack --mode production",
+    "build": "webpack --mode production",
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.13",
     "bn.js": "^5.2.1",
     "bootoast": "^1.0.1",
+    "dotenv": "^16.0.1",
+    "fs": "0.0.1-security",
     "ganache-cli": "^6.12.2",
     "ipfs-mini": "^1.1.5",
     "lite-server": "^2.6.1",
