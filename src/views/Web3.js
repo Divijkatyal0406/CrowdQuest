@@ -931,5 +931,6 @@ $(function () {
     App.getAllQuestionsFromChain();
     App.getAllSub();
     App.validateQuestion();
+    App.getAllContributions();
   });
 });
