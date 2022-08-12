@@ -7,6 +7,7 @@ App = {
   account: "0x0",
   //Added this 3 Aug 2022
   web3: null,
+  x:[],
 
   init: function () {
     return App.initWeb3();
@@ -36,6 +37,7 @@ App = {
       App.contracts.CrowdSource = TruffleContract(cq);
       App.contracts.CrowdSource.setProvider(App.web3Provider);
       App.getAllQuestionsFromChain();
+      // App.getAllContributions();
       // App.listenForEvents();
 
       // return App.render();
@@ -598,6 +600,26 @@ App = {
         crowdsourceInstance
           .contribute(index,{from:App.account,value:contribution_amount})
           .then(function () {
+            
+            App.contracts.CrowdSource.deployed().then(function(instance){
+              instance.addAContribution(index,{from:App.account});
+            });
+
+            // x=App.getAllContributions();
+            // console.log(x);
+
+
+            // App.contracts.CrowdSource.deployed().then(function(instance){
+            //   console.log("byee");
+            //     let contribuee=instance.getOwner(index,{from:App.account});
+            //     console.log(contribuee);
+            //     document.querySelector("#notification-user").innerHTML="Hellp";
+            //     // const li=document.createElement('li');
+            //     // li.innerHTML="Hello";
+            //     // ulEle.appendChild(li);
+            // });
+
+
             console.log("Contribute done");
           })
           .catch((error) => {
@@ -870,40 +892,35 @@ App = {
     return optArr;
   },
 
-  //LOGIN-SIGNUP-STARTS
-
-  loginDashboard: function () {
-    let username_dom = document.querySelector("#username");
-    let userText = username_dom.value;
-
-    let password_dom = document.querySelector("#password");
-    let passwordText = password_dom.value;
-
-    let passcode_dom = document.querySelector("#passcode");
-    let passcodeText = passcode_dom.value;
-
-    App.contracts.Authentication.deployed()
-      .then(function (instance) {
-        let validated = await;
-        AuthValidation(
-          userText,
-          App.account,
-          passwordText,
-          passcodeText,
-          App.web3,
-          instance
-        );
-        if (validated) {
-          //login hogaya
-        } else {
-          // invalid login
+  getAllContributions:function(){
+    // let x=['a','b','c'];
+    console.log("byee9");
+    App.contracts.CrowdSource.deployed().then(function(instance){
+      crowdSourceInstance1=instance;
+      return crowdSourceInstance1.contributionCount();
+          // x.push(5);
+    }).then(function(contributionCount) {
+          var ul = document.getElementById('testtt1');
+          let cnt=0;
+        for (let i = 1; i <= contributionCount && cnt++<5; i++) {
+            crowdsourceInstance.contributions(i).then(function (p) {
+              // console.log(p);
+              // x.push('d');
+                                      // for (var i=0; i<x.length; i++) {
+            var li = document.createElement('li');
+            // li.classList.add("waves-effect waves-light");
+            li.appendChild(document.createTextNode(`🎉 ${p.substring(0,6)}....${p.substring(38,42)} Got rewarded with 1 ETH`));
+            ul.appendChild(li);
+                                      // }
+            });
+            // cnt++;
+            // if(cnt>5) break;
         }
-      })
-      .then(function (result) {})
-      .catch(function (err) {
-        console.error(err);
-      });
-  },
+    });
+    // x.push('d');
+    // console.log(x.length);
+    // return x;
+  }
 };
 
 $(function () {
