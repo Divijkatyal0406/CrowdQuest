@@ -7,7 +7,7 @@ App = {
   account: "0x0",
   //Added this 3 Aug 2022
   web3: null,
-  x:[],
+  x: [],
 
   init: function () {
     return App.initWeb3();
@@ -67,8 +67,9 @@ App = {
     });
   },
 
-  addQuestion: function () {
+  addQuestion: function (addForFirstTime) {
     console.log("here1");
+    console.log(addForFirstTime);
     let submitDOM = document.querySelector(".submit");
     let url = document.querySelector("#imageUrlText").innerHTML.toString();
     console.log(url);
@@ -79,7 +80,7 @@ App = {
       topic: "",
       question: "",
       options: "",
-      imgUrl:url,
+      imgUrl: url,
       ans: 0,
       approve: false,
       isApproved: false,
@@ -140,134 +141,137 @@ App = {
       Problem.options += "$" + option3.value;
       Problem.options += "$" + option4.value;
     };
-
-    const imgUrl = () => {
-      let url = document.querySelector("#imageUrlText");
-      let imgurl = url.value;
-      if (imgurl == "IPFS url") {
-        console.log("i am here");
-        Problem.imgUrl = "$";
-      } else {
-        Problem.imgUrl = imgurl;
-      }
-    };
+    if (addForFirstTime) {
+      const imgUrl = () => {
+        let url = document.querySelector("#imageUrlText");
+        let imgurl = url.value;
+        if (imgurl == "IPFS url") {
+          console.log("i am here");
+          Problem.imgUrl = "$";
+        } else {
+          Problem.imgUrl = imgurl;
+        }
+      };
+    }
     subject();
     chapter();
     question();
-    correctOption();
+    if(addForFirstTime){
+      correctOption();
+    }
     options();
     // submitDOM.addEventListener("click", function (event) {
-      console.log("bye");
-      // event.preventDefault();
-      // imgUrl();
+    console.log("bye");
+    // event.preventDefault();
+    // imgUrl();
 
-      console.log(Problem);
-      App.contracts.CrowdSource.deployed()
-        .then(function (instance) {
-          console.log("test");
-          console.log("hh");
-          console.log(url);
-          const result = instance.addToBlockchain(
-            Problem.subject,
-            Problem.topic,
-            Problem.question,
-            Problem.options,
-            Problem.imgUrl,
-            Problem.ans,
-            false,
-            false,
-            { from: App.account }
-          );
-          console.log("result", result);
-          return result;
-        })
-        .then(function (result) {
-          // bootoast({
-          //   message: "Question added successfully",
-          //   type: "success",
-          //   position: "bottom-center",
-          //   icon: null,
-          //   timeout: null,
-          //   animationDuration: 300,
-          //   dismissible: true,
-          // });
-          window.alert("Question added successfully");
-          window.location = "http://localhost:3000/addQuestion.html";
-          // if (
-          //   window.history.state.prevUrl ==
-          //   "http://localhost:3000/teacherDashboard.html"
-          // ) {
-          //   window.location = "http://localhost:3000/teacherDashboard.html";
-          // } else {
-          //   window.location = "http://localhost:3000/studentDashboard.html";
-          // }
-          console.log("result after alert", result);
-          // Wait for votes to update
-          // $("#content").hide();
-          // $("#loader").show();
-        })
-        .catch(function (err) {
-          // bootoast({
-          //   message: "Unexpected error occured!!",
-          //   type: "danger",
-          //   position: "bottom-center",
-          //   icon: null,
-          //   timeout: null,
-          //   animationDuration: 300,
-          //   dismissible: true,
-          // });
-          console.error(err);
-        });
-    
+    console.log(Problem);
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        console.log("test");
+        console.log("hh");
+        console.log(url);
+        const result = instance.addToBlockchain(
+          Problem.subject,
+          Problem.topic,
+          Problem.question,
+          Problem.options,
+          Problem.imgUrl,
+          Problem.ans,
+          false,
+          false,
+          { from: App.account }
+        );
+        console.log("result", result);
+        return result;
+      })
+      .then(function (result) {
+        // bootoast({
+        //   message: "Question added successfully",
+        //   type: "success",
+        //   position: "bottom-center",
+        //   icon: null,
+        //   timeout: null,
+        //   animationDuration: 300,
+        //   dismissible: true,
+        // });
+        window.alert("Question added successfully");
+        window.location = "http://localhost:3000/addQuestion.html";
+        // if (
+        //   window.history.state.prevUrl ==
+        //   "http://localhost:3000/teacherDashboard.html"
+        // ) {
+        //   window.location = "http://localhost:3000/teacherDashboard.html";
+        // } else {
+        //   window.location = "http://localhost:3000/studentDashboard.html";
+        // }
+        console.log("result after alert", result);
+        // Wait for votes to update
+        // $("#content").hide();
+        // $("#loader").show();
+      })
+      .catch(function (err) {
+        // bootoast({
+        //   message: "Unexpected error occured!!",
+        //   type: "danger",
+        //   position: "bottom-center",
+        //   icon: null,
+        //   timeout: null,
+        //   animationDuration: 300,
+        //   dismissible: true,
+        // });
+        console.error(err);
+      });
 
     //For subject
-    
 
     // console.log(result);
     // window.alert("Question added successfully");
   },
 
-  validateQuestion: function(){
-
+  validateQuestion: function () {
     var inputQues = document.querySelector(".addQuestionText").value;
     document.querySelector(".addQuestionText").style.borderColor = "grey";
     inputQues = inputQues.toLowerCase();
 
-    const arr1 = (remove_stopwords(inputQues)).split(" ");
+    const arr1 = remove_stopwords(inputQues).split(" ");
 
-    var similarityLimit = Math.floor((arr1.length) * 0.8);
-    
+    var similarityLimit = Math.floor(arr1.length * 0.8);
+
     App.contracts.CrowdSource.deployed()
-    .then(function (instance) {
-      crowdsourceInstance = instance;
-      return crowdsourceInstance.problemCount();
-    })
-    .then(function (problemCount) {
-      loop1:
-      for (var i = 1; i <= problemCount; i++) {
-        crowdsourceInstance.problems(i).then(function (p) {
-          console.log(p);
-          var ques = p[2];
-          ques = ques.toLowerCase();
-          const arr2 = (remove_stopwords(ques)).split(" ");
-        
-          var count = 0;
-              loop2:
-              for(var j=0; j<Math.min(arr1.length, arr2.length); j++){
-                  if(arr1[j] == arr2[j]){
-                    count++;
-                    console.log("Count", count);
-                    console.log("Similarity", similarityLimit);
-                  }
-                  if(count >= similarityLimit && count!=0){
-                    document.querySelector(".addQuestionText").style.borderColor = "red";
-                    alert("Similar type of question Already exists!!");
-                    break loop2;
-                  }
-                }
-            });
-          }
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        return crowdsourceInstance.problemCount();
       })
+      .then(function (problemCount) {
+        loop1: for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance.problems(i).then(function (p) {
+            console.log(p);
+            var ques = p[2];
+            ques = ques.toLowerCase();
+            const arr2 = remove_stopwords(ques).split(" ");
+
+            var count = 0;
+            loop2: for (
+              var j = 0;
+              j < Math.min(arr1.length, arr2.length);
+              j++
+            ) {
+              if (arr1[j] == arr2[j]) {
+                count++;
+                console.log("Count", count);
+                console.log("Similarity", similarityLimit);
+              }
+              if (count >= similarityLimit && count != 0) {
+                document.querySelector(".addQuestionText").style.borderColor =
+                  "red";
+                alert("Similar type of question Already exists!!");
+                break loop2;
+              }
+            }
+          });
+        }
+      });
   },
 
   downloadQuestions: function () {
@@ -423,7 +427,6 @@ App = {
         console.log("here12");
         return crowdsourceInstance.problemCount();
       })
-
       .then(function (problemCount) {
         let quesData1 = "";
         let quesData2 = "";
@@ -465,10 +468,10 @@ App = {
           <div class="unitQuestion">
               <div class="stud_question">
                 <div class="subject">
-                   Subject : ${subject} | ${topic}
+                   Subject : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${subject}</span> | <span id="topic" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${topic}</span>
                 </div>
                   <div class="question">
-                    Ques ${displayProblemCount}.  ${question}
+                    Ques ${displayProblemCount}.<span spellcheck="false" class="addQuestionText contenteditableTeacherDashboard" contenteditable="true">${question}</span>  
                     <br>
                     <img class="ques-img" src="${imgHash}" alt="">
                   </div>
@@ -477,37 +480,48 @@ App = {
                           <div class="option_text">A.</div>
                           &nbsp;
                           <div class="option_text">
-                            ${options[0]}
+                          <span id="option1" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
+                            options[0]
+                          }</span>
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">B.</div>
                           &nbsp;
                           <div class="option_text">
-                          ${options[1]}
+                          <span id="option2" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
+                            options[1]
+                          }</span>
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">C.</div>
                           &nbsp;
                           <div class="option_text">
-                          ${options[2]}
+                          <span id="option3" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
+                            options[2]
+                          }</span>
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">D.</div>
                           &nbsp;
                           <div class="option_text">
-                          ${options[3]}
+                          <span id="option4" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
+                            options[3]
+                          }</span>
                           </div>
                       </button>
                   </div>
               </div>
           </div>
           <div class="question-info">
-              <div class="question-standard">Correct Answer : ${
+              <div class="question-standard">Correct Answer :
+              <span spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true" placeholder="Enter the correct Option(A/B/C/D)">${
                 options[ans - 1]
-              }</div>
+              }</span>
+               </div>
+              <button onClick="" type="button" class="btn btn-info approve-btn">Edit and Accept</button>
               <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
               <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
           </div>
@@ -587,27 +601,27 @@ App = {
         console.log(e);
       });
   },
+  // editAndAccept:function(){
+  //   console.log(Problem);
+  // },
   sendReward: function (index) {
     App.init();
     // console.log(index);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
-
-        let contribution_amount=web3.utils.toWei('1','Ether');
+        let contribution_amount = web3.utils.toWei("1", "Ether");
         console.log(index, contribution_amount);
         crowdsourceInstance = instance;
         // console.log(crowdsourceInstance);
         crowdsourceInstance
-          .contribute(index,{from:App.account,value:contribution_amount})
+          .contribute(index, { from: App.account, value: contribution_amount })
           .then(function () {
-            
-            App.contracts.CrowdSource.deployed().then(function(instance){
-              instance.addAContribution(index,{from:App.account});
+            App.contracts.CrowdSource.deployed().then(function (instance) {
+              instance.addAContribution(index, { from: App.account });
             });
 
             // x=App.getAllContributions();
             // console.log(x);
-
 
             // App.contracts.CrowdSource.deployed().then(function(instance){
             //   console.log("byee");
@@ -618,7 +632,6 @@ App = {
             //     // li.innerHTML="Hello";
             //     // ulEle.appendChild(li);
             // });
-
 
             console.log("Contribute done");
           })
@@ -712,7 +725,18 @@ App = {
         let quesData = "";
 
         var displayProblemCount1 = 0;
+        var count = 0;
+        var poolCount = 0;
         for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance
+            .pool(i)
+            .then(function (pc) {
+              poolCount = pc.toNumber();
+              // console.log("poolCount", pc.toNumber());
+            })
+            .catch((error) => {
+              console.log(error);
+            });
           crowdsourceInstance.problems(i).then(function (p) {
             console.log(p);
             let currSubject = p[0];
@@ -723,6 +747,7 @@ App = {
             let ans = p[5].toNumber();
             let approve = p[6];
             let isApprove = p[7];
+            count++;
             if (
               approve == true &&
               isApprove == true &&
@@ -794,7 +819,7 @@ App = {
               quesData += ques;
               problemCard.innerHTML = quesData;
             }
-          });
+          })
         }
       })
       .catch((e) => {
@@ -904,42 +929,51 @@ App = {
     return optArr;
   },
 
-  getAllContributions:function(){
+  getAllContributions: function () {
     // let x=['a','b','c'];
     console.log("byee9");
-    App.contracts.CrowdSource.deployed().then(function(instance){
-      crowdSourceInstance1=instance;
-      return crowdSourceInstance1.contributionCount();
-          // x.push(5);
-    }).then(function(contributionCount) {
-          var ul = document.getElementById('testtt1');
-          let cnt=0;
-        for (let i = 1; i <= contributionCount && cnt++<5; i++) {
-            crowdsourceInstance.contributions(i).then(function (p) {
-              // console.log(p);
-              // x.push('d');
-                                      // for (var i=0; i<x.length; i++) {
-            var li = document.createElement('li');
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdSourceInstance1 = instance;
+        return crowdSourceInstance1.contributionCount();
+        // x.push(5);
+      })
+      .then(function (contributionCount) {
+        var ul = document.getElementById("testtt1");
+        let cnt = 0;
+        for (let i = 1; i <= contributionCount && cnt++ < 5; i++) {
+          crowdsourceInstance.contributions(i).then(function (p) {
+            console.log("Logging p",p);
+            // x.push('d');
+            // for (var i=0; i<x.length; i++) {
+            var li = document.createElement("li");
             // li.classList.add("waves-effect waves-light");
-            li.appendChild(document.createTextNode(`🎉 ${p.substring(0,6)}....${p.substring(38,42)} Got rewarded with 1 ETH`));
+            li.appendChild(
+              document.createTextNode(
+                `🎉 ${p.substring(0, 6)}....${p.substring(
+                  38,
+                  42
+                )} Got rewarded with 1 ETH`
+              )
+            );
             ul.appendChild(li);
-                                      // }
-            });
-            // cnt++;
-            // if(cnt>5) break;
+            // }
+          });
+          // cnt++;
+          // if(cnt>5) break;
         }
-    });
+      });
     // x.push('d');
     // console.log(x.length);
     // return x;
-  }
+  },
 };
 
 $(function () {
   $(window).load(function () {
     App.init();
     App.downloadQuestions();
-    App.addQuestion();
+    App.addQuestion(true);
     App.getAllQuestionsFromChain();
     App.getAllSub();
     App.validateQuestion();

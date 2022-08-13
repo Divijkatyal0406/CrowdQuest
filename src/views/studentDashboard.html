@@ -396,7 +396,7 @@
         function filterList(){
             const searchInput=document.querySelector('#search-input');
             const filter=searchInput.value.toLowerCase();
-            const question=document.querySelectorAll('#card');
+            const question=document.querySelectorAll('.questionCard');
             question.forEach((item) => {
                 let text=item.textContent;
                 if(text.toLowerCase().includes(filter.toLowerCase()))

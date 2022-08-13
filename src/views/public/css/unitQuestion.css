@@ -91,6 +91,10 @@
     /* 0 10px 10px rgba(0, 0, 0, 0.22); */
 }
 
+.contenteditableTeacherDashboard{
+  border: 1px solid black;
+}
+
 /* Media Query */
 @media only screen and (max-width: 1392px) {
   .stud_question .question {
