@@ -774,9 +774,21 @@ App = {
                   <div class="question-info">
                       <div class="question-standard">Correct Answer : ${
                         options[ans - 1]
-                      } 
+                      }
+                      </div>
+                      <div class="reward">
+                        <div class="upperReward">
+                          <img style="height: 2vw;" src="./public/assets/SVGs/ethereum.svg" alt="ETH">
+                          <button onClick="App.sendReward(${count})">
+                          Send 1 ETH
+                          </button>
+                        </div>
+                      <div>
+                      </div class="lowerReward">
+                      <p>Pool ${poolCount}:</p>
                       </div>
                   </div>
+              </div>
               </div>
           </div>`;
               quesData += ques;
