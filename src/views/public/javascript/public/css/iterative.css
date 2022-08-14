@@ -1,0 +1,345 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+}
+
+
+.main{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+ul{
+    display: flex;
+    
+}
+ul li{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 9.5em;
+}
+ul li .icon{
+    font-size: 2.3em;
+    color: #00a2ff;
+    margin: 0 60px;
+}
+ul li .text{
+    font-size: px;
+    font-weight: 600;
+    color: #00a2ff;
+}
+
+
+/* Progress Div Css  */
+
+ul li .progress{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    margin: 14px 0;
+    display: grid;
+    place-items: center;
+    color: #00a2ff;
+    position: relative;
+    cursor: pointer;
+}
+.progress::after{
+    content: " ";
+    position: absolute;
+    width: 125px;
+    height: 5px;
+    background-color: #a8a8a8;
+    right: 30px;
+        /* filling animation from left to right*/
+    
+}
+.one::after{
+    width: 0;
+    height: 0;
+}
+ul li .progress .uil{
+    display: none;
+}
+ul li .progress p{
+    font-size: 13px;
+    transition: 0.5s;
+}
+
+/* Active Css  */
+
+ul li .active{
+    background-color: #00a2ff;
+    display: grid;
+    place-items: center;
+
+}
+li .active::after{
+    background-color: #00a2ff;
+}
+ul li .active p{
+    display: none;
+}
+ul li .active .uil{
+  color: black;
+    font-size: 14px;
+    display: flex;
+    background-color: #00a2ff;
+}
+
+/* smooth transition */
+
+.row{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    justify-content: space-between;
+    /* add gap in the flex items */
+    gap: 1em;
+}
+
+.row button{
+    background-color: #00a2ff;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+.row button:hover{
+    background-color: #006097;
+    color: #fff;
+}
+/* Responsive Css  */
+
+@media (max-width: 980px) {
+    ul{
+        flex-direction: column;
+    }
+    ul li{
+        flex-direction: row;
+    }
+    ul li .progress{
+        margin: 0 30px;
+    }
+    .progress::after{
+        width: 5px;
+        height: 55px;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .one::after{
+        height: 0;
+    }
+    ul li .icon{
+        margin: 15px 0;
+    }
+}
+
+@media (max-width:600px) {
+    .head .head_1{
+        font-size: 24px;
+    }
+    .head .head_2{
+        font-size: 16px;
+    }
+}
+
+.progress-bar__container {
+  width: 80%;
+  height: 2rem;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+  will-change: transform;
+  box-shadow: 0 0 5px #e76f51;
+}
+
+.progress-bar {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-color: #e76f51;
+  top:0;
+  bottom: 0;
+  left: -100%;
+  border-radius: inherit;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  color: white;
+  font-family: sans-serif;
+}
+
+.progress-bar__text {
+  display: none;
+}
+
+.content{
+  margin-top: 9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card{
+    margin: auto;
+    margin-left: 25%;
+    margin-right: 25%;
+    
+    width: 40em;
+    height: 12em;
+
+    /* background-color: rgb(239, 227, 214); */
+    background-color: transparent;
+    /* box-shadow: 0.4em 0.4em 1.4em #969696a9; */
+    position: absolute;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+/* .card:hover{
+    background-color: #ffc2c2;
+    color: white;
+    box-shadow: 0 0 5px #e76f51;
+} */
+
+.a1{
+
+    z-index: 5;
+
+}
+.a2{
+    /* background-color: #931d00; */
+    /* width: 22em; */
+    z-index: 4;
+}
+.a3{
+    /* background-color: #0088fe; */
+    /* width: 24em; */
+    z-index: 3;
+}
+.a4{
+    /* background-color: #003f64; */
+    /* width: 26em; */
+    z-index: 2;
+}
+.a5{
+    /* width: 28em;     */
+    z-index: 1;
+}
+
+
+.content p
+{
+   /* text-transform: uppercase; */
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+    font-size: 19px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+
+
+/*
+ * Keyframe Animations 
+ */ 
+
+@-webkit-keyframes gear-rotate {
+  0% { 
+    -webkit-transform: rotate(0deg);
+  }
+  100% { 
+    -webkit-transform: rotate(-180deg); 
+  }
+}
+
+@-moz-keyframes gear-rotate {
+  0% { 
+    transform: rotate(0deg);
+  }
+  100% { 
+    transform: rotate(-180deg); 
+  }
+}
+
+@keyframes gear-rotate {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(-180deg); 
+  }
+}
+
+@-webkit-keyframes gear-rotate-left {
+ 0% {
+   -webkit-transform: rotate(30deg); 
+  }
+  100% {
+    -webkit-transform: rotate(210deg);
+  }
+}
+
+@-moz-keyframes gear-rotate-left {
+ 0% { 
+   -webkit-transform: rotate(30deg); 
+  }
+  100% { 
+    -webkit-transform: rotate(210deg);
+  }
+}
+
+@keyframes gear-rotate-left {
+ 0% { 
+   -webkit-transform: rotate(30deg); 
+  }
+  100% { 
+    -webkit-transform: rotate(210deg);
+  }
+}
+
+canvas {display:block;margin-bottom: 3em;position: absolute;
+  top: 0;
+  left: 0;}
+
+*{padding:0;margin:0}.wrapper{height:10vh;display:flex;justify-content:center;align-items:center;background-color:transparent}.checkmark__circle{stroke-dasharray: 166;stroke-dashoffset: 166;stroke-width: 2;stroke-miterlimit: 10;stroke: #7ac142;fill: none;animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards}.checkmark{width: 56px;height: 56px;border-radius: 50%;display: block;stroke-width: 2;stroke: #fff;stroke-miterlimit: 10;margin: 10% auto;box-shadow: inset 0px 0px 0px #7ac142;animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both}.checkmark__check{transform-origin: 50% 50%;stroke-dasharray: 48;stroke-dashoffset: 48;animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards}@keyframes stroke{100%{stroke-dashoffset: 0}}@keyframes scale{0%, 100%{transform: none}50%{transform: scale3d(1.1, 1.1, 1)}}@keyframes fill{100%{box-shadow: inset 0px 0px 0px 30px #7ac142}}

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Step Progress</title>
+    <link type="text/css" rel="stylesheet" href="/css/iterative.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- UniIcon CDN Link  -->
+    <!-- <script src="scripts/require.js"></script> -->
+    
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <div class="main">
+      <ul>
+        <li>
+          <img class="icon2" src="assets/SVGs/ITRprocess/read.svg" style="position: relative;" alt="">
+          <div class="progress one">
+            <p>1</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Reading File</p>
+        </li>
+        <li>
+            <img class="icon" src="assets/SVGs/ITRprocess/encrypt.svg" style="position: relative;" alt="">
+          <div class="progress two">
+            <p>2</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Encrypting</p>
+        </li>
+        <li>
+          <img class="icon" src="assets/SVGs/ITRprocess/keys.svg" style="position: relative" alt="">
+          <div class="progress three">
+            <p>3</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Passing keys</p>
+        </li>
+        <li>
+            <img class="icon" src="assets/SVGs/ITRprocess/upload.svg" style="position: relative;" alt="">
+          <div class="progress four">
+            <p>4</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Uploading to IPFS</p>
+        </li>
+        <li>
+            <img class="icon" src="assets/SVGs/ITRprocess/complete.svg" style="position: relative;" alt="">
+            <div class="progress five">
+              <p>5</p>
+            <i class="uil uil-check"></i>
+          </div>
+          <p class="text">Process Complete</p>
+        </li>
+      </ul>
+      <div class="row">
+        <button id="prev" style="display: none;">previous</button>
+        <button id="next" style="display: none;">next</button>
+      </div>
+    </div>
+    <!-- <a href="encryption.html">test</a> -->
+<center>
+  <div class="content">
+    <div class="card a1">
+      <p id="c11">helo</p>
+      <p id="c12"></p>
+      <p id="c13"></p>
+    </div>
+    <div class="card a2">
+      <p id="c21"></p>
+      <p id="c22"></p>
+      <p id="c23"></p>
+      <p id="c24"></p>
+    </div>
+    <div class="card a3">
+      <p id="c31" ></p>
+      <p id="c32" ></p>
+      <p id="c33" ></p>
+      <p id="c34"></p>
+    </div>
+    <div class="card a4">
+      <p id="c41"></p>
+      <p id="c42"></p>
+      <p id="c43"></p>
+      <p id="c44"></p>
+    </div>
+    <div class="card a5">
+      <div class="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/> <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+    </div>
+  </div>
+  </center>
+  <script type="text/javascript">
+        var c = document.getElementById("c");
+        var ctx = c.getContext("2d");
+
+        c.height = window.innerHeight/1;
+        c.width = window.innerWidth;
+
+        //chinese characters - taken from the unicode charset
+        var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        //converting the string into an array of single characters
+        matrix = matrix.split("");
+
+        var font_size = 10;
+        var columns = c.width/font_size; //number of columns for the rain
+        //an array of drops - one per column
+        var drops = [];
+        //x below is the x coordinate
+        //1 = y co-ordinate of the drop(same for every drop initially)
+        for(var x = 0; x < columns; x++)
+            drops[x] = 1; 
+
+        //drawing the characters
+        function draw()
+        {
+            //Black BG for the canvas
+            //translucent BG to show trail
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+            ctx.fillRect(0, 0, c.width, c.height);
+
+            ctx.fillStyle = "#f4427d";//green text
+            ctx.font = font_size + "px arial";
+            //looping over drops
+            for(var i = 0; i < drops.length; i++)
+            {
+                //a random chinese character to print
+                var text = matrix[Math.floor(Math.random()*matrix.length)];
+                //x = i*font_size, y = value of drops[i]*font_size
+                ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+                //sending the drop back to the top randomly after it has crossed the screen
+                //adding a randomness to the reset to make the drops scattered on the Y axis
+                if(drops[i]*font_size > c.height && Math.random() > 0.975)
+                    drops[i] = 0;
+
+                //incrementing Y coordinate
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+
+  </script>
+  <!-- <script>const element = document.querySelector('.c11');
+    element.classList.add('p_text');</script> -->
+  <script type="text/javascript">
+    let url="http://localhost:5000/getDetails";
+    fetch(url).then(response =>
+    response.json())
+    .then( (result) =>
+    { console.log('success:', result);
+  document.getElementById("c11").innerHTML=result.read;
+  document.getElementById("c12").innerHTML=result.path;
+  document.getElementById("c21").innerHTML=result.encrypt1;
+  document.getElementById("c22").innerHTML=result.encrypt2;
+  document.getElementById("c23").innerHTML=result.encrypt3;
+  document.getElementById("c31").innerHTML=result.keys;
+  document.getElementById("c41").innerHTML=result.ipfs_path;
+  document.getElementById("c42").innerHTML=result.ipfs;
+
+
+    console.log(result.title);
+    })
+    .catch(error =>
+  console.log('error:', error));
+  </script>
+  <!-- <script>
+    var name = "<%= name %>";
+    console.log(name);
+    console.log("bye");
+    document.getElementById("c11").innerHTML="hello";
+    document.getElementById("c12").innerHTML=c12;
+    document.getElementById("c13").innerHTML=c13;
+  </script> -->
+    <script>
+      const one = document.querySelector(".one");
+      const two = document.querySelector(".two");
+      const three = document.querySelector(".three");
+      const four = document.querySelector(".four");
+      const five = document.querySelector(".five");
+
+      let active_state = 0;
+      
+      const card_1 = document.querySelector(".a1");
+      const card_2 = document.querySelector(".a2");
+      const card_3 = document.querySelector(".a3");
+      const card_4 = document.querySelector(".a4");
+      const card_5 = document.querySelector(".a5");
+
+        card_1.style.display = 'block';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+
+// display card1 function
+function display_card1() {
+  card_1.style.display = 'block';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+}
+// display card2 function
+function display_card2() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'block';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+      }
+// display card3 function
+function display_card3() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'none';
+        card_3.style.display = 'block';
+        card_4.style.display = 'none';
+        card_5.style.display = 'none';
+}
+// display card4 function
+function display_card4() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'block';
+        card_5.style.display = 'none';
+}
+// display card5 function
+function display_card5() {
+  card_1.style.display = 'none';
+        card_2.style.display = 'none';
+        card_3.style.display = 'none';
+        card_4.style.display = 'none';
+        card_5.style.display = 'block';
+}
+
+
+
+      one.onclick = function () {
+        one.classList.add("active");
+        two.classList.remove("active");
+        three.classList.remove("active");
+        four.classList.remove("active");
+        five.classList.remove("active");
+        active_state = 1;
+        display_card1();
+
+      };
+
+      two.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.remove("active");
+        four.classList.remove("active");
+        five.classList.remove("active");
+        active_state = 2;
+        display_card2();
+
+      };
+
+      three.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.remove("active");
+        five.classList.remove("active");
+        active_state = 3;
+        display_card3();
+      };
+
+      four.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        five.classList.remove("active");
+        active_state = 4;
+        display_card4();
+      };
+
+      five.onclick = function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        five.classList.add("active");
+        active_state = 5;
+        display_card5();
+      };
+
+      const prev = document.querySelector("#prev");
+      prev.onclick = function () {
+        switch (active_state) {
+          case 5:
+            five.classList.remove("active");
+            active_state = 4;
+            display_card4();
+            break;
+          case 4:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            active_state = 3;
+            display_card3();
+            break;
+          case 3:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            three.classList.remove("active");
+            active_state = 2;
+            display_card2();
+            break;
+          case 2:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            three.classList.remove("active");
+            two.classList.remove("active");
+            display_card1();
+            active_state = 1;
+            break;
+          case 1:
+            five.classList.remove("active");
+            four.classList.remove("active");
+            three.classList.remove("active");
+            two.classList.remove("active");
+            one.classList.remove("active");
+            display_card1();
+            active_state = 0;
+            break;
+        }
+      };
+
+      //   next button to increment active class
+      const next = document.querySelector("#next");
+      next.onclick = function () {
+        switch (active_state) {
+          case 0:
+            one.classList.add("active");
+            two.classList.remove("active");
+            three.classList.remove("active");
+            four.classList.remove("active");
+            five.classList.remove("active");
+            active_state = 1;
+            display_card1();
+            break;
+          case 1:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.remove("active");
+            four.classList.remove("active");
+            five.classList.remove("active");
+            active_state = 2;
+            display_card2();
+            break;
+          case 2:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.remove("active");
+            five.classList.remove("active");
+            active_state = 3;
+            display_card3();
+            break;
+          case 3:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.add("active");
+            five.classList.remove("active");
+            active_state = 4;
+            display_card4();
+            break;
+          case 4:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.add("active");
+            five.classList.add("active");
+            active_state = 5;
+            display_card5();
+            break;
+          case 5:
+            one.classList.add("active");
+            two.classList.add("active");
+            three.classList.add("active");
+            four.classList.add("active");
+            five.classList.add("active");
+            active_state = 0;
+            display_card1();
+            break;
+        }
+      };
+
+      // 5 seconds timer for each step
+      setTimeout(function () {
+        one.classList.add("active");
+        active_state = 1;
+        display_card1();
+      }, 2500);
+
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        active_state = 2;
+       display_card2();
+      }, 5000);
+
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        active_state = 3;
+        display_card3();
+      }, 7500);
+
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        active_state = 4;
+        display_card4();
+      }, 10000);
+
+      setTimeout(function () {
+        one.classList.add("active");
+        two.classList.add("active");
+        three.classList.add("active");
+        four.classList.add("active");
+        five.classList.add("active");
+        active_state = 5;
+        display_card5();
+      }, 12500);
+    </script>
+  </body>
+</html>
