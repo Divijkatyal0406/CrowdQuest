@@ -21,7 +21,7 @@
     },
     matic: {
       provider: () => new HDWalletProvider(process.env.MNEMONIC, 
-        `https://rpc-mumbai.maticvigil.com/v1/1d36b38d8b578851d36c86daa52df8c6d16256bd`),
+        `wss://rpc-mumbai.maticvigil.com/ws/v1/1d36b38d8b578851d36c86daa52df8c6d16256bd`),
         network_id: 80001,
         confirmations: 2,
         timeoutBlocks: 200,

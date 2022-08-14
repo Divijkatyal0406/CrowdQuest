@@ -146,3 +146,76 @@ hr{
 	margin-top: 10px;
   position: fixed;
 }
+
+
+
+
+
+
+
+
+
+
+
+video {
+	display: block;
+  }
+  
+  section {
+	opacity: 4;
+	transition: opacity 500ms ease-in-out;
+  }
+  .removed {
+	display: none;
+  }
+  
+  .invisible {
+	opacity: 0.2;
+  }
+  
+  .camView {
+	position: relative;
+	/* width: calc(100% - 20px); */
+	/* margin: 10px; */
+	cursor: pointer;
+	/* position: fixed; */
+	right: 0px; bottom: 0px;
+	/* width: 400px; */
+	/* height:250px; */
+	margin-top: 250px;
+	margin-left: 1020px;
+  }
+  
+  .camView p {
+	position: absolute;
+	padding: 5px;
+	background-color: rgba(255, 111, 0, 0.85);
+	color: #FFF;
+	border: 1px dashed rgba(255, 255, 255, 0.7);
+	/* z-index: 2; */
+	font-size: 12px;
+  }
+  
+  .highlighter {
+	/* background: rgba(0, 255, 0, 0.25); */
+	/* border: 1px dashed #fff; */
+	/* z-index: 8; */
+	position: fixed;
+	left: 0px; bottom: 0px;
+	width: 1px;
+	height:2px;
+	margin-top: 350px;
+	/* margin-left: 1050px; */
+  }
+  
+  
+  #webcam{
+    position: fixed;
+    left: 13px; bottom: 0px;
+    width: 250px;
+    height:190px;
+    /* background-color:lightblue; */
+    padding: 5px;
+  }
+
+  

@@ -4,7 +4,6 @@
   "description": "Crowdsourcing platform for teachers and students to add questions",
   "main": "Web3.js",
   "scripts": {
-    "build": "webpack --mode production",
     "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,15 +11,23 @@
     "@truffle/hdwallet-provider": "^2.0.13",
     "bn.js": "^5.2.1",
     "bootoast": "^1.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "fs": "0.0.1-security",
     "ganache-cli": "^6.12.2",
+    "ipfs-http-client": "^48.1.2",
     "ipfs-mini": "^1.1.5",
+    "jsdom": "^20.0.0",
     "lite-server": "^2.6.1",
     "moralis": "^1.11.0",
+    "path": "^0.12.7",
     "solc": "^0.4.24",
     "web3": "^0.20.0"
   },
   "author": "Divij Katyal",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/helper-compilation-targets": "^7.18.9"
+  }
 }
