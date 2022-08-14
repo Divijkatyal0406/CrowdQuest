@@ -579,7 +579,7 @@ App = {
                       </div>
                       <div class="reward">
                         <div class="upperReward">
-                          <img style="height: 2vw;" src="./public/assets/SVGs/ethereum.svg" alt="ETH">
+                          <img style="height: 2vw;" src="assets/ethereum.svg" alt="ETH">
                           <button onClick="App.sendReward(${count})">
                           Send 1 ETH
                           </button>
@@ -803,7 +803,7 @@ App = {
                       </div>
                       <div class="reward">
                         <div class="upperReward">
-                          <img style="height: 2vw;" src="./public/assets/SVGs/ethereum.svg" alt="ETH">
+                          <img style="height: 2vw;" src="assets/ethereum.svg" alt="ETH">
                           <button onClick="App.sendReward(${count})">
                           Send 1 ETH
                           </button>
