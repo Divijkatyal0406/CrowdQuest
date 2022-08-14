@@ -45,13 +45,15 @@
     ;
 }
 .subject{
-    position: absolute;
-    right: 3%;
-    font-size: larger;
+    text-align: right;
+    padding-top: 15px;
+    font-size:medium;
+    position: relative;
+    bottom: 10px;
     
 }
 .question{
-    width: 80%;
+    width: 100%;
 }
 
 .questionCard{
@@ -60,8 +62,6 @@
     border-radius: 10px;
     box-shadow: 4px 4px 4px 4px #dddddd;
 }
-
-
 
 @media only screen and (max-width: 600px) {
     .subject{
@@ -91,4 +91,8 @@
         width: 380px;
     }
     
+}
+.speak-btn{
+    border: none;
+    border-radius: 50px;
 }
