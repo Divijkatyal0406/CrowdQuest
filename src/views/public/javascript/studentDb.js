@@ -29,3 +29,10 @@ document.querySelector(".sub4").addEventListener("click", function(){
     document.querySelector(".sub1").classList.remove("active");
     document.querySelector(".dashboard-btn").classList.remove("active");
 });
+
+document.querySelector(".allQues").addEventListener("click", function(){
+    document.querySelector(".dashboard-btn").classList.add("active");
+    document.querySelector(".sub2").classList.remove("active");
+    document.querySelector(".sub3").classList.remove("active");
+    document.querySelector(".sub1").classList.remove("active");
+});

@@ -46,3 +46,25 @@ function populate(subjectId, topicId){
     }
     return(res.join(' '))
 } 
+
+// speech to text
+document.getElementById("click_to_convert").addEventListener('click', function(){
+   var speech = true;
+   window.SpeechRecognition = window.webkitSpeechRecognition;
+   const recognition = new SpeechRecognition();
+   recognition.interimResults = true;
+
+   recognition.addEventListener('result', e=>{
+    const transcript = Array.from(e.results)
+    .map(result => result[0])
+    .map(result => result.transcript)
+
+    document.getElementById("convert_text").innerText = transcript;
+
+
+   })
+
+   if(speech == true){
+    recognition.start();
+   }
+})
