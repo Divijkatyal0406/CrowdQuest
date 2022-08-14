@@ -20,6 +20,10 @@ contract CrowdSource {
 
      mapping(uint256 => string) public contributions;
 
+
+    //report count id(uint)=>uint(count)
+    mapping(uint256 => uint) public reportClicks;
+
     event SubmitQuestion(
         string subject,
         string topic,
@@ -165,5 +169,16 @@ contract CrowdSource {
     function addAContribution(uint _id) public{
         contributionCount++;
         contributions[contributionCount]=toAsciiString(owner[_id]);
+    }
+
+
+    function report(uint _id) public{
+        reportClicks[_id]++;
+        if(reportClicks[_id]>1){
+            Problem memory p=problems[_id];
+            p.approve=false;
+            p.isApproved=false;
+            problems[_id]=p;
+        }
     }
 }

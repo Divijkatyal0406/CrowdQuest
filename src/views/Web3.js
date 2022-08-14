@@ -588,6 +588,7 @@ App = {
                       </div class="lowerReward">
                       <p>Pool ${poolCount}:</p>
                       </div>
+                      <button onClick="App.reportQuestion(${displayProblemCount1})">report</button>
                   </div>
               </div>
           </div>`;
@@ -967,6 +968,23 @@ App = {
     // console.log(x.length);
     // return x;
   },
+
+
+  reportQuestion:function(_id){
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdSourceInstance2 = instance;
+        const result=crowdSourceInstance2.report(_id,{from:App.account});
+        return result;
+        // x.push(5);
+      }).then(function(result) {
+        window.location="http://localhost:3000/studentDashboard.html"
+        console.log(result);
+      })
+  },
+
+
+
 };
 
 $(function () {
@@ -978,5 +996,6 @@ $(function () {
     App.getAllSub();
     App.validateQuestion();
     App.getAllContributions();
+    App.reportQuestion();
   });
 });
