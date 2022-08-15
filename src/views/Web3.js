@@ -530,6 +530,13 @@ App = {
               problemCard1.innerHTML = quesData1;
             } else if (approve == true && isApprove == true) {
               displayProblemCount1++;
+              
+
+              var StrProblemCount = displayProblemCount1.toString();
+              var UniqueClassName = "p" + StrProblemCount;
+
+
+
               let ques = `<div class="container questionCard">
               <div class="unitQuestion">
                   <div class="stud_question">
@@ -537,9 +544,10 @@ App = {
                           Subject : ${subject} | ${topic}
                       </div>
                       <div class="question">
-                      Ques ${displayProblemCount1}.  ${question}
-                      <br>
-                      <img class="ques-img" src="${imgHash}" alt="">
+                        
+                        Ques ${displayProblemCount1}. <span class=${UniqueClassName}> ${question} </span> <button onclick="readQuest(${displayProblemCount1}); return false;" id="speak"><i class="fa fa-file-audio-o" aria-hidden="true"></i></button>
+                        <br>
+                        <img class="ques-img" src="${imgHash}" alt="">
                       </div>
                       <div class="options">
                           <button class="option">
@@ -755,6 +763,11 @@ App = {
               currSubject == subject
             ) {
               displayProblemCount1++;
+
+              var StrProblemCount = displayProblemCount1.toString();
+              var UniqueClassName = "p" + StrProblemCount;
+
+
               let ques = `<div class="container questionCard">
               <div class="unitQuestion">
                   <div class="stud_question">
@@ -762,7 +775,7 @@ App = {
                           Subject : ${subject} | ${topic}
                       </div>
                       <div class="question">
-                      Ques ${displayProblemCount1}.  ${question}
+                      Ques ${displayProblemCount1}.  <span class=${UniqueClassName}> ${question} </span> <button onclick="readQuest(${displayProblemCount1});return false;" id="speak"><i class="fa fa-file-audio-o" aria-hidden="true"></i></button>
                       <br>
                       <img class="ques-img" src="${imgHash}" alt="">
                       </div>
