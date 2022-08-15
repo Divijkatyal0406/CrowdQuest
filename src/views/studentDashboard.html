@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <a>
-                            <h5 class="m-b-10">Crowd Quest</h5>
+                            <h5 data-localize="title" class="m-b-10">Crowd Quest</h5>
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -187,27 +187,27 @@
                           </li>
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <span>Username</span>
+                                    <span data-localize="username">Username</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
                                     <li class="waves-effect waves-light">
-                                        <a href="#!">
+                                        <a data-localize="Settings" href="#!">
                                             <i class="ti-settings"></i> Settings
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a>
+                                        <a data-localize="Profile">
                                             <i class="ti-user"></i> Profile
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a>
+                                        <a data-localize="My Messages">
                                             <i class="ti-email"></i> My Messages
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a href="index.html">
+                                        <a data-localize="logout" href="index.html">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
                                     </li>
@@ -226,15 +226,15 @@
                             <div class="main-menu-background">
                                 <div class="main-menu-header">
                                     <div class="user-details">
-                                        <span id="more-details">Username<i class="fa fa-caret-down"></i></span>
+                                        <span data-localize="username1" id="more-details">Username<i class="fa fa-caret-down"></i></span>
                                     </div>
                                 </div>
                                 <div class="main-menu-content">
                                     <ul>
                                         <li class="more-details">
-                                            <a><i class="ti-user"></i>View Profile</a>
-                                            <a href="#!"><i class="ti-settings"></i>Settings</a>
-                                            <a href="index.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                                            <a data-localize="View Profile"><i class="ti-user"></i>View Profile</a>
+                                            <a data-localize="Settings" href="#!"><i class="ti-settings"></i>Settings</a>
+                                            <a data-localize="logout" href="index.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -244,37 +244,37 @@
                                     <div class="form-group form-primary">
                                         <input type="text" name="footer-email" class="form-control" required="">
                                         <span class="form-bar"></span>
-                                        <label class="float-label"><i class="fa fa-search m-r-10"></i>Search</label>
+                                        <label data-localize="search" class="float-label"><i class="fa fa-search m-r-10"></i>Search</label>
                                     </div>
                                 </form>
                             </div>
-                            <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Students</div>
+                            <div data-localize="For Student" class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Students</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active dashboard-btn">
                                     <a href="#" onclick="App.getAllQuestionsFromChain(); return false;" class="waves-effect waves-dark allQues">
                                         <span class="pcoded-micon"><img src="assets/home.svg"></img><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                        <span data-localize="Dashboard" class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="addQuestion.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img src="assets/grid.svg"></img><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Submit Question</span>
+                                        <span data-localize="SubmitQuestion" class="pcoded-mtext" data-i18n="nav.dash.main">Submit Question</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img src="assets/discussion.svg"></img><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Discussions</span>
+                                        <span data-localize="discussions" class="pcoded-mtext" data-i18n="nav.dash.main">Discussions</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="index.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img src="assets/log-out.svg" /></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>
+                                        <span data-localize="logout" class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -288,19 +288,19 @@
                                 <div class="row align-items-center">
                                     <div class="row-lg-6 col-md-6">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10 text-Dashboard">Dashboard</h5>
-                                            <p class="m-b-0 text-Dashboard">Welcome to Crowd Quest</p>
+                                            <h5 data-localize="Dashboard1" class="m-b-10 text-Dashboard">Dashboard</h5>
+                                            <p data-localize="greet" class="m-b-0 text-Dashboard">Welcome to Crowd Quest</p>
                                         </div>
                                     </div>
                                     <div class="row-lg-6 container subject-btn">
                                         <form action="" method="post">
-                                            <button name="phy" type="button" onclick="App.getAllSub('Physics'); return false;"
+                                            <button data-localize="Physics" name="phy" type="button" onclick="App.getAllSub('Physics'); return false;"
                                                 class="btn btn-outline-primary sub1">Physics</button>
-                                            <button name="chem" type="button" onclick="App.getAllSub('Chemistry'); return false;"
+                                            <button data-localize="Chemistry" name="chem" type="button" onclick="App.getAllSub('Chemistry'); return false;"
                                                 class="btn btn-outline-primary sub2">Chemistry</button>
-                                            <button name="maths" type="button" onclick="App.getAllSub('Mathematics'); return false;"
+                                            <button data-localize="Mathematics" name="maths" type="button" onclick="App.getAllSub('Mathematics'); return false;"
                                                 class="btn btn-outline-primary sub3">Mathematics</button>
-                                            <button name="bio" type="button" onclick="App.getAllSub('Biology'); return false;"
+                                            <button data-localize="Biology" name="bio" type="button" onclick="App.getAllSub('Biology'); return false;"
                                                 class="btn btn-outline-primary sub4">Biology</button>
                                         </form>
                                     </div>
@@ -384,6 +384,8 @@
     <script src="../public/javascript/pcoded.min.js"></script>
     <script src="../public/javascript/vertical-layout.min.js"></script>
     <script type="text/javascript" src="../public/javascript/dashBoardscript.js"></script>
+
+    <script src="utils/translate.js"></script>
 
     
 

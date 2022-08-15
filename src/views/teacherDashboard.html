@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <a>
-                            <h5 class="m-b-10">Crowd Quest</h5>
+                            <h5 data-localize="title" class="m-b-10">Crowd Quest</h5>
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -143,27 +143,27 @@
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <span id="username_teacher">Username</span>
+                                    <span data-localize="username" id="username_teacher">Username</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
                                     <li class="waves-effect waves-light">
-                                        <a href="#!">
+                                        <a data-localize="Settings" href="#!">
                                             <i class="ti-settings"></i> Settings
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a>
+                                        <a data-localize="Profile">
                                             <i class="ti-user"></i> Profile
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a>
+                                        <a data-localize="My Messages">
                                             <i class="ti-email"></i> My Messages
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a href="index.html">
+                                        <a data-localize="logout" href="index.html">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
                                     </li>
@@ -182,16 +182,16 @@
                             <div class="main-menu-background">
                                 <div class="main-menu-header">
                                     <div class="user-details">
-                                        <span id="more-details">Username<i class="fa fa-caret-down"></i></span>
+                                        <span data-localize="username1" id="more-details">Username<i class="fa fa-caret-down"></i></span>
                                     </div>
                                 </div>
 
                                 <div class="main-menu-content">
                                     <ul>
                                         <li class="more-details">
-                                            <a><i class="ti-user"></i>View Profile</a>
-                                            <a href="#!"><i class="ti-settings"></i>Settings</a>
-                                            <a href="index.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                                            <a data-localize="View Profile"><i class="ti-user"></i>View Profile</a>
+                                            <a data-localize="Settings" href="#!"><i class="ti-settings"></i>Settings</a>
+                                            <a data-localize="logout" href="index.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -201,17 +201,17 @@
                                     <div class="form-group form-primary">
                                         <input type="text" name="footer-email" class="form-control" required="">
                                         <span class="form-bar"></span>
-                                        <label class="float-label"><i class="fa fa-search m-r-10"></i>Search</label>
+                                        <label  class="float-label"><i class="fa fa-search m-r-10"></i>Search</label>
                                     </div>
                                 </form>
                             </div>
-                            <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Teacher</div>
+                            <div data-localize="For Teacher" class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Teacher</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
                                     <a class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img
                                                 src="assets/home.svg"></img><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                        <span data-localize="Dashboard" class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -219,7 +219,7 @@
                                     <a href="addQuestion.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img
                                                 src="assets/grid.svg"></img><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Create Question</span>
+                                        <span data-localize="Create Question" class="pcoded-mtext" data-i18n="nav.dash.main">Create Question</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -227,7 +227,7 @@
                                     <a href="downloadQuestion.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img class="ti-home"
                                                 src="assets/paperclip.svg"></img><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main"> Generate Question
+                                        <span data-localize="Generate Question Paper" class="pcoded-mtext" data-i18n="nav.dash.main"> Generate Question
                                             Paper</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
@@ -235,18 +235,18 @@
                                 <li class=" " >
                                     <a class="waves-effect waves-dark">
                                         
-                                        <button onclick="App.showGraph('Mathematics')" type="button" class="btn btn-primary" style="width:12em; border-radius:500px; height: 3em;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Analytics</button> 
+                                        <button data-localize="Analytics" onclick="App.showGraph('Mathematics')" type="button" class="btn btn-primary" style="width:12em; border-radius:500px; height: 3em;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Analytics</button> 
                                         
                                     </a>
                                 </li>
                             </ul>
-                            <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
+                            <div data-localize="Expert" class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li>
                                     <a href="fileUpload.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img class="ti-layers"
                                                 src="assets/check-circle.svg"></img><b>FC</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Distribute Questions</span>
+                                        <span data-localize="Distribute Questions" class="pcoded-mtext" data-i18n="nav.form-components.main">Distribute Questions</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -256,7 +256,7 @@
                                     <a href="index.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img
                                                 src="assets/log-out.svg" /></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>
+                                        <span data-localize="logout" class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -270,9 +270,9 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-8">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10 text-Dashboard">Dashboard
+                                            <h5 data-localize="Dashboard1" class="m-b-10 text-Dashboard">Dashboard
                                                 </h5>
-                                            <p class="m-b-0 text-Dashboard">Welcome to Crowd Quest</p>
+                                            <p data-localize="greet" class="m-b-0 text-Dashboard">Welcome to Crowd Quest</p>
                                         </div>
                                     </div>
                                 </div>
@@ -440,6 +440,8 @@
     <script type="text/javascript" src="../public/javascript/dashBoardscript.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.0/dist/chart.min.js"></script>
+
+    <script src="utils/translate.js"></script>
 
 <script>
     var myModal = document.getElementById('myModal')
