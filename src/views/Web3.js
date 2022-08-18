@@ -156,7 +156,7 @@ App = {
     subject();
     chapter();
     question();
-    if(addForFirstTime){
+    if (addForFirstTime) {
       correctOption();
     }
     options();
@@ -468,10 +468,10 @@ App = {
           <div class="unitQuestion">
               <div class="stud_question">
                 <div class="subject">
-                   Subject : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${subject}</span> | <span id="topic" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${topic}</span>
+                   Subject : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard editSubject${count}" contenteditable="true">${subject}</span> | <span id="topic" spellcheck="false" class="contenteditableTeacherDashboard editTopic${count}" contenteditable="true">${topic}</span>
                 </div>
                   <div class="question">
-                    Ques ${displayProblemCount}.<span spellcheck="false" class="addQuestionText contenteditableTeacherDashboard" contenteditable="true">${question}</span>  
+                    Ques ${displayProblemCount}.<span spellcheck="false" class="addQuestionText contenteditableTeacherDashboard editQuestion${count}" contenteditable="true">${question}</span>  
                     <br>
                     <img class="ques-img" src="${imgHash}" alt="">
                   </div>
@@ -480,36 +480,36 @@ App = {
                           <div class="option_text">A.</div>
                           &nbsp;
                           <div class="option_text">
-                          <span id="option1" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
-                            options[0]
-                          }</span>
+                          <span id="option1" spellcheck="false" class="contenteditableTeacherDashboard editOptionsOne${count}" contenteditable="true">${
+                options[0]
+              }</span>
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">B.</div>
                           &nbsp;
                           <div class="option_text">
-                          <span id="option2" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
-                            options[1]
-                          }</span>
+                          <span id="option2" spellcheck="false" class="contenteditableTeacherDashboard editOptionsTwo${count}" contenteditable="true">${
+                options[1]
+              }</span>
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">C.</div>
                           &nbsp;
                           <div class="option_text">
-                          <span id="option3" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
-                            options[2]
-                          }</span>
+                          <span id="option3" spellcheck="false" class="contenteditableTeacherDashboard editOptionsThree${count}" contenteditable="true">${
+                options[2]
+              }</span>
                           </div>
                       </button>
                       <button class="option">
                           <div class="option_text">D.</div>
                           &nbsp;
                           <div class="option_text">
-                          <span id="option4" spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true">${
-                            options[3]
-                          }</span>
+                          <span id="option4" spellcheck="false" class="contenteditableTeacherDashboard editOptionsFour${count}" contenteditable="true">${
+                options[3]
+              }</span>
                           </div>
                       </button>
                   </div>
@@ -517,11 +517,11 @@ App = {
           </div>
           <div class="question-info">
               <div class="question-standard">Correct Answer :
-              <span spellcheck="false" class="contenteditableTeacherDashboard" contenteditable="true" placeholder="Enter the correct Option(A/B/C/D)">${
+              <span spellcheck="false" class="contenteditableTeacherDashboard editAnswer${count}" contenteditable="true" placeholder="Enter the correct Option(A/B/C/D)">${
                 options[ans - 1]
               }</span>
                </div>
-              <button onClick="" type="button" class="btn btn-info approve-btn">Edit and Accept</button>
+              <button onClick="App.editAndAccept(${count})" type="button" class="btn btn-info approve-btn">Edit and Accept</button>
               <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
               <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
           </div>
@@ -530,12 +530,9 @@ App = {
               problemCard1.innerHTML = quesData1;
             } else if (approve == true && isApprove == true) {
               displayProblemCount1++;
-              
 
               var StrProblemCount = displayProblemCount1.toString();
               var UniqueClassName = "p" + StrProblemCount;
-
-
 
               let ques = `<div class="container questionCard">
               <div class="unitQuestion">
@@ -610,9 +607,111 @@ App = {
         console.log(e);
       });
   },
-  // editAndAccept:function(){
-  //   console.log(Problem);
-  // },
+  editAndAccept: function (count) {
+    const Problem = {
+      subject: "",
+      topic: "",
+      question: "",
+      options: "",
+      imgUrl: "",
+      ans: 0,
+      approve: false,
+      isApproved: false,
+    };
+    function getNewSubject() {
+      Problem.subject = document
+        .querySelector(`.editSubject${count}`)
+        .innerHTML.toString();
+    }
+    function getNewTopic() {
+      Problem.topic = document
+        .querySelector(`.editTopic${count}`)
+        .innerHTML.toString();
+    }
+    function getNewQuestion() {
+      Problem.question = document
+        .querySelector(`.editQuestion${count}`)
+        .innerHTML.toString();
+    }
+    function getNewOptions() {
+      let options = document
+        .querySelector(`.editOptionsOne${count}`)
+        .innerHTML.toString();
+      options +=
+        "$" +
+        document.querySelector(`.editOptionsTwo${count}`).innerHTML.toString();
+      options +=
+        "$" +
+        document
+          .querySelector(`.editOptionsThree${count}`)
+          .innerHTML.toString();
+      options +=
+        "$" +
+        document.querySelector(`.editOptionsFour${count}`).innerHTML.toString();
+      Problem.options = options;
+    }
+    function getNewAns() {
+      let ansText = document
+        .querySelector(`.editAnswer${count}`)
+        .innerHTML.toString();
+      let options = App.getOptions(Problem.options);
+      let foundAns = false;
+      for (let i = 0; i < 4; ++i) {
+        if (ansText === options[i]) {
+          foundAns = true;
+          Problem.ans = i + 1;
+          break;
+        }
+      }
+      if (foundAns == false) {
+        alert("Options didn't match with answer, Please check!!!");
+        Problem.ans = -1;
+        return;
+      }
+    }
+    getNewSubject();
+    getNewTopic();
+    getNewQuestion();
+    getNewOptions();
+    getNewAns();
+    if (Problem.ans == -1) return;
+    App.contracts.CrowdSource.deployed()
+      .then(function (instance) {
+        crowdsourceInstance = instance;
+        crowdsourceInstance
+          .problems(count)
+          .then(function (p) {
+            Problem.imgUrl = p[4];
+            return Problem;
+          })
+          .then(function (Problem) {
+            console.log("Edited Problems are:", Problem);
+            const result = crowdsourceInstance.questionAcceptReject(
+              count,
+              Problem.subject,
+              Problem.topic,
+              Problem.question,
+              Problem.options,
+              Problem.imgUrl,
+              Problem.ans,
+              true,
+              true,
+              { from: App.account }
+            );
+            console.log("result", result);
+            return result;
+          })
+          .then(function (result) {
+            window.location = "http://localhost:3000/teacherDashboard.html";
+          })
+          .catch(function (err) {
+            console.error(err);
+          });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
   sendReward: function (index) {
     App.init();
     // console.log(index);
@@ -625,9 +724,16 @@ App = {
         crowdsourceInstance
           .contribute(index, { from: App.account, value: contribution_amount })
           .then(function () {
-            App.contracts.CrowdSource.deployed().then(function (instance) {
-              instance.addAContribution(index, { from: App.account });
-            });
+            App.contracts.CrowdSource.deployed()
+              .then(function (instance) {
+                let result = instance.addAContribution(index, {
+                  from: App.account,
+                });
+                return result;
+              })
+              .then(function (result) {
+                window.location = "http://localhost:3000/studentDashboard.html";
+              });
 
             // x=App.getAllContributions();
             // console.log(x);
@@ -767,7 +873,6 @@ App = {
               var StrProblemCount = displayProblemCount1.toString();
               var UniqueClassName = "p" + StrProblemCount;
 
-
               let ques = `<div class="container questionCard">
               <div class="unitQuestion">
                   <div class="stud_question">
@@ -833,7 +938,7 @@ App = {
               quesData += ques;
               problemCard.innerHTML = quesData;
             }
-          })
+          });
         }
       })
       .catch((e) => {
@@ -957,7 +1062,7 @@ App = {
         let cnt = 0;
         for (let i = 1; i <= contributionCount && cnt++ < 5; i++) {
           crowdsourceInstance.contributions(i).then(function (p) {
-            console.log("Logging p",p);
+            console.log("Logging p", p);
             // x.push('d');
             // for (var i=0; i<x.length; i++) {
             var li = document.createElement("li");
@@ -982,22 +1087,19 @@ App = {
     // return x;
   },
 
-
-  reportQuestion:function(_id){
+  reportQuestion: function (_id) {
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
         crowdSourceInstance2 = instance;
-        const result=crowdSourceInstance2.report(_id,{from:App.account});
+        const result = crowdSourceInstance2.report(_id, { from: App.account });
         return result;
         // x.push(5);
-      }).then(function(result) {
-        window.location="http://localhost:3000/studentDashboard.html"
-        console.log(result);
       })
+      .then(function (result) {
+        window.location = "http://localhost:3000/studentDashboard.html";
+        console.log(result);
+      });
   },
-
-
-
 };
 
 $(function () {
