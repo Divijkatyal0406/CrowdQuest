@@ -10,6 +10,7 @@
   <script src="https://unpkg.com/moralis/dist/moralis.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="public/css/addQuestion.css">
   <link
   rel="stylesheet"
@@ -54,7 +55,7 @@
 
               <!-- Question -->
               
-              <label data-localize="typequestion" for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type/speak the question: <a href="#"><i id="click_to_convert" class="fa fa-1x fa-microphone" aria-hidden="true"></i></a></label>
+              <label data-localize="typequestion" for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type/speak the question: </label><a href="#"> <i id="click_to_convert" class="fa fa-1x fa-microphone" aria-hidden="true"></i></a>
               <textarea id="convert_text" onchange="App.validateQuestion(); return false;" name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50" minlength="5" maxlength="1000" required></textarea>
 
               

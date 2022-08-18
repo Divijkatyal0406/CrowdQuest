@@ -195,7 +195,8 @@ App = {
         //   animationDuration: 300,
         //   dismissible: true,
         // });
-        window.alert("Question added successfully");
+        // window.alert("Question added successfully");
+        swal("","Question added successfully","success");
         window.location = "http://localhost:3000/addQuestion.html";
         // if (
         //   window.history.state.prevUrl ==
@@ -265,7 +266,8 @@ App = {
               if (count >= similarityLimit && count != 0) {
                 document.querySelector(".addQuestionText").style.borderColor =
                   "red";
-                alert("Similar type of question Already exists!!");
+    
+                swal("", "Similar type of question Already exists!!", "error");
                 break loop2;
               }
             }
@@ -664,7 +666,7 @@ App = {
         }
       }
       if (foundAns == false) {
-        alert("Options didn't match with answer, Please check!!!");
+        swal("","Options didn't match with answer, Please check!!!", "info");
         Problem.ans = -1;
         return;
       }
