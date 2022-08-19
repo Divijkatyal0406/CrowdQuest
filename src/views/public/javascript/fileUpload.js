@@ -1,3 +1,6 @@
+
+import papers from '../javascript/paper_data.js';
+
 const form = document.querySelector("form"),
 fileInput = document.querySelector(".file-input"),
 progressArea = document.querySelector(".progress-area"),
@@ -12,6 +15,23 @@ form.addEventListener("click", () =>{
 fileInput.onchange = ({target})=>{
   let file = target.files[0];
   if(file){
+
+	let check=false;
+	papers.forEach(element => {
+		if(element.paperName==file.name){
+			check=true;
+		}
+	});
+	if(check==false){
+		window.alert("File not same as downloaded");
+		window.location="http://localhost:3000/fileUpload.html";
+		return false;
+	}
+
+
+
+
+
     let fileName = file.name;
     if(fileName.length >= 12){
       let splitName = fileName.split('.');

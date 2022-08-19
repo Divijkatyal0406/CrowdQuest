@@ -418,16 +418,3 @@ transform: translateY(-2px);
 box-shadow: #8a8a8a 0 3px 7px inset;
 transform: translateY(2px);
 }
-
-.mic{}
-
-.mic:active{
-  color: red;
-  animation: mic 5s ;
-}
-
-.mic:focus{
-  color: red;
-}
-
-/* make the mic look red for 5 sec */
