@@ -11,6 +11,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"
     />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -71,35 +72,35 @@
           <span>Select Subject</span>
           <div class="mainselection">
             <select name="State" id="input7" class="subject" required>
-              <option></option>
+              <option>Choose subject</option>
               <option value="Physics">Physics</option>
               <option value="Biology">Biology</option>
               <option value="Chemistry">Chemistry</option>
               <option value="Mathematics">Mathematics</option>
             </select>
           </div>
+          <br>
+          <button data-toggle="modal" data-target="#exampleModalCenter" onclick="viewModal();"> Select Chapters </button>
         </li>
         <li>
           <i class="fas fa-question-circle"></i>
           <span>Number of Questions</span>
           <div class="mainselection">
-            <input type="number" class="questionCount" required />
+            <input type="number" placeholder="Total questions.." class="questionCount" onchange="setWeightage(); return false;" min="10" required />
           </div>
         </li>
         <li>
           <i class="fa fa-pie-chart" aria-hidden="true"></i>
           <span>Chapter Weightage</span>
           <div class="mainselection">
-            <input type="number" class="weightage" required />
+            <input type="number" placeholder="Enter here.." class="weightage" min="1" onchange="setWeightage(); return false;" required />
           </div>
         </li>
         <button
           type="submit"
-          data-toggle="modal"
-          data-target="#exampleModalCenter"
           class="btn btn-outline-light"
           style="font-weight: 500"
-          onclick="viewModal();"
+          onclick="App.downloadQuestions();"
         >
           Generate Paper
         </button>
@@ -162,9 +163,10 @@
             </div>
             <div class="modal-footer">
               <button
-                onclick="App.downloadQuestions();"
+                
                 type="button"
                 class="btn btn-primary"
+                data-dismiss="modal"
               >
                 Save changes
               </button>
@@ -174,7 +176,7 @@
       </div>
       <div class="question-paper">
         <center>
-          <p contenteditable="true" id="date">Date: 24/07/2022</p>
+          <p contenteditable="true" id="date">Date: <span id="inputDate"></span></p>
           <img
             id="cbse-logo"
             style="justify-content: center; margin: 12px;"

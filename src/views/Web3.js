@@ -196,7 +196,7 @@ App = {
         //   dismissible: true,
         // });
         // window.alert("Question added successfully");
-        swal("","Question added successfully","success");
+        swal("", "Question added successfully", "success");
         window.location = "http://localhost:3000/addQuestion.html";
         // if (
         //   window.history.state.prevUrl ==
@@ -266,7 +266,7 @@ App = {
               if (count >= similarityLimit && count != 0) {
                 document.querySelector(".addQuestionText").style.borderColor =
                   "red";
-    
+
                 swal("", "Similar type of question Already exists!!", "error");
                 break loop2;
               }
@@ -278,78 +278,6 @@ App = {
 
   downloadQuestions: function () {
     let problemCard = document.querySelector(".question-area");
-
-    var optionArrayMaths = [
-      "Relations and Functions",
-      "Inverse Trigonometric Functions",
-      "Matrices",
-      "Determinants",
-      "Continuity and Differentiability",
-      "Application of Derivatives",
-      "Integrals",
-      "Application of Integrals",
-      "Differential Equations",
-      "Vector Algebra",
-      "Three Dimensional Geometry",
-      "Linear Programming",
-      "Probability",
-    ];
-    var mathsVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var optionArrayPhy = [
-      "Electric Charges and Fields",
-      "Electrostatic Potential and Capacitance",
-      "Current Electricity",
-      "Moving Charges and Magnetism",
-      "Magnetism and Matter",
-      "Electromagnetic Induction",
-      "Alternating Current",
-      "Electromagnetic Waves",
-      "Ray Optics and Optical Instruments",
-      "Wave Optics",
-      "Dual Nature of Radiation and Matter",
-      "Atoms",
-      "Nuclei",
-      "Semiconductor Electronics",
-    ];
-    var phyVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var optionArrayChem = [
-      "The Solid State",
-      "Solutions",
-      "Electrochemistry",
-      "Chemical Kinetics",
-      "Surface Chemistry",
-      "General Principles and Processes of Isolation of Elements",
-      "The p-Block Elements",
-      "The d- and f- Block Elements",
-      "Coordination Compounds",
-      "Haloalkanes and Haloarenes",
-      "Alcohols, Phenols and Ethers",
-      "Aldehydes, Ketones and Carboxylic Acids",
-      "Amines",
-      "Biomolecules",
-      "Polymers",
-      "Chemistry in Everyday Life",
-    ];
-    var chemVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    var optionArrayBio = [
-      "Reproduction in Organisms",
-      "Sexual Reproduction in Flowering Plants",
-      "Human Reproduction",
-      "Reproductive Health",
-      "Principle of Inheritance and Variation",
-      "Molecular Basis of Inheritance",
-      "Evolution",
-      "Human Health and Diseases",
-      "Strategies for Enhancement in Food Production",
-      "Microbes in Human Welfare",
-      "Biotechnology: Principles and Processes",
-      "Biotechnology and its Applications",
-      "Organisms and Populations",
-      "Ecosystem",
-      "Biodiversity and Conservation",
-      "Environmental Issues",
-    ];
-    var bioVisited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     //Get checkbox inputs
     var excludedTopics = [];
@@ -368,50 +296,261 @@ App = {
     var weightage = document.querySelector(".weightage").value;
 
     console.log(date);
+    document.getElementById("inputDate").innerText = date;
+
     console.log(subject);
     console.log(totalQues);
     console.log(weightage);
     console.log(excludedTopics);
+
+    if (subject == "Physics") {
+      var chapterArray = [
+        "Electric Charges and Fields",
+        "Electrostatic Potential and Capacitance",
+        "Current Electricity",
+        "Moving Charges and Magnetism",
+        "Magnetism and Matter",
+        "Electromagnetic Induction",
+        "Alternating Current",
+        "Electromagnetic Waves",
+        "Ray Optics and Optical Instruments",
+        "Wave Optics",
+        "Dual Nature of Radiation and Matter",
+        "Atoms",
+        "Nuclei",
+        "Semiconductor Electronics",
+      ];
+    } else if (subject == "Biology") {
+      var chapterArray = [
+        "Reproduction in Organisms",
+        "Sexual Reproduction in Flowering Plants",
+        "Human Reproduction",
+        "Reproductive Health",
+        "Principle of Inheritance and Variation",
+        "Molecular Basis of Inheritance",
+        "Evolution",
+        "Human Health and Diseases",
+        "Strategies for Enhancement in Food Production",
+        "Microbes in Human Welfare",
+        "Biotechnology: Principles and Processes",
+        "Biotechnology and its Applications",
+        "Organisms and Populations",
+        "Ecosystem",
+        "Biodiversity and Conservation",
+        "Environmental Issues",
+      ];
+    } else if (subject == "Mathematics") {
+      var chapterArray = [
+        "Relations and Functions",
+        "Inverse Trigonometric Functions",
+        "Matrices",
+        "Determinants",
+        "Continuity and Differentiability",
+        "Application of Derivatives",
+        "Integrals",
+        "Application of Integrals",
+        "Differential Equations",
+        "Vector Algebra",
+        "Three Dimensional Geometry",
+        "Linear Programming",
+        "Probability",
+      ];
+    } else {
+      var chapterArray = [
+        "The Solid State",
+        "Solutions",
+        "Electrochemistry",
+        "Chemical Kinetics",
+        "Surface Chemistry",
+        "General Principles and Processes of Isolation of Elements",
+        "The p-Block Elements",
+        "The d- and f- Block Elements",
+        "Coordination Compounds",
+        "Haloalkanes and Haloarenes",
+        "Alcohols, Phenols and Ethers",
+        "Aldehydes, Ketones and Carboxylic Acids",
+        "Amines",
+        "Biomolecules",
+        "Polymers",
+        "Chemistry in Everyday Life",
+      ];
+    }
+
+    // // Creating visited array
+    // var visitedArr = [];
+    // App.contracts.CrowdSource.deployed()
+    //   .then(function (instance) {
+    //     crowdsourceInstance = instance;
+    //     return crowdsourceInstance.problemCount();
+    //   })
+    //   .then(function (problemCount) {
+
+    //         for (var i = 1; i <= problemCount; i++) {
+    //           crowdsourceInstance.problems(i).then(function (p) {
+    //             if (
+    //               p[6] == true &&
+    //               p[7] == true &&
+    //               p[0] == subject
+    //             ) {
+    //               console.log("Only selected subject question");
+    //               console.log(p);
+    //               visitedArr.push(1);
+    //             }
+    //           });
+    //         }
+
+    //         console.log(visitedArr);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
+
+    // Build question paper using inputs
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
         crowdsourceInstance = instance;
         return crowdsourceInstance.problemCount();
       })
       .then(function (problemCount) {
-        let quesData = "";
-        for (var j = 0; j < totalQues; j++) {
-          for (var i = 1; i <= problemCount; i++) {
-            crowdsourceInstance.problems(i).then(function (p) {
-              console.log(p);
-              if (p[6] == true && p[7] == true) {
-                console.log(p);
+        const visitedArr = new Array(problemCount);
 
-                let ques = `<br />
-                <div class="card">
-                  <div style="background-color: rgb(221, 221, 221)" class="card-header">
-                    <p class="ques">
-                      Ques1. This will be the format of each question (question here) :
-                    </p>
-                  </div>
-                  <div class="card-body">
-                    <table>
-                      <tr>
-                        <td>A. Option one here</td>
-                        <td>B. Option two here</td>
-                      </tr>
-                      <tr>
-                        <td class="right-opt">C. Option three here</td>
-                        <td class="right-opt">D. Option four here</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>`;
-                quesData += ques;
-                problemCard.innerHTML = quesData;
+        for (var k = 0; k <= problemCount; k++) {
+          visitedArr[k] = 0;
+        }
+        //  console.log(visitedArr);
+        let quesData = "";
+        // var index2 = 0;
+        // for (var j = 0; j < chapterArray.length; j++) {
+        //   var index = 1;
+        //   // var countWeight = 0;
+        //   var chapterName = chapterArray[index2];
+        //   // console.log(chapterName);
+
+        //   // -1 means chapter is included
+        //   if (excludedTopics[index2] == -1) {
+        //     for (var i = 1; i <= problemCount; i++) {
+        //       crowdsourceInstance.problems(i).then(function (p) {
+
+        //         if (
+        //           p[6] == true &&
+        //           p[7] == true &&
+        //           p[0] == subject &&
+        //           visitedArr[index] == 0
+        //         ) {
+
+        //           console.log(p[1]);
+        //           console.log(chapterName);
+        //           console.log(index2);
+        //           console.log(j);
+
+        //           console.log("Based on the queries questions are being generated");
+        //           console.log(p);
+        //           visitedArr[index] = 1;
+
+        //           // if (countWeight >= weightage) {
+        //           //   i = problemCount + 10;
+        //           // }
+
+        //           let ques = `<br />
+        //         <div class="card">
+        //           <div style="background-color: rgb(221, 221, 221)" class="card-header">
+        //             <p class="ques">
+        //               Ques1. This will be the format of each question (question here) :
+        //             </p>
+        //           </div>
+        //           <div class="card-body">
+        //             <table>
+        //               <tr>
+        //                 <td>A. Option one here</td>
+        //                 <td>B. Option two here</td>
+        //               </tr>
+        //               <tr>
+        //                 <td class="right-opt">C. Option three here</td>
+        //                 <td class="right-opt">D. Option four here</td>
+        //               </tr>
+        //             </table>
+        //           </div>
+        //         </div>`;
+        //           quesData += ques;
+        //           problemCard.innerHTML = quesData;
+        //         }
+        //         index++;
+        //         document.querySelector("#download").style.visibility =
+        //           "visible";
+        //       });
+        //     }
+        //     index2++;
+        //   }
+        // }
+
+        var index = 1;
+        let questionCount = 0;
+        for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance.problems(i).then(function (p) {
+            if (
+              p[6] == true &&
+              p[7] == true &&
+              p[0] == subject &&
+              visitedArr[index] == 0
+            ) {
+              //Here we have the approved question
+              // console.log(p[1]);
+              // console.log(chapterName);
+              // console.log(index2);
+              // console.log(j);
+              // console.log("Based on the queries questions are being generated");
+              // console.log(p);
+              // visitedArr[index] = 1;
+
+              for (var j = 0; j < chapterArray.length; j++) {
+                if (excludedTopics[j] == -1) {
+                  //Here we have the information of chapter and subject
+                  if (p[1] == chapterArray[j]) {
+                    questionCount++;
+                    let subject = p[0];
+                    let topic = p[1];
+                    let question = p[2];
+                    let options = App.getOptions(p[3]);
+                    let imgHash = p[4];
+                    let ans = p[5].toNumber();
+                    let approve = p[6];
+                    let isApprove = p[7];
+                    let correctAnswer = p[ans + 1];
+                    // console.log("p[i] and chapterArray[j] ",p[1],chapterArray[j]);
+                    let ques = `<br />
+                    <div class="card">
+                      <div style="background-color: rgb(221, 221, 221)" class="card-header">
+                        <p class="ques">
+                          Ques${questionCount}. ${question}
+                        </p>
+                      </div>
+                      <div class="card-body">
+                        <table>
+                          <tr>
+                            <td>A. ${options[0]}</td>
+                            <td>B. ${options[1]}</td>
+                          </tr>
+                          <tr>
+                            <td class="right-opt">C. ${options[2]}</td>
+                            <td class="right-opt">D. ${options[3]}</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>`;
+                    quesData += ques;
+                    problemCard.innerHTML = quesData;
+                  }
+                }
+                document.querySelector("#download").style.visibility =
+                  "visible";
               }
-              document.querySelector("#download").style.visibility = "visible";
-            });
-          }
+            }
+            // if (countWeight >= weightage) {
+            //   i = problemCount + 10;
+            // }
+
+            index++;
+          });
         }
       })
       .catch((e) => {
@@ -669,7 +808,7 @@ App = {
         }
       }
       if (foundAns == false) {
-        swal("","Options didn't match with answer, Please check!!!", "info");
+        swal("", "Options didn't match with answer, Please check!!!", "info");
         Problem.ans = -1;
         return;
       }
