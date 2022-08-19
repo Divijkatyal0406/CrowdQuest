@@ -54,8 +54,9 @@
             </div>
 
               <!-- Question -->
-              
-              <label data-localize="typequestion" for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type/speak the question: </label><a href="#"> <i id="click_to_convert" class="fa fa-1x fa-microphone" aria-hidden="true"></i></a>
+              <input type="file" accept="image/*" id="myFile" style="display:none";visibility:none;">
+              <label data-localize="typequestion" for="exampleFormControlTextarea4" class="text1 font-weight-light">Please type/speak the question: </label>&nbsp&nbsp<i id="click_to_convert" class="fa fa-1x fa-microphone addIcon" aria-hidden="true"></i>&nbsp&nbsp<label for="myFile"><i class="fa fa-1x fa-camera addIcon" aria-hidden="true"></i></label>
+                <!-- <input type="file" id="myFile" style="display:none";visibility:none;"> -->
               <textarea id="convert_text" onchange="App.validateQuestion(); return false;" name="questions" class="form-control addQuestionText" id="exampleFormControlTextarea4" rows="3" cols="50" minlength="5" maxlength="1000" required></textarea>
 
               
