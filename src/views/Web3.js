@@ -517,7 +517,7 @@ App = {
                   </div>
               </div>
           </div>
-          <div class="question-info">
+          <div class="question-info" style="justify-content:center;">
               <div class="question-standard">Correct Answer :
               <span spellcheck="false" class="contenteditableTeacherDashboard editAnswer${count}" contenteditable="true" placeholder="Enter the correct Option(A/B/C/D)">${
                 options[ans - 1]
@@ -580,22 +580,25 @@ App = {
                       </div>
                   </div>
                   <div class="question-info">
+                  <div style="margin-left:3em">
                       <div class="question-standard">Correct Answer : ${
                         options[ans - 1]
                       }
                       </div>
+                    </div>
                       <div class="reward">
                         <div class="upperReward">
-                          <img style="height: 2vw;" src="assets/ethereum.svg" alt="ETH">
-                          <button onClick="App.sendReward(${count})">
-                          Send 1 ETH
+                          <img style="height: 1.9em;" src="assets/polygon.svg" alt="Matic">
+                          <button class="SendMatic-btn" onClick="App.sendReward(${count})">
+                          Send 1 Matic
                           </button>
+                          <button class="report-btn" onClick="App.reportQuestion(${displayProblemCount1})">report</button>
                         </div>
                       <div>
                       </div class="lowerReward">
-                      <p>Pool ${poolCount}:</p>
+                      <p>Pool :<em> ${poolCount} </em></p>
                       </div>
-                      <button onClick="App.reportQuestion(${displayProblemCount1})">report</button>
+                      
                   </div>
               </div>
           </div>`;
@@ -922,16 +925,18 @@ App = {
                         options[ans - 1]
                       }
                       </div>
+                      
                       <div class="reward">
                         <div class="upperReward">
-                          <img style="height: 2vw;" src="assets/ethereum.svg" alt="ETH">
-                          <button onClick="App.sendReward(${count})">
-                          Send 1 ETH
+                          <img style="height: 1.9em;" src="assets/polygon.svg" alt="ETH">
+                          <button class="SendMatic-btn" onClick="App.sendReward(${count})">
+                          Send 1 Matic
                           </button>
+                          <button class="report-btn" onClick="App.reportQuestion(${displayProblemCount1})">report</button>
                         </div>
                       <div>
                       </div class="lowerReward">
-                      <p>Pool ${poolCount}:</p>
+                      <p>Pool :<b> ${poolCount}</b></p>
                       </div>
                   </div>
               </div>
@@ -1074,7 +1079,7 @@ App = {
                 `🎉 ${p.substring(0, 6)}....${p.substring(
                   38,
                   42
-                )} Got rewarded with 1 ETH`
+                )} Got rewarded with 1 Matic`
               )
             );
             ul.appendChild(li);

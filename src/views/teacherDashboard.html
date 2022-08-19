@@ -140,6 +140,11 @@
                                     <img src="assets/maximize.svg"></img>
                                 </a>
                             </li>
+                            <li>
+                                <button class="hindimode" id="hindimode" type="button" > 
+                                    <img src="assets/language.svg" style="width: 2em;" alt="">
+                                </button>
+                            </li>
                         </ul>
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
@@ -197,7 +202,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="p-15 p-b-0">
+                            <!-- <div class="p-15 p-b-0">
                                 <form class="form-material">
                                     <div class="form-group form-primary">
                                         <input type="text" name="footer-email" class="form-control" required="">
@@ -205,8 +210,8 @@
                                         <label  class="float-label"><i class="fa fa-search m-r-10"></i>Search</label>
                                     </div>
                                 </form>
-                            </div>
-                            <div data-localize="For Teacher" class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Teacher</div>
+                            </div> -->
+                            <div data-localize="For Expert" class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Expert</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="active">
                                     <a class="waves-effect waves-dark">
@@ -233,22 +238,22 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <li class=" " >
-                                    <a class="waves-effect waves-dark">
-                                        
-                                        <button data-localize="Analytics" onclick="App.showGraph('Mathematics')" type="button" class="btn btn-primary" style="width:12em; border-radius:500px; height: 3em;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Analytics</button> 
-                                        
-                                    </a>
-                                </li>
-                            </ul>
-                            <div data-localize="Expert" class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
-                            <ul class="pcoded-item pcoded-left-item">
                                 <li>
                                     <a href="fileUpload.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img class="ti-layers"
                                                 src="assets/check-circle.svg"></img><b>FC</b></span>
                                         <span data-localize="Distribute Questions" class="pcoded-mtext" data-i18n="nav.form-components.main">Distribute Questions</span>
                                         <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div data-localize="Expert" class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class=" " >
+                                    <a class="waves-effect waves-dark">
+                                        
+                                        <button data-localize="Analytics" onclick="App.showGraph('Mathematics')" type="button" class="btn btn-primary" style="width:12em; border-radius:500px; height: 3em;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Analytics</button> 
+                                        
                                     </a>
                                 </li>
                             </ul>
@@ -446,12 +451,15 @@
 
 <script>
     var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
+    var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+    myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+        })
+
+    
 </script>
+
 
 <script>
 

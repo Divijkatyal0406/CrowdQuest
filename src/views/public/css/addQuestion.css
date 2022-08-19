@@ -234,10 +234,11 @@ h3 {
   box-shadow: 0.1em 0.1em 0.5em #c9c9c9a7;
   border: 2px solid #c2c2c2;
   border-radius: 5px;
-  color: slategray;
+  color: rgb(0, 0, 0);
   width: 20em;
   height: 3em;
   transition: 0.5s ;
+  font-size: 1.2em;
 }
 
 .CheckOptions:focus,
@@ -245,6 +246,11 @@ h3 {
     box-shadow: 0.1em 0.1em 0.7em #999999dc;
     border:none;    
     
+}
+
+/* reduce placeholder size */
+::-webkit-input-placeholder {
+  font-size: 0.8em;
 }
 
 /* Virtual Keyboard CSS */
@@ -412,3 +418,16 @@ transform: translateY(-2px);
 box-shadow: #8a8a8a 0 3px 7px inset;
 transform: translateY(2px);
 }
+
+.mic{}
+
+.mic:active{
+  color: red;
+  animation: mic 5s ;
+}
+
+.mic:focus{
+  color: red;
+}
+
+/* make the mic look red for 5 sec */
