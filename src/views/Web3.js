@@ -727,7 +727,7 @@ App = {
                     </div>
                       <div class="reward">
                         <div class="upperReward">
-                          <img style="height: 1.9em;" src="assets/polygon.svg" alt="Matic">
+                          <img style="height: 1.9em;" src="assets/ethereum.svg" alt="Matic">
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>
@@ -1067,7 +1067,7 @@ App = {
                       
                       <div class="reward">
                         <div class="upperReward">
-                          <img style="height: 1.9em;" src="assets/polygon.svg" alt="ETH">
+                          <img style="height: 1.9em;" src="assets/ethereum.svg" alt="ETH">
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>

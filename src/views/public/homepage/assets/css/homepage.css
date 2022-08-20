@@ -971,11 +971,12 @@ Banner Style
 .button-30 {
 
   margin:1em auto;
+  margin-top: 0.2em;
 
-  padding: 0.8em;
-  font-size: 1.2em;
+  padding: 01em;
+  font-size: 1em;
 
-  width: 22em;
+  width: em;
 
 
 align-items: center;
