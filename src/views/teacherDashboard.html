@@ -110,8 +110,9 @@
                                 </div>
                             </div>
                         </div>
-                        <a>
-                            <h5 data-localize="title" class="m-b-10">Crowd Quest</h5>
+                        <a href="#!" onclick="">
+                            <img  src="assets/CrowdQuest.PNG" style="width:188px; height:42px; margin-top:1em;"></img>
+                            <!--<h5 data-localize="title" class="m-b-10">Crowd Quest</h5>-->
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -140,11 +141,11 @@
                                     <img src="assets/maximize.svg"></img>
                                 </a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <button class="hindimode" id="hindimode" type="button" > 
                                     <img src="assets/language.svg" style="width: 2em;" alt="">
                                 </button>
-                            </li>
+                            </li>-->
                         </ul>
                         <ul class="nav-right">
                             <li class="user-profile header-notification">
@@ -152,7 +153,7 @@
                                     <span data-localize="username" id="username_teacher">Username</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
-                                <ul class="show-notification profile-notification">
+                                <!--<ul class="show-notification profile-notification">
                                     <li class="waves-effect waves-light">
                                         <a data-localize="Settings" href="#!">
                                             <i class="ti-settings"></i> Settings
@@ -173,7 +174,7 @@
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </li>
                         </ul>
                     </div>
@@ -192,7 +193,7 @@
                                     </div>
                                 </div>
 
-                                <div class="main-menu-content">
+                               <!-- <div class="main-menu-content">
                                     <ul>
                                         <li class="more-details">
                                             <a data-localize="View Profile"><i class="ti-user"></i>View Profile</a>
@@ -200,7 +201,7 @@
                                             <a data-localize="logout" href="index.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </div>
                             <!-- <div class="p-15 p-b-0">
                                 <form class="form-material">
@@ -246,6 +247,17 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"> <img src="assets/language.svg" style="width: 2em;" alt=""></img><b>D</b></span>
+                                        <span data-localize="discussions" class="pcoded-mtext" data-i18n="nav.dash.main"></span>
+                                        <select class="mainselection" onchange="languageChanger()" id="google_translate_element">
+                                            <option value="en">English</option>
+                                            <option value="hi">Hindi</option>
+                                        </select>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
                             </ul>
                             <div data-localize="Expert" class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
                             <ul class="pcoded-item pcoded-left-item">
@@ -266,10 +278,10 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                <select onchange="languageChanger()" id="google_translate_element">
+                                <!--<select onchange="languageChanger()" id="google_translate_element">
                                     <option value="en">English</option>
                                     <option value="hi">Hindi</option>
-                                </select>
+                                </select>-->
                             </ul>
                         </div>
                     </nav>
