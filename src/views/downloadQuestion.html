@@ -58,6 +58,12 @@
       <h4>Get Questions</h4>
       <ul class="Nav">
         <li>
+          <select onchange="languageChanger()" id="google_translate_element">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+        </select>
+        </li>
+        <li>
           <i class="fas fa-calendar-alt"></i>
           <span>Date of Examination</span>
           <input
@@ -66,7 +72,7 @@
             value=""
             required
           />
-        </li>
+
         <li>
           <i class="fas fa-server"></i>
           <span>Select Subject</span>
@@ -79,7 +85,8 @@
               <option value="Mathematics">Mathematics</option>
             </select>
           </div>
-          <br>
+        </li>
+        <li>
           <button data-toggle="modal" data-target="#exampleModalCenter" onclick="viewModal();"> Select Chapters </button>
         </li>
         <li>
@@ -232,7 +239,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
-    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="./script.js"></script>
     
     <script src="public/javascript/getQuest.js"></script>
