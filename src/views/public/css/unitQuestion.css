@@ -59,7 +59,7 @@
   font-size: 1.1rem;
   padding: 10px;
   position: relative;
-  left: -20%;
+  /* left: -20%; */
 }
 .question-difficulty_easy {
   background-color: #bce1be;
