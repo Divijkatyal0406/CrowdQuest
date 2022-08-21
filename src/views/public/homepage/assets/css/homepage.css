@@ -908,7 +908,7 @@ Banner Style
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding: 250px 120px 150px 120px;
+  padding: 70px 100px 70px 100px;
   position: relative;
   overflow: hidden;
 }
@@ -1643,9 +1643,10 @@ footer {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 130px;
-  padding-top: 300px;
+  margin-top: 110px;
+  padding-top: 200px;
   padding-bottom: 60px;
+  z-index: 1;
 }
 
 footer .section-heading {
@@ -1658,6 +1659,7 @@ footer .section-heading h4 {
   margin-left: 13%;
   margin-right: 13%;
   text-align: center;
+  padding-top: 2em;
 }
 
 footer #search {
