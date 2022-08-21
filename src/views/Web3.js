@@ -1205,6 +1205,7 @@ App = {
       })
       .then(function (contributionCount) {
         var ul = document.getElementById("testtt1");
+        ul.empty();
         let cnt = 0;
         for (let i = 1; i <= contributionCount && cnt++ < 5; i++) {
           crowdsourceInstance.contributions(i).then(function (p) {
