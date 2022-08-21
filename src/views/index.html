@@ -1,132 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="public/css/login.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://smtpjs.com/v3/smtp.js"> </script>
-  <script type="text/javascript" src="https://pdfanticopy.com/noprint.js"></script>
-  <script language="javascript">
-    var noPrint=true;
-    var noCopy=true;
-    var noScreenshot=true;
-    var autoBlur=true;
-    </script>
-    <script>
-      document.onkeydown = function(evt){ 
-        console.log(evt.keyCode);
-      }
-      document.addEventListener('keyup', (e) => {
-        if (e.keyCode == 121) {
-            navigator.clipboard.writeText('');
-            alert('Screenshots disabled!');
-        }
-      });
-      document.addEventListener('keydown', (e) => {
-          if (e.shiftKey) {
-              alert('Screenshots disabled!');
-              e.cancelBubble = true;
-              e.preventDefault();
-              e.stopImmediatePropagation();
-          }
-      });
-  
-    </script>    
-  <title>Crowd Quest</title>
-</head>
+  <head>
 
-<body style="background-color:#448aff;">
-  <br><br>
-  <div>
-    <div class="container">
-      <section class="login">
-        <div class="container-fluid h-custom">
-          <div class="row gap-5 d-flex justify-content-center align-items-center h-100 ">
-            <div class="col-md-9 col-lg-6 col-xl-5">
-              <center>
-              <a href="#" class="navbar-brand text-uppercase font-weight-bolder "> <span style="font-size: 2em;"> Crowd Quest</span></a>
-              <div class="divider d-flex align-items-center my-1" style="margin: 0.1rem;" > </div>
-            <div class="title-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptas doloribus ex blanditiis perferendis qui?</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-            </center>
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                class="img-fluid" alt="Sample image" style="width: 50rem;">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
- 
-              <div class="left-item">
-            
-  
+    <title>Crowd Quest</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="public/homepage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-  
-             <!-- -------------------------------------------------------------------- -->
-             <!-- ! ----------------------- Form begins     ---------------------------- -->
-             <!-- -------------------------------------------------------------------- -->
-             <div class="divider d-flex align-items-center my-4" > <span style="margin: 0 0.5em 0 0.5em; font-size:x-small; color:slategrey ">Welcome to Crowd Quest. Please login to continue</span></div>
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/homepage/assets/css/homepage.css">
+    <link rel="stylesheet" href="public/homepage/assets/css/animated.css">
+    <link rel="stylesheet" href="public/homepage/assets/css/owl.css">
 
-          <form style="padding-left: 5px;"><center>
-            <a href="studentDashboard.html" style="text-decoration:none ;">     
-              <div class="button-30" onclick="location.href='studentDashboard.html'" >Continue Contributing</div>  
-            </a>
+  </head>
 
-              <a href="teacherDashboard.html" style="text-decoration:none ;">     
-                <div class="button-30" onclick="location.href='studentDashboard.html'" >Teacher Admin</div>  
-              </a>
+<body style="top: -10%;">
 
-                <div class="divider d-flex align-items-center my-4" > <span style="margin: 0 0.5em 0 0.5em; font-size:x-small; color:slategrey ">Want to discuss with the world  ?</span></div>
-
-                
-                  <button type="button" class="btn btn-outline-secondary" style="padding:0.5em 2em ;border-radius: 50px; width: 90%; border-color: #e0e4e8;">  
-                    <span style="font-weight:600 ;font-size:smaller;">
-                      Discussions
-                    </span>
-                  </button>
-                </center>
-             </form>    
-             <!-- -------------------------------------------------------------------- -->
-             <!-- -------------------------------------------------------------------- -->
-             <!-- -------------------------------------------------------------------- -->
-
-                  
-              <!-- Login testing -->
-              <a href="teacherLogin.html">Test</a>
-              
-              <!-- <input type="button" value="Send Email" onclick="sendEmail()"> -->
-            </div>
-          </div>
-   
-          </div>
-          
-        </div>
-        
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-    </section>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
 
 
+  
+  <!-- ***** Header Area End ***** -->
+  
+  
+
+  <div class="main-banner wow fadeIn" style="top: -10%;" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h1>Welcome to</h1>
+                    <h2>CROWD QUEST!</h2>
+                    <p>An educational platform to create, post, store and download board questions. Post your first question and be a part of the Crowd Quest community.</p>
+                  </div>
+                  <div class="col-lg-12"> 
+                    <a href="teacherLogin.html" style="text-decoration: none;"></a>
+                    <div>   
+                    <div href="studentDashboard.html" onclick="location.href='studentDashboard.html'" class="button-30">
+                        Contribute Your First Question  <i class="fab fa-angle-right"></i>
+                    </div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="public/homepage/assets/images/slider-dec.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <button onclick="window.location='http://localhost:3000/teacherLogin.html'"></button>
-<center>
-  <div class="footnote">
-    Made by team Crowd Quest
+
+  <div id="services" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h4>Amazing <em>Services</em> that we offer</h4>
+            <img src="public/homepage/assets/images/heading-line-dec.png" alt="">
+            <p>Our services that makes it easy for you to access questions any time and any where you want.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="service-item first-service">
+            <div class="icon"></div>
+            <h4>Contribute Questions</h4>
+            <p>Create, post and share your questions with the community and contribute in its growth.</p>
+            <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="service-item second-service">
+            <div class="icon"></div>
+            <h4>Approve/Reject Questions</h4>
+            <p>As an expert, analyse, approve or reject questions posted by the contributers.</p>
+            <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="service-item third-service">
+            <div class="icon"></div>
+            <h4>Download Question Paper</h4>
+            <p>Set the criteria for your paper and download it in pdf format anytime you want.</p>
+            <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="service-item fourth-service">
+            <div class="icon"></div>
+            <h4>Give and Get rewards</h4>
+            <p>Reward the questions you like best and receive rewards for the question you contribute.</p>
+            <div class="text-button">
+              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</center>
-<p id="count" style="display: none;visibility:none"></p>
-<script type="module" src="public/javascript/sendEmail.js"></script>
-</script>
+
+  <div id="about" class="about-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-self-center">
+          <div class="section-heading">
+            <h4>Our <em>Features</em> &amp; What Make Us Different</h4>
+            <img src="public/homepage/assets/images/heading-line-dec.png" alt="">
+            <p>These features will make your experience simple, better, and effortless.</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Live Analytics</a></h4>
+                <p>Analytics of every question submitted</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Discussion Forum</a></h4>
+                <p>Discuss answers with your peers</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">BlockChain</a></h4>
+                <p>To track the transactions</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="box-item">
+                <h4><a href="#">Encryption</a></h4>
+                <p>Login procedure for safety</p>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div style="display:flex;">
+              <div class="gradient-button" style="margin-right: 1em;">
+                <a href="studentDashboard.html">Begin Contributing</a>
+              </div>
+              <div class="gradient-button2" style="background-color: white; color : black" >
+                <a href="#">Login as Admin</a>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-image">
+            <img src="public/homepage/assets/images/about-right-dec.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            <h4>Made and maintained by team CrowdQuest</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script type="module" src="public/javascript/sendEmail.js"></script>
+  <script src="public/homepage/vendor/jquery/jquery.min.js"></script>
+  <script src="public/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/homepage/assets/js/owl-carousel.js"></script>
+  <script src="public/homepage/assets/js/animation.js"></script>
+  <script src="public/homepage/assets/js/imagesloaded.js"></script>
+  <script src="public/homepage/assets/js/popup.js"></script>
+  <script src="public/homepage/assets/js/custom.js"></script>
 </body>
 </html>
