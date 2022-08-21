@@ -21,8 +21,7 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="public/homepage/assets/css/homepage.css">
-    <link rel="stylesheet" href="public/homepage/assets/css/animated.css">
-    <link rel="stylesheet" href="public/homepage/assets/css/owl.css">
+    <link rel="stylesheet" href="public/homepage/assets/css/animated.css"
 
   </head>
 
@@ -65,9 +64,19 @@
                   <div class="col-lg-12"> 
                     <a href="teacherLogin.html" style="text-decoration: none;"></a>
                     <div>   
-                    <div href="studentDashboard.html" onclick="location.href='studentDashboard.html'" class="button-30">
+                    <!-- <div href="studentDashboard.html" onclick="location.href='studentDashboard.html'" class="button-30">
                         Contribute Your First Question  <i class="fab fa-angle-right"></i>
-                    </div></div>
+                    </div>
+                    <div href="teacherDashboard.html" onclick="location.href='teacherDashboard'" class="button-30">
+                      Contribute Your First Question  <i class="fab fa-angle-right"></i>
+                  </div> -->
+                  <button class="btn btn-light" onclick="location.href='studentDashboard.html'">
+                    Contributor
+                  </button>
+                  <button class="btn btn-outline-light" onclick="location.href='teacherLogin.html'">
+                    Admin Login
+                  </button>
+                  </div>
                     </a>
                   </div>
                 </div>
@@ -104,7 +113,7 @@
             <h4>Contribute Questions</h4>
             <p>Create, post and share your questions with the community and contribute in its growth.</p>
             <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+             
             </div>
           </div>
         </div>
@@ -114,7 +123,7 @@
             <h4>Approve/Reject Questions</h4>
             <p>As an expert, analyse, approve or reject questions posted by the contributers.</p>
             <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+             
             </div>
           </div>
         </div>
@@ -124,7 +133,7 @@
             <h4>Download Question Paper</h4>
             <p>Set the criteria for your paper and download it in pdf format anytime you want.</p>
             <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+             
             </div>
           </div>
         </div>
@@ -134,7 +143,7 @@
             <h4>Give and Get rewards</h4>
             <p>Reward the questions you like best and receive rewards for the question you contribute.</p>
             <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
+             
             </div>
           </div>
         </div>
@@ -182,9 +191,10 @@
                 <a href="studentDashboard.html">Begin Contributing</a>
               </div>
               <div class="gradient-button2" style="background-color: white; color : black" >
-                <a href="#">Login as Admin</a>
+                <a href="teacherLogin.html">Login as Admin</a>
               </div>
             </div>
+            <span>*Made and maintained by team Crowd Quest</span>
             </div>
           </div>
         </div>
@@ -197,21 +207,7 @@
     </div>
   </div>
 
-  <footer id="newsletter">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Made and maintained by team CrowdQuest</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
   <!-- Scripts -->
-  <script type="module" src="public/javascript/sendEmail.js"></script>
   <script src="public/homepage/vendor/jquery/jquery.min.js"></script>
   <script src="public/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="public/homepage/assets/js/owl-carousel.js"></script>
