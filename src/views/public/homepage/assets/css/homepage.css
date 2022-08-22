@@ -25,6 +25,9 @@ font & reset css
 reset
 --------------------------------------------- 
 */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Flamenco&family=Patua+One&display=swap');
+
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -33,6 +36,10 @@ figure, header, nav, section, article, aside, footer, figcaption {
   padding: 0;
   border: 0;
   outline: 0;
+}
+
+body{
+  background-color: F1F1F1;
 }
 
 /* clear fix */
@@ -109,6 +116,44 @@ a {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.title1{
+  font-family:flamenco; 
+  color:rgb(255, 255, 255); 
+  font-weight: 900;
+  color: #42175c;
+}
+
+.title2{
+  font-size: 1.5rem;
+  font-weight: 900;
+  /* white to blue gradient color for text */
+  /* color: #1c294f; */
+  color: #42175c;
+}
+
+.title-text{
+  color: #42175c;
+  font-size: 1.2em;
+  font-weight: 100;
+  margin: 1em auto;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #ffffff50;
+  padding: 0.2em 0.5em;
+  border-radius: 0.5em;
+  font-style: italic;
+
+}
+
+.title-text mark {
+  background-color: #fff200;
+  border-radius: 5px;
+  padding: 3px 6px;
+  font-weight: 500;
+  color: #34436F;
+  font-family: monospace;
+  font-style: normal;
 }
 
 ul {
@@ -937,12 +982,6 @@ Banner Style
   line-height: 70px;
   font-size: 50px;
   margin-bottom: 20px;
-}
-
-.main-banner .left-content p {
-  margin-bottom: 45px;
-  color: #2a2a2a;
-  font-weight: 400;
 }
 
 .main-banner .left-content .first-button {
