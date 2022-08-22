@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crowd Quest</title>
 
-
     <link rel="stylesheet" href="public/css/downloadQuestion.css" />
     <link
       rel="stylesheet"
@@ -22,7 +21,7 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
       crossorigin="anonymous"
     />
-    
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -52,221 +51,259 @@
     <script src="Web3.js"></script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.body.style.zoom = "75%";
-        }, false);
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          document.body.style.zoom = "75%";
+        },
+        false
+      );
     </script>
-
-
-
   </head>
 
-  <body onload="App.init()">    
-
+  <body id="body" onload="App.init()">
     <div class="popup-screen">
       <div class="popup-box">
         <!-- <i class="fas fa-times close-btn"></i> -->
         <h2>Alert</h2>
         <p>You can only continue after enabling the camera / webcam.</p>
         <p>Be Aware...Generate your question paper with care</p>
-        <button id="webcamButton" class="btn btn-primary enabled">Enable Webcam</button>
+        <button id="webcamButton" class="btn btn-primary enabled">
+          Enable Webcam
+        </button>
       </div>
     </div>
 
     <div class="pagebody">
-    <div class="Sidebar">
-      <h4>Generate Paper</h4>
-      <ul class="Nav">
-        <li class="mainselection">
-          <select onchange="languageChanger()" id="google_translate_element">
-            <option value="en">English</option>
-            <option value="hi">Hindi</option>
-        </select>
-        </li>
-        <li>
-          <i class="fas fa-calendar-alt"></i>
-          <span>Date of Examination</span>
-          <input
-            class="mainselection date"
-            type="date"
-            value=""
-            required
-          />
-
-        <li>
-          <i class="fas fa-server"></i>
-          <span>Select Subject</span>
-          <div class="mainselection">
-            <select name="State" id="input7" class="subject" required>
-              <option>Choose subject</option>
-              <option value="Physics">Physics</option>
-              <option value="Biology">Biology</option>
-              <option value="Chemistry">Chemistry</option>
-              <option value="Mathematics">Mathematics</option>
+      <div class="Sidebar">
+        <h4>Generate Paper</h4>
+        <ul class="Nav">
+          <li class="mainselection">
+            <select onchange="languageChanger()" id="google_translate_element">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
             </select>
-          </div>
-        </li>
-        <li>
-          <button data-toggle="modal" data-target="#exampleModalCenter" onclick="viewModal();"> Select Chapters </button>
-        </li>
-        <li>
-          <i class="fas fa-question-circle"></i>
-          <span>Number of Questions</span>
-          <div class="mainselection">
-            <input type="number" placeholder="Total questions.." class="questionCount" onchange="setWeightage(); return false;" min="10" required />
-          </div>
-        </li>
-        <li>
-          <i class="fa fa-pie-chart" aria-hidden="true"></i>
-          <span>Chapter Weightage</span>
-          <div class="mainselection">
-            <input type="number" placeholder="Enter here.." class="weightage" min="1" onchange="setWeightage(); return false;" required />
-          </div>
-        </li>
-        <button
-          type="submit"
-          class="btn btn-outline-light"
-          style="font-weight: 500"
-          onclick="App.downloadQuestions();"
-        >
-          Generate Paper
-        </button>
-        <div id="liveView" class="camView">
-          <!-- <button id="webcamButton">Enable Webcam</button> -->
-          <video id="webcam" autoplay muted width="640" height="480"></video>
-        </div>
-        <br /><br /><br /><br /><br /><br /><br />
-        <hr style="color: rgb(255, 255, 255)" />
-        <li>
-          <a href="teacherDashboard.html">
-            <i class="fas fa-address-card"></i>
-            <span>Back to Dashboard</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div id="Main" class="main">
-      <!-- Modal -->
-      <!-- Button trigger modal -->
-      <i
-        style="color: rgb(79, 145, 245); font-size: x-large"
-        aria-hidden="true"
-      ></i>
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                <!-- Select topics to be excluded : (Biology) -->
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+          </li>
+          <li>
+            <i class="fas fa-calendar-alt"></i>
+            <span>Date of Examination</span>
+            <input class="mainselection date" type="date" value="" required />
+          </li>
+
+          <li>
+            <i class="fas fa-server"></i>
+            <span>Select Subject</span>
+            <div class="mainselection">
+              <select name="State" id="input7" class="subject" required>
+                <option>Choose subject</option>
+                <option value="Physics">Physics</option>
+                <option value="Biology">Biology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Mathematics">Mathematics</option>
+              </select>
             </div>
-            <div class="modal-body">
-              <!-- -------------- checkboxes-------------------------------- -->
-              
-              <!-- <div class="pretty p-icon p-smooth">
+          </li>
+          <li>
+            <button
+              style="width: 200px; text-align: left; justify-content: left"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+              onclick="viewModal();"
+            >
+              Select Chapters
+            </button>
+          </li>
+          <li>
+            <i class="fas fa-question-circle"></i>
+            <span>Number of Questions</span>
+            <div class="mainselection">
+              <input
+                type="number"
+                placeholder="Total questions.."
+                class="questionCount"
+                onchange="setWeightage(); return false;"
+                min="10"
+                required
+              />
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-pie-chart" aria-hidden="true"></i>
+            <span>Chapter Weightage</span>
+            <div class="mainselection">
+              <input
+                type="number"
+                placeholder="Enter here.."
+                class="weightage"
+                min="1"
+                onchange="setWeightage(); return false;"
+                required
+              />
+            </div>
+          </li>
+          <button
+            type="submit"
+            class="btn btn-outline-light"
+            style="font-weight: 500"
+            onclick="App.downloadQuestions();"
+          >
+            Generate Paper
+          </button>
+          <div id="liveView" class="camView">
+            <!-- <button id="webcamButton">Enable Webcam</button> -->
+            <video id="webcam" autoplay muted width="640" height="480"></video>
+          </div>
+          <br /><br /><br /><br /><br /><br /><br />
+          <hr style="color: rgb(255, 255, 255)" />
+          <li>
+            <a href="teacherDashboard.html">
+              <i class="fas fa-address-card"></i>
+              <span>Back to Dashboard</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Animation -->
+      <!-- <div class="center">
+        <div class="ring"></div>
+        <span class="anima">File Encryption</span>
+      </div> -->
+
+
+      <div id="Main" class="main">
+        <!-- Modal -->
+        <!-- Button trigger modal -->
+        <i
+          style="color: rgb(79, 145, 245); font-size: x-large"
+          aria-hidden="true"
+        ></i>
+        <div
+          class="modal fade"
+          id="exampleModalCenter"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                  <!-- Select topics to be excluded : (Biology) -->
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- -------------- checkboxes-------------------------------- -->
+
+                <!-- <div class="pretty p-icon p-smooth">
                 <input class="excluded-topics" value="0" type="checkbox" />
                 <div class="state p-danger-o">
                   <i class="icon mdi fa fa-times" aria-hidden="true"></i>
                   <label>Reproduction</label>
                 </div>
               </div> -->
-              
-              <!-- -------------- checkboxes-------------------------------- -->
+
+                <!-- -------------- checkboxes-------------------------------- -->
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  Save changes
+                </button>
+              </div>
             </div>
-            <div class="modal-footer">
-              <button
-                
-                type="button"
-                class="btn btn-primary"
-                data-dismiss="modal"
+          </div>
+        </div>
+        <div class="question-paper">
+          <center>
+            <p contenteditable="true" id="date">
+              Date: <span id="inputDate"></span>
+            </p>
+            <img
+              id="cbse-logo"
+              style="justify-content: center; margin: 12px"
+              width="120px"
+              src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
+              alt=""
+            />
+            <h4>Central Board of Secondary Education</h4>
+          </center>
+          <div class="container h-50 my-5" data-aos="fade-right">
+            <p id="note" contenteditable="true">
+              Note: Each question consists of 3 marks. All questions are
+              compulsory. Lorem Ipsum has been the industry's standard dummy
+              text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book.
+            </p>
+          </div>
+
+          <div class="question-area">
+            <div class="pre-content">
+              The purpose of lorem ipsum is to create a natural looking block of
+              text (sentence, paragraph, page, etc.) that doesn't distract from
+              the layout. A practice not without controversy, laying out pages
+              with meaningless filler text can be very useful when the focus is
+              meant to be on design, not content.
+            </div>
+            <br />
+            <div class="card">
+              <div
+                style="background-color: rgb(221, 221, 221)"
+                class="card-header"
               >
-                Save changes
-              </button>
+                <p class="ques">
+                  Ques1. This will be the format of each question (question
+                  here) :
+                </p>
+              </div>
+              <!-- <br>
+            <img width="40%" style="margin-left: 5%;" src="https://img.jagranjosh.com/imported/images/E/Articles/maths2.jpg" alt=""> -->
+              <div class="card-body">
+                <table>
+                  <tr>
+                    <td>A. Option one here</td>
+                    <td>B. Option two here</td>
+                  </tr>
+                  <tr>
+                    <td class="right-opt">C. Option three here</td>
+                    <td class="right-opt">D. Option four here</td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>
+        <br />
+        <button id="download" class="btn btn-primary">Download</button>
       </div>
-      <div class="question-paper">
-        <center>
-          <p contenteditable="true" id="date">Date: <span id="inputDate"></span></p>
-          <img
-            id="cbse-logo"
-            style="justify-content: center; margin: 12px;"
-            width="120px"
-            src="https://www.deccanherald.com/sites/dh/files/articleimages/2021/04/13/file6yjgpmr0fvkucdewa6a-973637-1618257667.jpg"
-            alt=""
-          />
-          <h4>Central Board of Secondary Education</h4>
-        </center>
-        <div class="container h-50 my-5" data-aos="fade-right">
-          <p id="note" contenteditable="true">
-            Note: Each question consists of 3 marks. All questions are compulsory.
-            Lorem Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled it
-            to make a type specimen book.
-          </p>
-        </div>
-        <div class="question-area">
-          <div class="pre-content">
-            The purpose of lorem ipsum is to create a natural looking block of text
-            (sentence, paragraph, page, etc.) that doesn't distract from the layout.
-            A practice not without controversy, laying out pages with meaningless
-            filler text can be very useful when the focus is meant to be on design,
-            not content.
-          </div>
-          <br />
-          <div class="card">
-            <div style="background-color: rgb(221, 221, 221)" class="card-header">
-              <p class="ques">
-                Ques1. This will be the format of each question (question here) :
-              </p>
-            </div>
-            <div class="card-body">
-              <table>
-                <tr>
-                  <td>A. Option one here</td>
-                  <td>B. Option two here</td>
-                </tr>
-                <tr>
-                  <td class="right-opt">C. Option three here</td>
-                  <td class="right-opt">D. Option four here</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <button id="download" class="btn btn-primary">Download</button>
+      <div></div>
     </div>
-    <div>
-      
-    </div>
-  </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"
+      type="text/javascript"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
     <script src="./script.js"></script>
-    
-    <script src="public/javascript/getQuest.js"></script>
 
+    <script src="public/javascript/getQuest.js"></script>
+    
     <script type="text/javascript">
       const popupScreen = document.querySelector(".popup-screen");
       const popupBox = document.querySelector(".popup-box");
@@ -298,19 +335,27 @@
   
       </script>
     <!-- Download question paper -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
 
-    <script type="text/javascript" src="public/javascript/printThis.js"></script>
+    <script
+      type="text/javascript"
+      src="public/javascript/printThis.js"
+    ></script>
     <script>
-        $('#download').on("click", function () {
-            $('.question-paper').printThis({
-                importCSS: true            });
+      $("#download").on("click", function () {
+        $(".question-paper").printThis({
+          importCSS: true,
         });
+        setTimeout(function () {}, 10000);
+      });
     </script>
-
-    
   </body>
 </html>

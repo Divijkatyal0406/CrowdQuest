@@ -1,6 +1,7 @@
 // import {AuthValidation} from '../../src/login-signup-web3/utils/AuthValidation';
 // const Moralis = require("moralis/node");
 
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -524,6 +525,8 @@ App = {
                           Ques${questionCount}. ${question}
                         </p>
                       </div>
+                      <br>
+                      <img width="40%" style="margin-left: 5%;" src='${imgHash}' alt="">
                       <div class="card-body">
                         <table>
                           <tr>

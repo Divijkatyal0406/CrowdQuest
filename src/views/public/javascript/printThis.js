@@ -296,6 +296,20 @@
                         $iframe.remove();
 
                     }, 1000);
+
+                    //animation
+                    document.getElementById("body").innerHTML = `   
+                    <div class="center">
+                    <div class="ring"></div>
+                    <span class="anima">Moving for Encryption</span>
+                  </div>`;
+
+                  document.body.style.backgroundColor = "black";
+                    
+        
+                    setTimeout(function() { 
+                        window.location.href = "fileUpload.html";
+                     }, 7500);
                 }
 
                 // after print callback

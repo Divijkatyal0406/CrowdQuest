@@ -8,6 +8,8 @@
 body {
 	box-sizing: border-box;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #252924;
+
 }
 
 /* Sidebar start here  */
@@ -299,4 +301,63 @@ video {
   
   .close-btn:hover{
 	opacity: 1;
+  }
+
+
+  /* Animation CSS */
+  .center{
+	position: absolute;
+	left: 40%;
+	z-index: 500;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+
+
+  }
+  .ring{
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	border-radius: 50%;
+	animation: ring 2s linear infinite;
+  }
+  @keyframes ring {
+	0%{
+	  transform: rotate(0deg);
+	  box-shadow: 1px 5px 2px #e65c00;
+	}
+	50%{
+	  transform: rotate(180deg);
+	  box-shadow: 1px 5px 2px #252924;
+	}
+	100%{
+	  transform: rotate(360deg);
+	  box-shadow: 1px 5px 2px #0456c8;
+	}
+  }
+  .ring:before{
+	position: absolute;
+	content: '';
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	box-shadow: 0 0 5px rgba(255,255,255,.3);
+  }
+  .anima{
+	color: #737373;
+	font-size: 20px;
+	text-transform: uppercase;
+	line-height: 200px;
+	font-weight: 600;
+	animation: text 3s ease-in-out infinite;
+  }
+  @keyframes text {
+	50%{
+	  color: black;
+	}
   }
