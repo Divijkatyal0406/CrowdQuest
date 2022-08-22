@@ -72,7 +72,7 @@ var data = JSON.stringify({
   xhr.open("POST", "https://emailapi.netcorecloud.net/v5/mail/send");
   xhr.setRequestHeader("api_key", "af2155e22497691c4ea1a66af6bc86f4");
   xhr.setRequestHeader("content-type", "application/json");
-  // xhr.setRequestHeader("Access-Control-Allow-Origin", '*');
+  // xhr.setRequestHeader("Access-Control-Allow-Origin", 'http://localhost:3000');
   // xhr.setRequestHeader("Access-Control-Allow-Credentials", "true");
   // xhr.setRequestHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   // xhr.setRequestHeader("Access-Control-Allow-Headers", '*');

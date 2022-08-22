@@ -57,6 +57,8 @@
         }, false);
     </script>
 
+
+
   </head>
 
   <body onload="App.init()">    
@@ -272,6 +274,12 @@
       let body = document.querySelector(".pagebody");
   
       window.addEventListener("load", () => {
+        const isAuthenticated=localStorage.getItem('AUTHENTICATED');
+        console.log(isAuthenticated);
+        if(localStorage.getItem('AUTHENTICATED')=="false"){
+                window.location.href = "http://localhost:3000/teacherLogin.html";
+                // window.alert("Access Denied");
+            }
         setTimeout(() => {
           popupScreen.classList.add("active");
           popupBox.classList.add("active");

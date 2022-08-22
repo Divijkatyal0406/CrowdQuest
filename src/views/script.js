@@ -61,7 +61,7 @@ function predictWebcam() {
         w.focus()
         setTimeout(function() {w.close();}, 5000)
         // alert("Phone detected!! Access Denied");
-        window.location="http://localhost:3000/";
+        window.location="http://localhost:3000/teacherLogin.html";
 
     }
       if (predictions[n].score > 0.66) {

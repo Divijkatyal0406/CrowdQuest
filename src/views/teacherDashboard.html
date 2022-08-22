@@ -27,9 +27,27 @@
     <script>
         window.addEventListener('load',()=>{
             const username=localStorage.getItem('USERNAME');
+            
+            const isAuthenticated=localStorage.getItem('AUTHENTICATED');
+            console.log(isAuthenticated);
+            if(localStorage.getItem('AUTHENTICATED')=="false"){
+                window.location.href = "http://localhost:3000/teacherLogin.html";
+                // window.alert("Access Denied");
+            }
+
             document.getElementById('username_teacher').innerHTML=username;
+            document.getElementById('more-details').innerHTML=username;
         })
     </script>
+
+    <!-- <script type="text/javascript">
+        var x = window.location.href;    
+        if (x == "http://localhost:3000/teacherDashboard.html") {
+        window.location.href = "index.html";
+        alert("Access Denied")
+    };
+            // console.log(x);  
+    </script> -->
 
 
 </head>
@@ -271,7 +289,7 @@
                             </ul>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li>
-                                    <a href="index.html" class="waves-effect waves-dark">
+                                    <a href="teacherLogin.html" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><img
                                                 src="assets/log-out.svg" /></span>
                                         <span data-localize="logout" class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>

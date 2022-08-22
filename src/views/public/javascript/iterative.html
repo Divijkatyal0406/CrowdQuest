@@ -14,6 +14,17 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
+    <script>
+      window.addEventListener('load',()=>{
+        const isAuthenticated=localStorage.getItem('AUTHENTICATED');
+        console.log(isAuthenticated);
+        if(!isAuthenticated){
+          // console.log("helllllooooo");
+              window.location.href = "http://localhost:3000/teacherLogin.html";
+              alert("Access Denied");
+          }
+      })
+    </script>
   </head>
   <body>
     <canvas id="c"></canvas>

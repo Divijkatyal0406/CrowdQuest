@@ -17,12 +17,10 @@ contract CrowdSource {
     // id => amount
     mapping(uint256 => uint256) public pool;
 
-
-     mapping(uint256 => string) public contributions;
-
+    mapping(uint256 => string) public contributions;
 
     //report count id(uint)=>uint(count)
-    mapping(uint256 => uint) public reportClicks;
+    mapping(uint256 => uint256) public reportClicks;
 
     event SubmitQuestion(
         string subject,
@@ -68,7 +66,7 @@ contract CrowdSource {
             _isApproved
         );
         //Added this
-        owner[problemCount]=msg.sender;
+        owner[problemCount] = msg.sender;
         emit SubmitQuestion(
             _subject,
             _topic,
@@ -92,7 +90,9 @@ contract CrowdSource {
         bool _approve,
         bool _isApproved
     ) public {
-        cqt[_topic]++;
+        if (_approve == true && _isApproved == true) {
+            cqt[_topic]++;
+        }
         problems[_problemCount] = Problem(
             _subject,
             _topic,
@@ -145,18 +145,18 @@ contract CrowdSource {
         address(_owner).transfer(msg.value);
     }
 
-    function getOwner(uint _id) public view returns(address payable){
+    function getOwner(uint256 _id) public view returns (address payable) {
         return owner[_id];
     }
 
     function toAsciiString(address x) internal pure returns (string memory) {
         bytes memory s = new bytes(40);
-        for (uint i = 0; i < 20; i++) {
-            bytes1 b = bytes1(uint8(uint(uint160(x)) / (2**(8*(19 - i)))));
+        for (uint256 i = 0; i < 20; i++) {
+            bytes1 b = bytes1(uint8(uint256(uint160(x)) / (2**(8 * (19 - i)))));
             bytes1 hi = bytes1(uint8(b) / 16);
             bytes1 lo = bytes1(uint8(b) - 16 * uint8(hi));
-            s[2*i] = char(hi);
-            s[2*i+1] = char(lo);            
+            s[2 * i] = char(hi);
+            s[2 * i + 1] = char(lo);
         }
         return string(s);
     }
@@ -166,19 +166,20 @@ contract CrowdSource {
         else return bytes1(uint8(b) + 0x57);
     }
 
-    function addAContribution(uint _id) public{
+    function addAContribution(uint256 _id) public {
         contributionCount++;
-        contributions[contributionCount]=toAsciiString(owner[_id]);
+        contributions[contributionCount] = toAsciiString(owner[_id]);
     }
 
-
-    function report(uint _id) public{
+    function report(uint256 _id) public {
         reportClicks[_id]++;
-        if(reportClicks[_id]>1){
-            Problem memory p=problems[_id];
-            p.approve=false;
-            p.isApproved=false;
-            problems[_id]=p;
+        if (reportClicks[_id] > 1) {
+            // Problem memory p=problems[_id];
+            // p.approve=false;
+            // p.isApproved=false;
+            // problems[_id]=p;
+            problems[_id].approve = false;
+            problems[_id].isApproved = false;
         }
     }
 }

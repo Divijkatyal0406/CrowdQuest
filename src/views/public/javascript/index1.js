@@ -219,7 +219,7 @@ async function _testing() {
 ///////// REST API /////////////
 ////////////////////////////////
 
-const rest_port = 5000;
+const rest_port = 3001;
 const express = require("express");
 const app = express();
 var path = require('path')

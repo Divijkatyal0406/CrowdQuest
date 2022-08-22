@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/teacherLogin.css">
+
+    <script type="text/javascript">
+        if(document.referrer=="http://localhost:3000/teacherDashboard.html" || document.referrer=="http://localhost:3000/downloadQuestion.html" || document.referrer=="http://localhost:3000/fileUpload.html" || document.referrer=="http://localhost:3000/iterative.html"){
+          localStorage.setItem('AUTHENTICATED',"false");
+          console.log(localStorage.getItem('AUTHENTICATED'));
+        }
+    </script>
+
+
     <title>Teacher Login</title>
 </head>
 <body onclick="App.init()">
@@ -221,6 +230,7 @@ integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="ano
                 );
                 if (validated) {
                     localStorage.setItem('USERNAME',userText);
+                    localStorage.setItem('AUTHENTICATED',"true");
                     window.alert('Access Granted');
                     setTimeout(() => {
                         window.location="http://localhost:3000/teacherDashboard.html";
