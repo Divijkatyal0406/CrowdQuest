@@ -9,8 +9,12 @@ function copyTextFxn() {
   /* Copy the text inside the text field */
   navigator.clipboard.writeText(copyText.value);
 
+  //Close the virtual keyboard
+  var element = document.querySelector('.keyboard');
+  element.classList.add('keyboard--hidden');
+
   /* Alert the copied text */
-  alert("Copied the text: " + copyText.value);
+  swal("", `Copied the text: ${copyText.value}`, "success");
 
   copyText.value = "";
 }
