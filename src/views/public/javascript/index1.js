@@ -119,7 +119,7 @@ async function getUploadedFiles(ipfspath='/encrypted/') {
       files.push({
         path: ipfspath + file.name,
         size: file.size,
-        t:file.time1,
+        t:time1,
         cid: file.cid.toString()
       })
     }
