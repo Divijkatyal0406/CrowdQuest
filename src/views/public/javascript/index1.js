@@ -119,7 +119,7 @@ async function getUploadedFiles(ipfspath='/encrypted/') {
       files.push({
         path: ipfspath + file.name,
         size: file.size,
-        t:time1,
+        t:file.time1,
         cid: file.cid.toString()
       })
     }
@@ -188,7 +188,7 @@ function decryptRSA(toDecrypt, privkeyPath='private.pem') {
 
 async function _testing() {
   console.log("here9");
-  const file = "C:/Users/divij/Downloads/CrowdQuest (1).pdf" 
+  const file = "C:/Users/divij/Downloads/data flow.pdf" 
   const ipfspath = '/encrypted/data/' + file 
   
   
