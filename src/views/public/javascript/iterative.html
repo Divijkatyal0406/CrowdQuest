@@ -14,17 +14,6 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
-    <script>
-      window.addEventListener('load',()=>{
-        const isAuthenticated=localStorage.getItem('AUTHENTICATED');
-        console.log(isAuthenticated);
-        if(!isAuthenticated){
-          // console.log("helllllooooo");
-              window.location.href = "http://localhost:3000/teacherLogin.html";
-              alert("Access Denied");
-          }
-      })
-    </script>
   </head>
   <body>
     <canvas id="c"></canvas>
@@ -103,8 +92,10 @@
       <p id="c44"></p>
     </div>
     <div class="card a5">
+      <a href='http://localhost:5000/encryption.html'>Continue to view question paper on network</a>
+      <br>
       <div class="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/> <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-    </div>
+      </div>
   </div>
   </center>
   <script type="text/javascript">

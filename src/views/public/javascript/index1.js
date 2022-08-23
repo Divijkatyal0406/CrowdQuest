@@ -19,7 +19,7 @@ var path = require('path')
 //   console.log("chal jaa");
 // }, 15000)
 
-let c11,c12,c13,c14,c15,c16,c17;
+let c11,c12,c13,c14,c15,c16,c17,time,time1;
 // c15="Performing private and public key encoding"
 c15=`
 publicKeyEncoding: {
@@ -119,6 +119,7 @@ async function getUploadedFiles(ipfspath='/encrypted/') {
       files.push({
         path: ipfspath + file.name,
         size: file.size,
+        t:time1,
         cid: file.cid.toString()
       })
     }
@@ -219,10 +220,13 @@ async function _testing() {
 ///////// REST API /////////////
 ////////////////////////////////
 
-const rest_port = 3001;
+const rest_port = 5000;
 const express = require("express");
 const app = express();
 var path = require('path')
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true })); 
 const cors=require("cors");
 // const corsOptions ={
 //    origin:'*', 
@@ -234,7 +238,22 @@ app.use(cors());
 app.use(express.static(__dirname+ '/public'));
 // app.use(express.static('/public'));
 
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
+//   console.log(req.body.fname);
+//   res.sendFile(__dirname + '/iterative.html');
+// });
+
+app.post('/', (req, res) => {
+  // time=req.body.t;
+  // console.log(time);
+  // console.log(Date.now());
+  time1=req.body.t;
+  var someDate = new Date(req.body.t);
+  someDate = someDate.getTime();
+  time=someDate-Date.now();
+  console.log(time);
+  
+  // time=req.body.time;
   res.sendFile(__dirname + '/iterative.html');
 });
 
@@ -271,7 +290,7 @@ app.get(/^\/api\/file(\/.*)$/, async (req, res, next) => {
     const content = await downloadFileEncrypted(ipfspath)
     setTimeout(() => {
         res.send(content)
-    }, 15000);
+    }, time);
   } catch (err) {
     res.send('error: ' + err)
   }

@@ -10,7 +10,7 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-  <table class="data" border="0.5" >
+  <table class="data" border="1">
   </table>
   
   <script>
@@ -19,9 +19,9 @@
       if ('error' in data)
         return $('.data').text('no files');
       for (const file of data) {
-
-        let td = '<td><a href="/api/file'+file.path+'">'+file.path+'</a> (size: '+file.size+')</td>'
-        let tr = '<tr>' + td + '</tr>'
+        let td = '<td><a href="/api/file'+file.path+'">'+file.path+'</a></td>'
+        let td1 = '<td>Scheduled on: '+file.t+'</td>'
+        let tr = '<tr>' + td + td1+'</tr>'
         $('.data').append(tr)
       }
     });

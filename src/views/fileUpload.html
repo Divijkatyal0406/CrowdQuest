@@ -55,24 +55,38 @@
         <div class="wrapper">
           <header>Question Encryption</header>
           <br />
-          <label for="">Set Timer : </label>
-          <input
+          <!-- <input
             placeholder="Enter download time"
             type="text"
             class="time-pickable"
             readonly
-          />
+          /> -->
           <form action="#">
             <input class="file-input" type="file" name="file" id="myFile" hidden />
             <i class="fas fa-cloud-upload-alt"></i>
             <p>Browse File to Upload</p>
           </form>
-          <section class="progress-area"></section>
-          <section class="uploaded-area"></section>
-          <button id="myBtn" class="btn btn-primary">Submit</button>
+
+          <form action="http://localhost:5000/" method="POST">
+            <label for="time">Set Examination Time : </label>
+            <input type="datetime-local" id="time" name="t" step="1" required>
+         <!-- <input type="text" name="fname"><br> -->
+            <!-- <section class="progress-area"></section>
+            <section class="uploaded-area"></section> -->
+            <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
       </div>
     </div>
     <script type="module" src="public/javascript/fileUpload.js"></script>
+    <script>
+      const startTime = document.getElementById('appt');
+      // console.log(timeControl.value);
+      startTime.addEventListener("input", () => {
+        console.log(startTime.value);
+    }, false);
+
+    </script>
   </body>
 </html>
