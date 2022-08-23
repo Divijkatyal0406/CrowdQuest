@@ -22,6 +22,7 @@ contract CrowdSource {
     //report count id(uint)=>uint(count)
     mapping(uint256 => uint256) public reportClicks;
 
+
     event SubmitQuestion(
         string subject,
         string topic,
@@ -30,7 +31,8 @@ contract CrowdSource {
         string imgHash,
         uint256 ans,
         bool approve,
-        bool isApproved
+        bool isApproved,
+        uint8 d
     );
 
     struct Problem {
@@ -42,6 +44,7 @@ contract CrowdSource {
         uint256 ans;
         bool approve;
         bool isApproved;
+        uint8 d;
     }
 
     function addToBlockchain(
@@ -52,7 +55,8 @@ contract CrowdSource {
         string memory _imgHash,
         uint256 _ans,
         bool _approve,
-        bool _isApproved
+        bool _isApproved,
+        uint8 _d
     ) public {
         problemCount++;
         problems[problemCount] = Problem(
@@ -63,7 +67,8 @@ contract CrowdSource {
             _imgHash,
             _ans,
             _approve,
-            _isApproved
+            _isApproved,
+            _d
         );
         //Added this
         owner[problemCount] = msg.sender;
@@ -75,7 +80,8 @@ contract CrowdSource {
             _imgHash,
             _ans,
             _approve,
-            _isApproved
+            _isApproved,
+            _d
         );
     }
 
@@ -88,7 +94,8 @@ contract CrowdSource {
         string memory _imgHash,
         uint256 _ans,
         bool _approve,
-        bool _isApproved
+        bool _isApproved,
+        uint8 _d
     ) public {
         if (_approve == true && _isApproved == true) {
             cqt[_topic]++;
@@ -101,7 +108,8 @@ contract CrowdSource {
             _imgHash,
             _ans,
             _approve,
-            _isApproved
+            _isApproved,
+            _d
         );
         // owner[uid]=msg.sender;
         emit SubmitQuestion(
@@ -112,7 +120,8 @@ contract CrowdSource {
             _imgHash,
             _ans,
             _approve,
-            _isApproved
+            _isApproved,
+            _d
         );
     }
 

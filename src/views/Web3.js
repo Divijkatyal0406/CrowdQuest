@@ -85,9 +85,28 @@ App = {
       ans: 0,
       approve: false,
       isApproved: false,
+      d:null
     };
 
     // console.log(Problem);
+
+    const difficulty = () => {
+      let difficultyDOM = document.querySelector("#d");
+      let selectedD = difficultyDOM.options[difficultyDOM.selectedIndex].text;
+      if(selectedD=="Easy"){
+        Problem.d = 0;
+      }
+      if(selectedD=="Medium"){
+        Problem.d = 1;
+      }
+      if(selectedD=="Hard"){
+        Problem.d = 2;
+      }
+      console.log(Problem.d);
+    };
+
+
+
     const subject = () => {
       Problem.imgUrl = document
         .querySelector("#imageUrlText")
@@ -154,6 +173,7 @@ App = {
         }
       };
     }
+    difficulty();
     subject();
     chapter();
     question();
@@ -181,6 +201,7 @@ App = {
           Problem.ans,
           false,
           false,
+          Problem.d,
           { from: App.account }
         );
         console.log("result", result);
@@ -600,6 +621,18 @@ App = {
             let isApprove = p[7];
             let correctAnswer = p[ans + 1];
             let currentProblemID = i;
+
+            let difficulty2=null;
+            if(p[8]==0){
+              difficulty2="Easy";
+            }
+            if(p[8]==1){
+              difficulty2="Medium";
+            }
+            if(p[8]==2){
+              difficulty2="Hard";
+            }
+
             count++;
             // crowdsourceInstance.getCountOfTopic(topic).then(function (tc) {
             //   console.log(
@@ -614,6 +647,12 @@ App = {
                 <div class="subject">
                    Subject : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard editSubject${count}" contenteditable="true">${subject}</span> | <span id="topic" spellcheck="false" class="contenteditableTeacherDashboard editTopic${count}" contenteditable="true">${topic}</span>
                 </div>
+
+                <div class="subject">
+                   Difficulty : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard editDifficulty${count}" contenteditable="true">${difficulty2}</span>
+                </div>
+
+
                   <div class="question">
                     Ques ${displayProblemCount}.<span spellcheck="false" class="addQuestionText contenteditableTeacherDashboard editQuestion${count}" contenteditable="true">${question}</span>  
                     <br>
@@ -682,8 +721,14 @@ App = {
               <div class="unitQuestion">
                   <div class="stud_question">
                       <div class="subject">
-                          Subject : ${subject} | ${topic}
+                          Subject : ${subject} | ${topic} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          Difficulty : ${difficulty2}
                       </div>
+
+                     
+
+
+
                       <div class="question">
                         
                         Ques ${displayProblemCount1}. <span class=${UniqueClassName}> ${question} </span> <button onclick="readQuest(${displayProblemCount1}); return false;" id="speak"><i class="fa fa-file-audio-o" aria-hidden="true"></i></button>
@@ -734,7 +779,7 @@ App = {
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>
-                          <button class="report-btn" onClick="App.reportQuestion(${displayProblemCount1})">report</button>
+                          <button class="report-btn" onClick="App.reportQuestion(${displayProblemCount1})">Report⚠️</button>
                         </div>
                       <div>
                       </div class="lowerReward">
@@ -764,7 +809,23 @@ App = {
       ans: 0,
       approve: false,
       isApproved: false,
+      d:null
     };
+
+    function getNewDifficulty() {
+      var d=document
+        .querySelector(`.editDifficulty${count}`)
+        .innerHTML.toString();
+        if(d=="Medium"){
+          Problem.d=1;
+        }
+        if(d=="Hard"){
+          Problem.d=2;
+        }
+        if(d=="Easy"){
+          Problem.d=0;
+        }
+    }
     function getNewSubject() {
       Problem.subject = document
         .querySelector(`.editSubject${count}`)
@@ -816,6 +877,7 @@ App = {
         return;
       }
     }
+    getNewDifficulty();
     getNewSubject();
     getNewTopic();
     getNewQuestion();
@@ -843,6 +905,7 @@ App = {
               Problem.ans,
               true,
               true,
+              Problem.d,
               { from: App.account }
             );
             console.log("result", result);
@@ -1115,20 +1178,12 @@ App = {
               p[5], //_ans
               true,
               true,
+              p[8],
               { from: App.account }
             );
             return accept;
           })
           .then(function (accept) {
-            bootoast({
-              message: "Question accepted successfully",
-              type: "success",
-              position: "bottom-center",
-              icon: null,
-              timeout: null,
-              animationDuration: 300,
-              dismissible: true,
-            });
             // window.alert("Question accepted successfully");
             console.log("Rejected promise ", accept);
             window.location = "http://localhost:3000/teacherDashboard.html";
@@ -1164,15 +1219,6 @@ App = {
             return rejected;
           })
           .then(function (rejected) {
-            bootoast({
-              message: "Question rejected successfully",
-              type: "danger",
-              position: "bottom-center",
-              icon: null,
-              timeout: null,
-              animationDuration: 300,
-              dismissible: true,
-            });
             // window.alert("Question rejected successfully");
             console.log("Rejected promise ", rejected);
             window.location = "http://localhost:3000/teacherDashboard.html";
