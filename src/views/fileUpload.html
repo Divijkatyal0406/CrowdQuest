@@ -52,6 +52,9 @@
         </a>
       </div>
       <div class="col-lg-6 col-sm-12 right">
+
+
+      
         <div class="wrapper">
           <header>Question Encryption</header>
           <br />
@@ -61,24 +64,39 @@
             class="time-pickable"
             readonly
           /> -->
-          <form action="#">
+          <!-- <form action="#">
             <label for="myFile"><i class="fas fa-cloud-upload-alt"></i></label>
             <input class="file-input" type="file" name="file" id="myFile" hidden />
-            <p>Browse File to Upload</p>
-          </form>
+            <p id="path_text">Browse File to Upload</p>
+          </form> -->
 
           <form action="http://localhost:5000/" method="POST">
+            <label for="myFile"><i class="fas fa-cloud-upload-alt"></i></label>
+            <input class="file-input" type="file" name="file" id="myFile" hidden />
+            <p name="fileName" id="path_text">Browse File to Upload</p>
+            <br>
             <label for="time">Set Examination Time : </label>
             <input type="datetime-local" id="time" name="t" step="1" required>
-         <!-- <input type="text" name="fname"><br> -->
-            <!-- <section class="progress-area"></section>
-            <section class="uploaded-area"></section> -->
-            <br>
+            <br><br>
           <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      $(function()
+      {
+          $('#myFile').on('change',function ()
+          {
+              var filePath = $(this).val();
+              document.getElementById("path_text").innerHTML=filePath.substring(12);
+              console.log(filePath);
+          });
+      });
+  
+  </script>
     <script type="module" src="public/javascript/fileUpload.js"></script>
     <script>
       const startTime = document.getElementById('appt');

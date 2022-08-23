@@ -15,9 +15,31 @@ var path = require('path')
 
 // generateKeys()
 // setTimeout(() => {
-  _testing()
+  // _testing()
 //   console.log("chal jaa");
 // }, 15000)
+
+
+
+const directoryPath = path.join(__dirname, 'Documents');
+//passsing directoryPath and callback function
+fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        // console.log(file); 
+        _testing(file);
+    });
+});
+
+
+
+
+
 
 let c11,c12,c13,c14,c15,c16,c17,time,time1;
 // c15="Performing private and public key encoding"
@@ -108,7 +130,7 @@ async function downloadFileEncrypted(ipfspath) {
   }
 }
 
-async function getUploadedFiles(ipfspath='/encrypted/') {
+async function getUploadedFiles(ipfspath='/encrypted2/') {
   let files = []
   const arr = await toArray(ipfs.files.ls(ipfspath))
   for (let file of arr) {
@@ -186,15 +208,15 @@ function decryptRSA(toDecrypt, privkeyPath='private.pem') {
   return decrypted.toString('utf8')
 }
 
-async function _testing() {
+async function _testing(fileName) {
   console.log("here9");
-  const file = "C:/Users/divij/Downloads/data flow.pdf" 
-  const ipfspath = '/encrypted/data/' + file 
+  const file = 'C:/Users/divij/Downloads/'+fileName; 
+  const ipfspath = '/encrypted2/data/' + file 
   
   
   await uploadFileEncrypted(file, ipfspath)
   
-  // document.getElementById().innerHTML=`ipfs path /encrypted/data/${file}`;
+  // document.getElementById().innerHTML=`ipfs path /encrypted2/data/${file}`;
   c11=`--------READING FILE--------`
   c17=`${file}`;
   
@@ -242,6 +264,7 @@ app.use(express.static(__dirname+ '/public'));
 //   console.log(req.body.fname);
 //   res.sendFile(__dirname + '/iterative.html');
 // });
+
 
 app.post('/', (req, res) => {
   // time=req.body.t;
