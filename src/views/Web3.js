@@ -698,16 +698,18 @@ App = {
                   </div>
               </div>
           </div>
-          <div class="question-info" style="justify-content:center;">
+          <div class="question-info" style="justify-content:space-evenly;">
               <div class="question-standard">Correct Answer :
               <span spellcheck="false" class="contenteditableTeacherDashboard editAnswer${count}" contenteditable="true" placeholder="Enter the correct Option(A/B/C/D)">${
                 options[ans - 1]
               }</span>
                </div>
+              <div class="evaluation">
               <button onClick="App.editAndAccept(${count})" type="button" class="btn btn-info approve-btn">Edit and Accept</button>
               <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
               <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
-          </div>
+              </div>
+              </div>
       </div>`;
               quesData1 += ques;
               problemCard1.innerHTML = quesData1;

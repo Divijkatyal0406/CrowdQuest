@@ -45,6 +45,11 @@
   font-size: 1.2rem;
   padding: 10px;
 }
+
+.evaluation{
+  width: 45%;
+}
+
 .question-info {
   /* margin-left: 20em; */
   margin-right:-20em;
@@ -119,6 +124,10 @@
     position: relative;
     left: 10%;
   }
+
+  .evaluation{
+    width: 60%;
+  }
   .question_diff_posn {
     font-size: 1.0rem;
     left: 20vw;
@@ -142,9 +151,18 @@
     left: 50vw;
   }
 
+  .question-info{
+    flex-direction: column;
+  }
+
   .question_diff_posn {
     left: 17vw;
   }
+
+  .evaluation{
+    width: 80%;
+  }
+
 }
 @media only screen and (max-width: 845px) {
   .stud_question .question {
@@ -173,11 +191,17 @@
   .question-standard {
 
     font-size: 1rem;
+
   }
   .question_diff_posn {
     font-size: 1rem;
     left: 6vw;
   }
+
+  .evaluation{
+    width: 70%;
+  }
+
 }
 @media only screen and (max-width: 565px) {
   .stud_question .question {
