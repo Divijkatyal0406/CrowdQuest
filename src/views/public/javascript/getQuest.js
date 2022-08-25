@@ -284,8 +284,10 @@ function addRemove(count, idx){
                             <td class="right-opt">D. <span contenteditable="true">${(questionStored[i].options[3])}<span></td>
                           </tr>
                         </table>
-                        <i class="fa fa-plus" id="addBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
-                        <i class="fa fa-minus" id="removeBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
+                        <div style="width:90%;display: flex;justify-content: flex-end;">
+                        <i class="fa fa-plus" id="addBlock" aria-hidden="true" "=""></i>
+                        <i class="fa fa-minus" id="removeBlock" aria-hidden="true"></i>
+                        </div> 
                       </div>
                     </div>`;
                     quesData += ques;
@@ -324,9 +326,12 @@ function addRemove(count, idx){
                             <td class="right-opt">D. <span contenteditable="true">${(questionStored[i].options[3])}<span></td>
                           </tr>
                         </table>
-                        <i class="fa fa-plus" id="addBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
-                        <i class="fa fa-minus" id="removeBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
-                      </div>
+                        <div style="width:90%;display: flex;justify-content: flex-end;">
+                        <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
+                        <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
+                        </div> 
+
+                        </div>
                     </div>`;
                     quesData += ques;
                     problemCard.innerHTML = quesData;

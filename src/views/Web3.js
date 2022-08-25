@@ -542,9 +542,11 @@ App = {
                             <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
                           </tr>
                         </table>
-                        <i class="fa fa-plus" id="addBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
-                        <i class="fa fa-minus" id="removeBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
-                      </div>
+                        <div style="width:90%;display: flex;justify-content: flex-end;">
+                        <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
+                        <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
+                        </div>                    
+                        </div>
                     </div>`;
                     quesData += ques;
                     problemCard.innerHTML = quesData;
@@ -646,9 +648,10 @@ App = {
                             <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
                           </tr>
                         </table>
-                        <i class="fa fa-plus" id="addBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
-                        <i class="fa fa-minus" id="removeBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
-                      </div>
+                         <div style="width:90%;display: flex;justify-content: flex-end;">
+                        <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
+                        <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
+                        </div>                  </div>
                     </div>`;
                     quesData += ques;
                     problemCard.innerHTML = quesData;
