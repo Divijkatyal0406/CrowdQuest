@@ -868,11 +868,12 @@ App = {
               <div class="stud_question">
                 <div class="subject">
                    Subject : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard editSubject${count}" contenteditable="true">${subject}</span> | <span id="topic" spellcheck="false" class="contenteditableTeacherDashboard editTopic${count}" contenteditable="true">${topic}</span>
-                </div>
-
-                <div class="subject">
+                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                    Difficulty : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard editDifficulty${count}" contenteditable="true">${difficulty2}</span>
                 </div>
+
+          
+                
 
 
                   <div class="question">
@@ -1394,7 +1395,7 @@ App = {
   questionAccept: function (index) {
     console.log("Accept");
     console.log("index", index);
-    // App.init();
+    App.init();
     console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {

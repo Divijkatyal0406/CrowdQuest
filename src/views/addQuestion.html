@@ -36,7 +36,7 @@
           <form id="myform" class="questionForm" autocomplete="off">
             <div class="form-group purple-border">
             <div style="margin:1em auto; margin-left: 0.5em; ">
-              <div> <label data-localize="Select" class="form-group" for="cars" style="margin:0.5em;">Please select the Subject and the chapter</label> </div>
+              <div> <label data-localize="Select" class="form-group" for="cars" style="margin:0.5em;">Please select the Subject, Chapter and topic: </label> </div>
               
               <!-- Choose Subject -->
               
@@ -47,8 +47,13 @@
                   <option value="chem">Chemistry</option>
                   <option value="bio">Biology</option>
                 </select>
-                <select name="topic" id="topic" class="topicDropdown">
+                <select name="topic" id="topic" class="topicDropdown" onchange="getTopic()">
                   
+                  
+                </select>
+                <select name="subtopic" id="subtopic" class="topicDropdown">
+
+
                 </select>
 
                 <select name="d" id="d" class="subjectDropdown">

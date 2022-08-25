@@ -7,7 +7,7 @@ function viewModal(arg) {
     var sub = document.querySelector(".subject").value;
     document.querySelector(
       ".modal-title"
-    ).innerText = `Select topics to be excluded : (${sub})`;
+    ).innerText = `Select topics to be included : (${sub})`;
     createModal(sub);
   }else{
     let modalCard = document.querySelector(".modal-body");
@@ -127,10 +127,10 @@ function createModal(subject) {
   let modalCard = document.querySelector(".modal-body");
   let optionData = "";
   for (var i = 0; i < optionArray.length; i++) {
-    let option = `<div class="pretty p-icon p-smooth">
+    let option = `<div class="pretty p-icon p-round p-smooth">
         <input class="excluded-topics" value="${i}" type="checkbox" />
-        <div class="state p-danger-o">
-          <i class="icon mdi fa fa-times" aria-hidden="true"></i>
+        <div class="state p-success">
+          <i class="icon mdi mdi-check" aria-hidden="true"></i>
           <label>${optionArray[i]}</label>
         </div>
       </div><br>`;
