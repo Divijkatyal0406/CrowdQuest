@@ -312,6 +312,11 @@ App = {
       }
     }
 
+    // DIFFICULTY COUNT
+    // alert(easyQuestions); 
+    // alert(mediumQuestions); 
+    // alert(hardQuestions); 
+
     var date = document.querySelector(".date").value;
     var subject = document.querySelector(".subject").value;
     var totalQues = document.querySelector(".questionCount").value;
@@ -342,6 +347,13 @@ App = {
         "Nuclei",
         "Semiconductor Electronics",
       ];
+      
+      var map = new Map();
+      for(var i in chapterArray){
+        map.set(chapterArray[i], 0);
+      }
+      console.log(map);
+
     } else if (subject == "Biology") {
       var chapterArray = [
         "Reproduction in Organisms",
@@ -361,6 +373,13 @@ App = {
         "Biodiversity and Conservation",
         "Environmental Issues",
       ];
+
+      var map = new Map();
+      for(var i in chapterArray){
+        map.set(chapterArray[i], 0);
+      }
+      console.log(map);
+
     } else if (subject == "Mathematics") {
       var chapterArray = [
         "Relations and Functions",
@@ -377,6 +396,13 @@ App = {
         "Linear Programming",
         "Probability",
       ];
+      
+      var map = new Map();
+      for(var i in chapterArray){
+        map.set(chapterArray[i], 0);
+      }
+      console.log(map);
+
     } else {
       var chapterArray = [
         "The Solid State",
@@ -396,36 +422,14 @@ App = {
         "Polymers",
         "Chemistry in Everyday Life",
       ];
+
+      var map = new Map();
+      for(var i in chapterArray){
+        map.set(chapterArray[i], 0);
+      }
+      console.log(map);
     }
 
-    // // Creating visited array
-    // var visitedArr = [];
-    // App.contracts.CrowdSource.deployed()
-    //   .then(function (instance) {
-    //     crowdsourceInstance = instance;
-    //     return crowdsourceInstance.problemCount();
-    //   })
-    //   .then(function (problemCount) {
-
-    //         for (var i = 1; i <= problemCount; i++) {
-    //           crowdsourceInstance.problems(i).then(function (p) {
-    //             if (
-    //               p[6] == true &&
-    //               p[7] == true &&
-    //               p[0] == subject
-    //             ) {
-    //               console.log("Only selected subject question");
-    //               console.log(p);
-    //               visitedArr.push(1);
-    //             }
-    //           });
-    //         }
-
-    //         console.log(visitedArr);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
 
     // Build question paper using inputs
     App.contracts.CrowdSource.deployed()
@@ -439,95 +443,303 @@ App = {
         for (var k = 0; k <= problemCount; k++) {
           visitedArr[k] = 0;
         }
+        
         //  console.log(visitedArr);
         let quesData = "";
-        // var index2 = 0;
-        // for (var j = 0; j < chapterArray.length; j++) {
-        //   var index = 1;
-        //   // var countWeight = 0;
-        //   var chapterName = chapterArray[index2];
-        //   // console.log(chapterName);
-
-        //   // -1 means chapter is included
-        //   if (excludedTopics[index2] == -1) {
-        //     for (var i = 1; i <= problemCount; i++) {
-        //       crowdsourceInstance.problems(i).then(function (p) {
-
-        //         if (
-        //           p[6] == true &&
-        //           p[7] == true &&
-        //           p[0] == subject &&
-        //           visitedArr[index] == 0
-        //         ) {
-
-        //           console.log(p[1]);
-        //           console.log(chapterName);
-        //           console.log(index2);
-        //           console.log(j);
-
-        //           console.log("Based on the queries questions are being generated");
-        //           console.log(p);
-        //           visitedArr[index] = 1;
-
-        //           // if (countWeight >= weightage) {
-        //           //   i = problemCount + 10;
-        //           // }
-
-        //           let ques = `<br />
-        //         <div class="card">
-        //           <div style="background-color: rgb(221, 221, 221)" class="card-header">
-        //             <p class="ques">
-        //               Ques1. This will be the format of each question (question here) :
-        //             </p>
-        //           </div>
-        //           <div class="card-body">
-        //             <table>
-        //               <tr>
-        //                 <td>A. Option one here</td>
-        //                 <td>B. Option two here</td>
-        //               </tr>
-        //               <tr>
-        //                 <td class="right-opt">C. Option three here</td>
-        //                 <td class="right-opt">D. Option four here</td>
-        //               </tr>
-        //             </table>
-        //           </div>
-        //         </div>`;
-        //           quesData += ques;
-        //           problemCard.innerHTML = quesData;
-        //         }
-        //         index++;
-        //         document.querySelector("#download").style.visibility =
-        //           "visible";
-        //       });
-        //     }
-        //     index2++;
-        //   }
-        // }
 
         var index = 1;
         let questionCount = 0;
+
+        //For EASY question
+        // var flag = 0;
+        // for (var i = 1; i <= problemCount; i++) {
+        //   crowdsourceInstance.problems(i).then(function (p) {
+          
+        //     if (
+        //       p[6] == true &&
+        //       p[7] == true &&
+        //       p[0] == subject &&
+        //       visitedArr[index] == 0
+        //     ) {
+
+        //       for (var j = 0; j < chapterArray.length; j++) {
+        //         if (excludedTopics[j] == -1) {
+        //           //Here we have the information of chapter and subject
+        //           if (p[1] == chapterArray[j] && p[8] == 0) {
+
+        //             console.log("here goes easy ques");
+        //             console.log(p);   
+
+        //             // check weightage
+        //             if(map.get(chapterArray[j]) >= weightage){
+        //               console.log("loop breaked");
+        //               break;
+        //             }
+
+        //             //increase weightage count
+        //             map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
+        //             console.log(map);
+
+
+        //             questionCount++;
+        //             let subject = p[0];
+        //             let topic = p[1];
+        //             let question = p[2];
+        //             let options = App.getOptions(p[3]);
+        //             let imgHash = p[4];
+        //             let ans = p[5].toNumber();
+        //             let approve = p[6];
+        //             let isApprove = p[7];
+        //             let correctAnswer = p[ans + 1];
+
+        //             // check total easy question 
+        //             if(easyQuestions <= 0){
+        //               flag = 1;
+        //               break;
+        //             }
+
+        //             //reduce total question
+        //             easyQuestions -= 1;
+                  
+        //             let ques = `<br />
+        //             <div class="card">
+        //               <div style="background-color: rgb(221, 221, 221)" class="card-header">
+        //                 <p class="ques">
+        //                   Ques${questionCount}. ${question}
+        //                 </p>
+        //               </div>
+        //               <br>
+        //               <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
+        //               <div class="card-body">
+        //                 <table>
+        //                   <tr>
+        //                     <td>A. ${options[0]}</td>
+        //                     <td>B. ${options[1]}</td>
+        //                   </tr>
+        //                   <tr>
+        //                     <td class="right-opt">C. ${options[2]}</td>
+        //                     <td class="right-opt">D. ${options[3]}</td>
+        //                   </tr>
+        //                 </table>
+        //               </div>
+        //             </div>`;
+        //             quesData += ques;
+        //             problemCard.innerHTML = quesData;
+        //           }
+        //         }
+        //         document.querySelector("#download").style.visibility =
+        //           "visible";
+        //       }
+        //     }
+        //     index++;
+        //   });
+        //   // check total easy question 
+        //   if(flag == 1){
+        //     break;
+        //   }
+        // }
+
+        // // For MEDIUM questions
+        // var flag = 0;
+        // for (var i = 1; i <= problemCount; i++) {
+        //   crowdsourceInstance.problems(i).then(function (p) {
+          
+        //     if (
+        //       p[6] == true &&
+        //       p[7] == true &&
+        //       p[0] == subject &&
+        //       visitedArr[index] == 0
+        //     ) {
+
+        //       for (var j = 0; j < chapterArray.length; j++) {
+        //         if (excludedTopics[j] == -1) {
+        //           //Here we have the information of chapter and subject
+        //           if (p[1] == chapterArray[j] && p[8] == 1) {
+
+        //             // check weightage
+        //             if(map.get(chapterArray[j]) >= weightage){
+        //               console.log("loop breaked");
+        //               break;
+        //             }
+
+        //             //increase weightage count
+        //             map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
+        //             console.log(map);
+
+
+        //             questionCount++;
+        //             let subject = p[0];
+        //             let topic = p[1];
+        //             let question = p[2];
+        //             let options = App.getOptions(p[3]);
+        //             let imgHash = p[4];
+        //             let ans = p[5].toNumber();
+        //             let approve = p[6];
+        //             let isApprove = p[7];
+        //             let correctAnswer = p[ans + 1];
+
+        //             // check total medium question 
+        //             var flag = 0;
+        //             if(mediumQuestions <= 0){
+        //               flag = 1;
+        //               break;
+        //             }
+
+        //             //reduce total question
+        //             mediumQuestions -= 1;
+                  
+        //             let ques = `<br />
+        //             <div class="card">
+        //               <div style="background-color: rgb(221, 221, 221)" class="card-header">
+        //                 <p class="ques">
+        //                   Ques${questionCount}. ${question}
+        //                 </p>
+        //               </div>
+        //               <br>
+        //               <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
+        //               <div class="card-body">
+        //                 <table>
+        //                   <tr>
+        //                     <td>A. ${options[0]}</td>
+        //                     <td>B. ${options[1]}</td>
+        //                   </tr>
+        //                   <tr>
+        //                     <td class="right-opt">C. ${options[2]}</td>
+        //                     <td class="right-opt">D. ${options[3]}</td>
+        //                   </tr>
+        //                 </table>
+        //               </div>
+        //             </div>`;
+        //             quesData += ques;
+        //             problemCard.innerHTML = quesData;
+        //           }
+        //         }
+        //         document.querySelector("#download").style.visibility =
+        //           "visible";
+        //       }
+        //     }
+        //     index++;
+        //   });
+        //   // check total question 
+        //   if(flag == 1){
+        //     break;
+        //   }
+        // }
+
+        // //For HARD questions
+        // var flag = 0;
+        // for (var i = 1; i <= problemCount; i++) {
+        //   crowdsourceInstance.problems(i).then(function (p) {
+          
+        //     if (
+        //       p[6] == true &&
+        //       p[7] == true &&
+        //       p[0] == subject &&
+        //       visitedArr[index] == 0
+        //     ) {
+
+        //       for (var j = 0; j < chapterArray.length; j++) {
+        //         if (excludedTopics[j] == -1) {
+        //           //Here we have the information of chapter and subject
+        //           if (p[1] == chapterArray[j] && p[8] == 2) {
+
+        //             // check weightage
+        //             if(map.get(chapterArray[j]) >= weightage){
+        //               console.log("loop breaked");
+        //               break;
+        //             }
+
+        //             //increase weightage count
+        //             map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
+        //             console.log(map);
+
+
+        //             questionCount++;
+        //             let subject = p[0];
+        //             let topic = p[1];
+        //             let question = p[2];
+        //             let options = App.getOptions(p[3]);
+        //             let imgHash = p[4];
+        //             let ans = p[5].toNumber();
+        //             let approve = p[6];
+        //             let isApprove = p[7];
+        //             let correctAnswer = p[ans + 1];
+
+        //             // check total question 
+        //             if(hardQuestions <= 0){
+        //               flag = 1;
+        //               break;
+        //             }
+
+        //             //reduce hard question
+        //             hardQuestions -= 1;
+                  
+        //             let ques = `<br />
+        //             <div class="card">
+        //               <div style="background-color: rgb(221, 221, 221)" class="card-header">
+        //                 <p class="ques">
+        //                   Ques${questionCount}. ${question}
+        //                 </p>
+        //               </div>
+        //               <br>
+        //               <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
+        //               <div class="card-body">
+        //                 <table>
+        //                   <tr>
+        //                     <td>A. ${options[0]}</td>
+        //                     <td>B. ${options[1]}</td>
+        //                   </tr>
+        //                   <tr>
+        //                     <td class="right-opt">C. ${options[2]}</td>
+        //                     <td class="right-opt">D. ${options[3]}</td>
+        //                   </tr>
+        //                 </table>
+        //               </div>
+        //             </div>`;
+        //             quesData += ques;
+        //             problemCard.innerHTML = quesData;
+        //           }
+        //         }
+        //         document.querySelector("#download").style.visibility =
+        //           "visible";
+        //       }
+        //     }
+        //     index++;
+        //   });
+        //   // check total hard question 
+        //   if(flag == 1){
+        //     break;
+        //   }
+        // }
+
+        // once easy, medium, difficult is added: for remaining questions
+        var flag = 0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
+          
             if (
               p[6] == true &&
               p[7] == true &&
               p[0] == subject &&
               visitedArr[index] == 0
             ) {
-              //Here we have the approved question
-              // console.log(p[1]);
-              // console.log(chapterName);
-              // console.log(index2);
-              // console.log(j);
-              // console.log("Based on the queries questions are being generated");
-              // console.log(p);
-              // visitedArr[index] = 1;
 
               for (var j = 0; j < chapterArray.length; j++) {
                 if (excludedTopics[j] == -1) {
                   //Here we have the information of chapter and subject
                   if (p[1] == chapterArray[j]) {
+
+                    // check weightage
+                    if(map.get(chapterArray[j]) >= weightage){
+                      console.log("loop breaked");
+                      break;
+                    }
+
+                    //increase weightage count
+                    map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
+                    console.log(map);
+
+
                     questionCount++;
                     let subject = p[0];
                     let topic = p[1];
@@ -538,7 +750,17 @@ App = {
                     let approve = p[6];
                     let isApprove = p[7];
                     let correctAnswer = p[ans + 1];
-                    // console.log("p[i] and chapterArray[j] ",p[1],chapterArray[j]);
+
+                    // check total question
+
+                    if(totalQues <= 0){
+                      flag = 1;
+                      break;
+                    }
+
+                    //reduce total question
+                    totalQues -= 1;
+                  
                     let ques = `<br />
                     <div class="card">
                       <div style="background-color: rgb(221, 221, 221)" class="card-header">
@@ -547,7 +769,7 @@ App = {
                         </p>
                       </div>
                       <br>
-                      <img width="40%" style="margin-left: 5%;" src='${imgHash}' alt="">
+                      <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
                       <div class="card-body">
                         <table>
                           <tr>
@@ -569,12 +791,12 @@ App = {
                   "visible";
               }
             }
-            // if (countWeight >= weightage) {
-            //   i = problemCount + 10;
-            // }
-
             index++;
           });
+          // check total question 
+          if(flag == 1){
+            break;
+          }
         }
       })
       .catch((e) => {
@@ -1074,6 +1296,14 @@ App = {
             let ans = p[5].toNumber();
             let approve = p[6];
             let isApprove = p[7];
+            let difficulty;
+            if(p[8] == 0){
+              difficulty = "Easy"
+            }else if(p[8] == 0){
+              difficulty = "Medium"
+            }else{
+              difficulty = "Hard"
+            }
             count++;
             if (
               approve == true &&
@@ -1089,8 +1319,10 @@ App = {
               <div class="unitQuestion">
                   <div class="stud_question">
                       <div class="subject">
-                          Subject : ${subject} | ${topic}
+                          Subject : ${subject} | ${topic} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          Difficulty : ${difficulty}
                       </div>
+
                       <div class="question">
                       Ques ${displayProblemCount1}.  <span class=${UniqueClassName}> ${question} </span> <button onclick="readQuest(${displayProblemCount1});return false;" id="speak"><i class="fa fa-file-audio-o" aria-hidden="true"></i></button>
                       <br>

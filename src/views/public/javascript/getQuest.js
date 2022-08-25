@@ -2,12 +2,53 @@ $("#myModal").on("shown.bs.modal", function () {
   $("#myInput").trigger("focus");
 });
 
-function viewModal() {
-  var sub = document.querySelector(".subject").value;
-  document.querySelector(
-    ".modal-title"
-  ).innerText = `Select topics to be excluded : (${sub})`;
-  createModal(sub);
+function viewModal(arg) {
+  if(arg == 'topics'){
+    var sub = document.querySelector(".subject").value;
+    document.querySelector(
+      ".modal-title"
+    ).innerText = `Select topics to be excluded : (${sub})`;
+    createModal(sub);
+  }else{
+    let modalCard = document.querySelector(".modal-body");
+    modalCard.innerHTML = `  
+    <p>Sum of the inputs should be equal to total questions (preffered) else system will randomly assign questions of any difficulty.              
+    <br><br>
+    <label for="">Easy question count: </label>
+    <input class="diff" type="number">
+    
+    <label for="">Medium question count: </label>
+    <input class="diff" type="number">
+
+    <label for="">Hard question count: </label>
+    <input class="diff" type="number">`
+
+    document.querySelector(".modal-footer").innerHTML = `<button
+    type="button"
+    class="btn btn-primary"
+    data-dismiss="modal"
+    onclick = "idgaf(); return false;"
+  >
+    Save changes 
+  </button>`
+  }
+}
+
+var easyQuestions;
+var mediumQuestions;
+var hardQuestions;
+
+function idgaf(){
+  console.log("inside func");
+  var x = document.querySelectorAll(".diff");
+
+  easyQuestions = parseInt(x[0].value) ; 
+  mediumQuestions = parseInt(x[1].value) ; 
+  hardQuestions = parseInt(x[2].value) ; 
+
+  console.log(easyQuestions);
+  console.log(mediumQuestions);
+  console.log(hardQuestions);
 }
 
 function createModal(subject) {
@@ -96,14 +137,23 @@ function createModal(subject) {
     optionData += option;
     modalCard.innerHTML = optionData;
   }
+  document.querySelector(".modal-footer").innerHTML = `<button
+  type="button"
+  class="btn btn-primary"
+  data-dismiss="modal"
+>
+  Save Changes
+</button>`
 }
 
 document.querySelector("#download").style.visibility = "hidden";
 
 // set max and min of the inputs:
 
+var remainingQuestions;
+
 function setWeightage() {
-  var total_question = document.querySelector(".questionCount").value;
+  var total_question =  document.querySelector(".questionCount").value;
   var subject = document.querySelector(".subject").value;
 
   //Get checkbox inputs
@@ -126,7 +176,7 @@ function setWeightage() {
 
   var max_weightage = Math.floor(total_question / chapterCount);
 
-
+ 
   if(max_weightage == 0){
     swal(
         `Invalid Input: ${total_question}`,
@@ -148,19 +198,25 @@ function setWeightage() {
     System will automatically generate remaining questions if any: (${total_question - (max_weightage * chapterCount)} question)`,
       "warning"
     );
+
+
+    
+    
     document.querySelector(".weightage").value = max_weightage;
   }else if(weightage_input <= max_weightage && weightage_input >= 1){
     swal(
-        "Question Statistics:",
-        `
+      "Question Statistics:",
+      `
       Total number of questions: ${total_question}
-  
+      
       Number of questions from each chapter should be less than or equal to ${max_weightage}.
       
       System will automatically generate remaining questions if any: (${total_question - (weightage_input * chapterCount)} question)`,
-        "success"
+      "success"
       );
-  }
+    }
+
+    remainingQuestions = total_question - (max_weightage * chapterCount);
 }
 
 
