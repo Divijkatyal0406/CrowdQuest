@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crowd Quest</title>
+    <link rel="stylesheet" href="public/css/fileUpload.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script>
+      window.addEventListener('load',()=>{
+        const isAuthenticated=localStorage.getItem('AUTHENTICATED');
+        console.log(isAuthenticated);
+        if(isAuthenticated=="false"){
+          // console.log("helllllooooo");
+              window.location.href = "http://localhost:3000/teacherLogin.html";
+              // alert("Access Denied");
+          }
+      })
+    </script>
+  </head>
+  <body style="background: #6990f2">
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 left">
+        <h2>Crowd Quest</h2>
+        <img
+          class="image"
+          src="assets/happy-freelancer.png"
+          alt=""
+        /><br /><br />
+        <p class="desc">Welcome to the mass upload page <mark style="  
+          background-color: #006ba954;
+          border-radius: 5px;
+          padding: 3px 6px;
+          font-weight: 500;
+          color: #ffffff;
+          font-family: monospace;
+          font-style: normal;"> Contribute questions in bulk</mark>   from here. Please upload the files in .CSV format only.
+        </p>
+        <br>
+        <a href="teacherDashboard.html">
+          <button class="desc btn btn-outline-light">Back to Dashboard</button>
+        </a>
+      </div>
+      <div class="col-lg-6 col-sm-12 right">
+
+
+      
+        <div class="wrapper">
+          <header>Bulk upload using CSV</header>
+          <br />
+          <!-- <input
+            placeholder="Enter download time"
+            type="text"
+            class="time-pickable"
+            readonly
+          /> -->
+          <!-- <form action="#">
+            <label for="myFile"><i class="fas fa-cloud-upload-alt"></i></label>
+            <input class="file-input" type="file" name="file" id="myFile" hidden />
+            <p id="path_text">Browse File to Upload</p>
+          </form> -->
+
+          <form action="http://localhost:5000/" method="POST">
+            <label for="myFile"><i class="fas fa-cloud-upload-alt"></i></label>
+            
+            <input class="file-input" type="file" name="file" id="myFile" hidden />
+            <p name="fileName" id="path_text">Browse File to Upload</p>
+            <br>
+            <label for="time">Set Upload Time : </label>
+            
+            <input type="datetime-local" id="time" name="t" step="1" style="border-radius: 5px; padding:5px; border-color:#5f8cff" required>
+            <br><br>
+          
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      $(function()
+      {
+          $('#myFile').on('change',function ()
+          {
+              var filePath = $(this).val();
+              document.getElementById("path_text").innerHTML=filePath.substring(12);
+              console.log(filePath);
+          });
+      });
+  
+  </script>
+    <script type="module" src="public/javascript/fileUpload.js"></script>
+    <script>
+      const startTime = document.getElementById('appt');
+      // console.log(timeControl.value);
+      startTime.addEventListener("input", () => {
+        console.log(startTime.value);
+    }, false);
+
+    </script>
+  </body>
+</html>
