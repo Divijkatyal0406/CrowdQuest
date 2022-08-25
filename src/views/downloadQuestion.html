@@ -351,8 +351,13 @@
       });
 
       enabled.addEventListener("click", () => {
-        popupScreen.classList.remove("active");
-        body.style.visibility = "visible";
+        navigator.permissions.query({ name: "camera" }).then(res => {
+          if(res.state == "granted"){
+            popupScreen.classList.remove("active"); 
+            body.style.visibility = "visible";
+          }
+      });
+
         //Close the popup screen on click the close button.
       });
     </script>

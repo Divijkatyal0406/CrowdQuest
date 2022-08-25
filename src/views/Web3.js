@@ -1431,7 +1431,7 @@ App = {
   questionReject: function (index) {
     console.log("Rejected");
     console.log("index", index);
-    // App.init();
+    App.init();
     console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
