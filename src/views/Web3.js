@@ -299,7 +299,6 @@ App = {
   },
 
   downloadQuestions: function () {
-    
 
     let problemCard = document.querySelector(".question-area");
     //Get checkbox inputs
@@ -322,6 +321,7 @@ App = {
     var subject = document.querySelector(".subject").value;
     var totalQues = document.querySelector(".questionCount").value;
     var weightage = document.querySelector(".weightage").value;
+    var count1 = document.querySelector(".perCount").value;
 
     console.log(date);
     document.getElementById("inputDate").innerText = date;
@@ -451,271 +451,119 @@ App = {
         var index = 1;
         let questionCount = 0;
 
-        //For EASY question
-        // var flag = 0;
-        // for (var i = 1; i <= problemCount; i++) {
-        //   crowdsourceInstance.problems(i).then(function (p) {
-          
-        //     if (
-        //       p[6] == true &&
-        //       p[7] == true &&
-        //       p[0] == subject &&
-        //       visitedArr[index] == 0
-        //     ) {
-
-        //       for (var j = 0; j < chapterArray.length; j++) {
-        //         if (excludedTopics[j] == -1) {
-        //           //Here we have the information of chapter and subject
-        //           if (p[1] == chapterArray[j] && p[8] == 0) {
-
-        //             console.log("here goes easy ques");
-        //             console.log(p);   
-
-        //             // check weightage
-        //             if(map.get(chapterArray[j]) >= weightage){
-        //               console.log("loop breaked");
-        //               break;
-        //             }
-
-        //             //increase weightage count
-        //             map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
-        //             console.log(map);
-
-
-        //             questionCount++;
-        //             let subject = p[0];
-        //             let topic = p[1];
-        //             let question = p[2];
-        //             let options = App.getOptions(p[3]);
-        //             let imgHash = p[4];
-        //             let ans = p[5].toNumber();
-        //             let approve = p[6];
-        //             let isApprove = p[7];
-        //             let correctAnswer = p[ans + 1];
-
-        //             // check total easy question 
-        //             if(easyQuestions <= 0){
-        //               flag = 1;
-        //               break;
-        //             }
-
-        //             //reduce total question
-        //             easyQuestions -= 1;
-                  
-        //             let ques = `<br />
-        //             <div class="card">
-        //               <div style="background-color: rgb(221, 221, 221)" class="card-header">
-        //                 <p class="ques">
-        //                   Ques${questionCount}. ${question}
-        //                 </p>
-        //               </div>
-        //               <br>
-        //               <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
-        //               <div class="card-body">
-        //                 <table>
-        //                   <tr>
-        //                     <td>A. ${options[0]}</td>
-        //                     <td>B. ${options[1]}</td>
-        //                   </tr>
-        //                   <tr>
-        //                     <td class="right-opt">C. ${options[2]}</td>
-        //                     <td class="right-opt">D. ${options[3]}</td>
-        //                   </tr>
-        //                 </table>
-        //               </div>
-        //             </div>`;
-        //             quesData += ques;
-        //             problemCard.innerHTML = quesData;
-        //           }
-        //         }
-        //         document.querySelector("#download").style.visibility =
-        //           "visible";
-        //       }
-        //     }
-        //     index++;
-        //   });
-        //   // check total easy question 
-        //   if(flag == 1){
-        //     break;
-        //   }
-        // }
-
-        // // For MEDIUM questions
-        // var flag = 0;
-        // for (var i = 1; i <= problemCount; i++) {
-        //   crowdsourceInstance.problems(i).then(function (p) {
-          
-        //     if (
-        //       p[6] == true &&
-        //       p[7] == true &&
-        //       p[0] == subject &&
-        //       visitedArr[index] == 0
-        //     ) {
-
-        //       for (var j = 0; j < chapterArray.length; j++) {
-        //         if (excludedTopics[j] == -1) {
-        //           //Here we have the information of chapter and subject
-        //           if (p[1] == chapterArray[j] && p[8] == 1) {
-
-        //             // check weightage
-        //             if(map.get(chapterArray[j]) >= weightage){
-        //               console.log("loop breaked");
-        //               break;
-        //             }
-
-        //             //increase weightage count
-        //             map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
-        //             console.log(map);
-
-
-        //             questionCount++;
-        //             let subject = p[0];
-        //             let topic = p[1];
-        //             let question = p[2];
-        //             let options = App.getOptions(p[3]);
-        //             let imgHash = p[4];
-        //             let ans = p[5].toNumber();
-        //             let approve = p[6];
-        //             let isApprove = p[7];
-        //             let correctAnswer = p[ans + 1];
-
-        //             // check total medium question 
-        //             var flag = 0;
-        //             if(mediumQuestions <= 0){
-        //               flag = 1;
-        //               break;
-        //             }
-
-        //             //reduce total question
-        //             mediumQuestions -= 1;
-                  
-        //             let ques = `<br />
-        //             <div class="card">
-        //               <div style="background-color: rgb(221, 221, 221)" class="card-header">
-        //                 <p class="ques">
-        //                   Ques${questionCount}. ${question}
-        //                 </p>
-        //               </div>
-        //               <br>
-        //               <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
-        //               <div class="card-body">
-        //                 <table>
-        //                   <tr>
-        //                     <td>A. ${options[0]}</td>
-        //                     <td>B. ${options[1]}</td>
-        //                   </tr>
-        //                   <tr>
-        //                     <td class="right-opt">C. ${options[2]}</td>
-        //                     <td class="right-opt">D. ${options[3]}</td>
-        //                   </tr>
-        //                 </table>
-        //               </div>
-        //             </div>`;
-        //             quesData += ques;
-        //             problemCard.innerHTML = quesData;
-        //           }
-        //         }
-        //         document.querySelector("#download").style.visibility =
-        //           "visible";
-        //       }
-        //     }
-        //     index++;
-        //   });
-        //   // check total question 
-        //   if(flag == 1){
-        //     break;
-        //   }
-        // }
-
-        // //For HARD questions
-        // var flag = 0;
-        // for (var i = 1; i <= problemCount; i++) {
-        //   crowdsourceInstance.problems(i).then(function (p) {
-          
-        //     if (
-        //       p[6] == true &&
-        //       p[7] == true &&
-        //       p[0] == subject &&
-        //       visitedArr[index] == 0
-        //     ) {
-
-        //       for (var j = 0; j < chapterArray.length; j++) {
-        //         if (excludedTopics[j] == -1) {
-        //           //Here we have the information of chapter and subject
-        //           if (p[1] == chapterArray[j] && p[8] == 2) {
-
-        //             // check weightage
-        //             if(map.get(chapterArray[j]) >= weightage){
-        //               console.log("loop breaked");
-        //               break;
-        //             }
-
-        //             //increase weightage count
-        //             map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
-        //             console.log(map);
-
-
-        //             questionCount++;
-        //             let subject = p[0];
-        //             let topic = p[1];
-        //             let question = p[2];
-        //             let options = App.getOptions(p[3]);
-        //             let imgHash = p[4];
-        //             let ans = p[5].toNumber();
-        //             let approve = p[6];
-        //             let isApprove = p[7];
-        //             let correctAnswer = p[ans + 1];
-
-        //             // check total question 
-        //             if(hardQuestions <= 0){
-        //               flag = 1;
-        //               break;
-        //             }
-
-        //             //reduce hard question
-        //             hardQuestions -= 1;
-                  
-        //             let ques = `<br />
-        //             <div class="card">
-        //               <div style="background-color: rgb(221, 221, 221)" class="card-header">
-        //                 <p class="ques">
-        //                   Ques${questionCount}. ${question}
-        //                 </p>
-        //               </div>
-        //               <br>
-        //               <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
-        //               <div class="card-body">
-        //                 <table>
-        //                   <tr>
-        //                     <td>A. ${options[0]}</td>
-        //                     <td>B. ${options[1]}</td>
-        //                   </tr>
-        //                   <tr>
-        //                     <td class="right-opt">C. ${options[2]}</td>
-        //                     <td class="right-opt">D. ${options[3]}</td>
-        //                   </tr>
-        //                 </table>
-        //               </div>
-        //             </div>`;
-        //             quesData += ques;
-        //             problemCard.innerHTML = quesData;
-        //           }
-        //         }
-        //         document.querySelector("#download").style.visibility =
-        //           "visible";
-        //       }
-        //     }
-        //     index++;
-        //   });
-        //   // check total hard question 
-        //   if(flag == 1){
-        //     break;
-        //   }
-        // }
-
+        // console.log("bye",count);
         // once easy, medium, difficult is added: for remaining questions
+        let reqCount=(count1/totalQues)*100;
+        let rest=totalQues-reqCount;
         var flag = 0;
         let count = 0;
+        for (var i = 1; i <= problemCount; i++) {
+          crowdsourceInstance.problems(i).then(function (p) {
+            let address = p[9].toString();
+            console.log(address.toLowerCase()==App.account.toLowerCase());
+          count++;
+            if (
+              p[6] == true &&
+              p[7] == true &&
+              p[0] == subject &&
+              p[9].toLowerCase()==App.account.toLowerCase() &&
+              visitedArr[index] == 0
+            ) {
+              console.log("byeee111");
+              for (var j = 0; j < chapterArray.length; j++) {
+                if (excludedTopics[j] == -1) {
+                  //Here we have the information of chapter and subject
+                  if (p[1] == chapterArray[j]) {
+
+                    // check weightage
+                    if(map.get(chapterArray[j]) >= weightage){
+                      console.log("loop breaked");
+                      break;
+                    }
+
+                    //increase weightage count
+                    map.set(chapterArray[j], (map.get(chapterArray[j]) + 1));
+                    console.log(map);
+
+
+                    questionCount++;
+                    let subject = p[0];
+                    let topic = p[1];
+                    let question = p[2];
+                    let options = App.getOptions(p[3]);
+                    let imgHash = p[4];
+                    let ans = p[5].toNumber();
+                    let approve = p[6];
+                    let isApprove = p[7];
+                    let correctAnswer = p[ans + 1];
+                    let anotherOption =  options;              
+                    const Problem = {
+                      subject: p[0],
+                      topic: p[1],
+                      question: p[2],
+                      options:anotherOption ,
+                      imgUrl: p[4],
+                      ans: p[5].toNumber(),
+                      approve: p[6],
+                      isApproved: p[7],
+                      d:null
+                    };
+
+                    // check total question
+
+                    if(reqCount <= 0){
+                      flag = 1;
+                      break;
+                    }
+
+                    //reduce total question
+                    reqCount -= 1;
+
+                    // store question in array
+                    questionStored.push(Problem);
+                  
+                    let ques = `<br />
+                    <div class="card fullCardQP${count}">
+                      <div style="background-color: rgb(221, 221, 221)" class="card-header">
+                        <p class="ques" contenteditable="true">
+                          Ques${questionCount}. ${question}
+                        </p>
+                      </div>
+                      <br>
+                      <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
+                      <div class="card-body">
+                        <table>
+                          <tr>
+                            <td>A.<span contenteditable="true"> ${options[0]}</span></td>
+                            <td>B.<span contenteditable="true"> ${options[1]}</span></td>
+                          </tr>
+                          <tr>
+                            <td class="right-opt">C.<span contenteditable="true"> ${options[2]}</span></td>
+                            <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
+                          </tr>
+                        </table>
+                        <i class="fa fa-plus" id="addBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                        <i class="fa fa-minus" id="removeBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                      </div>
+                    </div>`;
+                    quesData += ques;
+                    problemCard.innerHTML = quesData;
+                  }
+                }
+                document.querySelector("#download").style.visibility =
+                  "visible";
+              }
+            }
+            index++;
+            console.log("questionStored", questionStored[0]);
+          });
+          // check total question 
+          if(flag == 1){
+            break;
+          }
+        }
+
+        flag=0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
           count++;
@@ -767,13 +615,13 @@ App = {
 
                     // check total question
 
-                    if(totalQues <= 0){
+                    if(rest <= 0){
                       flag = 1;
                       break;
                     }
 
                     //reduce total question
-                    totalQues -= 1;
+                    rest -= 1;
 
                     // store question in array
                     questionStored.push(Problem);
@@ -818,6 +666,9 @@ App = {
             break;
           }
         }
+
+
+
         // console.log("questionStored",questionStored[0]);
       })
       .catch((e) => {
