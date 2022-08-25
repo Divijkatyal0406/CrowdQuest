@@ -781,7 +781,7 @@ App = {
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>
-                          <button class="report-btn" onClick="App.reportQuestion(${displayProblemCount1})">Report⚠️</button>
+                          <button class="report-btn" onClick="App.reportQuestion(${count})">Report⚠️</button>
                         </div>
                       <div>
                       </div class="lowerReward">
@@ -925,7 +925,7 @@ App = {
       });
   },
   sendReward: function (index) {
-    App.init();
+    // App.init();
     // console.log(index);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
@@ -1139,7 +1139,7 @@ App = {
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>
-                          <button class="report-btn" onClick="App.reportQuestion(${displayProblemCount1})">report</button>
+                          <button class="report-btn" onClick="App.reportQuestion(${count})">report</button>
                         </div>
                       <div>
                       </div class="lowerReward">
@@ -1162,7 +1162,7 @@ App = {
   questionAccept: function (index) {
     console.log("Accept");
     console.log("index", index);
-    App.init();
+    // App.init();
     console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
@@ -1198,7 +1198,7 @@ App = {
   questionReject: function (index) {
     console.log("Rejected");
     console.log("index", index);
-    App.init();
+    // App.init();
     console.log(App.contracts.CrowdSource);
     App.contracts.CrowdSource.deployed()
       .then(function (instance) {
@@ -1288,15 +1288,16 @@ App = {
 
   reportQuestion: function (_id) {
     App.contracts.CrowdSource.deployed()
-      .then(function (instance) {
-        crowdSourceInstance2 = instance;
+    .then(function (instance) {
+      crowdSourceInstance2 = instance;
+      // console.log("Report id",_id);
         const result = crowdSourceInstance2.report(_id, { from: App.account });
         return result;
         // x.push(5);
       })
       .then(function (result) {
-        window.location = "http://localhost:3000/studentDashboard.html";
-        console.log(result);
+        // window.location = "http://localhost:3000/studentDashboard.html";
+        console.log("Report result",result);
       });
   },
 };
