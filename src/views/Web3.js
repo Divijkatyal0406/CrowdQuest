@@ -928,9 +928,10 @@ App = {
               }</span>
                </div>
               <div class="evaluation">
-              <button onClick="App.editAndAccept(${count})" type="button" class="btn btn-info approve-btn">Edit and Accept</button>
-              <button onClick="App.questionAccept(${count})" type="button" class="btn btn-outline-success approve-btn">Accept</button>
-              <button onClick="App.questionReject(${count})" type="button" class="btn btn-outline-danger approve-btn">Reject</button>
+
+              <button onClick="App.editAndAccept(${count})" type="button" class="button-editAndAccept approve-btn">Edit and Accept</button>
+              <button onClick="App.questionAccept(${count})" type="button" class="button-acceptBTN approve-btn">Accept</button>
+              <button onClick="App.questionReject(${count})" type="button" class="button-rejectBTN approve-btn">Reject</button>
               </div>
               </div>
       </div>`;

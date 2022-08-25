@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+.unitQuestion {
+  height: 100%;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.header_flex {
+  display: flex;
+}
+.stud_hr {
+  margin: 5px 0px 5px 0px;
+  background-color: #3f3636;
+  height: 3px;
+  width: 100vw;
+}
+
+/* Question */
+.stud_question .question {
+  font-size: 1.4rem;
+  padding: 0vh 0vw 20px 0vw;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.options .option {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  display: flex;
+  outline: none;
+  align-items: center;
+}
+.options .option:active {
+  transform: scale(0.98);
+}
+
+.option_text {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.evaluation{
+  width: 45%;
+}
+
+.question-info {
+  /* margin-left: 20em; */
+  margin-right:-20em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100px;
+}
+.question-standard {
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px;
+  position: relative;
+  width: 40%;
+  /* left: -20%; */
+}
+.question-difficulty_easy {
+  background-color: #bce1be;
+  color: #508f30;
+  font-weight: bold;
+  font-size: 1.1rem;
+    padding: 8px;
+}
+.question-difficulty_mid {
+  background-color: #f4fc99;
+  color: #858800;
+  font-weight: bold;
+  font-size: 1.1rem;
+    padding: 8px;
+}
+.question-difficulty_hard {
+  background-color: #edb5b5;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 1.1rem;
+    padding: 8px;
+}
+.question_diff_posn {
+  position: relative;
+  left: 24vw;
+  margin: 0px 1vw 0px 0vw;
+  border-radius: 10px;
+  /* cursor: pointer; */
+}
+/* .question_diff_posn:focus {
+   box-shadow: inset 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22); 
+} 
+*/
+
+.contenteditableTeacherDashboard:focus {
+  border: 1px solid #606060;
+  padding: 0.2em;
+  border-radius: 5px;
+  color: #4163dc;
+}
+
+/* CSS for edit button */
+
+.button-editAndAccept {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #0d9fb3;
+    border: 1px solid transparent;
+    
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1em;
+    justify-content: center;
+    
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+  
+  .button-editAndAccept:hover,
+  .button-editAndAccept:focus {
+    background-color: #098090;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    border: none;
+  }
+  
+  .button-editAndAccept:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-editAndAccept:active {
+    background-color: #0DBCD4;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
+  
+  /*! CSS for approve button */
+  
+  .button-acceptBTN	{
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #ffffff;
+    border: 1px solid #6fb494;
+    
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1rem;
+    justify-content: center;
+    
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+  
+  .button-acceptBTN:hover,
+  .button-acceptBTN:focus {
+    background-color: #6FB494;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    border: none;
+    color: white;
+  }
+  
+  .button-acceptBTN:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-acceptBTN:active {
+    background-color: #6FB494;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+    
+  }
+  
+  
+  /* ! css for reject button */
+  
+  .button-rejectBTN {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #ffffff;
+    border: 1px solid #E04E5C;
+    
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 1rem;
+    justify-content: center;
+    
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+  
+  .button-rejectBTN:hover,
+  .button-rejectBTN:focus {
+    background-color: #f12f42;
+    color: white;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+  
+  .button-rejectBTN:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-rejectBTN:active {
+    background-color: #E04E5C;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
+
+/* Media Query */
+@media only screen and (max-width: 1392px) {
+  .stud_question .question {
+    font-size: 1.2rem;
+  }
+  .option_text {
+    font-size: 1.0rem;
+  }
+  .div-lgo {
+    position: relative;
+    left: 50vw;
+  }
+  .question-standard {
+    font-size: 1.0rem;
+    position: relative;
+    left: 10%;
+    /* width: 100%; */
+    text-align: center  ;
+  }
+
+  .evaluation{
+    width: 60%;
+  }
+  .question_diff_posn {
+    font-size: 1.0rem;
+    left: 20vw;
+  }
+  
+  .question-info{
+    /* width: 70%; */
+    align-items: center;
+    /* justify-content: left; */
+  }
+}
+@media only screen and (max-width: 1270px) {
+  .stud_question .question {
+    font-size: 1.8rem;
+  }
+  .option_text {
+    font-size: 1.2rem;
+  }
+  .div-lgo {
+    position: relative;
+    left: 50vw;
+  }
+
+  .question-info{
+    flex-direction: column;
+  }
+
+  .question_diff_posn {
+    left: 17vw;
+  }
+
+  .evaluation{
+    width: 80%;
+  }
+
+}
+@media only screen and (max-width: 845px) {
+  .stud_question .question {
+    font-size: 1.6rem;
+  }
+  .option_text {
+    font-size: 1rem;
+  }
+  .div-lgo {
+    position: relative;
+    left: 25vw;
+  }
+  .options {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  .question-info {
+    height: 124px;
+    margin-bottom: 20px;
+    width: 100%;
+    flex-direction: column;
+  }
+  .question-standard {
+
+    font-size: 1rem;
+
+  }
+  .question_diff_posn {
+    font-size: 1rem;
+    left: 6vw;
+  }
+
+  .evaluation{
+    width: 80%;
+  }
+
+  .button-acceptBTN{
+    font-size: 00.8em;
+    min-height: 1rem;
+  }
+
+    .button-rejectBTN{
+        font-size: 00.8em;
+        min-height: 1rem;
+    }
+
+    .button-editAndAccept{
+        font-size: 00.9em;
+        min-height: 1rem;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 565px) {
+  .stud_question .question {
+    font-size: 1.4rem;
+  }
+  .option_text {
+    font-size: 0.9rem;
+  }
+  .div-lgo {
+    position: relative;
+    left: 15vw;
+  }
+  .button_stud {
+    font-size: 0.8rem;
+  }
+  .question-standard {
+    font-size: 1rem;
+    
+  }
+  .question_diff_posn {
+    font-size: 1rem;
+    left: 4;
+  }
+
+  .evaluation{
+    width: 80%;
+    box-sizing: border-box;
+    left: 0;
+  }
+
+}
+@media only screen and (max-width: 425px) {
+  .button_stud {
+    padding: 11px 25px;
+    font-size: 0.8rem;
+  }
+  .question-standard {
+    margin: 0px 0px 0px 5vw;
+    right: 16vw;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: unset;
+  }
+  
+  .question_diff_posn {
+    font-size: 0.7rem;
+    left: 7vw;
+  }
+}
