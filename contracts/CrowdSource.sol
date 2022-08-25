@@ -32,7 +32,8 @@ contract CrowdSource {
         uint256 ans,
         bool approve,
         bool isApproved,
-        uint8 d
+        uint8 d,
+        address owner
     );
 
     struct Problem {
@@ -45,6 +46,19 @@ contract CrowdSource {
         bool approve;
         bool isApproved;
         uint8 d;
+        address owner;
+    }
+
+    function toAsciiString(address x) pure internal returns (string memory) {
+        bytes memory s = new bytes(40);
+        for (uint256 i = 0; i < 20; i++) {
+            bytes1 b = bytes1(uint8(uint256(uint160(x)) / (2**(8 * (19 - i)))));
+            bytes1 hi = bytes1(uint8(b) / 16);
+            bytes1 lo = bytes1(uint8(b) - 16 * uint8(hi));
+            s[2 * i] = char(hi);
+            s[2 * i + 1] = char(lo);
+        }
+        return string(s);
     }
 
     function addToBlockchain(
@@ -68,7 +82,8 @@ contract CrowdSource {
             _ans,
             _approve,
             _isApproved,
-            _d
+            _d,
+            msg.sender
         );
         //Added this
         owner[problemCount] = msg.sender;
@@ -81,7 +96,8 @@ contract CrowdSource {
             _ans,
             _approve,
             _isApproved,
-            _d
+            _d,
+            msg.sender
         );
     }
 
@@ -109,7 +125,8 @@ contract CrowdSource {
             _ans,
             _approve,
             _isApproved,
-            _d
+            _d,
+            msg.sender
         );
         // owner[uid]=msg.sender;
         emit SubmitQuestion(
@@ -121,7 +138,8 @@ contract CrowdSource {
             _ans,
             _approve,
             _isApproved,
-            _d
+            _d,
+            msg.sender
         );
     }
 
@@ -158,17 +176,6 @@ contract CrowdSource {
         return owner[_id];
     }
 
-    function toAsciiString(address x) internal pure returns (string memory) {
-        bytes memory s = new bytes(40);
-        for (uint256 i = 0; i < 20; i++) {
-            bytes1 b = bytes1(uint8(uint256(uint160(x)) / (2**(8 * (19 - i)))));
-            bytes1 hi = bytes1(uint8(b) / 16);
-            bytes1 lo = bytes1(uint8(b) - 16 * uint8(hi));
-            s[2 * i] = char(hi);
-            s[2 * i + 1] = char(lo);
-        }
-        return string(s);
-    }
 
     function char(bytes1 b) internal pure returns (bytes1 c) {
         if (uint8(b) < 10) return bytes1(uint8(b) + 0x30);

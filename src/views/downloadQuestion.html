@@ -150,11 +150,25 @@
               />
             </div>
           </li>
+          <li>
+            <i class="fas fa-question-circle"></i>
+            <span>Percentage of your own questions</span>
+            <div class="mainselection">
+              <input
+                type="number"
+                placeholder="Percentage of your own questions...."
+                id="perCount"
+                min="1"
+                max="100"
+                required
+              />
+            </div>
+          </li>
           <button
             type="submit"
             class="btn btn-outline-light"
             style="font-weight: 500"
-            onclick="App.downloadQuestions();"
+            onclick="App.downloadQuestions((document.getElementById('perCount').value*document.getElementsByClassName('questionCount').value)/100);"
           >
             Generate Paper
           </button>

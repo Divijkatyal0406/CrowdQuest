@@ -55,7 +55,7 @@ function predictWebcam() {
     children.splice(0);
     
     for (let n = 0; n < predictions.length; n++) {
-      if(predictions[n].class=="cell phone" || predictions[n].class!="person"){
+      if(predictions[n].class=="cell phone"){
         var w = window.open('','','width=300,height=100')
         w.document.write('Phone detected!! Access Denied')
         w.focus()
