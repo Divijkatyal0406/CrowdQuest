@@ -299,8 +299,9 @@ App = {
   },
 
   downloadQuestions: function () {
-    let problemCard = document.querySelector(".question-area");
+    
 
+    let problemCard = document.querySelector(".question-area");
     //Get checkbox inputs
     var excludedTopics = [];
     var checkboxes = document.querySelectorAll(".excluded-topics");
@@ -714,9 +715,10 @@ App = {
 
         // once easy, medium, difficult is added: for remaining questions
         var flag = 0;
+        let count = 0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
-          
+          count++;
             if (
               p[6] == true &&
               p[7] == true &&
@@ -750,6 +752,18 @@ App = {
                     let approve = p[6];
                     let isApprove = p[7];
                     let correctAnswer = p[ans + 1];
+                    let anotherOption =  options;              
+                    const Problem = {
+                      subject: p[0],
+                      topic: p[1],
+                      question: p[2],
+                      options:anotherOption ,
+                      imgUrl: p[4],
+                      ans: p[5].toNumber(),
+                      approve: p[6],
+                      isApproved: p[7],
+                      d:null
+                    };
 
                     // check total question
 
@@ -760,11 +774,14 @@ App = {
 
                     //reduce total question
                     totalQues -= 1;
+
+                    // store question in array
+                    questionStored.push(Problem);
                   
                     let ques = `<br />
-                    <div class="card">
+                    <div class="card fullCardQP${count}">
                       <div style="background-color: rgb(221, 221, 221)" class="card-header">
-                        <p class="ques">
+                        <p class="ques" contenteditable="true">
                           Ques${questionCount}. ${question}
                         </p>
                       </div>
@@ -773,14 +790,16 @@ App = {
                       <div class="card-body">
                         <table>
                           <tr>
-                            <td>A. ${options[0]}</td>
-                            <td>B. ${options[1]}</td>
+                            <td>A.<span contenteditable="true"> ${options[0]}</span></td>
+                            <td>B.<span contenteditable="true"> ${options[1]}</span></td>
                           </tr>
                           <tr>
-                            <td class="right-opt">C. ${options[2]}</td>
-                            <td class="right-opt">D. ${options[3]}</td>
+                            <td class="right-opt">C.<span contenteditable="true"> ${options[2]}</span></td>
+                            <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
                           </tr>
                         </table>
+                        <i class="fa fa-plus" id="addBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                        <i class="fa fa-minus" id="removeBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
                       </div>
                     </div>`;
                     quesData += ques;
@@ -792,16 +811,19 @@ App = {
               }
             }
             index++;
+            console.log("questionStored", questionStored[0]);
           });
           // check total question 
           if(flag == 1){
             break;
           }
         }
+        // console.log("questionStored",questionStored[0]);
       })
       .catch((e) => {
         console.log(e);
       });
+
   },
 
   getAllQuestionsFromChain: function () {

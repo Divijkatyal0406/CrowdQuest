@@ -7,7 +7,7 @@ function viewModal(arg) {
     var sub = document.querySelector(".subject").value;
     document.querySelector(
       ".modal-title"
-    ).innerText = `Select topics to be included : (${sub})`;
+    ).innerText = `Select topics to be excluded : (${sub})`;
     createModal(sub);
   }else{
     let modalCard = document.querySelector(".modal-body");
@@ -236,4 +236,101 @@ const languageChanger = () => {
             selectField.dispatchEvent(new Event('change'));
         }
     }
+}
+
+// manipulate questions
+var questionStored = new Array();
+function addRemove(count, idx){
+
+  document.querySelector(`#addBlock${count}`).addEventListener("click", () => {
+
+    const Problem = {
+      subject: "",
+      topic: "",
+      question: "",
+      options: "" ,
+      imgUrl: "",
+      ans: null,
+      approve: true,
+      isApproved: true,
+      d:null
+    };
+
+    questionStored.splice(idx, 0, Problem);
+
+    let problemCard = document.querySelector(".question-area");
+    let quesData = "";
+    console.log(questionStored);
+
+    for(var i=0; i<questionStored.length; i++){
+      
+      let ques = `<br />
+                    <div class="card fullCardQP${i}">
+                      <div style="background-color: rgb(221, 221, 221)" class="card-header">
+                        <p class="ques" contenteditable="true">
+                          Ques${i+1}. ${(questionStored[i].question)}
+                        </p>
+                      </div>
+                      <br>
+                      <img width="35%" style="margin-left: 5%;" src='${questionStored[i].imgUrl}' alt="">
+                      <div class="card-body">
+                        <table>
+                          <tr>
+                            <td>A. <span contenteditable="true"> ${(questionStored[i].options[0])} </span></td>
+                            <td>B. <span contenteditable="true"> ${(questionStored[i].options[1])} </span></td>
+                          </tr>
+                          <tr>
+                            <td class="right-opt">C. <span contenteditable="true"> ${(questionStored[i].options[2])}<span></td>
+                            <td class="right-opt">D. <span contenteditable="true">${(questionStored[i].options[3])}<span></td>
+                          </tr>
+                        </table>
+                        <i class="fa fa-plus" id="addBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
+                        <i class="fa fa-minus" id="removeBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
+                      </div>
+                    </div>`;
+                    quesData += ques;
+                    problemCard.innerHTML = quesData;
+        }
+    
+  });
+  
+  document.querySelector(`#removeBlock${count}`).addEventListener("click", () => {
+    
+    questionStored.splice(idx-1, idx-1);
+    let problemCard = document.querySelector(".question-area");
+    let quesData = "";
+    alert("check console");
+    console.log(questionStored);
+
+    for(var i=0; i<questionStored.length; i++){
+      
+      let ques = `<br />
+                    <div class="card fullCardQP${i}">
+                      <div style="background-color: rgb(221, 221, 221)" class="card-header">
+                        <p class="ques" contenteditable="true">
+                          Ques${i+1}. ${(questionStored[i].question)}
+                        </p>
+                      </div>
+                      <br>
+                      <img width="35%" style="margin-left: 5%;" src='${questionStored[i].imgUrl}' alt="">
+                      <div class="card-body">
+                        <table>
+                          <tr>
+                            <td>A. <span contenteditable="true"> ${(questionStored[i].options[0])} </span></td>
+                            <td>B. <span contenteditable="true"> ${(questionStored[i].options[1])} </span></td>
+                          </tr>
+                          <tr>
+                            <td class="right-opt">C. <span contenteditable="true"> ${(questionStored[i].options[2])}<span></td>
+                            <td class="right-opt">D. <span contenteditable="true">${(questionStored[i].options[3])}<span></td>
+                          </tr>
+                        </table>
+                        <i class="fa fa-plus" id="addBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
+                        <i class="fa fa-minus" id="removeBlock${i}" onclick="addRemove(${i},${i+1})" aria-hidden="true"></i>
+                      </div>
+                    </div>`;
+                    quesData += ques;
+                    problemCard.innerHTML = quesData;
+        }
+
+  })
 }
