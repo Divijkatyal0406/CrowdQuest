@@ -107,7 +107,18 @@
               style="width: 200px; text-align: left; justify-content: left"
               data-toggle="modal"
               data-target="#exampleModalCenter"
-              onclick="viewModal();"
+              onclick="viewModal('difficulty');"
+            >
+              Set Difficulty
+            </button>
+
+            <br /><br />
+
+            <button
+              style="width: 200px; text-align: left; justify-content: left"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+              onclick="viewModal('topics');"
             >
               Select Chapters
             </button>
@@ -121,7 +132,6 @@
                 placeholder="Total questions.."
                 class="questionCount"
                 onchange="setWeightage(); return false;"
-                min="10"
                 required
               />
             </div>
@@ -169,7 +179,6 @@
         <span class="anima">File Encryption</span>
       </div> -->
 
-
       <div id="Main" class="main">
         <!-- Modal -->
         <!-- Button trigger modal -->
@@ -190,6 +199,7 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">
                   <!-- Select topics to be excluded : (Biology) -->
+                  Select difficulty of the questions:
                 </h5>
                 <button
                   type="button"
@@ -201,6 +211,20 @@
                 </button>
               </div>
               <div class="modal-body">
+                <!-- ----------------------------difficulty input ----------------->
+                <!-- <p>Select difficulty of the questions: </p> -->
+
+                <!--     <label for="">Easy question count: </label>
+                         <input  type="number">
+    
+                          <label for="">Medium question count: </label>
+                         <input  type="number">
+    
+                         <label for="">Hard question count: </label>
+                         <input type="number"> -->
+
+                <!-- ----------------------------difficulty input ----------------->
+
                 <!-- -------------- checkboxes-------------------------------- -->
 
                 <!-- <div class="pretty p-icon p-smooth">
@@ -214,13 +238,13 @@
                 <!-- -------------- checkboxes-------------------------------- -->
               </div>
               <div class="modal-footer">
-                <button
+                <!-- <button
                   type="button"
                   class="btn btn-primary"
                   data-dismiss="modal"
                 >
                   Save changes
-                </button>
+                </button> -->
               </div>
             </div>
           </div>
@@ -268,7 +292,7 @@
                 </p>
               </div>
               <!-- <br>
-            <img width="40%" style="margin-left: 5%;" src="https://img.jagranjosh.com/imported/images/E/Articles/maths2.jpg" alt=""> -->
+            <img width="35%" style="margin-left: 5%;" src="https://img.jagranjosh.com/imported/images/E/Articles/maths2.jpg" alt=""> -->
               <div class="card-body">
                 <table>
                   <tr>
@@ -302,37 +326,36 @@
     <script src="./script.js"></script>
 
     <script src="public/javascript/getQuest.js"></script>
-    
+
     <script type="text/javascript">
       const popupScreen = document.querySelector(".popup-screen");
       const popupBox = document.querySelector(".popup-box");
       const closeBtn = document.querySelector(".close-btn");
       let enabled = document.querySelector(".enabled");
       let body = document.querySelector(".pagebody");
-  
+
       window.addEventListener("load", () => {
-        const isAuthenticated=localStorage.getItem('AUTHENTICATED');
+        const isAuthenticated = localStorage.getItem("AUTHENTICATED");
         console.log(isAuthenticated);
-        if(localStorage.getItem('AUTHENTICATED')=="false"){
-                window.location.href = "http://localhost:3000/teacherLogin.html";
-                // window.alert("Access Denied");
-            }
+        if (localStorage.getItem("AUTHENTICATED") == "false") {
+          window.location.href = "http://localhost:3000/teacherLogin.html";
+          // window.alert("Access Denied");
+        }
         setTimeout(() => {
           popupScreen.classList.add("active");
           popupBox.classList.add("active");
-          
+
           // make body opacity 0
           body.style.visibility = "hidden";
         }, 0000); //Popup the screen in 02 seconds after the page is loaded.
       });
-  
+
       enabled.addEventListener("click", () => {
-        popupScreen.classList.remove("active"); 
+        popupScreen.classList.remove("active");
         body.style.visibility = "visible";
         //Close the popup screen on click the close button.
       });
-  
-      </script>
+    </script>
     <!-- Download question paper -->
     <script
       type="text/javascript"

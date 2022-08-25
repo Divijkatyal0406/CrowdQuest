@@ -297,7 +297,8 @@
 
                     }, 1000);
 
-                    //animation
+                    setTimeout(function(){
+                         //animation
                     document.getElementById("body").innerHTML = `   
                     <div class="center">
                     <div class="ring"></div>
@@ -305,6 +306,7 @@
                   </div>`;
 
                   document.body.style.backgroundColor = "black";
+                    }, 2000);
                     
         
                     setTimeout(function() { 
