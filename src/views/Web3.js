@@ -455,7 +455,6 @@ App = {
         for (var k = 0; k <= problemCount; k++) {
           visitedArr[k] = 0;
         }
-        
         //  console.log(visitedArr);
         let quesData = "";
 
