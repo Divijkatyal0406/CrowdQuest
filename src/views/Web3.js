@@ -544,25 +544,20 @@ App = {
                       <br>
                       <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
                       <div class="card-body">
-                      <div>
                       <div class="d-flex justify-content-between" style="width:80% ;">
-                        <div class="me-auto p-2 bd-highlight">
-                          A.<span contenteditable="true"> ${options[0]}</span>
-                        </div>
-                        <div class="p-2 bd-highlight">
-                          B.<span contenteditable="true"> ${options[1]}</span>
-                        </div>
-                      </div>
-                      
-                      <div class="d-flex justify-content-between" style="width:80% ;">
-                        <div class="me-auto p-2 bd-highlight">
-                        C.<span contenteditable="true"> ${options[2]}</span>
-                        </div>
-                        <div class="p-2 bd-highlight">
-                          D.<span contenteditable="true"> ${options[3]}
-                        </div>
-                      </div>
+                  <div class="me-auto p-2 bd-highlight">
+                    <div class="d-flex flex-column">
+                      <div class="p-2">A.<span contenteditable="true"> ${options[0]}</span></div>
+                      <div class="p-2">C.<span contenteditable="true"> ${options[2]}</span></div>
                     </div>
+                  </div>
+                  <div class="p-2 bd-highlight"></div>
+                  <div class="d-flex flex-column">
+                        <div class="p-2">B.<span contenteditable="true"> ${options[1]}</span></div>
+                        <div class="p-2">D.<span contenteditable="true"> ${options[3]}</span></div>
+                  </div>
+                </div>
+
                         <div style="width:90%;display: flex;justify-content: flex-end;">
                         <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
                         <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
@@ -662,24 +657,20 @@ App = {
                       <br>
                       <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
                       <div class="card-body">
-                      <div>
                       <div class="d-flex justify-content-between" style="width:80% ;">
-                        <div class="me-auto p-2 bd-highlight">
-                          A.<span contenteditable="true"> ${options[0]}</span>
-                        </div>
-                        <div class="p-2 bd-highlight">
-                          B.<span contenteditable="true"> ${options[1]}</span>
+                      <div class="me-auto p-2 bd-highlight">
+                        <div class="d-flex flex-column">
+                          <div class="p-2">A.<span contenteditable="true"> ${options[0]}</span></div>
+                          <div class="p-2">C.<span contenteditable="true"> ${options[2]}</span></div>
                         </div>
                       </div>
-                      
-                      <div class="d-flex justify-content-between" style="width:80% ;">
-                        <div class="me-auto p-2 bd-highlight">
-                        C.<span contenteditable="true"> ${options[2]}</span>
-                        </div>
-                        <div class="p-2 bd-highlight">
-                          D.<span contenteditable="true"> ${options[3]}
-                        </div>
+                      <div class="p-2 bd-highlight"></div>
+                      <div class="d-flex flex-column">
+                            <div class="p-2">B.<span contenteditable="true"> ${options[1]}</span></div>
+                            <div class="p-2">D.<span contenteditable="true"> ${options[3]}</span></div>
                       </div>
+                    </div>
+    
                     </div>
                          <div style="width:90%;display: flex;justify-content: flex-end;">
                         <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
