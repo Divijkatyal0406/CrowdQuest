@@ -127,6 +127,10 @@ App = {
       let questionDOM = document.querySelector(".addQuestionText");
       let questionText = questionDOM.value;
       Problem.question = questionText;
+      if(questionText.length == 0){
+        swal("", "Please enter a question", "info");
+        return;
+      }
     };
 
     //For Correct Option
@@ -147,6 +151,9 @@ App = {
       } else if (correctOption4.checked == true) {
         Problem.ans = 4;
         return;
+      }else{
+        swal("", "Please select a correct option", "info");
+        return;
       }
     };
 
@@ -156,6 +163,10 @@ App = {
       let option2 = document.querySelector("#option2");
       let option3 = document.querySelector("#option3");
       let option4 = document.querySelector("#option4");
+      if(option1.value.length==0 || option2.value.length == 0 || option3.value.length == 0 || option4.value.length == 0){
+        swal("", "Please enter all the options", "info");
+        return;
+      }
       Problem.options = option1.value;
       Problem.options += "$" + option2.value;
       Problem.options += "$" + option3.value;
