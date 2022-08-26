@@ -297,21 +297,21 @@
 
                     }, 1000);
 
-                    setTimeout(function(){
-                         //animation
-                    document.getElementById("body").innerHTML = `   
-                    <div class="center">
-                    <div class="ring"></div>
-                    <span class="anima">Moving for Encryption</span>
-                  </div>`;
+                //     setTimeout(function(){
+                //          //animation
+                //     document.getElementById("body").innerHTML = `   
+                //     <div class="center">
+                //     <div class="ring"></div>
+                //     <span class="anima">Moving for Encryption</span>
+                //   </div>`;
 
-                  document.body.style.backgroundColor = "black";
-                    }, 2000);
+                //   document.body.style.backgroundColor = "black";
+                //     }, 2000);
                     
         
-                    setTimeout(function() { 
-                        window.location.href = "fileUpload.html";
-                     }, 7500);
+                //     setTimeout(function() { 
+                //         window.location.href = "fileUpload.html";
+                //      }, 7500);
                 }
 
                 // after print callback

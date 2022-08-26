@@ -454,19 +454,20 @@ App = {
         // console.log("bye",count);
         // once easy, medium, difficult is added: for remaining questions
         let reqCount=(count1/totalQues)*100;
+        console.log(reqCount);
         let rest=totalQues-reqCount;
+        console.log(rest);
         var flag = 0;
         let count = 0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
-            let address = p[9].toString();
-            console.log(address.toLowerCase()==App.account.toLowerCase());
-          count++;
+          // console.log(p[9].toLowerCase()==a);
+            count++;
             if (
               p[6] == true &&
               p[7] == true &&
               p[0] == subject &&
-              p[9].toLowerCase()==App.account.toLowerCase() &&
+              p[9].toString().toLowerCase()==App.account.toString().toLowerCase() &&
               visitedArr[index] == 0
             ) {
               console.log("byeee111");
@@ -566,6 +567,9 @@ App = {
         }
 
         flag=0;
+        index=1;
+        // questionCount = 0;
+        count=0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
           count++;
@@ -881,7 +885,7 @@ App = {
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>
-                          <button class="report-btn" onClick="App.reportQuestion(${count})">Report⚠️</button>
+                          <button class="report-btn" onClick="App.reportQuestion(${count},true)">Report⚠️</button>
                         </div>
                       <div>
                       </div class="lowerReward">
@@ -1396,13 +1400,16 @@ App = {
     // return x;
   },
 
-  reportQuestion: function (_id) {
+  reportQuestion: function (_id,flag) {
     App.contracts.CrowdSource.deployed()
     .then(function (instance) {
       crowdSourceInstance2 = instance;
       // console.log("Report id",_id);
+      if(flag==true){
         const result = crowdSourceInstance2.report(_id, { from: App.account });
+        flag=false;
         return result;
+      }
         // x.push(5);
       })
       .then(function (result) {
