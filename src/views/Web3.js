@@ -544,16 +544,25 @@ App = {
                       <br>
                       <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
                       <div class="card-body">
-                        <table>
-                          <tr>
-                            <td>A.<span contenteditable="true"> ${options[0]}</span></td>
-                            <td>B.<span contenteditable="true"> ${options[1]}</span></td>
-                          </tr>
-                          <tr>
-                            <td class="right-opt">C.<span contenteditable="true"> ${options[2]}</span></td>
-                            <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
-                          </tr>
-                        </table>
+                      <div>
+                      <div class="d-flex justify-content-between" style="width:80% ;">
+                        <div class="me-auto p-2 bd-highlight">
+                          A.<span contenteditable="true"> ${options[0]}</span>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                          B.<span contenteditable="true"> ${options[1]}</span>
+                        </div>
+                      </div>
+                      
+                      <div class="d-flex justify-content-between" style="width:80% ;">
+                        <div class="me-auto p-2 bd-highlight">
+                        C.<span contenteditable="true"> ${options[2]}</span>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                          D.<span contenteditable="true"> ${options[3]}
+                        </div>
+                      </div>
+                    </div>
                         <div style="width:90%;display: flex;justify-content: flex-end;">
                         <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
                         <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
@@ -653,16 +662,25 @@ App = {
                       <br>
                       <img width="35%" style="margin-left: 5%;" src='${imgHash}' alt="">
                       <div class="card-body">
-                        <table>
-                          <tr>
-                            <td>A.<span contenteditable="true"> ${options[0]}</span></td>
-                            <td>B.<span contenteditable="true"> ${options[1]}</span></td>
-                          </tr>
-                          <tr>
-                            <td class="right-opt">C.<span contenteditable="true"> ${options[2]}</span></td>
-                            <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
-                          </tr>
-                        </table>
+                      <div>
+                      <div class="d-flex justify-content-between" style="width:80% ;">
+                        <div class="me-auto p-2 bd-highlight">
+                          A.<span contenteditable="true"> ${options[0]}</span>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                          B.<span contenteditable="true"> ${options[1]}</span>
+                        </div>
+                      </div>
+                      
+                      <div class="d-flex justify-content-between" style="width:80% ;">
+                        <div class="me-auto p-2 bd-highlight">
+                        C.<span contenteditable="true"> ${options[2]}</span>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                          D.<span contenteditable="true"> ${options[3]}
+                        </div>
+                      </div>
+                    </div>
                          <div style="width:90%;display: flex;justify-content: flex-end;">
                         <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
                         <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
@@ -1415,6 +1433,7 @@ App = {
     App.contracts.CrowdSource.deployed()
     .then(function (instance) {
       crowdSourceInstance2 = instance;
+      // const 
       // console.log("Report id",_id);
       if(flag==true){
         const result = crowdSourceInstance2.report(_id, { from: App.account });
