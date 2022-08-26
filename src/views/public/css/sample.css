@@ -1,0 +1,8 @@
+.row{
+    margin-bottom: 2em;
+    box-sizing: content-box;
+}
+
+.card{
+    box-shadow: 10px 10px;
+}

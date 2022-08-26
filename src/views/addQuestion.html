@@ -122,7 +122,9 @@
                             id="flexRadioDefault1">
                           <label class="form-check-label" for="gridRadios1">
                           
-                            <input name="option1" id="option1" type="text" class="CheckOptions" minlength="5" maxlength="500" required placeholder="A">
+                            <input name="option1" id="option1" type="text" class="CheckOptions" minlength="5" maxlength="500" placeholder="A">
+                            <input type='file' onchange="readURL1(this);" />
+                            <img id="o1" src="#" alt="your image" style="display:none;"/>
                           
                           </label>
                         </div>
@@ -133,8 +135,10 @@
                             id="flexRadioDefault1">
                           <label class="form-check-label" for="gridRadios1">
                           
-                            <input name="option2" id="option2" type="text" class="CheckOptions" minlength="5" maxlength="500" required placeholder="B">
-                          
+                            <input name="option2" id="option2" type="text" class="CheckOptions" minlength="5" maxlength="500" placeholder="B">
+                            <input type='file' onchange="readURL2(this);" />
+                            <img id="o2" src="#" alt="your image" style="display:none;"/>
+                         
                           </label>
                         </div>     
                     </div>
@@ -146,8 +150,10 @@
                           id="flexRadioDefault1">
                         <label class="form-check-label" for="gridRadios1">
                         
-                          <input name="option3" id="option3" type="text"  class="CheckOptions" minlength="5" maxlength="500" placeholder="C" required>
-                        
+                          <input name="option3" id="option3" type="text"  class="CheckOptions" minlength="5" maxlength="500" placeholder="C">
+                          <input type='file' onchange="readURL3(this);" />
+                            <img id="o3" src="#" alt="your image" style="display:none;"/>
+
                         </label>
                       </div>
                       
@@ -157,8 +163,10 @@
                           id="flexRadioDefault1" style="padding: 0.2em; outline:none;" >
                         <label class="form-check-label" for="gridRadios1">
                         
-                          <input name="option4" id="option4" type="text" class="CheckOptions" minlength="5" maxlength="500" placeholder="D" required>
-                        
+                          <input name="option4" id="option4" type="text" class="CheckOptions" minlength="5" maxlength="500" placeholder="D">
+                          <input type='file' onchange="readURL4(this);" />
+                          <img id="o4" src="#" alt="your image" style="display:none;"/>
+
                         </label>
                       </div>
                     </div>
@@ -205,6 +213,57 @@
   <script src="public/javascript/addQuest.js"></script>
   <script src="./public/javascript/copyText.js"></script>
   <script src="./public/javascript/virtualKeyboard.js"></script>
+
+
+
+  <script>
+    function readURL1(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#o1')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    function readURL2(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#o2')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    function readURL3(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#o3')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    function readURL4(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#o4')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+
+
+
+
+
 
   <!-- Uploading image -->
   <script>
