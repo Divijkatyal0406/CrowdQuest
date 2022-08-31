@@ -1,6 +1,3 @@
-// import {AuthValidation} from '../../src/login-signup-web3/utils/AuthValidation';
-// const Moralis = require("moralis/node");
-
 
 App = {
   web3Provider: null,
@@ -127,10 +124,6 @@ App = {
       let questionDOM = document.querySelector(".addQuestionText");
       let questionText = questionDOM.value;
       Problem.question = questionText;
-      if(questionText.length == 0){
-        swal("", "Please enter a question", "info");
-        return;
-      }
     };
 
     //For Correct Option
@@ -151,9 +144,6 @@ App = {
       } else if (correctOption4.checked == true) {
         Problem.ans = 4;
         return;
-      }else{
-        swal("", "Please select a correct option", "info");
-        return;
       }
     };
 
@@ -163,10 +153,6 @@ App = {
       let option2 = document.querySelector("#option2");
       let option3 = document.querySelector("#option3");
       let option4 = document.querySelector("#option4");
-      if(option1.value.length==0 || option2.value.length == 0 || option3.value.length == 0 || option4.value.length == 0){
-        swal("", "Please enter all the options", "info");
-        return;
-      }
       Problem.options = option1.value;
       Problem.options += "$" + option2.value;
       Problem.options += "$" + option3.value;
@@ -455,6 +441,7 @@ App = {
         for (var k = 0; k <= problemCount; k++) {
           visitedArr[k] = 0;
         }
+        
         //  console.log(visitedArr);
         let quesData = "";
 
@@ -464,15 +451,14 @@ App = {
         // console.log("bye",count);
         // once easy, medium, difficult is added: for remaining questions
         let reqCount=(count1/totalQues)*100;
-        console.log(reqCount);
         let rest=totalQues-reqCount;
-        console.log(rest);
         var flag = 0;
         let count = 0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
-          // console.log(p[9].toLowerCase()==a);
-            count++;
+            let address = p[9].toString();
+            console.log(address.toLowerCase()==App.account.toLowerCase());
+          count++;
             if (
               p[6] == true &&
               p[7] == true &&
@@ -553,11 +539,9 @@ App = {
                             <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
                           </tr>
                         </table>
-                        <div style="width:90%;display: flex;justify-content: flex-end;">
-                        <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
-                        <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
-                        </div>                    
-                        </div>
+                        <i class="fa fa-plus" id="addBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                        <i class="fa fa-minus" id="removeBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                      </div>
                     </div>`;
                     quesData += ques;
                     problemCard.innerHTML = quesData;
@@ -577,9 +561,6 @@ App = {
         }
 
         flag=0;
-        index=1;
-        // questionCount = 0;
-        count=0;
         for (var i = 1; i <= problemCount; i++) {
           crowdsourceInstance.problems(i).then(function (p) {
           count++;
@@ -662,10 +643,9 @@ App = {
                             <td class="right-opt">D.<span contenteditable="true"> ${options[3]}</span></td>
                           </tr>
                         </table>
-                         <div style="width:90%;display: flex;justify-content: flex-end;">
-                        <i class="fa fa-plus" style="margin-left:3px;margin-right:3px;" id="addBlock" aria-hidden="true" "=""></i>
-                        <i class="fa fa-minus" style="margin-left:3px;margin-right:3px;" id="removeBlock" aria-hidden="true"></i>
-                        </div>                  </div>
+                        <i class="fa fa-plus" id="addBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                        <i class="fa fa-minus" id="removeBlock${count}" onclick="addRemove(${count},${questionCount})" aria-hidden="true"></i>
+                      </div>
                     </div>`;
                     quesData += ques;
                     problemCard.innerHTML = quesData;
@@ -761,11 +741,8 @@ App = {
                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                    Difficulty : <span id="subjects" spellcheck="false" class="contenteditableTeacherDashboard editDifficulty${count}" contenteditable="true">${difficulty2}</span>
                 </div>
-
           
                 
-
-
                   <div class="question">
                     Ques ${displayProblemCount}.<span spellcheck="false" class="addQuestionText contenteditableTeacherDashboard editQuestion${count}" contenteditable="true">${question}</span>  
                     <br>
@@ -818,7 +795,6 @@ App = {
               }</span>
                </div>
               <div class="evaluation">
-
               <button onClick="App.editAndAccept(${count})" type="button" class="button-editAndAccept approve-btn">Edit and Accept</button>
               <button onClick="App.questionAccept(${count})" type="button" class="button-acceptBTN approve-btn">Accept</button>
               <button onClick="App.questionReject(${count})" type="button" class="button-rejectBTN approve-btn">Reject</button>
@@ -840,11 +816,7 @@ App = {
                           Subject : ${subject} | ${topic} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           Difficulty : ${difficulty2}
                       </div>
-
                      
-
-
-
                       <div class="question">
                         
                         Ques ${displayProblemCount1}. <span class=${UniqueClassName}> ${question} </span> <button onclick="readQuest(${displayProblemCount1}); return false;" id="speak"><i class="fa fa-file-audio-o" aria-hidden="true"></i></button>
@@ -895,7 +867,7 @@ App = {
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
                           Send 1 Matic
                           </button>
-                          <button class="report-btn" onClick="App.reportQuestion(${count},true)">Report⚠️</button>
+                          <button class="report-btn" onClick="App.reportQuestion(${count})">Report⚠️</button>
                         </div>
                       <div>
                       </div class="lowerReward">
@@ -1214,7 +1186,6 @@ App = {
                           Subject : ${subject} | ${topic} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           Difficulty : ${difficulty}
                       </div>
-
                       <div class="question">
                       Ques ${displayProblemCount1}.  <span class=${UniqueClassName}> ${question} </span> <button onclick="readQuest(${displayProblemCount1});return false;" id="speak"><i class="fa fa-file-audio-o" aria-hidden="true"></i></button>
                       <br>
@@ -1410,16 +1381,13 @@ App = {
     // return x;
   },
 
-  reportQuestion: function (_id,flag) {
+  reportQuestion: function (_id) {
     App.contracts.CrowdSource.deployed()
     .then(function (instance) {
       crowdSourceInstance2 = instance;
       // console.log("Report id",_id);
-      if(flag==true){
         const result = crowdSourceInstance2.report(_id, { from: App.account });
-        flag=false;
         return result;
-      }
         // x.push(5);
       })
       .then(function (result) {

@@ -170,10 +170,10 @@
           >
             Generate Paper
           </button>
-          <!-- <div id="liveView" class="camView"> -->
+          <div id="liveView" class="camView">
             <!-- <button id="webcamButton">Enable Webcam</button> -->
-            <!-- <video id="webcam" autoplay muted width="640" height="480"></video>
-          </div> -->
+            <video id="webcam" autoplay muted width="640" height="480"></video>
+          </div>
           <br /><br /><br /><br /><br /><br /><br />
           <hr style="color: rgb(255, 255, 255)" />
           <li>
@@ -316,10 +316,8 @@
                     <td class="right-opt">D. Option four here</td>
                   </tr>
                 </table>
-                <div style="width:90%;display: flex;justify-content: flex-end; font-size:1.5rem; gap:5px ;">
-                  <i class="fa fa-plus" style="margin-left:3px;margin-right:3px; color: rgb(0, 180, 102);" id="addBlock" aria-hidden="true" "=""></i>
-                  <i class="fa fa-minus" style="margin-left:3px;margin-right:3px; color: rgb(186, 76, 76);" id="removeBlock" aria-hidden="true"></i>
-                  </div> 
+                <i class="fa fa-plus" id="addBlock" aria-hidden="true" "></i>
+                <i class="fa fa-minus" id="removeBlock" aria-hidden="true"></i>
               </div>
             </div>
           </div>
@@ -343,7 +341,7 @@
 
     <script src="public/javascript/getQuest.js"></script>
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
       const popupScreen = document.querySelector(".popup-screen");
       const popupBox = document.querySelector(".popup-box");
       const closeBtn = document.querySelector(".close-btn");
@@ -376,7 +374,7 @@
 
         //Close the popup screen on click the close button.
       });
-    </script> -->
+    </script>
     <!-- Download question paper -->
     <script
       type="text/javascript"
@@ -388,11 +386,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <script
+    <!-- <script
       type="text/javascript"
       src="public/javascript/printThis.js"
-    ></script>
-    <script>
+    ></script> -->
+    <script src="public/javascript/printThis.js" type="text/javascript">
       $("#download").on("click", function () {
         $(".question-paper").printThis({
           importCSS: true,

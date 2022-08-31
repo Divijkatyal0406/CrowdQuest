@@ -1,3 +1,6 @@
+import { DomainTemplateItem } from "mailgun.js/domainsTemplates";
+import papers from "./paper_data";
+
 /*
  * printThis v1.15.1
  * @desc Printing plug-in for jQuery
@@ -294,24 +297,25 @@
                 if (!opt.debug) {
                     setTimeout(function () {
                         $iframe.remove();
-
+                        // papers.push({paperName:"Crowd Quest",time:new Date().getTime()});
+                        // console.log(papers);
                     }, 1000);
 
-                //     setTimeout(function(){
-                //          //animation
-                //     document.getElementById("body").innerHTML = `   
-                //     <div class="center">
-                //     <div class="ring"></div>
-                //     <span class="anima">Moving for Encryption</span>
-                //   </div>`;
+                    setTimeout(function(){
+                         //animation
+                    document.getElementById("body").innerHTML = `   
+                    <div class="center">
+                    <div class="ring"></div>
+                    <span class="anima">Moving for Encryption</span>
+                  </div>`;
 
-                //   document.body.style.backgroundColor = "black";
-                //     }, 2000);
+                  document.body.style.backgroundColor = "black";
+                    }, 2000);
                     
         
-                //     setTimeout(function() { 
-                //         window.location.href = "fileUpload.html";
-                //      }, 7500);
+                    setTimeout(function() { 
+                        window.location.href = "fileUpload.html";
+                     }, 7500);
                 }
 
                 // after print callback

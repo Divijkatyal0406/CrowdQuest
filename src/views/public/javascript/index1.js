@@ -15,26 +15,26 @@ var path = require('path')
 
 // generateKeys()
 // setTimeout(() => {
-  _testing()
+  // _testing()
 //   console.log("chal jaa");
 // }, 15000)
 
 
 
-// const directoryPath = path.join(__dirname, 'Documents');
-// //passsing directoryPath and callback function
-// fs.readdir(directoryPath, function (err, files) {
-//     //handling error
-//     if (err) {
-//         return console.log('Unable to scan directory: ' + err);
-//     } 
-//     //listing all files using forEach
-//     files.forEach(function (file) {
-//         // Do whatever you want to do with the file
-//         // console.log(file); 
-//         _testing(file);
-//     });
-// });
+const directoryPath = path.join(__dirname, 'Documents');
+//passsing directoryPath and callback function
+fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    } 
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        // console.log(file); 
+        _testing(file);
+    });
+});
 
 
 
@@ -130,7 +130,7 @@ async function downloadFileEncrypted(ipfspath) {
   }
 }
 
-async function getUploadedFiles(ipfspath='/encrypted/') {
+async function getUploadedFiles(ipfspath='/encrypted4/') {
   let files = []
   const arr = await toArray(ipfs.files.ls(ipfspath))
   for (let file of arr) {
@@ -210,13 +210,13 @@ function decryptRSA(toDecrypt, privkeyPath='private.pem') {
 
 async function _testing(fileName) {
   console.log("here9");
-  const file = 'C:/Users/divij/Downloads/BoardingPass.pdf'; 
-  const ipfspath = '/encrypted/data/' + file 
+  const file = 'Documents/Bio.pdf'; 
+  const ipfspath = '/encrypted4/data/' + file 
   
   
   await uploadFileEncrypted(file, ipfspath)
   
-  // document.getElementById().innerHTML=`ipfs path /encrypted/data/${file}`;
+  // document.getElementById().innerHTML=`ipfs path /encrypted4/data/${file}`;
   c11=`--------READING FILE--------`
   c17=`${file}`;
   
