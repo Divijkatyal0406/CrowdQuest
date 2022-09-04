@@ -106,6 +106,11 @@ The diagram below shows all steps to generate the expert's login data hash from 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+## ⛓️ Encryption Model
+![Flowchart](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/ipfs_encrypt.png)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 
 ##  🚩 Technologies used:
 
