@@ -299,7 +299,7 @@ function addRemove(count, idx){
     questionStored.splice(idx-1, idx-1);
     let problemCard = document.querySelector(".question-area");
     let quesData = "";
-    alert("check console");
+    // alert("check console");
     console.log(questionStored);
 
     for(var i=0; i<questionStored.length; i++){

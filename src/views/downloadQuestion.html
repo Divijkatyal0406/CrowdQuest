@@ -152,14 +152,12 @@
           </li>
           <li>
             <i class="fas fa-question-circle"></i>
-            <span>Percentage of your own questions</span>
+            <span>Percentage of your accepted questions</span>
             <div class="mainselection">
               <input
-                type="number"
-                placeholder="Percentage of your own questions...."
+                type="text"
+                placeholder="Type value from 0 to 100"
                 id="perCount"
-                min="1"
-                max="100"
                 required
               />
             </div>
@@ -172,10 +170,10 @@
           >
             Generate Paper
           </button>
-          <!-- <div id="liveView" class="camView"> -->
+          <div id="liveView" class="camView"> -->
             <!-- <button id="webcamButton">Enable Webcam</button> -->
-            <!-- <video id="webcam" autoplay muted width="640" height="480"></video>
-          </div> -->
+            <video id="webcam" autoplay muted width="640" height="480"></video>
+          </div>
           <br /><br /><br /><br /><br /><br /><br />
           <hr style="color: rgb(255, 255, 255)" />
           <li>
@@ -343,7 +341,7 @@
 
     <script src="public/javascript/getQuest.js"></script>
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
       const popupScreen = document.querySelector(".popup-screen");
       const popupBox = document.querySelector(".popup-box");
       const closeBtn = document.querySelector(".close-btn");
@@ -376,7 +374,7 @@
 
         //Close the popup screen on click the close button.
       });
-    </script> -->
+    </script>
     <!-- Download question paper -->
     <script
       type="text/javascript"
