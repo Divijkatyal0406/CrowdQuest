@@ -70,6 +70,27 @@ Feature | Images
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+## 🚩 Features of Question Paper Encryption:
+Feature | Images
+------------ | -------------
+**Setting examination** Techer can schedule an examination with the generated paper and proceed for paper encryption! | ![facenot](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/webcam.png)
+**Encrypting the paper** The examination paper is encrypted using AES & RSA algorithm and send to IPFS network for furthur distribution! | ![cell phone detection]() 
+**Registration for examination** Teacher's can share this link with the students who can then register for selected paper! | ![ctrlkey]()
+**Auto Download** The paper will be auto downloaded in the registered students system at the prescribed time! | ![booldetect]()
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+**Other Features :**
+1. Email updates on expert's email id about questions summary on expert's dashboard.
+2. Reward notifications to the person who contributed the question.
+3. Report functionality to send the question again back for review.
+4. Subject filters.
+5. Question search functionality.
+6. Question text to speech reader.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 ## 🔐 Expert authentication system
 Expert's authentication can be the primary security breach to the board's question paper generation and distribution.
 The diagram below shows all steps to generate the expert's login data hash from the username, the password, the 6 digit code (that will be provided by respective board to each teacher expert) and the ethereum address. To register the user must fill a form to provide the username, the password and the 6 digit code, the ethereum address is retrieved directly from the wallet. This address is associated to the username to generate a signature via the web3 function sign, the generated signature is hashed (hash1). The password is associated with the 6 digit code to generate another hash (hash2). The two hashes are combined to generated the final hash that is stored in the smart contract(Refer Authentication.sol). To login, the user must be connected to the Blockchain with the same address used during registration, and fill the login form with right username, password and the 6 digit code. The back-end solidity code then generates the hash with this login information and compares it with the hash that was stored in the smart contract by the ethereum address which request the login, if the two hashes match, then the user is authorized to login, if not, the access is denied.
@@ -78,13 +99,6 @@ The diagram below shows all steps to generate the expert's login data hash from 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
-**Other Features :**
-1. Email updates on expert's email id about questions summary on expert's dashboard
-2. Reward notifications to the person who contributed the question
-3. Report functionality to send the question again back for review
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 🌐 Web flow
 ![Flowchart](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/webflow.png)
