@@ -876,7 +876,7 @@ App = {
                         <div class="upperReward">
                           <img style="height: 1.9em;" src="assets/ethereum.svg" alt="Matic">
                           <button class="SendMatic-btn" onClick="App.sendReward(${count})">
-                          Send 1 Matic
+                          Send 1 Eth
                           </button>
                           <button class="report-btn" onClick="App.reportQuestion(${count})">Report⚠️</button>
                         </div>
