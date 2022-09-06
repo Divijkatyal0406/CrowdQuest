@@ -1,4 +1,6 @@
-![-----------------------------------------------------](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/banner.png)
+<p align="center">
+ <img src="https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/banner.png" width="90%" height="400">
+</p>
 # Smart India Hackathon 2022 Submission | Category - Software | Organization - Department of School Education & Literacy (DoSEL), Ministry of Education
 
 ## CrowdQuest - Online crowdsourcing model for creating a large pool of question bank that are vetted by experts along with automatically generating the question paper and securing it to conduct online examinations. 
