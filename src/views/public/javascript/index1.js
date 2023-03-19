@@ -210,7 +210,7 @@ function decryptRSA(toDecrypt, privkeyPath='private.pem') {
 
 async function _testing(fileName) {
   console.log("here9");
-  const file = 'C:/Users/divij/Downloads/BoardingPass.pdf'; 
+  const file = 'C:/Users/divij/Downloads/Physics_18-03-22.pdf'; 
   const ipfspath = '/encrypted/data/' + file 
   
   

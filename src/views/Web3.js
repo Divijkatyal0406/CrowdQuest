@@ -322,6 +322,8 @@ App = {
     var totalQues = document.querySelector(".questionCount").value;
     var weightage = document.querySelector(".weightage").value;
     var count1 = document.querySelector(".perCount").value;
+    // console.log("prec count");
+    // console.log(count1);
 
     console.log(date);
     document.getElementById("inputDate").innerText = date;
@@ -451,7 +453,7 @@ App = {
         var index = 1;
         let questionCount = 0;
 
-        // console.log("bye",count);
+        console.log("bye",count1);
         // once easy, medium, difficult is added: for remaining questions
         let reqCount=(count1/totalQues)*100;
         let rest=totalQues-reqCount;

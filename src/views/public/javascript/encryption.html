@@ -10,7 +10,9 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-  <table class="data" border="1">
+  <h1 style="text-align: center;">Upcoming Examinations</h1>
+  <br>
+  <table class="data" border="1" style="width:100%;">
   </table>
   
   <script>
@@ -18,14 +20,23 @@
     $.getJSON('/api/files' , function( data ) {
       if ('error' in data)
         return $('.data').text('no files');
-      for (const file of data) {
-        let link=file.path;
-        let td = '<td><a class="fileLink" href="/api/file'+file.path+'">'+file.path+'</a></td>'
-        let td1 = '<td>Scheduled on: '+file.t+'</td>'
-        let td2 = '<td><button onclick="window.location=`/api/file'+file.path+'`">Register for this paper</button></td>'
-        let tr = '<tr>' + td + td1+ td2+'</tr>'
-        $('.data').append(tr)
-      }
+      const file=data[4];
+      let link=file.path;
+      let td = '<td><a class="fileLink" href="/api/file'+file.path+'">'+file.path+'</a></td>'
+      let td1 = '<td>Scheduled on: '+file.t+'</td>'
+      let td2 = '<td><button style="width:100%;" onclick="window.location=`/api/file'+file.path+'`">Register for this paper</button></td>'
+      let tr = '<tr>' + td + td1+ td2+'</tr>'
+      $('.data').append(tr)
+      
+      //This is for all files
+      // for (const file of data) {
+      //   let link=file.path;
+      //   let td = '<td><a class="fileLink" href="/api/file'+file.path+'">'+file.path+'</a></td>'
+      //   let td1 = '<td>Scheduled on: '+file.t+'</td>'
+      //   let td2 = '<td><button onclick="window.location=`/api/file'+file.path+'`">Register for this paper</button></td>'
+      //   let tr = '<tr>' + td + td1+ td2+'</tr>'
+      //   $('.data').append(tr)
+      // }
     });
   </script>
   <!-- <script type="text/javascript">

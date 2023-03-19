@@ -157,7 +157,7 @@
               <input
                 type="text"
                 placeholder="Type value from 0 to 100"
-                id="perCount"
+                class="perCount"
                 required
               />
             </div>
@@ -166,7 +166,7 @@
             type="submit"
             class="btn btn-outline-light"
             style="font-weight: 500"
-            onclick="App.downloadQuestions((document.getElementById('perCount').value*document.getElementsByClassName('questionCount').value)/100);"
+            onclick="App.downloadQuestions((document.getElementsByClassName('perCount').value*document.getElementsByClassName('questionCount').value)/100);"
           >
             Generate Paper
           </button>
