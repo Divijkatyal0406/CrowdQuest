@@ -44,43 +44,43 @@ Presentation : [Check Presentation](https://docs.google.com/presentation/d/1OpYR
 Feature | Images
 ------------ | -------------
  **Hompage**  
- Fast, easy to use, and incredibly convenient with a minimalistic UI! | ![homepage](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/home.png)
+ Fast, easy to use, and incredibly convenient with a minimalistic UI! | ![homepage](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/landing.png)
 **Contributor Dashboard** 
-All the accepted questions are shown here|![registrationPage](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/c_dashboard.png)
+All the accepted questions are shown here|![registrationPage](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/c_dashboard.png)
 **Teacher Expert Dashboard**
-Experts after secure authentication can access all the features provided to them through this dashboard |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/t_dashboard.png)
+Experts after secure authentication can access all the features provided to them through this dashboard |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/teacher_dash.png)
 **Add Question Section**
-Stakeholders can add questions throught this interface with ease |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/question_submit.png)
+Stakeholders can add questions throught this interface with ease |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/question_submit.png)
 **OCR and voice input**
-Stakeholders can opt to upload image from book or can speak out the question |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/ocr.png)
+Stakeholders can opt to upload image from book or can speak out the question |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/ocr.png)
 **Virtual keyboard**
-Virtual mathematical keyboard to ease the process of typing any mathematical equation |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/virtual.png)
+Virtual mathematical keyboard to ease the process of typing any mathematical equation |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/virtual.png)
 **Multilingual Dashboard**
-Multi language dashboard support is provided to the users |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/multi.png)
+Multi language dashboard support is provided to the users |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/hindi.png)
 **Sample papers**
-Sample paper sets with various difficulties for practice |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/sample.png)
+Sample paper sets with various difficulties for practice |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/sample.png)
 **Discussion Forum**
-Discussion section to share doubts and discuss something meaningful with the world |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/discuss.png)
+Discussion section to share doubts and discuss something meaningful with the world |![professor](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/discuss.png)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 🚩 Features of Question Paper Generation:
 Feature | Images
 ------------ | -------------
-**Supervision** The expert generating the paper and previewing it will be under supervision | ![facenot](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/webcam.png)
-**Cell Phone Detection** If any expert tries to click pictures via phone, the tensorflow model detects it and immediately denies the access for later interaction | ![cell phone detection]() 
-**Disabled Copy/Paste** Disabled copy/paste for entire paper generating process | ![ctrlkey]()
-**Prohibited Object Detection!** Any object that will block the view of camera or if person is not visible, the system simply denies the access to the system | ![booldetect]()
-**Multilingual Paper Support!** Paper can be generated in both English/Hindi Language | ![booldetect]()
-**Highly Flexible!** Full flexibility is provided to generate the paper in terms of difficulty and inaccordance with current syllabus | ![booldetect]()
-**Editable!** The paper generated automatically is also manually editable according to board's needs | ![booldetect]()
+**Supervision** The expert generating the paper and previewing it will be under supervision | ![facenot](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/webcam.png)
+**Cell Phone Detection** If any expert tries to click pictures via phone, the tensorflow model detects it and immediately denies the access for later interaction | ![cell phone detection](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/phone_detect.png) 
+**Disabled Copy/Paste** Disabled copy/paste for entire paper generating process | ![ctrlkey](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/no.png)
+**Prohibited Object Detection!** Any object that will block the view of camera or if person is not visible, the system simply denies the access to the system | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/mp1.jpg)
+**Multilingual Paper Support!** Paper can be generated in both English/Hindi Language | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/hindi_q.png)
+**Highly Flexible!** Full flexibility is provided to generate the paper in terms of difficulty and inaccordance with current syllabus | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/paper.png)
+**Editable!** The paper generated automatically is also manually editable according to board's needs | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/manual.png)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 🚩 Features of Question Paper Encryption:
 Feature | Images
 ------------ | -------------
-**Setting examination** Techer can schedule an examination with the generated paper and proceed for paper encryption | ![facenot](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/webcam.png)
+**Setting examination** Techer can schedule an examination with the generated paper and proceed for paper encryption | ![facenot](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/schedule.png)
 **Encrypting the paper** The examination paper is encrypted using AES & RSA algorithm and send to IPFS network for furthur distribution | ![cell phone detection]() 
 **Registration for examination** Teacher's can share this link with the CBSE examination centres who can then register for their respective paper | ![ctrlkey]()
 **Auto Download** The paper will be auto downloaded in the registered centre's system just in time to avoid any compounding risk of paper leakage | ![booldetect]()
