@@ -19,7 +19,7 @@ Getting fine grained questions for board examinations is a difficult and time co
 
 ## 🔗 Links for project:  
  
-Video demo : [Watch Demo Video]() <br>
+Video demo : [Watch Demo Video](https://www.youtube.com/watch?v=6jot9qFC5uw) <br>
 Presentation : [Check Presentation](https://docs.google.com/presentation/d/1OpYRdHpkPZcqHTrHsa6-GyTqjOQ7i8Vp/edit?usp=sharing&ouid=100212816858639965138&rtpof=true&sd=true)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
