@@ -69,8 +69,8 @@ Feature | Images
 ------------ | -------------
 **Supervision** The expert generating the paper and previewing it will be under supervision | ![facenot](https://github.com/Divijkatyal0406/CrowdQuest/blob/master/images/webcam.png)
 **Cell Phone Detection** If any expert tries to click pictures via phone, the tensorflow model detects it and immediately denies the access for later interaction | ![cell phone detection](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/phone_detect.png) 
-**Disabled Copy/Paste** Disabled copy/paste for entire paper generating process | ![ctrlkey](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/no.png)
-**Prohibited Object Detection!** Any object that will block the view of camera or if person is not visible, the system simply denies the access to the system | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/mp1.jpg)
+**Disabled Copy/Paste** Disabled copy/paste for entire paper generating process
+**Prohibited Object Detection!** Any object that will block the view of camera or if person is not visible, the system simply denies the access to the system
 **Multilingual Paper Support!** Paper can be generated in both English/Hindi Language | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/hindi_q.png)
 **Highly Flexible!** Full flexibility is provided to generate the paper in terms of difficulty and inaccordance with current syllabus | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/paper.png)
 **Editable!** The paper generated automatically is also manually editable according to board's needs | ![booldetect](https://github.com/Divijkatyal0406/CrowdQuest/blob/resolved/images/manual.png)
